@@ -4,6 +4,7 @@ specifiers:
   '@types/node': 17.0.4
   '@types/react': 17.0.38
   autoprefixer: ^10.4.0
+  dashboard-components: github:remorses/dashboard-design-system#0.0.0
   next: latest
   postcss: ^8.4.5
   prettier: ^2.5.1
@@ -22,6 +23,7 @@ devDependencies:
   '@types/node': 17.0.4
   '@types/react': 17.0.38
   autoprefixer: 10.4.7_postcss@8.4.13
+  dashboard-components: github.com/remorses/dashboard-design-system/d6ae8448a663ae92c9cde973ff11cb0447a7d63f_zhtyyhxvjc4vmyivr6fwl32yja
   postcss: 8.4.13
   prettier: 2.6.2
   prettier-plugin-tailwindcss: 0.1.11_prettier@2.6.2
@@ -29,6 +31,25 @@ devDependencies:
   typescript: 4.5.4
 
 packages:
+
+  /@headlessui/react/1.6.1_sfoxds7t5ydpegc3knd667wn6m:
+    resolution: {integrity: sha512-gMd6uIs1U4Oz718Z5gFoV0o/vD43/4zvbyiJN9Dt7PK9Ubxn+TmJwTmYwyNJc5KxxU1t0CmgTNgwZX9+4NjCnQ==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: ^16 || ^17 || ^18
+      react-dom: ^16 || ^17 || ^18
+    dependencies:
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+    dev: true
+
+  /@heroicons/react/1.0.6_react@17.0.2:
+    resolution: {integrity: sha512-JJCXydOFWMDpCP4q13iEplA503MQO3xLoZiKum+955ZCtHINWnx26CUxVxxFQu/uLb4LW3ge15ZpzIkXKkJ8oQ==}
+    peerDependencies:
+      react: '>= 16'
+    dependencies:
+      react: 17.0.2
+    dev: true
 
   /@next/env/12.1.6:
     resolution: {integrity: sha512-Te/OBDXFSodPU6jlXYPAXpmZr/AkG6DCATAxttQxqOWaq6eDFX25Db3dK0120GZrSZmv4QCe9KsZmJKDbWs4OA==}
@@ -179,6 +200,14 @@ packages:
       csstype: 3.1.0
     dev: true
 
+  /@types/react/18.0.9:
+    resolution: {integrity: sha512-9bjbg1hJHUm4De19L1cHiW0Jvx3geel6Qczhjd0qY5VKVE2X5+x77YxAepuCwVh4vrgZJdgEJw48zrhRIeF4Nw==}
+    dependencies:
+      '@types/prop-types': 15.7.5
+      '@types/scheduler': 0.16.2
+      csstype: 3.1.0
+    dev: true
+
   /@types/scheduler/0.16.2:
     resolution: {integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==}
     dev: true
@@ -230,6 +259,15 @@ packages:
       postcss-value-parser: 4.2.0
     dev: true
 
+  /baby-i-am-faded/4.0.10_react@17.0.2:
+    resolution: {integrity: sha512-swk8IE5r8DXSOlUT+XeAov9HAGJXgCEXid7jVFpRzbf8unnCJYN0ISTIZ1iEqDxYM9hFoHdPc2yYxvVgrm3Fpg==}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      react: 17.0.2
+      react-intersection-observer: 8.34.0_react@17.0.2
+    dev: true
+
   /binary-extensions/2.2.0:
     resolution: {integrity: sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==}
     engines: {node: '>=8'}
@@ -277,8 +315,21 @@ packages:
       fsevents: 2.3.2
     dev: true
 
+  /classnames/2.3.1:
+    resolution: {integrity: sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==}
+    dev: true
+
+  /clsx/1.1.1:
+    resolution: {integrity: sha512-6/bPho624p3S2pMyvP5kKBPXnI3ufHLObBFCfgx+LkeR5lg2XYy2hqZqUf45ypD8COn2bhgGJSUE+l5dhNBieA==}
+    engines: {node: '>=6'}
+    dev: true
+
   /color-name/1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
+    dev: true
+
+  /colord/2.9.2:
+    resolution: {integrity: sha512-Uqbg+J445nc1TKn4FoDPS6ZZqAvEDnwrH42yo8B40JSOgSLxMZ/gt3h4nmCtPLQeXhjJJkqBx7SCY35WnIixaQ==}
     dev: true
 
   /cssesc/3.0.0:
@@ -631,6 +682,23 @@ packages:
       scheduler: 0.20.2
     dev: false
 
+  /react-hook-form/7.31.1_react@17.0.2:
+    resolution: {integrity: sha512-QjtjZ8r8KtEBWWpcXLyQordCraTFxILtyQpaz5KLLxN2YzcC+FZ9LLtOnNGuOnzZo9gCoB+viK3ZHV9Mb2htmQ==}
+    engines: {node: '>=12.22.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18
+    dependencies:
+      react: 17.0.2
+    dev: true
+
+  /react-intersection-observer/8.34.0_react@17.0.2:
+    resolution: {integrity: sha512-TYKh52Zc0Uptp5/b4N91XydfSGKubEhgZRtcg1rhTKABXijc4Sdr1uTp5lJ8TN27jwUsdXxjHXtHa0kPj704sw==}
+    peerDependencies:
+      react: ^15.0.0 || ^16.0.0 || ^17.0.0|| ^18.0.0
+    dependencies:
+      react: 17.0.2
+    dev: true
+
   /react/17.0.2:
     resolution: {integrity: sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==}
     engines: {node: '>=0.10.0'}
@@ -698,6 +766,14 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
+  /swr/1.3.0_react@17.0.2:
+    resolution: {integrity: sha512-dkghQrOl2ORX9HYrMDtPa7LTVHJjCTeZoB1dqTbnnEDlSvN8JEKpYIYurDfvbQFUUS8Cg8PceFVZNkW0KNNYPw==}
+    peerDependencies:
+      react: ^16.11.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 17.0.2
+    dev: true
+
   /tailwindcss/3.0.24:
     resolution: {integrity: sha512-H3uMmZNWzG6aqmg9q07ZIRNIawoiEcNFKDfL+YzOPuPsXuDXxJxB9icqzLgdzKNwjG3SAro2h9SYav8ewXNgig==}
     engines: {node: '>=12.13.0'}
@@ -753,4 +829,31 @@ packages:
   /yaml/1.10.2:
     resolution: {integrity: sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==}
     engines: {node: '>= 6'}
+    dev: true
+
+  github.com/remorses/dashboard-design-system/d6ae8448a663ae92c9cde973ff11cb0447a7d63f_zhtyyhxvjc4vmyivr6fwl32yja:
+    resolution: {tarball: https://codeload.github.com/remorses/dashboard-design-system/tar.gz/d6ae8448a663ae92c9cde973ff11cb0447a7d63f}
+    id: github.com/remorses/dashboard-design-system/d6ae8448a663ae92c9cde973ff11cb0447a7d63f
+    name: dashboard-components
+    version: 0.0.0
+    peerDependencies:
+      '@nextui-org/react': '*'
+      framer-motion: '*'
+      next: '*'
+      next-auth: '*'
+      react: '*'
+    dependencies:
+      '@headlessui/react': 1.6.1_sfoxds7t5ydpegc3knd667wn6m
+      '@heroicons/react': 1.0.6_react@17.0.2
+      '@types/react': 18.0.9
+      baby-i-am-faded: 4.0.10_react@17.0.2
+      classnames: 2.3.1
+      clsx: 1.1.1
+      colord: 2.9.2
+      next: 12.1.6_sfoxds7t5ydpegc3knd667wn6m
+      react: 17.0.2
+      react-hook-form: 7.31.1_react@17.0.2
+      swr: 1.3.0_react@17.0.2
+    transitivePeerDependencies:
+      - react-dom
     dev: true

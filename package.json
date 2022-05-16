@@ -13,13 +13,6 @@
     "keywords": [],
     "author": "remorses <beats.by.morse@gmail.com>",
     "license": "ISC",
-    "peerDependencies": {
-        "@nextui-org/react": "*",
-        "framer-motion": "*",
-        "next": "*",
-        "next-auth": "*",
-        "react": "*"
-    },
     "dependencies": {
         "@headlessui/react": "^1.6.1",
         "@heroicons/react": "^1.0.6",
