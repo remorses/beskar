@@ -2,7 +2,6 @@
     "name": "dashboard-components",
     "version": "0.0.0",
     "description": "",
-    "main": "index.js",
     "files": [
         "components",
         "utils.ts",
