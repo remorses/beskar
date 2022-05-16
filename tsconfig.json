@@ -1,14 +1,14 @@
 {
     "compilerOptions": {
-        "target": "ES5",
+        "target": "ES2015",
         "module": "commonjs",
         "allowJs": true,
         "moduleResolution": "Node",
         "lib": [
             "es2017",
             "es7",
-            "es6"
-            // "dom"
+            "es6", //
+            "dom"
         ],
         "declaration": true,
         "declarationMap": true,
@@ -17,7 +17,7 @@
         "esModuleInterop": true,
         "noImplicitAny": false,
         "sourceMap": true,
-        "jsx": "react",
+        "jsx": "react-jsx",
         "skipLibCheck": true
     }
 }

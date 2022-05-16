@@ -14,7 +14,7 @@ import {
 import { signOut, useSession } from 'next-auth/react'
 
 import { useRouter } from 'next/router'
-import { useColorMode, useColorModeValue } from '@app/utils'
+import { useColorMode, useColorModeValue } from '../utils'
 import { Avatar } from '@nextui-org/react'
 import { DropDownMenu } from './DropDown'
 import { AcademicCapIcon } from '@heroicons/react/solid'

@@ -3,13 +3,8 @@ import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid'
 import classNames from 'classnames'
 import useSWR, { useSWRConfig } from 'swr'
-import {
-    createCampaign,
-    createOrg,
-    getUserOrgs,
-} from '@app/pages/api/functions'
 
-import { useThrowingFn } from '@app/utils'
+import { useThrowingFn } from '../utils'
 import { Modal, Input, Loading, Avatar } from '@nextui-org/react'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
@@ -17,15 +12,23 @@ import { Button } from '@nextui-org/react'
 import { PlusIcon } from '@heroicons/react/outline'
 import { Faded } from 'baby-i-am-faded'
 
+// TODO make global store with all required server functions, import these in the _app file
 export type SelectOrgProps = {
     getUserOrgs: () => Promise<{
         defaultOrgId: string
         orgs: { id: string; name: string }[]
     }>
+    createOrg: (x: { name }) => Promise<{
+        any
+    }>
     className?: string
 }
 
-export function SelectOrg({ className = '', getUserOrgs }: SelectOrgProps) {
+export function SelectOrg({
+    className = '',
+    getUserOrgs,
+    createOrg,
+}: SelectOrgProps) {
     const { data, error } = useSWR(getUserOrgs, getUserOrgs)
     const orgs = data?.orgs || []
 
