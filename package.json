@@ -1,0 +1,29 @@
+{
+    "name": "dashboard-components",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "remorses <beats.by.morse@gmail.com>",
+    "license": "ISC",
+    "peerDependencies": {
+        "@nextui-org/react": "*",
+        "framer-motion": "*",
+        "next": "*",
+        "next-auth": "*",
+        "react": "*"
+    },
+    "dependencies": {
+        "@headlessui/react": "^1.6.1",
+        "@heroicons/react": "^1.0.6",
+        "@types/react": "^18.0.9",
+        "baby-i-am-faded": "^4.0.10",
+        "classnames": "^2.3.1",
+        "clsx": "^1.1.1",
+        "colord": "^2.9.2",
+        "react-hook-form": "^7.31.1"
+    }
+}
