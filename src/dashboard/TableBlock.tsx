@@ -1,6 +1,5 @@
 import clsx from 'clsx'
-import React, { ElementType, ReactNode } from 'react'
-import { useMemo } from 'react'
+import React, { ElementType, ReactNode, useMemo } from 'react'
 import { Block, BlockProps } from './Block'
 
 export type TableProps = {
@@ -40,6 +39,7 @@ export const TableBlock = ({
     }, [_rows, isLoading, head?.length])
     return (
         <Block
+            // heading={heading}
             {...rest}
         >
             {title && <div className='p-6 pb-2'>{title}</div>}
@@ -49,7 +49,10 @@ export const TableBlock = ({
                         {head.map((name, i) => {
                             return (
                                 <th
-                                    className='px-6 py-2 text-sm font-semibold tracking-wide opacity-60'
+                                    className={clsx(
+                                        'px-6 py-2 text-sm font-semibold tracking-wide',
+                                        'opacity-60',
+                                    )}
                                     key={i}
                                 >
                                     {name}
@@ -78,7 +81,10 @@ export const TableBlock = ({
 const TData = (props) => {
     return (
         <td
-            className='p-6 text-base break-words whitespace-normal border-t'
+            className={clsx(
+                'p-6 text-base break-words whitespace-normal',
+                'border-t',
+            )}
             {...props}
         />
     )

@@ -4,9 +4,9 @@ import { Faded } from 'baby-i-am-faded'
 import NextLink from 'next/link'
 import React, { ReactNode, useMemo } from 'react'
 
-import { Footer } from './Footer'
+import { Footer } from './landing/Footer'
 import { Header } from './Header'
-import { Link } from './Link'
+import { Link } from './landing/Link'
 import { useSession } from 'next-auth/react'
 import { TabsNav } from './Tabs'
 

@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import React, { useMemo } from 'react'
 import NextLink from 'next/link'
 import { forwardRef } from 'react'
-import { Link } from './Link'
+import { Link } from './landing/Link'
 import {
     MoonIcon,
     SunIcon,
@@ -14,16 +14,15 @@ import {
 import { signOut, useSession } from 'next-auth/react'
 
 import { useRouter } from 'next/router'
-import { useColorMode, useColorModeValue } from '../utils'
+import { useColorMode, useColorModeValue, useDashboardData } from '../utils'
 import { Avatar } from '@nextui-org/react'
 import { DropDownMenu } from './DropDown'
 import { AcademicCapIcon } from '@heroicons/react/solid'
 import { SelectOrg } from './SelectOrg'
-import { getUserOrgs } from '@app/pages/api/functions'
 
 export function Header({ className = '', links = [], ...rest }) {
     const { data: session } = useSession()
-
+    const { getUserOrgs } = useDashboardData()
     return (
         <div
             className={clsx(
@@ -33,10 +32,7 @@ export function Header({ className = '', links = [], ...rest }) {
         >
             <div className='flex flex-col space-y-4'>
                 <Logo />
-                <SelectOrg
-                    getUserOrgs={getUserOrgs}
-                    className='min-w-[200px]'
-                />
+                <SelectOrg className='min-w-[200px]' />
             </div>
 
             <div className='flex-auto' />

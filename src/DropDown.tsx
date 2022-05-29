@@ -44,7 +44,16 @@ function Button({ className, children, ...props }) {
     )
 }
 
-function Item({ icon = null, children, className = '', ...rest }) {
+function Item({
+    icon = null,
+    children,
+    className = '',
+    ...rest
+}: {
+    icon?: ReactNode
+    children: ReactNode
+    className?: string
+} & React.ComponentProps<'a'>) {
     return (
         <Menu.Item>
             {({ active }) => (
