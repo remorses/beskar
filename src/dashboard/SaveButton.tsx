@@ -3,11 +3,11 @@ import React, { ComponentPropsWithoutRef, forwardRef } from 'react'
 import { FormState } from 'react-hook-form'
 import { Button } from '../landing'
 
-export interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
+export interface SaveButtonProps extends ComponentPropsWithoutRef<'button'> {
     formState?: FormState<any>
 }
 
-export const SaveButton = forwardRef<any, ButtonProps>(
+export const SaveButton = forwardRef<any, SaveButtonProps>(
     ({ className, children = 'Save', formState, ...props }, ref) => {
         if (!formState) {
             return null
