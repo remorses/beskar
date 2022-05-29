@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import React, { ComponentPropsWithoutRef, ReactNode } from 'react'
 import { Modal } from './Modal'
 import { PageContainer } from './PageContainer'
-import { useDisclosure } from '../../utils'
+import { useDisclosure } from '../utils'
 
 export type NavBarProps = {
     logo: ReactNode

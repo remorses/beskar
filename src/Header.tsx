@@ -14,7 +14,7 @@ import {
 import { signOut, useSession } from 'next-auth/react'
 
 import { useRouter } from 'next/router'
-import { useColorMode, useColorModeValue, useDashboardData } from '../utils'
+import { useColorMode, useColorModeValue, useBeskar } from './utils'
 import { Avatar } from '@nextui-org/react'
 import { DropDownMenu } from './DropDown'
 import { AcademicCapIcon } from '@heroicons/react/solid'
@@ -22,7 +22,7 @@ import { SelectOrg } from './SelectOrg'
 
 export function Header({ className = '', links = [], ...rest }) {
     const { data: session } = useSession()
-    const { getUserOrgs } = useDashboardData()
+    const { getUserOrgs } = useBeskar()
     return (
         <div
             className={clsx(

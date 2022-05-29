@@ -10,7 +10,7 @@ import {
     useRef,
     useState,
 } from 'react'
-import { useOnClickOutside } from '../../utils'
+import { useOnClickOutside } from '../utils'
 
 const context = createContext<{ isOpen: boolean; setOpen: Function }>({
     isOpen: false,

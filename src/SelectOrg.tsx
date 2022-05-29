@@ -4,7 +4,7 @@ import { CheckIcon, SelectorIcon } from '@heroicons/react/solid'
 import classNames from 'classnames'
 import useSWR, { useSWRConfig } from 'swr'
 
-import { useDashboardData, useThrowingFn } from '../utils'
+import { useBeskar, useThrowingFn } from './utils'
 import { Modal, Input, Loading, Avatar } from '@nextui-org/react'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
@@ -17,7 +17,7 @@ export type SelectOrgProps = {
 }
 
 export function SelectOrg({ className = '' }: SelectOrgProps) {
-    const { getUserOrgs, createOrg } = useDashboardData()
+    const { getUserOrgs, createOrg } = useBeskar()
     const { data, error } = useSWR(getUserOrgs, getUserOrgs)
     const orgs = data?.orgs || []
 

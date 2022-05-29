@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import { ReactNode, SVGProps } from 'react'
-import { useDisclosure } from '../../utils'
+import { useDisclosure } from '../utils'
 
 export function Accordion({ children, className, ...rest }) {
     return (

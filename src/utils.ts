@@ -101,18 +101,6 @@ export function useColorModeValue(a, b) {
     return isDark ? b : a
 }
 
-export class KnownError extends Error {
-    constructor(message: string) {
-        super(message)
-        this.name = 'KnownError'
-    }
-}
-export class AppError extends Error {
-    constructor(message: string) {
-        super(message)
-        this.name = 'AppError'
-    }
-}
 
 export type Context = {
     dashboardPath: string // /app for example
@@ -125,7 +113,7 @@ export type Context = {
     }>
 }
 
-export function useDashboardData() {
+export function useBeskar() {
     const data = useContext(context)
     if (!data) {
         throw new Error(

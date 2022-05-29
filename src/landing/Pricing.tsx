@@ -14,7 +14,7 @@ import React, {
 } from 'react'
 import toast from 'react-hot-toast'
 import { Link } from './Link'
-import { useThrowingFn } from '../../utils'
+import { useThrowingFn } from '../utils'
 
 export type Subscription = {
     paddleSubscriptionId: string
