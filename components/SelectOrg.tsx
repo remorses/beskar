@@ -1,10 +1,10 @@
-import { Fragment, useEffect, useState } from 'react'
+import { Fragment, useContext, useEffect, useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid'
 import classNames from 'classnames'
 import useSWR, { useSWRConfig } from 'swr'
 
-import { useThrowingFn } from '../utils'
+import { useDashboardData, useThrowingFn } from '../utils'
 import { Modal, Input, Loading, Avatar } from '@nextui-org/react'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
@@ -12,23 +12,12 @@ import { Button } from '@nextui-org/react'
 import { PlusIcon } from '@heroicons/react/outline'
 import { Faded } from 'baby-i-am-faded'
 
-// TODO make global store with all required server functions, import these in the _app file
 export type SelectOrgProps = {
-    getUserOrgs: () => Promise<{
-        defaultOrgId: string
-        orgs: { id: string; name: string }[]
-    }>
-    createOrg: (x: { name }) => Promise<{
-        any
-    }>
     className?: string
 }
 
-export function SelectOrg({
-    className = '',
-    getUserOrgs,
-    createOrg,
-}: SelectOrgProps) {
+export function SelectOrg({ className = '' }: SelectOrgProps) {
+    const { getUserOrgs, createOrg } = useDashboardData()
     const { data, error } = useSWR(getUserOrgs, getUserOrgs)
     const orgs = data?.orgs || []
 

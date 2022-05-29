@@ -1,5 +1,5 @@
 import { useTheme } from 'next-themes'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, createContext, useContext } from 'react'
 import toast from 'react-hot-toast'
 
 export function useColorMode() {
@@ -66,3 +66,26 @@ export function useThrowingFn({
         fn,
     }
 }
+
+export type Context = {
+    dashboardPath: string // /app for example
+    getUserOrgs: () => Promise<{
+        defaultOrgId: string
+        orgs: { id: string; name: string }[]
+    }>
+    createOrg: (x: { name }) => Promise<{
+        any
+    }>
+}
+
+export function useDashboardData() {
+    const data = useContext(context)
+    if (!data) {
+        throw new Error(
+            'useDashboardData must be used within a DashboardProvider',
+        )
+    }
+    return data
+}
+
+export const context = createContext<Context>({} as any)
