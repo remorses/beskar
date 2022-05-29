@@ -18,25 +18,28 @@
         "framer-motion": "*",
         "next": "*",
         "next-auth": "*",
-        "react": "*"
+        "next-themes": "*",
+        "react": "*",
+        "react-dom": "*"
     },
     "devDependencies": {
         "@nextui-org/react": "*",
         "framer-motion": "*",
-        "next": "*",
-        "next-auth": "*",
-        "react": "*"
+        "next": "12.1.6",
+        "next-auth": "4.3.4",
+        "next-themes": "*",
+        "@types/react": "^18.0.9",
+        "react": "^18.1.0",
+        "react-dom": "^18.1.0"
     },
     "dependencies": {
         "@headlessui/react": "^1.6.1",
         "@heroicons/react": "^1.0.6",
-        "@types/react": "^18.0.9",
         "baby-i-am-faded": "^4.0.10",
         "classnames": "^2.3.1",
         "clsx": "^1.1.1",
         "color-hash": "^2.0.1",
         "colord": "^2.9.2",
-        "next-themes": "^0.1.1",
         "nprogress": "*",
         "react-hook-form": "^7.31.1",
         "react-hot-toast": "^2.2.0",

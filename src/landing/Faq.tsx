@@ -24,7 +24,7 @@ function AccordionItem({ heading, content }) {
             <div className='flex items-center'>
                 <div className='text-xl font-medium'>{heading}</div>
                 <div className='flex-auto'></div>
-                <button onClick={toggle} className=''>
+                <button onClick={toggle} className='rounded'>
                     <Icon className='w-6 h-6' />
                 </button>
             </div>

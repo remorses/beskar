@@ -87,7 +87,7 @@ export function useColorMode() {
     })
 
     useEffect(() => {
-        setResolvedTheme(_resolvedTheme)
+        setResolvedTheme(_resolvedTheme!)
     }, [_resolvedTheme])
     return {
         toggleColorMode,
