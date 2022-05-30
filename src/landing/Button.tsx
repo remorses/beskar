@@ -47,7 +47,7 @@ export const Button: FC<ButtonProps> = forwardRef<ButtonProps, any>(
                     className,
                 )}
                 href={href}
-                style={{ backgroundColor: bg }}
+                style={{ backgroundColor: bg }} // TODO better way to handle bg and text colors
                 {...props}
             >
                 <style jsx>
