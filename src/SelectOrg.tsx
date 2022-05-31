@@ -18,7 +18,8 @@ export type SelectOrgProps = {
 
 export function SelectOrg({ className = '' }: SelectOrgProps) {
     const { getUserOrgs, createOrg } = useBeskar()
-    const { data, error } = useSWR(getUserOrgs, getUserOrgs)
+    const { data, error } = useSWR('getUserOrgs', getUserOrgs)
+    // console.log({ data })
     const orgs = data?.orgs || []
 
     if (error) {

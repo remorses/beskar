@@ -10,6 +10,7 @@ import { Link } from './landing/Link'
 import { useSession } from 'next-auth/react'
 import { TabsNav } from './Tabs'
 
+export default DashboardLayout
 export function DashboardLayout({ header, Tabs, footer, children, ...rest }) {
     return (
         <div className='flex flex-col items-center w-full min-h-screen'>
