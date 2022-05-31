@@ -74,7 +74,7 @@ export function SelectOrg({ className = '' }: SelectOrgProps) {
         <>
             <Listbox value={orgId} onChange={onChange}>
                 <div className={classNames('relative mt-1', className)}>
-                    <Listbox.Button className='relative w-full py-2 pl-3 pr-10 text-left bg-white rounded-lg shadow-sm border cursor-default dark:bg-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm'>
+                    <Listbox.Button className='relative w-full py-[8px] pl-3 pr-10 text-left bg-white rounded-lg shadow-sm border cursor-default dark:bg-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm'>
                         <span
                             aria-label='current org'
                             className='flex space-x-2 truncate font-medium'
@@ -103,14 +103,14 @@ export function SelectOrg({ className = '' }: SelectOrgProps) {
                     <Faded animationName='menuAppear' duration={120} cascade>
                         <Listbox.Options
                             className={classNames(
-                                'absolute flex flex-col  w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg dark:bg-gray-700 max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm',
+                                'absolute flex flex-col w-full py-2 mt-1 overflow-auto text-base bg-white rounded-md shadow-xl dark:bg-gray-700 max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm',
                             )}
                         >
                             {orgs?.map((org, idx) => (
                                 <Listbox.Option
                                     key={org.id}
                                     className={({ active }) =>
-                                        `cursor-default select-none relative py-2 pr-10 pl-1 ` +
+                                        `cursor-default select-none relative py-[6px] pr-10 pl-1 ` +
                                         hoverClasses
                                     }
                                     value={org.id}
@@ -149,7 +149,7 @@ export function SelectOrg({ className = '' }: SelectOrgProps) {
                             <button
                                 onClick={() => setOpen(true)}
                                 className={classNames(
-                                    'flex space-x-3 px-2 py-2 text-left items-center pl-3 font-medium',
+                                    'flex space-x-3 px-2 py-[6px] text-left items-center pl-3 font-medium',
                                     hoverClasses,
                                 )}
                             >
