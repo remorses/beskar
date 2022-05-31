@@ -89,7 +89,18 @@ export function SelectOrg({ className = '' }: SelectOrgProps) {
                             />
                         </span>
                     </Listbox.Button>
-                    <Faded animationName='appear' duration={120} cascade>
+                    <style jsx>{`
+                        @keyframes menuAppear {
+                            from {
+                                opacity: 0;
+                                transform: translate3d(0px, -2em, 0px) scale(0);
+                            }
+                            to {
+                                opacity: 1;
+                            }
+                        }
+                    `}</style>
+                    <Faded animationName='menuAppear' duration={120} cascade>
                         <Listbox.Options
                             className={classNames(
                                 'absolute flex flex-col  w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg dark:bg-gray-700 max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm',
