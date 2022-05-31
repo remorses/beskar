@@ -1,5 +1,6 @@
 import clsx from 'clsx'
 import { colord } from 'colord'
+import colors from 'tailwindcss/colors'
 import React, {
     ComponentPropsWithoutRef,
     ElementType,
@@ -7,22 +8,41 @@ import React, {
     forwardRef,
     ReactNode,
 } from 'react'
+import { useColorMode } from '../utils'
 
 export type ButtonProps = ComponentPropsWithoutRef<'button'> & {
     href?: string
     as?: ElementType
     icon?: ReactNode
     bg?: string
+    bgDark?: string
     isLoading?: boolean
     biggerOnHover?: boolean
+}
+
+function dotsGet(accessor, obj) {
+    return accessor
+        .split('.')
+        .filter(Boolean)
+        .reduce((acc, cur) => acc[cur], obj)
+}
+
+function getColors(color: string) {
+    const bg = dotsGet(color, colors) || color
+    const bgd = colord(bg)
+    const text = bgd.isDark() ? 'white' : 'black'
+    const highlight = bgd.alpha(0.2).toRgbString()
+    return { text, highlight, bg }
 }
 
 export const Button: FC<ButtonProps> = forwardRef<ButtonProps, any>(
     (
         {
-            bg = '#3B82F6',
+            bg: bg_ = 'blue.500',
+            bgDark: bgDark_ = 'blue.500',
             as: _As = 'button',
             className = '',
+            type = 'button',
             icon = '',
             children,
             isLoading,
@@ -33,27 +53,42 @@ export const Button: FC<ButtonProps> = forwardRef<ButtonProps, any>(
         }: ButtonProps,
         ref,
     ) => {
+        const light = getColors(bg_)
+        const dark = getColors(bgDark_)
         const As = href ? 'a' : _As
-        const highlight = colord(bg).alpha(0.2).toRgbString()
         return (
             <As
                 ref={ref}
                 className={clsx(
-                    'px-4 py-2 flex appearance-none space-x-2 items-center',
+                    'px-[1em] py-[0.4em] flex appearance-none space-x-2 items-center',
                     'justify-center font-medium tracking-wide rounded-md',
-                    'cursor-pointer button',
+                    'cursor-pointer beskarButton active:opacity-50',
                     biggerOnHover && !disabled && 'biggerOnHover',
-                    disabled && 'opacity-60 pointer-events-none',
+                    disabled && 'opacity-40 pointer-events-none',
                     className,
                 )}
                 href={href}
-                style={{ backgroundColor: bg }} // TODO better way to handle bg and text colors
+                type={type}
                 {...props}
             >
-                <style jsx>
+                <style jsx global>
                     {`
+                        .beskarButton {
+                            color: ${light.text};
+                            background-color: ${light.bg};
+                        }
+                        .dark .beskarButton {
+                            color: ${dark.text};
+                            background-color: ${dark.bg};
+                        }
                         .biggerOnHover {
-                            box-shadow: 0 0 0 0 ${highlight};
+                            box-shadow: 0 0 0 0 ${light.highlight};
+                        }
+                        .dark .biggerOnHover {
+                            box-shadow: 0 0 0 0 ${dark.highlight};
+                        }
+
+                        .biggerOnHover {
                             animation: landingBlocksPulseAnimation 1.75s
                                 infinite cubic-bezier(0.66, 0, 0, 1);
                         }
@@ -73,7 +108,7 @@ export const Button: FC<ButtonProps> = forwardRef<ButtonProps, any>(
 
                         .biggerOnHover::after {
                             content: '';
-                            background-color: ${bg};
+                            background-color: ${light};
                             transition: transform 0.15s;
                             border-radius: 7px;
                             position: absolute;

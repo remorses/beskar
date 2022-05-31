@@ -3,7 +3,6 @@ import React, { ComponentPropsWithoutRef, forwardRef } from 'react'
 import { FormState } from 'react-hook-form'
 import { Button } from '../landing'
 
-
 export interface SaveButtonProps extends ComponentPropsWithoutRef<'button'> {
     formState?: FormState<any>
 }
@@ -19,11 +18,9 @@ export const SaveButton = forwardRef<any, SaveButtonProps>(
                 disabled={!formState.isDirty}
                 isLoading={formState.isSubmitting}
                 type='submit'
-                className={classNames(
-                    formState.isDirty ? 'bg-blue-500' : 'bg-gray-500',
-                    'text-white',
-                    className,
-                )}
+                bg={formState.isDirty ? 'blue.500' : 'gray.600'}
+                bgDark={formState.isDirty ? 'blue.200' : 'gray.600'}
+                className={classNames('text-sm transition-colors', className)}
                 {...props}
             >
                 {children}
