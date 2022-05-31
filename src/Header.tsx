@@ -20,7 +20,7 @@ import { DropDownMenu } from './DropDown'
 import { AcademicCapIcon } from '@heroicons/react/solid'
 import { SelectOrg } from './SelectOrg'
 
-export function Header({ className = '', links = [], ...rest }) {
+export function Header({ className = '', logo, links = [], ...rest }) {
     const { data: session } = useSession()
     const { getUserOrgs } = useBeskar()
     return (
@@ -30,86 +30,50 @@ export function Header({ className = '', links = [], ...rest }) {
                 className,
             )}
         >
-            <div className='flex flex-col space-y-4'>
-                <Logo />
+            <div className='flex flex-col  space-y-4'>
+                {logo}
                 <SelectOrg className='min-w-[200px]' />
             </div>
 
             <div className='flex-auto' />
             <div className='flex items-center space-x-8'>
-                <div className='hidden space-x-8 md:flex'>
+                <div className='hidden space-x-8 items-center md:flex'>
                     {links.map((x, i) => (
                         <span key={i}>{x}</span>
                     ))}
                 </div>
-
-                <AvatarMenu name={session?.user?.name || ''} />
             </div>
         </div>
     )
 }
 
-function AvatarMenu({ name, imgSrc = '' }) {
-    const { toggleColorMode, isDark } = useColorMode()
-    const router = useRouter()
-    const orgId = router.query.orgId
-    let avatar = (
-        <div className=''>
-            <Avatar
-                bordered
-                // squared
-                // textColor={'white'}
-                // color='gradient'
-                size={'lg'}
-                text={name || 'Unknown'}
-            />
-        </div>
-    )
+import ColorHash from 'color-hash'
+import { colord, extend } from 'colord'
+import mixPlugin from 'colord/plugins/mix'
+import harmoniesPlugin from 'colord/plugins/harmonies'
 
-    return (
-        <DropDownMenu button={avatar}>
-            <DropDownMenu.Item
-                onClick={toggleColorMode}
-                icon={useColorModeValue(
-                    <MoonIcon className='w-5 h-5 opacity-60' />,
-                    <SunIcon className='w-5 h-5 opacity-60' />,
-                )}
-            >
-                {!isDark ? 'Dark mode' : 'Light Mode'}
-            </DropDownMenu.Item>
-            <NextLink href={`/org/${orgId}/settings`}>
-                <DropDownMenu.Item
-                    icon={<CogIcon className='w-5 h-5 opacity-60' />}
-                >
-                    Settings
-                </DropDownMenu.Item>
-            </NextLink>
-            {/* <DropdownMenu.Item
-                onClick={() =>
-                    updateUpgradeModalState({
-                        isOpen: true,
-                        reason: '',
-                    })
-                }
-                icon={<CreditCardIcon className='w-5 h-5 opacity-60' />}
-            >
-                Upgrade
-            </DropdownMenu.Item> */}
-            <DropDownMenu.Item
-                onClick={() => signOut({ callbackUrl: '/' })}
-                icon={<LogoutIcon className='w-5 h-5 opacity-60' />}
-            >
-                Sign out
-            </DropDownMenu.Item>
-        </DropDownMenu>
-    )
-}
+extend([mixPlugin, harmoniesPlugin])
 
-export function Logo({}) {
-    const { status } = useSession()
+const colorHash = new ColorHash({ lightness: 0.6 })
+
+export function AvatarButton({ className, name }) {
+    const background = (() => {
+        if (!name) {
+            return '#aaa'
+        }
+        const color = colorHash.hex(name)
+
+        const [first, second] = colord(color).harmonies('analogous')
+        return `linear-gradient(to right, ${first.toHex()}, ${second
+            .desaturate(0.3)
+            .toHex()})`
+    })()
     return (
-        <NextLink href={status === 'authenticated' ? '/org' : '/'} passHref>
-            <a className='text-xl font-semibold '>Replicant</a>
-        </NextLink>
+        <button
+            role={'button'}
+            aria-label='avatar button'
+            style={{ background }}
+            className={'rounded-full w-12 h-12 active:opacity-40' + className}
+        ></button>
     )
 }

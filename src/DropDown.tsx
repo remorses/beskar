@@ -1,4 +1,4 @@
-import { Fragment, ReactNode } from 'react'
+import { forwardRef, Fragment, ReactNode } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 import { Faded } from 'baby-i-am-faded'
@@ -16,7 +16,7 @@ export function DropDownMenu(props: Props) {
     const { children, button } = props
     return (
         <Menu as='div' className='relative inline-block text-left'>
-            <Menu.Button>{button}</Menu.Button>
+            <Menu.Button as='div'>{button}</Menu.Button>
             <style jsx>{`
                 @keyframes menuAppear {
                     from {
@@ -40,9 +40,10 @@ export function DropDownMenu(props: Props) {
 DropDownMenu.Button = Button
 function Button({ className, children, ...props }) {
     return (
-        <div
+        <button
             className={classNames(
                 'inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 dark:hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500',
+                'cursor-pointer',
                 className,
             )}
         >
@@ -51,38 +52,36 @@ function Button({ className, children, ...props }) {
                 className='w-5 h-5 ml-2 -mr-1'
                 aria-hidden='true'
             />
-        </div>
+        </button>
     )
 }
 
-function Item({
-    icon = null,
-    children,
-    className = '',
-    ...rest
-}: {
-    icon?: ReactNode
-    children: ReactNode
-    className?: string
-} & React.ComponentProps<'a'>) {
+const Item = forwardRef<
+    any,
+    {
+        icon?: ReactNode
+        children: ReactNode
+        className?: string
+    } & React.ComponentProps<'div'>
+>(function Item({ icon = null, children, className = '', ...rest }, ref: any) {
     return (
         <Menu.Item>
             {({ active }) => (
-                <a
-                    href='#'
+                <div
                     className={classNames(
                         active ? 'bg-gray-100 text-gray-900' : '',
                         'flex space-x-3 px-4 py-2 text-sm rounded-md m-1',
+                        'cursor-pointer',
                         className,
                     )}
+                    ref={ref}
                     {...rest}
                 >
                     {icon}
                     <div className=''>{children}</div>
-                </a>
+                </div>
             )}
         </Menu.Item>
     )
-}
-
+})
 DropDownMenu.Item = Item
