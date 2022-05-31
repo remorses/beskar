@@ -40,7 +40,12 @@ export function SelectOrg({ className = '' }: SelectOrgProps) {
             console.warn('no org found', value)
             return
         }
-        router.replace(`/org/${org.id}`)
+        const newPath = `/org/${org.id}`
+        router.replace(newPath)
+        // console.log(router.asPath)
+        // if (router.asPath !== newPath) {
+        //     router.replace(newPath)
+        // }
     }
     const [isOpen, setOpen] = useState(false)
 
