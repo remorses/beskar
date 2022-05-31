@@ -13,7 +13,7 @@ import React, {
 } from 'react'
 
 export type AlertProps = ComponentPropsWithoutRef<'div'> & {
-    type: 'error' | 'info'
+    type?: 'error' | 'info'
     title: ReactNode
     description?: ReactNode
     isVertical?: boolean
@@ -23,7 +23,7 @@ export const Alert = forwardRef<any, AlertProps>(
     (
         {
             className,
-            type,
+            type = 'info',
             title,
             description,
             children,
@@ -42,9 +42,16 @@ export const Alert = forwardRef<any, AlertProps>(
         }, [type])
         const bg = useMemo(() => {
             if (type === 'error') {
-                return 'dark:bg-red-500 !bg-opacity-30 bg-red-200'
+                return 'dark:bg-red-500/30 bg-red-100'
             } else if (type === 'info') {
-                return 'dark:bg-blue-500 !bg-opacity-40 bg-blue-200'
+                return 'dark:bg-blue-500/40 bg-blue-100'
+            }
+        }, [type])
+        const border = useMemo(() => {
+            if (type === 'error') {
+                return 'border-red-400/50'
+            } else if (type === 'info') {
+                return 'border-blue-400/50'
             }
         }, [type])
 
@@ -52,11 +59,12 @@ export const Alert = forwardRef<any, AlertProps>(
             <div
                 ref={ref}
                 className={clsx(
-                    'flex border space-x-3 space-y-3 flex-col text-center',
+                    'flex border space-y-3 flex-col text-center',
                     'p-6 rounded',
+                    border,
                     isVertical
                         ? ''
-                        : 'lg:flex-row lg:text-left lg:space-y-0 lg:space-x-3',
+                        : 'lg:flex-row lg:items-center lg:text-left lg:space-y-0 lg:space-x-3',
                     bg,
                     className,
                 )}
@@ -64,7 +72,7 @@ export const Alert = forwardRef<any, AlertProps>(
             >
                 <Icon
                     className={clsx(
-                        'self-center flex-shrink-0 block w-8 h-8 pr-2 font-normal ',
+                        'self-center flex-shrink-0 block w-8 h-8 pr-2 ',
                         !isVertical && 'lg:self-start',
                     )}
                 />
