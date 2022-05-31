@@ -39,7 +39,7 @@ export const Button: FC<ButtonProps> = forwardRef<ButtonProps, any>(
     (
         {
             bg: bg_ = 'blue.500',
-            bgDark: bgDark_ = 'blue.300',
+            bgDark: bgDark_,
             as: _As = 'button',
             className = '',
             type = 'button',
@@ -54,7 +54,7 @@ export const Button: FC<ButtonProps> = forwardRef<ButtonProps, any>(
         ref,
     ) => {
         const light = getColors(bg_)
-        const dark = getColors(bgDark_)
+        const dark = getColors(bgDark_ || bg_)
         const As = href ? 'a' : _As
         return (
             <As
@@ -71,20 +71,20 @@ export const Button: FC<ButtonProps> = forwardRef<ButtonProps, any>(
                 type={type}
                 {...props}
             >
-                <style jsx global>
+                <style jsx>
                     {`
                         .beskarButton {
                             color: ${light.text};
                             background-color: ${light.bg};
                         }
-                        .dark .beskarButton {
+                        :global(.dark) .beskarButton {
                             color: ${dark.text};
                             background-color: ${dark.bg};
                         }
                         .biggerOnHover {
                             box-shadow: 0 0 0 0 ${light.highlight};
                         }
-                        .dark .biggerOnHover {
+                        :global(.dark) .biggerOnHover {
                             box-shadow: 0 0 0 0 ${dark.highlight};
                         }
 
