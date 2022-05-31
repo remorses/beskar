@@ -39,7 +39,7 @@ export const Button: FC<ButtonProps> = forwardRef<ButtonProps, any>(
     (
         {
             bg: bg_ = 'blue.500',
-            bgDark: bgDark_ = 'blue.500',
+            bgDark: bgDark_ = 'blue.300',
             as: _As = 'button',
             className = '',
             type = 'button',
