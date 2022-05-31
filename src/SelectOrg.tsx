@@ -70,8 +70,8 @@ export function SelectOrg({ className = '' }: SelectOrgProps) {
             mutate('getUserOrgs')
             setOpen(false)
         },
-        successMessage: 'Created site',
-        errorMessage: 'Could not create site',
+        successMessage: 'Created org',
+        errorMessage: 'Could not create org',
     })
 
     const hoverClasses = 'hover:bg-gray-100 hover:dark:bg-gray-600 rounded mx-2'
