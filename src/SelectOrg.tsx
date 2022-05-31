@@ -111,7 +111,7 @@ export function SelectOrg({ className = '' }: SelectOrgProps) {
                                 <Listbox.Option
                                     key={org.id}
                                     className={({ active }) =>
-                                        `cursor-default select-none relative py-[6px] pr-10 pl-1 ` +
+                                        `cursor-default select-none relative py-[6px] pr-10 ` +
                                         hoverClasses
                                     }
                                     value={org.id}
@@ -120,11 +120,11 @@ export function SelectOrg({ className = '' }: SelectOrgProps) {
                                         <>
                                             <span
                                                 className={classNames(
-                                                    `flex space-x-2 truncate font-medium`,
+                                                    `flex space-x-2 pl-2 truncate font-medium`,
                                                 )}
                                             >
                                                 <OrgIcon name={org.name} />
-                                                <span className=''>
+                                                <span className='text-sm'>
                                                     {org.name}
                                                 </span>
                                             </span>
@@ -150,11 +150,11 @@ export function SelectOrg({ className = '' }: SelectOrgProps) {
                             <button
                                 onClick={() => setOpen(true)}
                                 className={classNames(
-                                    'flex space-x-3 px-2 py-[6px] text-left items-center pl-3 font-medium',
+                                    'flex space-x-2 py-[6px] pl-2 text-left items-center font-medium text-xs',
                                     hoverClasses,
                                 )}
                             >
-                                <PlusIcon className='w-4 h-4' />
+                                <PlusIcon className='w-4 h-4 mx-px' />
                                 <div>New Org</div>
                             </button>
                         </Listbox.Options>
@@ -219,8 +219,4 @@ function OrgIcon({ name }) {
             .toHex()})`
     })()
     return <div style={{ background }} className='rounded-md h-5 w-5 '></div>
-}
-
-function NewOrgButton({ className = '' }) {
-    return <div className=''></div>
 }
