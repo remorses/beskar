@@ -81,7 +81,7 @@ export const TabLink = forwardRef<
                             layoutId='line'
                             className={clsx(
                                 'absolute left-0 right-0 bottom-0 h-[3px] bg-gray-600 dark:bg-gray-300 rounded',
-                                'dark:bg-gray-600',
+                                'dark:bg-gray-400',
                             )}
                         />
                     )}

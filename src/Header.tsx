@@ -71,15 +71,15 @@ function AvatarMenu({ name, imgSrc = '' }) {
             <DropDownMenu.Item
                 onClick={toggleColorMode}
                 icon={useColorModeValue(
-                    <MoonIcon className='icon opacity-60' />,
-                    <SunIcon className='icon opacity-60' />,
+                    <MoonIcon className='w-5 h-5 opacity-60' />,
+                    <SunIcon className='w-5 h-5 opacity-60' />,
                 )}
             >
                 {!isDark ? 'Dark mode' : 'Light Mode'}
             </DropDownMenu.Item>
             <NextLink href={`/org/${orgId}/settings`}>
                 <DropDownMenu.Item
-                    icon={<CogIcon className='icon opacity-60' />}
+                    icon={<CogIcon className='w-5 h-5 opacity-60' />}
                 >
                     Settings
                 </DropDownMenu.Item>
@@ -91,13 +91,13 @@ function AvatarMenu({ name, imgSrc = '' }) {
                         reason: '',
                     })
                 }
-                icon={<CreditCardIcon className='icon opacity-60' />}
+                icon={<CreditCardIcon className='w-5 h-5 opacity-60' />}
             >
                 Upgrade
             </DropdownMenu.Item> */}
             <DropDownMenu.Item
                 onClick={() => signOut({ callbackUrl: '/' })}
-                icon={<LogoutIcon className='icon opacity-60' />}
+                icon={<LogoutIcon className='w-5 h-5 opacity-60' />}
             >
                 Sign out
             </DropDownMenu.Item>
