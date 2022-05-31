@@ -18,9 +18,8 @@ export function TabsNav({ Tabs, ...rest }) {
     return (
         <div className='relative'>
             {/* <div className='absolute bottom-0 -left-[50vw] w-[200vw] border-b border-current opacity-20'></div> */}
-            <Faded
-                as={'nav'}
-                cascade
+            <nav
+                // cascade
                 className={classNames(
                     'overflow-y-hidden items-end justify-start w-full flex space-x-10 overflow-x-auto',
                     'min-h-[3em]',
@@ -28,7 +27,7 @@ export function TabsNav({ Tabs, ...rest }) {
                 {...rest}
             >
                 {<Tabs />}
-            </Faded>
+            </nav>
         </div>
     )
 }
@@ -66,11 +65,11 @@ export const TabLink = forwardRef<
                     ref={ref}
                     className={clsx(
                         className,
-                        'flex relative py-3 pb-[16px] px-1 text-sm items-center outline-none cursor-pointer',
+                        'flex relative py-3 pb-[16px] text-sm items-center outline-none cursor-pointer',
                         'select-none font-medium dark:hover:text-white hover:text-black',
                         isActive
                             ? 'text-black dark:text-white '
-                            : 'text-bluish-base dark:text-gray-400',
+                            : 'text-gray-600 dark:text-gray-400',
                     )}
                     href={href}
                     // onClick={onclick}
@@ -86,7 +85,7 @@ export const TabLink = forwardRef<
                         />
                     )}
 
-                    <div className='relative flex items-center font-medium tracking-wide space-x-2'>
+                    <div className='relative flex items-center justify-start font-medium tracking-wide space-x-2'>
                         {icon ? icon : null}
                         <div>{children}</div>
                     </div>
