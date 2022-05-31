@@ -17,7 +17,18 @@ export function DropDownMenu(props: Props) {
     return (
         <Menu as='div' className='relative inline-block text-left'>
             <Menu.Button>{button}</Menu.Button>
-            <Faded animationName='appear' duration={120} cascade>
+            <style jsx>{`
+                @keyframes menuAppear {
+                    from {
+                        opacity: 0;
+                        transform: translate3d(0px, -2em, 0px) scale(0);
+                    }
+                    to {
+                        opacity: 1;
+                    }
+                }
+            `}</style>
+            <Faded animationName='menuAppear' duration={120} cascade>
                 <Menu.Items className='absolute right-0 w-56 mt-2 origin-top-right bg-white rounded-md shadow-lg dark:bg-gray-700 ring-1 ring-black ring-opacity-5 focus:outline-none'>
                     {children}
                 </Menu.Items>
