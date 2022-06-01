@@ -23,13 +23,13 @@ export function PageContainer({
             )}
             <div
                 className={classNames(
-                    'flex px-6 lg:px-0 flex-col w-full items-stretch',
+                    'flex px-6 flex-col w-full items-stretch',
                     className,
                 )}
                 style={{
                     // margin: '0 auto',
                     position: floatingElement ? 'relative' : 'static',
-                    maxWidth: 'var(--max-width, 1200px)',
+                    maxWidth: 'var(--max-width, 1100px)',
                     ...style,
                 }}
                 {...rest}

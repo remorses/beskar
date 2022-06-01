@@ -1,5 +1,6 @@
 import clsx from 'clsx'
 import React, { ComponentPropsWithoutRef, ReactNode } from 'react'
+import { PageContainer } from './PageContainer'
 
 export type FooterProps = {
     columns: { [k: string]: ReactNode[] }
@@ -15,14 +16,7 @@ export function Footer({
     ...rest
 }: FooterProps) {
     return (
-        <div
-            className={clsx(
-                'opacity-90 font-medium text-sm py-10 mx-auto',
-                'w-full min-h-[40px] max-w-[var(--pageWidth)]',
-                className,
-            )}
-            {...rest}
-        >
+        <PageContainer {...rest}>
             <div
                 className={clsx(
                     'flex flex-col items-stretch space-y-10 lg:flex-row',
@@ -48,6 +42,6 @@ export function Footer({
                     )
                 })}
             </div>
-        </div>
+        </PageContainer>
     )
 }
