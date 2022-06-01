@@ -147,11 +147,9 @@ type Path<T> = PathImpl2<T> extends string | keyof T ? PathImpl2<T> : keyof T
 
 export type ColorGetter = Path<typeof colors>
 
-export function getColor<T extends typeof colors, P extends Path<T>>(
-    color: P,
-): string | undefined {
+export function getColor<P extends ColorGetter>(color: P): string | undefined {
     const c = dotsGet(color, colors) || color
-    return c
+    return c as string
 }
 function dotsGet(accessor, obj) {
     return accessor

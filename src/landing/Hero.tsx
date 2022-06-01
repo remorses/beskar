@@ -34,7 +34,7 @@ export function Hero({
                     image ? 'justify-start md:space-x-8' : 'justify-center',
                 )}
             >
-                <Faded
+                <div
                     className={clsx(
                         'space-y-8 text-center min-w-[33%]',
                         image ? 'md:max-w-[60%]' : 'w-full',
@@ -72,7 +72,7 @@ export function Hero({
                         ></Button> */}
                         <div className='opacity-60 text-xs'>{fingerprint}</div>
                     </div>
-                </Faded>
+                </div>
                 {image && (
                     <div
                         className={clsx('flex flex-col md:flex-row flex-auto')}

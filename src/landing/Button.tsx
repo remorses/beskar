@@ -20,15 +20,8 @@ export type ButtonProps = ComponentPropsWithoutRef<'button'> & {
     biggerOnHover?: boolean
 }
 
-function dotsGet(accessor, obj) {
-    return accessor
-        .split('.')
-        .filter(Boolean)
-        .reduce((acc, cur) => acc[cur], obj)
-}
-
 function getColors(color: ColorGetter) {
-    const bg = getColor(color) || color
+    const bg = getColor(color as any) || color
     const bgd = colord(bg)
     const text = bgd.isDark() ? 'white' : 'black'
     const highlight = bgd.alpha(0.2).toRgbString()
