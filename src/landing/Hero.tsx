@@ -36,7 +36,7 @@ export function Hero({
             >
                 <Faded
                     className={clsx(
-                        'flex flex-col space-y-8 text-center min-w-[33%]',
+                        'space-y-8 text-center min-w-[33%]',
                         image ? 'md:max-w-[60%]' : 'w-full',
                         image ? 'items-start' : 'items-center',
                         image ? 'md:text-left' : 'text-center',
@@ -44,21 +44,21 @@ export function Hero({
                 >
                     <div
                         className={clsx(
-                            'flex flex-col items-center space-y-4',
+                            'flex flex-col items-center space-y-4 ',
                             image ? 'md:items-start' : '',
                         )}
                     >
                         {bullet && <Bullet>{bullet}</Bullet>}
                         <ComponentIfString
                             component={'h1'}
-                            className='block max-w-2xl text-4xl'
+                            className='block max-w-2xl text-5xl font-semibold leading-normal'
                         >
                             {heading}
                         </ComponentIfString>
                     </div>
                     <ComponentIfString
                         component={'h2'}
-                        className='max-w-xl font-medium text-2xl opacity-80'
+                        className='max-w-xl font-medium text-2xl opacity-80 leading-normal'
                     >
                         {subheading}
                     </ComponentIfString>
@@ -95,5 +95,5 @@ function ComponentIfString({ component: C, children, ...rest }) {
     if (typeof children === 'string') {
         return <C {...rest}>{children}</C>
     }
-    return <div {...rest}> {children}</div>
+    return <span {...rest}> {children}</span>
 }

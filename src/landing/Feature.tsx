@@ -78,7 +78,7 @@ export function Feature({
 
 export function FeatureLink({ children, hideArrow = false, href = '' }) {
     return (
-        <Link href={href} className='flex items-center space-x-2'>
+        <Link href={href} className='flex items-center font-semibold space-x-2'>
             <span>{children}</span>
             {!hideArrow && (
                 <ArrowRightIcon className='mx-[10px] inline w-4 h-4 ' />
