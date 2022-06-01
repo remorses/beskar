@@ -272,7 +272,7 @@ function SubscriptionPlan({
     promptLogin: () => void
 } & ComponentPropsWithoutRef<'div'>) {
     const router = useRouter()
-    const { status, data: session } = useSession()
+    const { status, data: session,  } = useSession()
 
     const { fn: changePlan, isLoading } = useThrowingFn({
         fn: updatePlan,
@@ -314,7 +314,10 @@ function SubscriptionPlan({
                 Paddle.Checkout.open({
                     product: paddleId,
                     email: session.user.email,
-                    passthrough: JSON.stringify({ userId: session?.user?.id }),
+                    passthrough: JSON.stringify({
+                        userId: session?.user?.id,
+                        email: session?.user?.email,
+                    }),
                     successCallback: () => {
                         toast.success('Created plan', {
                             position: 'top-center',
