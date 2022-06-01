@@ -1,3 +1,4 @@
+import classNames from 'classnames'
 import cs from 'classnames'
 import { ReactNode } from 'react'
 
@@ -5,6 +6,7 @@ export function PageContainer({
     children,
     floatingElement = null as ReactNode,
     style = {},
+    className = '',
     ...rest
 }) {
     return (
@@ -20,7 +22,10 @@ export function PageContainer({
                 </div>
             )}
             <div
-                className='flex px-6 lg:px-0 flex-col w-full items-stretch'
+                className={classNames(
+                    'flex px-6 lg:px-0 flex-col w-full items-stretch',
+                    className,
+                )}
                 style={{
                     // margin: '0 auto',
                     position: floatingElement ? 'relative' : 'static',

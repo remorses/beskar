@@ -71,8 +71,8 @@ const Step = ({
     return (
         <div
             className={clsx(
-                'flex items-center justify-between space-auto',
-                'flex-col [--space:40px]',
+                'flex items-center justify-between space-y-6 md:space-y-0 md:space-x-8',
+                'flex-col',
                 flip ? 'md:flex-row-reverse' : 'md:flex-row',
             )}
             {...rest}

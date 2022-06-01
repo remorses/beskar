@@ -29,15 +29,14 @@ export function Hero({
         <PageContainer {...rest}>
             <div
                 className={clsx(
-                    'flex items-center w-full flex-col space-auto',
+                    'flex items-center w-full flex-col',
                     'md:flex-row leading-normal',
-                    image ? 'justify-start' : 'justify-center',
+                    image ? 'justify-start md:space-x-8' : 'justify-center',
                 )}
             >
                 <Faded
                     className={clsx(
-                        'flex flex-col space-auto text-center min-w-[33%]',
-                        '[--space:40px]',
+                        'flex flex-col space-y-8 text-center min-w-[33%]',
                         image ? 'md:max-w-[60%]' : 'w-full',
                         image ? 'items-start' : 'items-center',
                         image ? 'md:text-left' : 'text-center',
