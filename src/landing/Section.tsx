@@ -3,7 +3,7 @@ import React, { ComponentPropsWithoutRef, CSSProperties } from 'react'
 
 export type SectionProps = {
     degree?: number
-    bg?: string
+    bg: string
 } & ComponentPropsWithoutRef<'div'>
 
 export const Section = ({
