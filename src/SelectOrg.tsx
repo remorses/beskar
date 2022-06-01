@@ -80,7 +80,10 @@ export function SelectOrg({ className = '' }: SelectOrgProps) {
         <>
             <Listbox value={orgId} onChange={onChange}>
                 <div className={classNames('relative mt-1', className)}>
-                    <Listbox.Button className='relative w-full py-[8px] pl-3 pr-10 text-left bg-white rounded-lg shadow-sm border cursor-default dark:bg-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm'>
+                    <Listbox.Button
+                        as='button'
+                        className='relative w-full py-[8px] pl-3 pr-10 text-left bg-white rounded-lg shadow-sm border dark:bg-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm'
+                    >
                         <span
                             aria-label='current org'
                             className='flex space-x-2 truncate font-medium'
@@ -116,7 +119,7 @@ export function SelectOrg({ className = '' }: SelectOrgProps) {
                                 <Listbox.Option
                                     key={org.id}
                                     className={({ active }) =>
-                                        `cursor-default select-none relative py-[6px] pr-10 ` +
+                                        `cursor-pointer select-none relative py-[6px] pr-10` +
                                         hoverClasses
                                     }
                                     value={org.id}

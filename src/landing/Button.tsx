@@ -8,14 +8,14 @@ import React, {
     forwardRef,
     ReactNode,
 } from 'react'
-import { useColorMode } from '../utils'
+import { ColorGetter, getColor, useColorMode } from '../utils'
 
 export type ButtonProps = ComponentPropsWithoutRef<'button'> & {
     href?: string
     as?: ElementType
     icon?: ReactNode
-    bg?: string
-    bgDark?: string
+    bg?: ColorGetter
+    bgDark?: ColorGetter
     isLoading?: boolean
     biggerOnHover?: boolean
 }
@@ -27,8 +27,8 @@ function dotsGet(accessor, obj) {
         .reduce((acc, cur) => acc[cur], obj)
 }
 
-function getColors(color: string) {
-    const bg = dotsGet(color, colors) || color
+function getColors(color: ColorGetter) {
+    const bg = getColor(color) || color
     const bgd = colord(bg)
     const text = bgd.isDark() ? 'white' : 'black'
     const highlight = bgd.alpha(0.2).toRgbString()
@@ -38,7 +38,7 @@ function getColors(color: string) {
 export const Button: FC<ButtonProps> = forwardRef<ButtonProps, any>(
     (
         {
-            bg: bg_ = 'blue.500',
+            bg: bg_,
             bgDark: bgDark_,
             as: _As = 'button',
             className = '',
@@ -53,6 +53,13 @@ export const Button: FC<ButtonProps> = forwardRef<ButtonProps, any>(
         }: ButtonProps,
         ref,
     ) => {
+        if (!bg_) {
+            bg_ = 'blue.500'
+            bgDark_ = bgDark_ || 'blue.300'
+        }
+        if (!bgDark_ && bg_) {
+            bgDark_ = bg_
+        }
         const light = getColors(bg_)
         const dark = getColors(bgDark_ || bg_)
         const As = href ? 'a' : _As
