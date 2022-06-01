@@ -20,8 +20,9 @@ export function Footer({
             <div
                 className={clsx(
                     'flex flex-col items-stretch space-y-10 lg:flex-row',
-                    'lg:space-x-10 lg:space-y-0',
+                    'lg:space-x-10 lg:space-y-0 pb-8',
                     justifyAround ? 'justify-around' : 'justify-between',
+                    className,
                 )}
             >
                 {Object.keys(columns).map((k, i) => {
