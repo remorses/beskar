@@ -38,7 +38,7 @@ export function Hero({
                     className={clsx(
                         'flex flex-col space-auto text-center min-w-[33%]',
                         '[--space:40px]',
-                        image ? 'max-w-[60%]' : 'w-full',
+                        image ? 'md:max-w-[60%]' : 'w-full',
                         image ? 'items-start' : 'items-center',
                         image ? 'md:text-left' : 'text-center',
                     )}

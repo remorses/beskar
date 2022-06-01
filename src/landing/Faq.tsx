@@ -20,7 +20,10 @@ function AccordionItem({ heading, content }) {
         ? MaterialSymbolsKeyboardArrowUpRounded
         : MaterialSymbolsKeyboardArrowDownRounded
     return (
-        <li className='flex flex-col space-y-4 bg-gray-100 rounded dark:bg-gray-800 border p-6'>
+        <li
+            onClick={toggle}
+            className='flex flex-col space-y-4 bg-gray-100 rounded dark:bg-gray-800 border p-6 cursor-pointer'
+        >
             <div className='flex items-center'>
                 <div className='text-xl font-medium'>{heading}</div>
                 <div className='flex-auto'></div>
@@ -28,7 +31,7 @@ function AccordionItem({ heading, content }) {
                     <Icon className='w-6 h-6' />
                 </button>
             </div>
-            <div className={classNames('block', isOpen ? '' : 'h-0 hidden')}>
+            <div className={classNames('block', isOpen ? '' : 'hidden')}>
                 <p className={classNames('block')}>{content}</p>
             </div>
         </li>
