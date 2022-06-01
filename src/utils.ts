@@ -62,8 +62,9 @@ export function useThrowingFn({
             }
             return result
         } catch (err) {
-            if (typeof err === 'object' && !err?.['skipToast']) {
-                toast.error(errorMessage, {})
+            // how to handle unreadable errors? simply don't return them from APIs, just return something went wrong
+            if (err instanceof Error && !err?.['skipToast']) {
+                toast.error(err.message, {})
             }
 
             console.error(err)

@@ -155,7 +155,7 @@ export function SelectOrg({ className = '' }: SelectOrgProps) {
                             <button
                                 onClick={() => setOpen(true)}
                                 className={classNames(
-                                    'flex space-x-2 py-[6px] pl-2 text-left items-center font-medium text-xs',
+                                    'flex space-x-2 py-[7px] pl-2 text-left items-center font-medium text-xs',
                                     hoverClasses,
                                 )}
                             >
@@ -225,5 +225,3 @@ function OrgIcon({ name }) {
     })()
     return <div style={{ background }} className='rounded-md h-5 w-5 '></div>
 }
-
-

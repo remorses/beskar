@@ -9,12 +9,10 @@ import { useDisclosure } from '../utils'
 export type NavBarProps = {
     logo: ReactNode
     navs?: ReactNode | ReactNode[]
-    navSpacing?: any
 } & ComponentPropsWithoutRef<'div'>
 
 export const NavBar = ({
     logo,
-    navSpacing = '26px',
     navs = [],
     className = '',
     ...rest
@@ -29,9 +27,9 @@ export const NavBar = ({
             <div className={clsx('flex w-full py-4', className)}>
                 <div className='self-start'>{logo}</div>
                 <div className='flex-1' />
-                <div className='space-x-4 items-center hidden md:flex'>
+                <div className='hidden md:flex'>
                     {Array.isArray(navs) ? (
-                        <div className='items-center flex space-x-4'>
+                        <div className='items-center flex space-x-6 lg:space-x-8'>
                             {navs.map((x, i) => (
                                 <div
                                     key={i}

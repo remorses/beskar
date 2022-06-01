@@ -60,7 +60,7 @@ export const Button: FC<ButtonProps> = forwardRef<ButtonProps, any>(
             <As
                 ref={ref}
                 className={clsx(
-                    'px-[1em] py-[0.4em] flex appearance-none space-x-2 items-center',
+                    'px-[1em] py-[0.6em] flex appearance-none space-x-2 items-center',
                     'justify-center font-medium tracking-wide rounded-md',
                     'cursor-pointer beskarButton active:opacity-50',
                     biggerOnHover && !disabled && 'biggerOnHover',
