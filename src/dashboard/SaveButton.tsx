@@ -20,7 +20,7 @@ export const SaveButton = forwardRef<any, SaveButtonProps>(
                 type='submit'
                 bg={formState.isDirty ? 'blue.500' : 'gray.600'}
                 bgDark={formState.isDirty ? 'blue.200' : 'gray.600'}
-                className={classNames('text-sm transition-colors', className)}
+                className={classNames('text-xs font-semibold transition-colors', className)}
                 {...props}
             >
                 {children}

@@ -9,6 +9,7 @@ import React, {
     ReactNode,
 } from 'react'
 import { ColorGetter, getColor, useColorMode } from '../utils'
+import classNames from 'classnames'
 
 export type ButtonProps = ComponentPropsWithoutRef<'button'> & {
     href?: string
@@ -46,6 +47,7 @@ export const Button: FC<ButtonProps> = forwardRef<ButtonProps, any>(
         }: ButtonProps,
         ref,
     ) => {
+        // isLoading = true
         if (!bg_) {
             bg_ = 'blue.500'
             bgDark_ = bgDark_ || 'blue.300'
@@ -62,22 +64,23 @@ export const Button: FC<ButtonProps> = forwardRef<ButtonProps, any>(
                 className={clsx(
                     'px-[1em] py-[0.6em] flex appearance-none space-x-2 items-center',
                     'justify-center font-medium tracking-wide rounded-md',
-                    'cursor-pointer beskarButton active:opacity-50',
+                    'cursor-pointer colorAndBg active:opacity-50',
                     biggerOnHover && !disabled && 'biggerOnHover',
                     disabled && 'opacity-40 pointer-events-none',
                     className,
                 )}
+                disabled={disabled || isLoading}
                 href={href}
                 type={type}
                 {...props}
             >
                 <style jsx>
                     {`
-                        .beskarButton {
+                        .colorAndBg {
                             color: ${light.text};
                             background-color: ${light.bg};
                         }
-                        :global(.dark) .beskarButton {
+                        :global(.dark) .colorAndBg {
                             color: ${dark.text};
                             background-color: ${dark.bg};
                         }
@@ -122,8 +125,18 @@ export const Button: FC<ButtonProps> = forwardRef<ButtonProps, any>(
                     `}
                 </style>
                 {icon && <div className=''>{icon}</div>}
-                <div className=''>
-                    {isLoading ? <LoadingSpinner /> : children}
+                <div className={'relative'}>
+                    {
+                        <div
+                            className={classNames(
+                                'absolute inset-0 colorAndBg',
+                                !isLoading && 'hidden',
+                            )}
+                        >
+                            <LoadingSpinner />
+                        </div>
+                    }
+                    {children}
                 </div>
             </As>
         )
