@@ -1,6 +1,7 @@
 import {
     ExclamationCircleIcon,
     InformationCircleIcon,
+    ExclamationIcon,
 } from '@heroicons/react/outline'
 import clsx from 'clsx'
 import React, {
@@ -13,11 +14,14 @@ import React, {
 } from 'react'
 
 export type AlertProps = ComponentPropsWithoutRef<'div'> & {
-    type?: 'error' | 'info'
+    type?: 'error' | 'info' | 'warn'
     title: ReactNode
     description?: ReactNode
     isVertical?: boolean
 }
+
+
+
 
 export const Alert = forwardRef<any, AlertProps>(
     (
@@ -37,14 +41,18 @@ export const Alert = forwardRef<any, AlertProps>(
                 return ExclamationCircleIcon
             } else if (type === 'info') {
                 return InformationCircleIcon
+            } else if (type === 'warn') {
+                return ExclamationIcon
             }
             return Fragment
         }, [type])
         const bg = useMemo(() => {
             if (type === 'error') {
-                return 'dark:bg-red-500/30 bg-red-100'
+                return 'bg-red-100 text-gray-800'
             } else if (type === 'info') {
-                return 'dark:bg-blue-500/40 bg-blue-100'
+                return 'bg-blue-50 text-gray-800'
+            } else if (type === 'warn') {
+                return 'bg-orange-100 text-gray-800'
             }
         }, [type])
         const border = useMemo(() => {
@@ -52,6 +60,8 @@ export const Alert = forwardRef<any, AlertProps>(
                 return 'border-red-400/50'
             } else if (type === 'info') {
                 return 'border-blue-400/50'
+            } else if (type === 'warn') {
+                return 'border-yellow-400/50'
             }
         }, [type])
 
@@ -59,8 +69,8 @@ export const Alert = forwardRef<any, AlertProps>(
             <div
                 ref={ref}
                 className={clsx(
-                    'flex border space-y-3 flex-col text-center',
-                    'p-6 rounded',
+                    'flex border-2 space-y-3 flex-col text-center',
+                    'p-6 rounded-md shadow',
                     border,
                     isVertical
                         ? ''
