@@ -3,8 +3,8 @@ import React, { useState, useEffect, createContext, useContext } from 'react'
 import toast from 'react-hot-toast'
 import colors from 'tailwindcss/colors'
 
-export function useDisclosure() {
-    const [isOpen, setIsOpen] = useState(false)
+export function useDisclosure(defaultIsOpen = false) {
+    const [isOpen, setIsOpen] = useState(defaultIsOpen)
     const toggle = () => setIsOpen(!isOpen)
     return {
         isOpen,
@@ -157,3 +157,6 @@ function dotsGet(accessor, obj) {
         .filter(Boolean)
         .reduce((acc, cur) => acc[cur], obj)
 }
+
+export const useSafeLayoutEffect =
+    typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect

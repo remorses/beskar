@@ -2,6 +2,7 @@ import {
     ExclamationCircleIcon,
     InformationCircleIcon,
     ExclamationIcon,
+    XIcon as XIcon,
 } from '@heroicons/react/outline'
 import clsx from 'clsx'
 import React, {
@@ -12,16 +13,15 @@ import React, {
     ReactNode,
     useMemo,
 } from 'react'
+import { useDisclosure, useSafeLayoutEffect } from '../utils'
 
 export type AlertProps = ComponentPropsWithoutRef<'div'> & {
     type?: 'error' | 'info' | 'warn'
-    title: ReactNode
+    title: string
     description?: ReactNode
     isVertical?: boolean
+    isClosable?: boolean
 }
-
-
-
 
 export const Alert = forwardRef<any, AlertProps>(
     (
@@ -30,12 +30,14 @@ export const Alert = forwardRef<any, AlertProps>(
             type = 'info',
             title,
             description,
+            isClosable = false,
             children,
             isVertical = false,
             ...props
         },
         ref,
     ) => {
+        const { isOpen, onClose } = useDisclosure(true)
         const Icon: ComponentType<any> = useMemo(() => {
             if (type === 'error') {
                 return ExclamationCircleIcon
@@ -48,11 +50,11 @@ export const Alert = forwardRef<any, AlertProps>(
         }, [type])
         const bg = useMemo(() => {
             if (type === 'error') {
-                return 'bg-red-100 text-gray-800'
+                return 'bg-red-100'
             } else if (type === 'info') {
-                return 'bg-blue-50 text-gray-800'
+                return 'bg-blue-50 '
             } else if (type === 'warn') {
-                return 'bg-orange-100 text-gray-800'
+                return 'bg-orange-100 '
             }
         }, [type])
         const border = useMemo(() => {
@@ -64,12 +66,24 @@ export const Alert = forwardRef<any, AlertProps>(
                 return 'border-yellow-400/50'
             }
         }, [type])
-
+        const storageKey = 'Alert: ' + title
+        useSafeLayoutEffect(() => {
+            if (!isClosable) {
+                return
+            }
+            const state = localStorage.getItem(storageKey)
+            if (state === 'closed') {
+                onClose()
+            }
+        }, [])
+        if (!isOpen) {
+            return null
+        }
         return (
             <div
                 ref={ref}
                 className={clsx(
-                    'flex border-2 space-y-3 flex-col text-center',
+                    'relative text-gray-800 flex border-2 space-y-3 flex-col text-center',
                     'p-6 rounded-md shadow',
                     border,
                     isVertical
@@ -80,6 +94,17 @@ export const Alert = forwardRef<any, AlertProps>(
                 )}
                 {...props}
             >
+                {isClosable && (
+                    <button
+                        onClick={() => {
+                            localStorage.setItem(storageKey, 'closed')
+                            onClose()
+                        }}
+                        className='absolute right-3 top-2 appearance-none rounded'
+                    >
+                        <XIcon className='w-5 h-5' />
+                    </button>
+                )}
                 <Icon
                     className={clsx(
                         'self-center flex-shrink-0 block w-8 h-8 pr-2 ',
