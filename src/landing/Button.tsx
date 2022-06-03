@@ -148,8 +148,8 @@ function LoadingSpinner({}) {
         <div className=''>
             <svg
                 role='status'
-                className='inline w-5 h-5 text-white animate-spin'
-                viewBox='0 0 100 101'
+                className='inline w-[1.4em] h-[1.4em] animate-spin'
+                viewBox='0 0 100 100'
                 fill='none'
                 xmlns='http://www.w3.org/2000/svg'
             >
