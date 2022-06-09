@@ -1,4 +1,5 @@
 import clsx from 'clsx'
+import { SVGProps } from 'react'
 import { useDisclosure } from '../utils'
 import { Modal } from './Modal'
 import { Spinner } from './Spinner'
@@ -7,7 +8,7 @@ export function VideoModal({
     youtubeVideoId,
     aspectRatio = 16 / 9,
     className = '',
-    button,
+    button = <PlayButton className='h-28' />,
 }) {
     const { isOpen, onClose, onOpen } = useDisclosure()
     const src = `https://www.youtube.com/embed/${youtubeVideoId}`
@@ -45,9 +46,31 @@ export function VideoModal({
                 isOpen={isOpen}
                 onClose={onClose}
             ></Modal>
-            <div onClick={onOpen} className='cursor-pointer'>
+            <div onClick={onOpen} className=''>
                 {button}
             </div>
         </>
     )
 }
+
+export function PlayButton({ className, ...props }: SVGProps<SVGSVGElement>) {
+    return (
+        <button className='appearance-none '>
+            <svg
+                viewBox='0 0 24 24'
+                className={clsx(
+                    'h-28 hover:scale-110 transition-transform ',
+                    className,
+                )}
+                {...props}
+            >
+                <path
+                    fill='currentColor'
+                    d='M9.525 18.025q-.5.325-1.013.037Q8 17.775 8 17.175V6.825q0-.6.512-.888q.513-.287 1.013.038l8.15 5.175q.45.3.45.85t-.45.85Z'
+                ></path>
+            </svg>
+        </button>
+    )
+}
+
+VideoModal.PLayButton = PlayButton
