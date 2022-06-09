@@ -34,6 +34,7 @@ export function VideoModal({
                             <iframe
                                 title={'video'}
                                 src={src}
+                                height='1080'
                                 frameBorder={0}
                                 loading='lazy'
                                 allow='autoplay; fullscreen'
