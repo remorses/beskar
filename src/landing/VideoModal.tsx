@@ -8,7 +8,7 @@ export function VideoModal({
     youtubeVideoId,
     aspectRatio = 16 / 9,
     className = '',
-    button = <PlayButton className='h-28' />,
+    button = <PlayButton className='' />,
 }) {
     const { isOpen, onClose, onOpen } = useDisclosure()
     const src = `https://www.youtube.com/embed/${youtubeVideoId}`
