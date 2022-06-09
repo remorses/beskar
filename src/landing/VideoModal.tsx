@@ -11,7 +11,7 @@ export function VideoModal({
     button = <PlayButton className='' />,
 }) {
     const { isOpen, onClose, onOpen } = useDisclosure()
-    const src = `https://www.youtube.com/embed/${youtubeVideoId}`
+    const src = `https://www.youtube.com/embed/${youtubeVideoId}?vq=hd1080`
     const padding = (1 / aspectRatio) * 100
     return (
         <>
