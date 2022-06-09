@@ -25,7 +25,7 @@ export function VideoModal({
                     >
                         <Modal.CloseButton onClick={onClose} />
 
-                        <div className='relative w-full'>
+                        <div className='relative w-full max-h-[calc(80vh)]'>
                             <div style={{ paddingTop: padding + '%' }}></div>
                             <div className='absolute inset-0 flex items-center justify-center'>
                                 <Spinner className='text-5xl' />
