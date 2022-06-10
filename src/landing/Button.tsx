@@ -13,6 +13,7 @@ import classNames from 'classnames'
 
 export type ButtonProps = ComponentPropsWithoutRef<'button'> & {
     href?: string
+    target?: string
     as?: ElementType
     icon?: ReactNode
     bg?: ColorGetter

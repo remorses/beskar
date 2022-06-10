@@ -1,4 +1,3 @@
-
 import { Faded } from 'baby-i-am-faded'
 import clsx from 'clsx'
 
@@ -38,7 +37,7 @@ export function TestimonialLogos({ items, invert = false, className }: Props) {
                         <img
                             src={x.src}
                             alt='logo'
-                            className='max-w-[140px] max-h-[40px]'
+                            className='max-w-[180px] max-h-[40px]'
                         />
                     </LinkOrNot>
                 )

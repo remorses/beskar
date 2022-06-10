@@ -16,6 +16,7 @@ export function PageContainer({
                     className={cs(
                         'absolute flex flex-col items-center justify-center',
                         'w-full z-0 inset-0',
+                        // `overflow-x-hidden`, // TODO maybe i need to set overflow x hidden for mobile
                     )}
                 >
                     {floatingElement}
@@ -23,7 +24,7 @@ export function PageContainer({
             )}
             <div
                 className={classNames(
-                    'flex px-6 flex-col w-full items-stretch',
+                    'flex px-6 flex-col w-full h-auto items-stretch',
                     className,
                 )}
                 style={{
