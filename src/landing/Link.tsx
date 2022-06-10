@@ -5,8 +5,9 @@ import React, { ComponentPropsWithoutRef, forwardRef, Fragment } from 'react'
 export type LinkProps = ComponentPropsWithoutRef<'a'> & { underline?: boolean }
 
 export const Link = forwardRef<any, LinkProps>(
-    ({ href = '', underline, children, className, ...props }, ref) => {
-        const isExternal = !href.startsWith('/') && !href.startsWith('#')
+    ({ href = '', onClick, underline, children, className, ...props }, ref) => {
+        const isExternal =
+            href && !href.startsWith('/') && !href.startsWith('#')
         const Wrapper: any = !isExternal ? NextLink : Fragment
         if (isExternal && !props.target) {
             props.target = '_blank'
@@ -24,6 +25,16 @@ export const Link = forwardRef<any, LinkProps>(
                             : 'no-underline border-b-[2px] hover:!border-[color:currentColor]',
                         className,
                     )}
+                    onClick={
+                        onClick &&
+                        ((e) => {
+                            if (!href) {
+                                // otherwise it will trigger the link
+                                e.preventDefault()
+                            }
+                            onClick && onClick(e)
+                        })
+                    }
                     style={{
                         transition: `all 0.1s ease 0s`,
                     }}
