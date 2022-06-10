@@ -272,7 +272,7 @@ function SubscriptionPlan({
     promptLogin: () => void
 } & ComponentPropsWithoutRef<'div'>) {
     const router = useRouter()
-    const { status, data: session,  } = useSession()
+    const { status, data: session } = useSession()
 
     const { fn: changePlan, isLoading } = useThrowingFn({
         fn: updatePlan,
@@ -428,7 +428,7 @@ function SubscriptionPlan({
                 >
                     {"What's included"}
                 </h3>
-                <ul role='list' className='mt-6 space-y-4 font-medium'>
+                <ul role='list' className='mt-6 space-y-4 text-sm font-medium'>
                     {features.map((feature) => (
                         <li key={feature} className='flex space-x-3'>
                             <CheckIcon
