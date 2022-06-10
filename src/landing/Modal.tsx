@@ -20,6 +20,10 @@ export function Modal({ isOpen, onClose, className = '', content }) {
                     '-webkit-backdrop-filter': 'saturate(180%) blur(12px)',
                     background: 'rgba(0, 0, 0, 0.1)',
                 }}
+                onClick={(e) => {
+                    onClose()
+                    e.stopPropagation()
+                }}
                 animationName='simpleFade'
                 className='fixed inset-0 bg-black bg-opacity-20'
             />
