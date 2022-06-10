@@ -22,10 +22,19 @@ export type ButtonProps = ComponentPropsWithoutRef<'button'> & {
 }
 
 function getColors(color: ColorGetter) {
+    if (color === 'transparent') {
+        return {
+            bg: 'transparent',
+            bgDark: 'transparent',
+            color: 'currentColor',
+            // highlight: 'currentColor',
+        }
+    }
     const bg = getColor(color as any) || color
     const bgd = colord(bg)
     const text = bgd.isDark() ? 'white' : 'black'
     const highlight = bgd.alpha(0.2).toRgbString()
+    // console.log({ text, highlight, bg })
     return { text, highlight, bg }
 }
 
