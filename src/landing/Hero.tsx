@@ -1,6 +1,6 @@
 import { Faded } from 'baby-i-am-faded'
 import clsx from 'clsx'
-import React, { ComponentPropsWithoutRef, ReactNode } from 'react'
+import React, { ComponentPropsWithoutRef, ReactNode, useEffect } from 'react'
 import { Bullet } from './Bullet'
 import { PageContainer } from './PageContainer'
 
@@ -25,6 +25,9 @@ export function Hero({
     animate = undefined,
     ...rest
 }: HeroProps) {
+    // useEffect(() => {
+    //     console.log('Hero render')
+    // })
     return (
         <PageContainer {...rest}>
             <div
