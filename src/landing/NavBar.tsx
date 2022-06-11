@@ -27,21 +27,14 @@ export const NavBar = ({
             <div className={clsx('flex w-full py-4', className)}>
                 <div className='self-start'>{logo}</div>
                 <div className='flex-1' />
-                <div className='hidden md:flex'>
-                    {Array.isArray(navs) ? (
-                        <div className='items-center flex space-x-6 lg:space-x-8'>
-                            {navs.map((x, i) => (
-                                <div
-                                    key={i}
-                                    className='font-medium cursor-pointer items-center justify-center'
-                                >
-                                    {x}
-                                </div>
-                            ))}
-                        </div>
-                    ) : (
-                        navs
-                    )}
+                <div className='hidden md:flex items-center space-x-6 lg:space-x-8 font-medium '>
+                    {Array.isArray(navs)
+                        ? navs.map((x, i) => (
+                              <div key={i} className='cursor-pointer'>
+                                  {x}
+                              </div>
+                          ))
+                        : navs}
                 </div>
                 <button
                     className='appearance-none block md:hidden'
