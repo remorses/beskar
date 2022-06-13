@@ -3,7 +3,7 @@ import React, { ComponentPropsWithoutRef, ReactNode } from 'react'
 import { PageContainer } from './PageContainer'
 
 export type FooterProps = {
-    columns: { [k: string]: ReactNode[] }
+    columns: { [k: string]: ReactNode | ReactNode[] }
     businessName?: string
     justifyAround?: boolean
 } & ComponentPropsWithoutRef<'div'>
@@ -26,6 +26,7 @@ export function Footer({
                 )}
             >
                 {Object.keys(columns).map((k, i) => {
+                    const col = columns[k]
                     return (
                         <div
                             className='min-w-full space-y-6 lg:min-w-0'
@@ -34,11 +35,15 @@ export function Footer({
                             <div className='block w-auto font-medium text-left'>
                                 {k}
                             </div>
-                            {columns[k].map((x, i) => (
-                                <div className='opacity-60' key={i}>
-                                    {x}
-                                </div>
-                            ))}
+                            <div className='opacity-60 flex flex-col space-y-6'>
+                                {Array.isArray(col)
+                                    ? col.map((x, i) => (
+                                          <div className='' key={i}>
+                                              {x}
+                                          </div>
+                                      ))
+                                    : col}
+                            </div>
                         </div>
                     )
                 })}
