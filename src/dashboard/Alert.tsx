@@ -63,7 +63,7 @@ export const Alert = forwardRef<any, AlertProps>(
             } else if (type === 'info') {
                 return 'border-blue-400/50'
             } else if (type === 'warn') {
-                return 'border-yellow-400/50'
+                return 'border-amber-400/50'
             }
         }, [type])
         const storageKey = 'Alert: ' + title

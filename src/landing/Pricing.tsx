@@ -432,7 +432,7 @@ function SubscriptionPlan({
                     {features.map((feature) => (
                         <li key={feature} className='flex space-x-3'>
                             <CheckIcon
-                                className='flex-shrink-0 w-5 h-5 text-green-600'
+                                className='flex-shrink-0 w-5 h-5 text-emerald-600'
                                 aria-hidden='true'
                             />
                             <span className='text-gray-600 '>{feature}</span>
