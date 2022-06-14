@@ -31,6 +31,7 @@ export function PageContainer({
                     // margin: '0 auto',
                     position: floatingElement ? 'relative' : 'static',
                     maxWidth: 'var(--max-width, 1100px)',
+                    contain: 'paint',
                     ...style,
                 }}
                 {...rest}

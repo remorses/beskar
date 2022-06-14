@@ -11,7 +11,14 @@ import { useSession } from 'next-auth/react'
 import { TabsNav } from './Tabs'
 
 export default DashboardLayout
-export function DashboardLayout({ header, Tabs, footer, children, ...rest }) {
+export function DashboardLayout({
+    header,
+    Tabs,
+    footer,
+    children,
+    style = {},
+    ...rest
+}) {
     return (
         <div className='flex flex-col items-center w-full min-h-screen'>
             <div className='flex  flex-col items-center w-full overflow-visible border-b border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800/60'>
@@ -25,6 +32,7 @@ export function DashboardLayout({ header, Tabs, footer, children, ...rest }) {
                     'flex w-full flex-auto flex-col space-y-8 ',
                     'max-w-[var(--pageWidth)] px-[var(--pagePadding)]',
                 )}
+                style={{ ...style, contain: 'paint' }} // prevents overflow x scrolling and has faster rendering
                 {...rest}
             >
                 <div className='relative flex flex-auto w-full overflow-visible md:space-x-8 '>
