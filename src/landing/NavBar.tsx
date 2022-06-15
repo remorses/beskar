@@ -15,6 +15,7 @@ export const NavBar = ({
     logo,
     navs = [],
     className = '',
+    style,
     ...rest
 }: NavBarProps) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -23,7 +24,7 @@ export const NavBar = ({
         height: 32,
     }
     return (
-        <PageContainer {...rest}>
+        <PageContainer style={{ contain: 'initial', ...style }} {...rest}>
             <div className={clsx('flex w-full py-4', className)}>
                 <div className='self-start'>{logo}</div>
                 <div className='flex-1' />

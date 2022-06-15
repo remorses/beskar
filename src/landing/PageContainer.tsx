@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import cs from 'classnames'
-import { ReactNode } from 'react'
+import { ComponentPropsWithoutRef, ReactNode } from 'react'
 
 export function PageContainer({
     children,
@@ -8,7 +8,7 @@ export function PageContainer({
     style = {},
     className = '',
     ...rest
-}) {
+}: ComponentPropsWithoutRef<'div'> & { floatingElement?: ReactNode }) {
     return (
         <div className='w-full relative flex flex-col items-center'>
             {floatingElement && (
@@ -31,7 +31,7 @@ export function PageContainer({
                     // margin: '0 auto',
                     position: floatingElement ? 'relative' : 'static',
                     maxWidth: 'var(--max-width, 1100px)',
-                    contain: 'paint',
+                    contain: floatingElement ? 'initial' : 'paint',
                     ...style,
                 }}
                 {...rest}
