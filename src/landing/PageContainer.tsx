@@ -10,7 +10,9 @@ export function PageContainer({
     ...rest
 }: ComponentPropsWithoutRef<'div'> & { floatingElement?: ReactNode }) {
     return (
-        <div className='w-full relative flex flex-col items-center'>
+        <div
+            className={classNames('w-full relative flex flex-col items-center')}
+        >
             {floatingElement && (
                 <div
                     className={cs(
