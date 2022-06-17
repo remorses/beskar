@@ -17,7 +17,7 @@ import { useDisclosure, useSafeLayoutEffect } from '../utils'
 
 export type AlertProps = ComponentPropsWithoutRef<'div'> & {
     type?: 'error' | 'info' | 'warn'
-    title: string
+    title?: string
     description?: ReactNode
     isVertical?: boolean
     isClosable?: boolean
@@ -66,7 +66,7 @@ export const Alert = forwardRef<any, AlertProps>(
                 return 'border-amber-400/50'
             }
         }, [type])
-        const storageKey = 'Alert: ' + title
+        const storageKey = 'Alert: ' + (title || description)
         useSafeLayoutEffect(() => {
             if (!isClosable) {
                 return
@@ -112,7 +112,7 @@ export const Alert = forwardRef<any, AlertProps>(
                     )}
                 />
 
-                <div className='font-semibold'>{title}</div>
+                {title && <div className='font-semibold'>{title}</div>}
                 <div className=''>{description}</div>
             </div>
         )
