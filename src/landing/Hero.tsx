@@ -1,4 +1,5 @@
 import { Faded } from 'baby-i-am-faded'
+import classNames from 'classnames'
 import clsx from 'clsx'
 import React, { ComponentPropsWithoutRef, ReactNode, useEffect } from 'react'
 import { Bullet } from './Bullet'
@@ -65,16 +66,25 @@ export function Hero({
                     >
                         {subheading}
                     </ComponentIfString>
-                    <div className='flex flex-col items-center w-full md:items-start space-y-6'>
-                        <div className=''>{cta}</div>
-                        {/* <Button
+                    {cta && (
+                        <div
+                            className={classNames(
+                                'flex flex-col items-center w-full space-y-6',
+                                image && `md:items-start `,
+                            )}
+                        >
+                            <div className=''>{cta}</div>
+                            {/* <Button
                             px='40px'
                             bg='primary'
                             d='block'
                             width='auto'
                         ></Button> */}
-                        <div className='opacity-60 text-xs'>{fingerprint}</div>
-                    </div>
+                            <div className='opacity-60 text-xs'>
+                                {fingerprint}
+                            </div>
+                        </div>
+                    )}
                 </div>
                 {image && (
                     <div
@@ -95,6 +105,9 @@ export function Hero({
 }
 
 function ComponentIfString({ component: C, children, ...rest }) {
+    if (!children) {
+        return null
+    }
     if (typeof children === 'string') {
         return <C {...rest}>{children}</C>
     }
