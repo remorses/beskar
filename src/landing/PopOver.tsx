@@ -25,11 +25,12 @@ export function PopOver({ className = '', items, button }) {
         <context.Provider value={{ isOpen, setOpen: setIsOpen }}>
             <div ref={panel} className={classNames('relative ')}>
                 {button}
-                <Faded key={isOpen ? 'open' : 'hidden'}>
+                <Faded duration={140} key={isOpen ? 'open' : 'hidden'}>
                     <Faded
                         delay={50}
                         animationName='animateOnX'
                         cascade
+                        cascadeIncrement={50}
                         key={isOpen ? 'open' : 'hidden'}
                         className={cs(
                             'absolute p-4 space-y-4 w-max shadow-2xl ring-1',
