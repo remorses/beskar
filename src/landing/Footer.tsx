@@ -35,7 +35,7 @@ export function Footer({
                             <div className='block w-auto font-medium text-left'>
                                 {k}
                             </div>
-                            <div className='opacity-60 flex flex-col space-y-2'>
+                            <div className='opacity-60 flex flex-col space-y-3'>
                                 {Array.isArray(col)
                                     ? col.map((x, i) => (
                                           <div className='' key={i}>
