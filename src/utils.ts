@@ -3,6 +3,13 @@ import React, { useState, useEffect, createContext, useContext } from 'react'
 import toast from 'react-hot-toast'
 import colors from 'tailwindcss/colors'
 
+import { Faded } from 'baby-i-am-faded'
+
+Faded.defaultProps = {
+    cascadeIncrement: 80,
+    duration: 120,
+}
+
 export function useDisclosure(defaultIsOpen = false) {
     const [isOpen, setIsOpen] = useState(defaultIsOpen)
     const toggle = () => setIsOpen(!isOpen)

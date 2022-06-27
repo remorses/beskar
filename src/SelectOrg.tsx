@@ -10,7 +10,7 @@ import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import { Button } from '@nextui-org/react'
 import { PlusIcon } from '@heroicons/react/outline'
-import { Faded } from 'baby-i-am-faded'
+
 
 export type SelectOrgProps = {
     className?: string
@@ -209,6 +209,7 @@ import ColorHash from 'color-hash'
 import { colord, extend } from 'colord'
 import mixPlugin from 'colord/plugins/mix'
 import harmoniesPlugin from 'colord/plugins/harmonies'
+import { Faded } from 'baby-i-am-faded'
 
 extend([mixPlugin, harmoniesPlugin])
 

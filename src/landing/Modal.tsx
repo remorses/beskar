@@ -3,6 +3,11 @@ import { Faded } from 'baby-i-am-faded'
 import clsx from 'clsx'
 import { ComponentPropsWithoutRef, SVGProps } from 'react'
 
+Faded.defaultProps = {
+    cascadeIncrement: 80,
+    duration: 120,
+}
+
 export function Modal({ isOpen, onClose, className = '', content }) {
     return (
         <Dialog
