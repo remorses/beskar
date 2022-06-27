@@ -57,7 +57,7 @@ export const Faq = ({
     </Accordion>
 )
 
-export function MaterialSymbolsKeyboardArrowDownRounded(
+function MaterialSymbolsKeyboardArrowDownRounded(
     props: SVGProps<SVGSVGElement>,
 ) {
     return (
@@ -70,9 +70,7 @@ export function MaterialSymbolsKeyboardArrowDownRounded(
     )
 }
 
-export function MaterialSymbolsKeyboardArrowUpRounded(
-    props: SVGProps<SVGSVGElement>,
-) {
+function MaterialSymbolsKeyboardArrowUpRounded(props: SVGProps<SVGSVGElement>) {
     return (
         <svg width='1em' height='1em' viewBox='0 0 24 24' {...props}>
             <path
