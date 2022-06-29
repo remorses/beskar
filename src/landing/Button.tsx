@@ -10,6 +10,7 @@ import React, {
 } from 'react'
 import { ColorGetter, getColor, useColorMode } from '../utils'
 import classNames from 'classnames'
+import { Link } from './Link'
 
 export type ButtonProps = ComponentPropsWithoutRef<'button'> & {
     href?: string
@@ -19,10 +20,11 @@ export type ButtonProps = ComponentPropsWithoutRef<'button'> & {
     bg?: ColorGetter
     bgDark?: ColorGetter
     isLoading?: boolean
+    ghost?: boolean
     biggerOnHover?: boolean
 }
 
-function getColors(color: ColorGetter) {
+function getColors(color: ColorGetter, opacity = 1) {
     if (color === 'transparent') {
         return {
             bg: 'transparent',
@@ -32,11 +34,11 @@ function getColors(color: ColorGetter) {
         }
     }
     const bg = getColor(color as any) || color
-    const bgd = colord(bg)
-    const text = bgd.isDark() ? 'white' : 'black'
+    const bgd = colord(bg).alpha(opacity)
+    const text = opacity < 1 ? 'currentColor' : bgd.isDark() ? 'white' : 'black'
     const highlight = bgd.alpha(0.2).toRgbString()
     // console.log({ text, highlight, bg })
-    return { text, highlight, bg }
+    return { text, highlight, bg: bgd.toRgbString() }
 }
 
 export const Button: FC<ButtonProps> = forwardRef<ButtonProps, any>(
@@ -45,6 +47,7 @@ export const Button: FC<ButtonProps> = forwardRef<ButtonProps, any>(
             bg: bg_,
             bgDark: bgDark_,
             as: _As = 'button',
+            ghost,
             className = '',
             type = 'button',
             icon = '',
@@ -65,16 +68,18 @@ export const Button: FC<ButtonProps> = forwardRef<ButtonProps, any>(
         if (!bgDark_ && bg_) {
             bgDark_ = bg_
         }
-        const light = getColors(bg_)
-        const dark = getColors(bgDark_ || bg_)
-        const As = href ? 'a' : _As
+        const opacity = ghost ? 0.2 : 1
+        const light = getColors(bg_, opacity)
+        const dark = getColors(bgDark_ || bg_, opacity)
+        const As = href ? Link : _As
+        const pseudo = ghost ? ':hover' : ''
         return (
             <As
                 ref={ref}
                 className={clsx(
-                    'px-[1em] py-[0.6em] flex appearance-none space-x-2 items-center',
+                    'px-[1em] !border-0 py-[0.6em] flex appearance-none space-x-2 items-center',
                     'justify-center font-medium tracking-wide rounded-md',
-                    'cursor-pointer colorAndBg active:opacity-50',
+                    'cursor-pointer colorAndBg active:opacity-50 transition-colors',
                     biggerOnHover && !disabled && 'biggerOnHover',
                     disabled && 'opacity-40 pointer-events-none',
                     className,
@@ -86,11 +91,11 @@ export const Button: FC<ButtonProps> = forwardRef<ButtonProps, any>(
             >
                 <style jsx>
                     {`
-                        .colorAndBg {
+                        .colorAndBg${pseudo} {
                             color: ${light.text};
                             background-color: ${light.bg};
                         }
-                        :global(.dark) .colorAndBg {
+                        :global(.dark) .colorAndBg${pseudo} {
                             color: ${dark.text};
                             background-color: ${dark.bg};
                         }

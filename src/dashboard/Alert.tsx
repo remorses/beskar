@@ -52,18 +52,29 @@ export const Alert = forwardRef<any, AlertProps>(
             if (type === 'error') {
                 return 'bg-red-100'
             } else if (type === 'info') {
-                return 'bg-blue-50 '
+                return 'bg-blue-100 '
             } else if (type === 'warn') {
                 return 'bg-orange-100 '
             }
         }, [type])
         const border = useMemo(() => {
+            // return
             if (type === 'error') {
-                return 'border-red-400/50'
+                return '!border-red-400'
             } else if (type === 'info') {
-                return 'border-blue-400/50'
+                return '!border-blue-400'
             } else if (type === 'warn') {
-                return 'border-amber-400/50'
+                return '!border-amber-400'
+            }
+        }, [type])
+        const fill = useMemo(() => {
+            // return
+            if (type === 'error') {
+                return 'fill-red-400'
+            } else if (type === 'info') {
+                return 'fill-blue-400'
+            } else if (type === 'warn') {
+                return 'fill-amber-400'
             }
         }, [type])
         const storageKey = 'Alert: ' + (title || description)
@@ -83,8 +94,8 @@ export const Alert = forwardRef<any, AlertProps>(
             <div
                 ref={ref}
                 className={clsx(
-                    'relative text-gray-800 flex border-2 space-y-3 flex-col text-center',
-                    'p-6 rounded-md shadow',
+                    'relative text-gray-800 flex border-l-[4px] space-y-3 flex-col text-center',
+                    'p-6 ',
                     border,
                     isVertical
                         ? ''
@@ -106,14 +117,16 @@ export const Alert = forwardRef<any, AlertProps>(
                     </button>
                 )}
                 <Icon
+                    style={{ width: '38', height: '38' }}
                     className={clsx(
-                        'self-center flex-shrink-0 block w-8 h-8 pr-2 ',
+                        'self-center stroke-white flex-shrink-0 block pr-2 ',
+                        fill,
                         !isVertical && 'lg:self-start',
                     )}
                 />
 
                 {title && <div className='font-semibold'>{title}</div>}
-                <div className=''>{description}</div>
+                <div className='flex-1'>{description}</div>
             </div>
         )
     },
