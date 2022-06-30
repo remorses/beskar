@@ -15,6 +15,7 @@ import React, {
 import toast from 'react-hot-toast'
 import { Link } from './Link'
 import { useThrowingFn } from '../utils'
+import { PageContainer } from './PageContainer'
 
 export type Subscription = {
     paddleSubscriptionId: string
@@ -96,7 +97,7 @@ export function Pricing({
     const FadedComponent = animate ? Faded : 'div'
 
     return (
-        <div
+        <PageContainer
             id='pricing'
             className={classNames(
                 'relative self-center px-4 mx-auto',
@@ -199,7 +200,7 @@ export function Pricing({
                     </Link>
                 </FadedComponent>
             )}
-        </div>
+        </PageContainer>
     )
 }
 

@@ -1,16 +1,20 @@
 import classNames from 'classnames'
 import { ReactNode, SVGProps } from 'react'
 import { useDisclosure } from '../utils'
+import { PageContainer } from './PageContainer'
 
 export function Accordion({ children, className, ...rest }) {
     return (
-        <section className={classNames('section py-20', className)} {...rest}>
+        <PageContainer
+            className={classNames('section py-20', className)}
+            {...rest}
+        >
             <div className='container'>
                 <div className='has-mw-4xl mx-auto'>
                     <ul className='space-y-6'>{children}</ul>
                 </div>
             </div>
-        </section>
+        </PageContainer>
     )
 }
 
