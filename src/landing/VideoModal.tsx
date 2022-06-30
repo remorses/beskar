@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { SVGProps } from 'react'
+import { SVGProps, useState } from 'react'
 import { useDisclosure } from '../utils'
 import { Modal } from './Modal'
 import { Spinner } from './Spinner'
@@ -13,6 +13,7 @@ export function VideoModal({
     const { isOpen, onClose, onOpen } = useDisclosure()
     const src = `https://www.youtube.com/embed/${youtubeVideoId}?vq=hd1080`
     const padding = (1 / aspectRatio) * 100
+    const [isLoading, setIsLoading] = useState(true)
     return (
         <>
             <Modal
@@ -28,19 +29,27 @@ export function VideoModal({
 
                         <div className='relative w-full max-h-[calc(80vh)]'>
                             <div style={{ paddingTop: padding + '%' }}></div>
-                            <div className='absolute inset-0 flex items-center justify-center'>
-                                <Spinner className='text-5xl' />
-                            </div>
+
                             <iframe
                                 title={'video'}
                                 src={src}
                                 height='1080'
+                                // width='1920'
                                 frameBorder={0}
-                                loading='lazy'
-                                allow='autoplay; fullscreen'
+                                // loading='lazy'
                                 allowFullScreen
+                                allowTransparency
+                                onLoad={() => setIsLoading(false)}
                                 className='absolute bg-transparent rounded-lg inset-0 w-full h-full max-w-full'
                             />
+                            <div
+                                className={clsx(
+                                    'absolute inset-0 flex items-center justify-center',
+                                    isLoading ? 'block' : 'hidden',
+                                )}
+                            >
+                                <Spinner className='text-5xl text-gray-600' />
+                            </div>
                         </div>
                     </div>
                 }
