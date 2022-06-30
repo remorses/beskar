@@ -39,7 +39,7 @@ export function VideoModal({
                                 loading='lazy'
                                 allow='autoplay; fullscreen'
                                 allowFullScreen
-                                className='absolute rounded-lg inset-0 w-full h-full max-w-full'
+                                className='absolute bg-transparent rounded-lg inset-0 w-full h-full max-w-full'
                             />
                         </div>
                     </div>
