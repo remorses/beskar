@@ -1,10 +1,10 @@
 import clsx from 'clsx'
-import React, { ElementType, ReactNode, useMemo } from 'react'
+import React, { ElementType, Fragment, ReactNode, useMemo } from 'react'
 import { Block, BlockProps } from './Block'
 
 export type TableProps = {
     head?: ReactNode[]
-    rows?: ReactNode[][]
+    rows?: ReactNode[][] | ReactNode[]
     footer?: ReactNode
     title?: ReactNode
     isLoading?: boolean
@@ -18,7 +18,7 @@ export const TableBlock = ({
     isLoading,
     ...rest
 }: TableProps) => {
-    const rows = useMemo(() => {
+    const rows = (() => {
         const N = head?.length || 3
         if (isLoading) {
             return new Array(3).fill('').map((_, i) => {
@@ -36,7 +36,7 @@ export const TableBlock = ({
             })
         }
         return _rows
-    }, [_rows, isLoading, head?.length])
+    })()
     return (
         <Block
             // heading={heading}
@@ -47,28 +47,20 @@ export const TableBlock = ({
                 <thead className=''>
                     <tr className=''>
                         {head.map((name, i) => {
-                            return (
-                                <th
-                                    className={clsx(
-                                        'px-6 py-2 text-sm font-semibold tracking-wide',
-                                        'opacity-60',
-                                    )}
-                                    key={i}
-                                >
-                                    {name}
-                                </th>
-                            )
+                            return <THead key={i}>{name}</THead>
                         })}
                     </tr>
                 </thead>
                 <tbody>
                     {rows.map((row, i) => {
-                        return (
+                        return Array.isArray(row) ? (
                             <tr key={i}>
                                 {row.map((value, i) => {
                                     return <TData key={i}>{value}</TData>
                                 })}
                             </tr>
+                        ) : (
+                            <Fragment key={i}>{row}</Fragment>
                         )
                     })}
                 </tbody>
@@ -78,17 +70,32 @@ export const TableBlock = ({
     )
 }
 
-const TData = (props) => {
+const TData = ({ className = '', ...props }) => {
     return (
         <td
             className={clsx(
-                'p-6 text-base break-words whitespace-normal',
+                'p-6 text-base w-full break-words whitespace-normal',
                 'border-t',
+                className,
             )}
             {...props}
         />
     )
 }
+const THead = ({ className = '', ...props }) => {
+    return (
+        <th
+            className={clsx(
+                'px-6 py-2 text-sm font-semibold tracking-wide',
+                'opacity-60',
+                className,
+            )}
+            {...props}
+        />
+    )
+}
+TableBlock.TData = TData
+TableBlock.THead = THead
 
 function Skeleton({ as: As = 'div' as ElementType, className = '', ...rest }) {
     return (
