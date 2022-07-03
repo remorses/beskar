@@ -74,7 +74,7 @@ const TData = ({ className = '', ...props }) => {
     return (
         <td
             className={clsx(
-                'p-6 text-base w-full break-words whitespace-normal',
+                'p-6 text-base break-words whitespace-normal',
                 'border-t',
                 className,
             )}
