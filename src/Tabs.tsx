@@ -26,7 +26,7 @@ export function TabsNav({ Tabs, ...rest }) {
                 )}
                 {...rest}
             >
-                {<Tabs />}
+                <Tabs />
             </nav>
         </div>
     )
