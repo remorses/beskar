@@ -5,7 +5,6 @@ import classNames from 'classnames'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import NProgress from 'nprogress'
-// import { Price, Product, Subscription } from 'prisma-client'
 import React, {
     ComponentPropsWithoutRef,
     useEffect,
