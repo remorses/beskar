@@ -6,7 +6,10 @@ import { PageContainer } from './PageContainer'
 export function Accordion({ children, className, ...rest }) {
     return (
         <PageContainer
-            className={classNames('section py-20', className)}
+            className={classNames(
+                'section dark:text-gray-100 py-20',
+                className,
+            )}
             {...rest}
         >
             <div className='container'>

@@ -7,7 +7,12 @@ export type DividerProps = {
     animate?: any
 } & ComponentPropsWithoutRef<'div'>
 
-export const Divider = ({ heading = '', animate, ...rest }: DividerProps) => {
+export const Divider = ({
+    heading = '',
+    animate,
+    className = '',
+    ...rest
+}: DividerProps) => {
     return (
         <PageContainer {...rest}>
             {heading ? (
@@ -15,6 +20,7 @@ export const Divider = ({ heading = '', animate, ...rest }: DividerProps) => {
                     className={classNames(
                         'flex justify-center items-center space-x-4 flex-row',
                         'opacity-60',
+                        className,
                     )}
                 >
                     <Line />
@@ -35,5 +41,5 @@ export const Divider = ({ heading = '', animate, ...rest }: DividerProps) => {
 }
 
 function Line(porps) {
-    return <div className='w-full flex-auto border' {...porps} />
+    return <div className='w-full flex-auto border-t' {...porps} />
 }
