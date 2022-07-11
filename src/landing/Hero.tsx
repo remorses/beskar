@@ -40,7 +40,7 @@ export function Hero({
             >
                 <div
                     className={clsx(
-                        'space-y-8 flex flex-col text-center min-w-[33%]',
+                        'space-y-8 flex max-w-full flex-col text-center min-w-[33%]',
                         image ? 'md:max-w-[60%]' : 'w-full',
                         image ? 'items-start' : 'items-center',
                         image ? 'md:text-left' : 'text-center',
@@ -69,7 +69,7 @@ export function Hero({
                     {cta && (
                         <div
                             className={classNames(
-                                'flex flex-col items-center w-full space-y-6',
+                                'flex flex-col items-center max-w-full  w-full space-y-6',
                                 image && `md:items-start `,
                             )}
                         >
@@ -88,7 +88,7 @@ export function Hero({
                 </div>
                 {image && (
                     <div
-                        className={clsx('flex flex-col md:flex-row flex-auto')}
+                        className={clsx('flex max-w-full  flex-col md:flex-row flex-auto')}
                     >
                         <div className='ml-[40px] mt-[40px] flex-auto' />
                         <div

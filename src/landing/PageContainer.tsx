@@ -26,7 +26,7 @@ export function PageContainer({
             )}
             <div
                 className={classNames(
-                    'flex px-6 flex-col w-full h-auto items-stretch',
+                    'flex px-6 flex-col w-full min-w-0 h-auto items-stretch',
                     className,
                 )}
                 style={{
