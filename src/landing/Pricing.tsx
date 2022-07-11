@@ -391,7 +391,7 @@ function SubscriptionPlan({
                 <div className='flex-1'></div>
                 {contactUs ? (
                     <BuyButton>
-                        <a href={contactUs}>Contact Us</a>
+                        <a href={contactUs}>Contact</a>
                     </BuyButton>
                 ) : (
                     <BuyButton
