@@ -22,7 +22,7 @@ export const Link = forwardRef<any, LinkProps>(
                         'font-medium !border-white/0 truncate cursor-pointer',
                         underline
                             ? `underline`
-                            : 'no-underline border-b-[2px] hover:!border-[color:currentColor]',
+                            : 'no-underline border-b-[2px] hover:!border-[color:currentColor] active:!border-[color:currentColor]',
                         className,
                     )}
                     onClick={

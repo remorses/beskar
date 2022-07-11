@@ -33,7 +33,7 @@ export function Hero({
         <PageContainer {...rest}>
             <div
                 className={clsx(
-                    'flex items-center w-full flex-col',
+                    'flex items-center max-w-full min-w-0 flex-col',
                     'md:flex-row leading-normal',
                     image ? 'justify-start md:space-x-8' : 'justify-center',
                 )}
@@ -48,7 +48,7 @@ export function Hero({
                 >
                     <div
                         className={clsx(
-                            'flex flex-col items-center space-y-4 ',
+                            'flex flex-col w-full items-center space-y-4 ',
                             image ? 'md:items-start' : '',
                         )}
                     >
