@@ -1,5 +1,6 @@
 import classNames from 'classnames'
 import cs from 'classnames'
+import React from 'react'
 import { ComponentPropsWithoutRef, ReactNode } from 'react'
 
 export function PageContainer({
@@ -26,7 +27,7 @@ export function PageContainer({
             )}
             <div
                 className={classNames(
-                    'flex px-6 flex-col w-full min-w-0 h-auto items-stretch',
+                    'flex px-3 md:px-6 flex-col w-full min-w-0 h-auto items-stretch',
                     className,
                 )}
                 style={{

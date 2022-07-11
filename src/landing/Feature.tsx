@@ -46,12 +46,12 @@ export function Feature({
         <PageContainer {...rest}>
             <div
                 className={clsx(
-                    'relative justify-between items-center w-full',
-                    'flex flex-col',
+                    'relative justify-between items-center max-w-full w-full',
+                    'flex flex-col ',
                     dir,
                 )}
             >
-                <div className='space-y-6 flex flex-col min-w-[300px] flex-1'>
+                <div className='space-y-6 flex flex-col px-3 min-w-[300px] max-w-full flex-1'>
                     {bullet && <Bullet>{bullet}</Bullet>}
                     <div className={clsx('text-4xl font-medium ')}>
                         {heading}
@@ -65,7 +65,7 @@ export function Feature({
                 <div className='w-12 h-12'></div>
                 <div
                     className={clsx(
-                        'flex flex-col flex-shrink-0 items-center flex-1',
+                        'flex flex-col flex-shrink-0 px-3 items-center flex-1',
                         'max-w-[500px] min-w-[300px]',
                     )}
                 >

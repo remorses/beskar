@@ -46,7 +46,7 @@ export const Section = ({
             />
             <div
                 className={clsx(
-                    'flex flex-col items-stretch w-full',
+                    'flex flex-col items-stretch w-full max-w-full',
                     className,
                 )}
             >

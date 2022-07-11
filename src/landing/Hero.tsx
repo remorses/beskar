@@ -74,12 +74,7 @@ export function Hero({
                             )}
                         >
                             <div className=''>{cta}</div>
-                            {/* <Button
-                            px='40px'
-                            bg='primary'
-                            d='block'
-                            width='auto'
-                        ></Button> */}
+
                             <div className='opacity-60 text-xs'>
                                 {fingerprint}
                             </div>
@@ -88,7 +83,9 @@ export function Hero({
                 </div>
                 {image && (
                     <div
-                        className={clsx('flex max-w-full  flex-col md:flex-row flex-auto')}
+                        className={clsx(
+                            'flex max-w-full  flex-col md:flex-row flex-auto',
+                        )}
                     >
                         <div className='ml-[40px] mt-[40px] flex-auto' />
                         <div
