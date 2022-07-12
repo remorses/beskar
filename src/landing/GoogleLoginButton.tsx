@@ -2,65 +2,83 @@ import { Button } from './Button'
 import clsx from 'clsx'
 import { signIn } from 'next-auth/react'
 import { useState } from 'react'
+import { Link } from './Link'
 
 export function GoogleLoginButton({
     callbackPath: callbackUrl = '/dashboard',
     className = '',
     text = 'Continue with Google',
+    hideEmailSignIn = false,
     disabled = false,
     ...rest
 }) {
     const [isLoading, setIsLoading] = useState(false)
     return (
-        <Button
-            bg='blue.500'
-            bgDark='blue.500'
-            biggerOnHover
-            className={clsx(
-                '!px-5 text-white',
-                !disabled && 'hover:bg-blue-300',
-                className,
-            )}
-            style={{ minWidth: text.length + 2 + 'ch' }}
-            disabled={disabled}
-            isLoading={isLoading}
-            // bg='#0597FF'
-            onClick={async () => {
-                setIsLoading(true)
-                try {
-                    await signIn(
-                        'google',
-                        {
-                            callbackUrl: new URL(
-                                callbackUrl,
-                                window.location.href,
-                            ).toString(),
-                            redirect: true,
-                        },
-                        { prompt: 'select_account' },
-                    )
-                } finally {
-                    setIsLoading(false)
-                }
+        <div className={clsx('flex flex-col items-center', className)}>
+            <Button
+                bg='blue.500'
+                bgDark='blue.500'
+                biggerOnHover
+                className={clsx(
+                    '!px-5 text-white',
+                    !disabled && 'hover:bg-blue-300',
+                )}
+                style={{ minWidth: text.length + 2 + 'ch' }}
+                disabled={disabled}
+                isLoading={isLoading}
+                // bg='#0597FF'
+                onClick={async () => {
+                    setIsLoading(true)
+                    try {
+                        await signIn(
+                            'google',
+                            {
+                                callbackUrl: new URL(
+                                    callbackUrl,
+                                    window.location.href,
+                                ).toString(),
+                                redirect: true,
+                            },
+                            { prompt: 'select_account' },
+                        )
+                    } finally {
+                        setIsLoading(false)
+                    }
+                }}
+                {...rest}
+            >
+                <div
+                    className={clsx(
+                        'tracking-wide text-white space-x-2 justify-center items-center font-bold',
+                        'flex-row flex',
+                    )}
+                >
+                    {disabled ? (
+                        <div className=''>Logged in</div>
+                    ) : (
+                        <>
+                            <GoogleIcon className='block w-5 h-5 fill-current' />
+                            <div className='text-white truncate'>{text}</div>
+                        </>
+                    )}
+                </div>
+            </Button>
+            {!hideEmailSignIn && <SignInWithEmail />}
+        </div>
+    )
+}
+
+export function SignInWithEmail({ ...rest }) {
+    return (
+        <button
+            onClick={() => {
+                signIn(undefined, { callbackUrl: '/' })
             }}
+            className='w-full text-left appearance-none underline font-medium opacity-50 active:opacity-30 text-sm mt-4'
             {...rest}
         >
-            <div
-                className={clsx(
-                    'tracking-wide text-white space-x-2 justify-center items-center font-bold',
-                    'flex-row flex',
-                )}
-            >
-                {disabled ? (
-                    <div className=''>Logged in</div>
-                ) : (
-                    <>
-                        <GoogleIcon className='block w-5 h-5 fill-current' />
-                        <div className='text-white truncate'>{text}</div>
-                    </>
-                )}
-            </div>
-        </Button>
+            Continue with email instead
+        </button>
     )
 }
 
