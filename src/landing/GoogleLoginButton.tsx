@@ -27,6 +27,7 @@ export function GoogleLoginButton({
                     style={{ minWidth: text.length + 2 + 'ch' }}
                     disabled={disabled}
                     isLoading={isLoading}
+                    aria-label='login with google'
                     // bg='#0597FF'
                     onClick={async () => {
                         setIsLoading(true)
