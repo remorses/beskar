@@ -63,22 +63,18 @@ export function GoogleLoginButton({
                     )}
                 </div>
             </Button>
-            {!hideEmailSignIn && <SignInWithEmail />}
+            {!hideEmailSignIn && (
+                <button
+                    onClick={() => {
+                        signIn(undefined, { callbackUrl })
+                    }}
+                    className='w-full text-left appearance-none underline font-medium opacity-50 active:opacity-30 text-sm mt-4'
+                    {...rest}
+                >
+                    Continue with email instead
+                </button>
+            )}
         </div>
-    )
-}
-
-export function SignInWithEmail({ ...rest }) {
-    return (
-        <button
-            onClick={() => {
-                signIn(undefined, { callbackUrl: '/' })
-            }}
-            className='w-full text-left appearance-none underline font-medium opacity-50 active:opacity-30 text-sm mt-4'
-            {...rest}
-        >
-            Continue with email instead
-        </button>
     )
 }
 
