@@ -26,7 +26,7 @@ export function Input({
                 {...rest}
             />
             {errorMessage && (
-                <div className='font-medium text-sm text-gray-500'>
+                <div className='font-medium text-sm dark:text-red-300 text-red-500'>
                     {errorMessage}
                 </div>
             )}

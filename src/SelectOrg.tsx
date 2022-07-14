@@ -1,3 +1,4 @@
+import { Button, Divider, Modal, Spinner } from './landing'
 import { Fragment, useContext, useEffect, useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid'
@@ -67,6 +68,7 @@ export function SelectOrg({ className = '' }: SelectOrgProps) {
     const { fn: onSubmit, isLoading } = useThrowingFn({
         fn: async function onSubmit({ name }) {
             // throw new Error('not implemented')
+            
             await createOrg({ name })
             mutate('getUserOrgs')
             setOpen(false)
@@ -178,7 +180,7 @@ export function SelectOrg({ className = '' }: SelectOrgProps) {
                 content={
                     <form
                         className='space-y-8'
-                        // id='new-org-form'
+                        id='new-org-form'
                         onSubmit={handleSubmit(onSubmit)}
                     >
                         <Modal.CloseButton />
@@ -215,7 +217,7 @@ import { colord, extend } from 'colord'
 import mixPlugin from 'colord/plugins/mix'
 import harmoniesPlugin from 'colord/plugins/harmonies'
 import { Faded } from 'baby-i-am-faded'
-import { Button, Divider, Modal, Spinner } from './landing'
+
 import { Input } from './landing/Input'
 
 extend([mixPlugin, harmoniesPlugin])
