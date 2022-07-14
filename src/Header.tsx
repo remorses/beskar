@@ -1,23 +1,7 @@
 import clsx from 'clsx'
-import React, { useMemo } from 'react'
-import NextLink from 'next/link'
-import { forwardRef } from 'react'
-import { Link } from './landing/Link'
-import {
-    MoonIcon,
-    SunIcon,
-    CogIcon,
-    LogoutIcon,
-    CreditCardIcon,
-} from '@heroicons/react/outline'
 
-import { signOut, useSession } from 'next-auth/react'
+import { useSession } from 'next-auth/react'
 
-import { useRouter } from 'next/router'
-import { useColorMode, useColorModeValue, useBeskar } from './utils'
-import { Avatar } from '@nextui-org/react'
-import { DropDownMenu } from './DropDown'
-import { AcademicCapIcon } from '@heroicons/react/solid'
 import { SelectOrg } from './SelectOrg'
 
 export function Header({
@@ -55,8 +39,8 @@ export function Header({
 
 import ColorHash from 'color-hash'
 import { colord, extend } from 'colord'
-import mixPlugin from 'colord/plugins/mix'
 import harmoniesPlugin from 'colord/plugins/harmonies'
+import mixPlugin from 'colord/plugins/mix'
 
 extend([mixPlugin, harmoniesPlugin])
 

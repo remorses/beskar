@@ -8,12 +8,22 @@ Faded.defaultProps = {
     duration: 120,
 }
 
-export function Modal({ isOpen, onClose, className = '', content }) {
+export function Modal({
+    as: As = 'div',
+    isOpen,
+    onClose,
+    className = '',
+    content,
+    useDefaultContentStyle = false,
+    ...rest
+}) {
     return (
         <Dialog
             className='fixed inset-0 z-10 overflow-y-auto'
             open={isOpen}
+            as={As as any}
             onClose={onClose}
+            {...rest}
         >
             <Dialog.Overlay
                 as={Faded}
@@ -61,7 +71,18 @@ export function Modal({ isOpen, onClose, className = '', content }) {
                     className,
                 )}
             >
-                {content}
+                {useDefaultContentStyle ? (
+                    <div
+                        className={clsx(
+                            'flex bg-white text-gray-700 dark:bg-gray-800 dark:text-gray-100 w-full flex-col items-stretch justify-center',
+                            'px-8 py-4 space-y-8',
+                        )}
+                    >
+                        {content}
+                    </div>
+                ) : (
+                    content
+                )}
             </Dialog.Panel>
         </Dialog>
     )
@@ -74,12 +95,13 @@ export function CloseButton({
     return (
         <button
             className={clsx(
-                'appearance-none rounded opacity-70 absolute top-4 right-4',
+                'appearance-none rounded opacity-50 absolute top-4 right-4',
                 className,
             )}
+            type='button'
             {...rest}
         >
-            <RiCloseFill className='h-8 w-8' />
+            <RiCloseFill className='h-7 w-7' />
         </button>
     )
 }

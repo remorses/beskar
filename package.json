@@ -7,14 +7,11 @@
         "utils.ts",
         "package.json"
     ],
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
+    "scripts": {},
     "keywords": [],
     "author": "remorses <beats.by.morse@gmail.com>",
     "license": "ISC",
     "peerDependencies": {
-        "@nextui-org/react": "*",
         "framer-motion": "*",
         "next": "*",
         "next-auth": "*",
@@ -23,7 +20,6 @@
         "react-dom": "*"
     },
     "devDependencies": {
-        "@nextui-org/react": "*",
         "@types/react": "^18.0.9",
         "framer-motion": "*",
         "next": "12.2.2",

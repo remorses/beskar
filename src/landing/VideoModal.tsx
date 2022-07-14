@@ -17,7 +17,7 @@ export function VideoModal({
     return (
         <>
             <Modal
-                className={'!max-w-full mx-2  md:mx-20 ' + className}
+                className={'!max-w-full mx-2 md:mx-20 ' + className}
                 content={
                     <div
                         className={clsx(

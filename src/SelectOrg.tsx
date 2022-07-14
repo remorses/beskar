@@ -1,5 +1,3 @@
-
-
 import { Fragment, useContext, useEffect, useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid'
@@ -7,16 +5,17 @@ import classNames from 'classnames'
 import useSWR, { useSWRConfig } from 'swr'
 
 import { useBeskar, useThrowingFn } from './utils'
-import { Modal, Input, Loading, Avatar } from '@nextui-org/react'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
-import { Button } from '@nextui-org/react'
 import { PlusIcon } from '@heroicons/react/outline'
 
 export type SelectOrgProps = {
     className?: string
 }
 
+/**
+ * Needs to have orgId param in query
+ */
 export function SelectOrg({ className = '' }: SelectOrgProps) {
     const { getUserOrgs, createOrg } = useBeskar()
     const { data, error } = useSWR('getUserOrgs', getUserOrgs)
@@ -29,12 +28,12 @@ export function SelectOrg({ className = '' }: SelectOrgProps) {
 
     const router = useRouter()
     const orgId = (router.query.orgId || '') as string
-    useEffect(() => {
-        const org = orgId ? orgs.find((x) => x.id === orgId) : orgs?.[0]
-        if (!org) {
-            return
-        }
-    }, [orgs])
+    // useEffect(() => {
+    //     const org = orgId ? orgs.find((x) => x.id === orgId) : orgs?.[0]
+    //     if (!org) {
+    //         return
+    //     }
+    // }, [orgs])
     function onChange(value) {
         const org = orgs?.find((org) => org.id === value)
         if (!org) {
@@ -67,6 +66,7 @@ export function SelectOrg({ className = '' }: SelectOrgProps) {
 
     const { fn: onSubmit, isLoading } = useThrowingFn({
         fn: async function onSubmit({ name }) {
+            // throw new Error('not implemented')
             await createOrg({ name })
             mutate('getUserOrgs')
             setOpen(false)
@@ -171,37 +171,41 @@ export function SelectOrg({ className = '' }: SelectOrgProps) {
                 </div>
             </Listbox>
             <Modal
-                as='form'
-                id='new-org-form'
-                className='flex flex-col w-full space-y-8'
-                onSubmit={handleSubmit(onSubmit)}
-                blur
-                closeButton
-                open={isOpen}
+                className='flex flex-col w-full space-y-8 !max-w-xl'
+                isOpen={isOpen}
+                useDefaultContentStyle
                 onClose={() => setOpen(false)}
-            >
-                <Modal.Header className='!text-xl'>New Org</Modal.Header>
-                <Modal.Body className=''>
-                    <Input
-                        label='Org Name'
-                        underlined
-                        placeholder='name'
-                        helperColor='error'
-                        helperText={String(errors?.name?.message || '')}
-                        {...register('name', { required: true })}
-                    />
-                </Modal.Body>
-                <Modal.Footer className=''>
-                    {/* TODO button should not trigger onSibmit if disabled */}
-                    <Button type='submit' size={'sm'}>
-                        {isLoading ? (
-                            <Loading color='white' size='sm' />
-                        ) : (
-                            'Create'
-                        )}
-                    </Button>
-                </Modal.Footer>
-            </Modal>
+                content={
+                    <form
+                        className='space-y-8'
+                        // id='new-org-form'
+                        onSubmit={handleSubmit(onSubmit)}
+                    >
+                        <Modal.CloseButton />
+                        <div className='font-semibold text-xl text-center'>
+                            New Org
+                        </div>
+
+                        <Input
+                            label='Org Name'
+                            // underlined
+                            placeholder='Name'
+                            // helperColor='error'
+                            errorMessage={String(errors?.name?.message || '')}
+                            {...register('name', { required: true })}
+                        />
+
+                        <Button
+                            isLoading={isLoading}
+                            className='text-sm self-center'
+                            type='submit'
+                            as='button'
+                        >
+                            Create
+                        </Button>
+                    </form>
+                }
+            />
         </>
     )
 }
@@ -211,6 +215,8 @@ import { colord, extend } from 'colord'
 import mixPlugin from 'colord/plugins/mix'
 import harmoniesPlugin from 'colord/plugins/harmonies'
 import { Faded } from 'baby-i-am-faded'
+import { Button, Divider, Modal, Spinner } from './landing'
+import { Input } from './landing/Input'
 
 extend([mixPlugin, harmoniesPlugin])
 
