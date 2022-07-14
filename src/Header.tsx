@@ -20,19 +20,25 @@ import { DropDownMenu } from './DropDown'
 import { AcademicCapIcon } from '@heroicons/react/solid'
 import { SelectOrg } from './SelectOrg'
 
-export function Header({ className = '', logo, links = [], ...rest }) {
+export function Header({
+    className = '',
+    hasOrg = false,
+    logo,
+    links = [],
+    ...rest
+}) {
     const { data: session } = useSession()
-    const { getUserOrgs } = useBeskar()
     return (
         <div
             className={clsx(
-                'z-10 relative w-full py-6 flex items-end mx-auto space-x-8',
+                'z-10 relative w-full py-6 flex mx-auto space-x-8',
+                hasOrg ? 'items-end' : 'items-center',
                 className,
             )}
         >
-            <div className='flex flex-col  space-y-4'>
+            <div className='flex flex-col justify-center space-y-4'>
                 {logo}
-                <SelectOrg className='min-w-[200px]' />
+                {hasOrg && <SelectOrg className='min-w-[200px]' />}
             </div>
 
             <div className='flex-auto' />
