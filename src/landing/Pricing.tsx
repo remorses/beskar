@@ -11,6 +11,7 @@ import React, {
     useMemo,
     useState,
 } from 'react'
+import '../global'
 import toast from 'react-hot-toast'
 import { Link } from './Link'
 import { useThrowingFn } from '../utils'

@@ -1,3 +1,4 @@
+/// <reference types="styled-jsx" />
 import { DefaultSession, ISODateString, Session } from 'next-auth'
 import { JWT, DefaultJWT } from 'next-auth/jwt'
 
@@ -17,7 +18,7 @@ declare module 'next-auth' {
 }
 
 declare global {
-    const Paddle: any
+    var Paddle: any
     // const gtag: Function
     // interface Window {
     //     loginForTests: ({ name, email }) => Promise<any>

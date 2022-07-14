@@ -1,3 +1,5 @@
+
+
 import { Fragment, useContext, useEffect, useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid'
@@ -10,7 +12,6 @@ import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import { Button } from '@nextui-org/react'
 import { PlusIcon } from '@heroicons/react/outline'
-
 
 export type SelectOrgProps = {
     className?: string
@@ -186,7 +187,7 @@ export function SelectOrg({ className = '' }: SelectOrgProps) {
                         underlined
                         placeholder='name'
                         helperColor='error'
-                        helperText={errors?.name?.message}
+                        helperText={String(errors?.name?.message || '')}
                         {...register('name', { required: true })}
                     />
                 </Modal.Body>
