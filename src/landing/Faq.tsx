@@ -29,7 +29,7 @@ function AccordionItem({ heading, content }) {
     return (
         <li
             onClick={toggle}
-            className='flex flex-col space-y-4 bg-gray-100 rounded dark:bg-gray-800 border p-6 cursor-pointer'
+            className='flex flex-col space-y-4 bg-gray-200/50 backdrop-blur rounded dark:bg-gray-900/40 border p-6 cursor-pointer'
         >
             <div className='flex items-center'>
                 <div className='text-xl font-medium'>{heading}</div>
