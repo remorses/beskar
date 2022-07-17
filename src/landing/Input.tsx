@@ -1,15 +1,16 @@
 import clsx from 'clsx'
-import { ComponentPropsWithoutRef, ReactNode } from 'react'
+import { ComponentPropsWithoutRef, forwardRef, ReactNode } from 'react'
 
-export function Input({
-    className = '',
-    label = '',
-    errorMessage = '',
-    ...rest
-}: ComponentPropsWithoutRef<'input'> & {
-    label?: ReactNode
-    errorMessage?: ReactNode
-}) {
+export const Input = forwardRef<
+    any,
+    ComponentPropsWithoutRef<'input'> & {
+        label?: ReactNode
+        errorMessage?: ReactNode
+    }
+>(function Input(
+    { className = '', label = '', errorMessage = '', ...rest },
+    ref,
+) {
     return (
         <div className='space-y-3'>
             {label && (
@@ -18,6 +19,7 @@ export function Input({
                 </label>
             )}
             <input
+                ref={ref}
                 type='text'
                 className={clsx(
                     'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500',
@@ -32,4 +34,4 @@ export function Input({
             )}
         </div>
     )
-}
+})
