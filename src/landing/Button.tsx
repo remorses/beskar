@@ -22,6 +22,7 @@ export type ButtonProps = ComponentPropsWithoutRef<'button'> & {
     isLoading?: boolean
     ghost?: boolean
     biggerOnHover?: boolean
+    
 }
 
 function getColors(color: ColorGetter, opacity = 1) {
@@ -47,6 +48,7 @@ export const Button: FC<ButtonProps> = forwardRef<ButtonProps, any>(
             bg: bg_,
             bgDark: bgDark_,
             as: _As = 'button',
+
             ghost,
             className = '',
             type = 'button',
@@ -77,7 +79,7 @@ export const Button: FC<ButtonProps> = forwardRef<ButtonProps, any>(
             <As
                 ref={ref}
                 className={clsx(
-                    'px-[1em] !border-0 py-[0.6em] flex appearance-none space-x-2 items-center',
+                    'px-[1em] !border-0 py-[0.6em] flex appearance-none gap-2 items-center',
                     'justify-center font-medium tracking-wide rounded-md',
                     'cursor-pointer colorAndBg active:opacity-50 transition-colors',
                     biggerOnHover && !disabled && 'biggerOnHover',
@@ -126,16 +128,20 @@ export const Button: FC<ButtonProps> = forwardRef<ButtonProps, any>(
 
                         .biggerOnHover::after {
                             content: '';
-                            background-color: ${light};
+                            background-color: ${light.bg};
                             transition: transform 0.15s;
                             border-radius: 7px;
                             position: absolute;
                             inset: 0;
                             z-index: -1;
                         }
+                        :global(.dark) .biggerOnHover::after {
+                            background-color: ${dark.bg};
+                        }
 
-                        .biggerOnHover:hover::after {
-                            transform: scale(1.06);
+                        .biggerOnHover:hover::after,
+                        .biggerOnHover:active::after {
+                            transform: scaleX(1.03) scaleY(1.08);
                         }
                     `}
                 </style>
