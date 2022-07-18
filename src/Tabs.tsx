@@ -66,7 +66,7 @@ export const TabLink = forwardRef<
                     className={clsx(
                         className,
                         'flex relative py-3 pb-[16px] text-sm items-center outline-none cursor-pointer',
-                        'select-none font-medium dark:hover:text-white hover:text-black',
+                        'select-none font-medium dark:hover:text-white hover:text-black active:opacity-40',
                         isActive
                             ? 'text-black dark:text-white '
                             : 'text-gray-600 dark:text-gray-400',
