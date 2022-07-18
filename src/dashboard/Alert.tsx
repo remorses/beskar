@@ -114,16 +114,16 @@ export const Alert = forwardRef<any, AlertProps>(
                         <XIcon className='w-5 h-5' />
                     </button>
                 )}
-                <div className=''>
-                    <Icon
-                        style={{ width: '38', height: '38' }}
-                        className={clsx(
-                            'self-center stroke-white flex-shrink-0 block ',
-                            fill,
-                            // !isVertical && 'lg:self-start',
-                        )}
-                    />
-                </div>
+
+                <Icon
+                    style={{ width: '38', height: '38' }}
+                    className={clsx(
+                        'stroke-white flex-shrink-0 block ',
+                        fill,
+                        isVertical ? 'lg:self-start' : 'self-center',
+                    )}
+                />
+
                 <div
                     className={clsx(
                         'flex',
