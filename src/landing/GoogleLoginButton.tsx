@@ -1,6 +1,6 @@
 import { Button } from './Button'
 import clsx from 'clsx'
-import { signIn } from 'next-auth/react'
+import { signIn, useSession } from 'next-auth/react'
 import { useState } from 'react'
 import { Link } from './Link'
 
@@ -12,16 +12,18 @@ export function GoogleLoginButton({
     disabled = false,
     ...rest
 }) {
+    const { data: session } = useSession()
     const [isLoading, setIsLoading] = useState(false)
     return (
-        <div className={clsx('flex flex-col items-center', className)}>
+        <div className={clsx('flex flex-col', className)}>
             <div className=''>
                 <Button
                     bg='blue.500'
                     bgDark='blue.500'
                     biggerOnHover
                     className={clsx(
-                        '!px-5 text-white',
+                        '!px-5 text-white w-full',
+
                         !disabled && 'hover:bg-blue-300',
                     )}
                     style={{ minWidth: text.length + 2 + 'ch' }}
@@ -68,7 +70,7 @@ export function GoogleLoginButton({
                     </div>
                 </Button>
 
-                {showEmailSignIn && (
+                {!session && showEmailSignIn && (
                     <button
                         onClick={() => {
                             signIn(undefined, { callbackUrl })

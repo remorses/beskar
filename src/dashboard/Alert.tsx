@@ -94,12 +94,10 @@ export const Alert = forwardRef<any, AlertProps>(
             <div
                 ref={ref}
                 className={clsx(
-                    'relative text-gray-800 flex border-l-[4px] space-y-3 flex-col text-center',
+                    'relative text-gray-800 flex border-l-[4px] gap-4 flex-col text-center',
                     'p-6 ',
                     border,
-                    isVertical
-                        ? ''
-                        : 'lg:flex-row lg:items-center lg:text-left lg:space-y-0 lg:space-x-3',
+                    'lg:flex-row items-center lg:text-left',
                     bg,
                     className,
                 )}
@@ -116,17 +114,27 @@ export const Alert = forwardRef<any, AlertProps>(
                         <XIcon className='w-5 h-5' />
                     </button>
                 )}
+
                 <Icon
                     style={{ width: '38', height: '38' }}
                     className={clsx(
-                        'self-center stroke-white flex-shrink-0 block pr-2 ',
+                        'stroke-white flex-shrink-0 block ',
                         fill,
-                        !isVertical && 'lg:self-start',
+                        isVertical ? 'lg:self-start' : 'self-center',
                     )}
                 />
 
-                {title && <div className='font-semibold'>{title}</div>}
-                <div className='flex-1'>{description}</div>
+                <div
+                    className={clsx(
+                        'flex',
+                        isVertical
+                            ? 'flex-col gap-3 max-w-2xl'
+                            : 'flex-row items-center gap-5',
+                    )}
+                >
+                    {title && <div className='font-semibold'>{title}</div>}
+                    <div className=''>{description}</div>
+                </div>
             </div>
         )
     },
