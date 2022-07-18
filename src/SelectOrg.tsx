@@ -68,7 +68,7 @@ export function SelectOrg({ className = '' }: SelectOrgProps) {
     const { fn: onSubmit, isLoading } = useThrowingFn({
         fn: async function onSubmit({ name }) {
             // throw new Error('not implemented')
-            
+
             await createOrg({ name })
             mutate('getUserOrgs')
             setOpen(false)
@@ -183,7 +183,7 @@ export function SelectOrg({ className = '' }: SelectOrgProps) {
                         id='new-org-form'
                         onSubmit={handleSubmit(onSubmit)}
                     >
-                        <Modal.CloseButton />
+                        <Modal.CloseButton onClick={() => setOpen(false)} />
                         <div className='font-semibold text-xl text-center'>
                             New Org
                         </div>
