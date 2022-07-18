@@ -22,6 +22,7 @@
     "devDependencies": {
         "@types/react": "^18.0.9",
         "framer-motion": "*",
+        "@chakra-ui/react": "*",
         "next": "12.2.2",
         "next-auth": "4.10.0",
         "next-themes": "*",
