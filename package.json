@@ -20,9 +20,11 @@
         "react-dom": "*"
     },
     "devDependencies": {
+        "@chakra-ui/react": "*",
+        "@emotion/react": "^11.4.1",
+        "@emotion/styled": "^11.3.0",
         "@types/react": "^18.0.9",
         "framer-motion": "*",
-        "@chakra-ui/react": "*",
         "next": "12.2.2",
         "next-auth": "4.10.0",
         "next-themes": "*",
