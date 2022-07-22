@@ -4,7 +4,7 @@ import { useSession } from 'next-auth/react'
 
 import { SelectOrg } from './SelectOrg'
 
-export function Header({
+export function DashboardHeader({
     className = '',
     hasOrg = false,
     logo,
