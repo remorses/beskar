@@ -10,12 +10,19 @@ function classNames(...classes) {
 interface Props {
     button: ReactNode
     children: ReactNode
+    className?: string
 }
 
 export function DropDownMenu(props: Props) {
     const { children, button } = props
     return (
-        <Menu as='div' className='relative inline-block text-left'>
+        <Menu
+            as='div'
+            className={classNames(
+                'relative inline-block text-left',
+                props.className,
+            )}
+        >
             <Menu.Button as='div'>{button}</Menu.Button>
             <style jsx>{`
                 @keyframes menuAppear {

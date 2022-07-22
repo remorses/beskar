@@ -13,7 +13,7 @@ import { Faded } from 'baby-i-am-faded'
 import classNames from 'classnames'
 import React from 'react'
 
-export function TabsNav({ Tabs, ...rest }) {
+export function TabsNav({ Tabs, pageProps, ...rest }) {
     Tabs ??= () => {}
     return (
         <div className='relative'>
@@ -26,7 +26,7 @@ export function TabsNav({ Tabs, ...rest }) {
                 )}
                 {...rest}
             >
-                <Tabs />
+                <Tabs {...pageProps} />
             </nav>
         </div>
     )
@@ -95,7 +95,7 @@ export const TabLink = forwardRef<
     },
 )
 
-TabLink.displayName = 'NavLink'
+TabLink.displayName = 'TapLink'
 
 function FragmentLike({ children }) {
     return <Fragment>{children}</Fragment>

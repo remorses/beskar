@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import { ComponentPropsWithoutRef } from 'react'
 import { Button } from './Button'
 
@@ -8,6 +9,8 @@ declare global {
 export function FeedbackWithCrisp({
     children,
     useDefaultComponent,
+    className = '',
+    ...rest
 }: ComponentPropsWithoutRef<'div'> & {
     useDefaultComponent?: boolean
 }) {
@@ -26,13 +29,14 @@ export function FeedbackWithCrisp({
                 $crisp.push([
                     'set',
                     'message:text',
-                    ["Hi! I'd like to get help."],
+                    ["Hi! I have some feedback: "],
                 ])
                 // $crisp.push(["set", "session:data", [[["user-bill-amount", "$200"]]]]);
                 $crisp.push(['set', 'session:event', [[['feedback']]]])
                 $crisp.push(['do', 'chat:open'])
             }}
-            className=''
+            className={clsx('', className)}
+            {...rest}
         >
             {children}
         </div>

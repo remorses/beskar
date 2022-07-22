@@ -64,8 +64,8 @@ export const Button: FC<ButtonProps> = forwardRef<ButtonProps, any>(
     ) => {
         // isLoading = true
         if (!bg_) {
-            bg_ = 'blue.500'
-            bgDark_ = bgDark_ || 'blue.300'
+            bg_ = 'gray.500'
+            bgDark_ = bgDark_ || 'gray.300'
         }
         if (!bgDark_ && bg_) {
             bgDark_ = bg_
@@ -79,7 +79,7 @@ export const Button: FC<ButtonProps> = forwardRef<ButtonProps, any>(
             <As
                 ref={ref}
                 className={clsx(
-                    'px-[1em] !border-0 py-[0.6em] flex appearance-none gap-2 items-center',
+                    'px-[0.8em] !border-0 py-[0.4em] flex appearance-none gap-2 items-center',
                     'justify-center font-medium tracking-wide rounded-md',
                     'cursor-pointer colorAndBg active:opacity-50 transition-colors',
                     biggerOnHover && !disabled && 'biggerOnHover',

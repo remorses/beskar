@@ -18,6 +18,8 @@ export function DashboardLayout({
     footer,
     children,
     style = {},
+    fullWidth=false,
+    pageProps,
     ...rest
 }) {
     return (
@@ -26,15 +28,19 @@ export function DashboardLayout({
                 <div className='flex  flex-col items-center w-full overflow-visible border-b border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800/60'>
                     <div className='w-full  px-[var(--pagePadding)] max-w-[var(--pageWidth)]'>
                         {header}
-                        <TabsNav Tabs={Tabs} />
+                        <TabsNav pageProps={pageProps} Tabs={Tabs} />
                     </div>
                 </div>
                 <div
                     className={cs(
                         'flex w-full flex-auto flex-col space-y-8 ',
-                        'max-w-[var(--pageWidth)] px-[var(--pagePadding)]',
+                        'px-[var(--pagePadding)]',
                     )}
-                    style={{ ...style, contain: 'paint' }} // prevents overflow x scrolling and has faster rendering
+                    style={{
+                        ...style,
+                        maxWidth: fullWidth ? '100%' : 'var(--pageWidth)',
+                        contain: 'paint',
+                    }} // prevents overflow x scrolling and has faster rendering
                     {...rest}
                 >
                     <div className='relative flex flex-auto w-full overflow-visible md:space-x-8 '>

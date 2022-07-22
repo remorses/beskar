@@ -21,7 +21,7 @@ export const SaveButton = forwardRef<any, SaveButtonProps>(
                 bg={formState.isDirty ? 'blue.500' : 'gray.600'}
                 bgDark={formState.isDirty ? 'blue.200' : 'gray.600'}
                 className={classNames(
-                    'text-xs font-semibold transition-colors',
+                    'text-sm font-semibold transition-colors',
                     className,
                 )}
                 {...props}
