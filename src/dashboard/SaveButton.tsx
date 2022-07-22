@@ -1,9 +1,9 @@
 import classNames from 'classnames'
 import React, { ComponentPropsWithoutRef, forwardRef } from 'react'
 import { FormState } from 'react-hook-form'
-import { Button } from '../landing'
+import { Button, ButtonProps } from '../landing'
 
-export interface SaveButtonProps extends ComponentPropsWithoutRef<'button'> {
+export interface SaveButtonProps extends ButtonProps {
     formState?: FormState<any>
 }
 
@@ -20,7 +20,10 @@ export const SaveButton = forwardRef<any, SaveButtonProps>(
                 type='submit'
                 bg={formState.isDirty ? 'blue.500' : 'gray.600'}
                 bgDark={formState.isDirty ? 'blue.200' : 'gray.600'}
-                className={classNames('text-xs font-semibold transition-colors', className)}
+                className={classNames(
+                    'text-xs font-semibold transition-colors',
+                    className,
+                )}
                 {...props}
             >
                 {children}
