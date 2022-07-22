@@ -18,7 +18,7 @@ export function BrowserWindow({
                     <span className='w-2 h-2 bg-gray-600 rounded-full dark:bg-gray-600' />
                     <span className='w-2 h-2 bg-gray-600 rounded-full dark:bg-gray-600' />
                 </div>
-                <div className='flex justify-center items-center w-full h-full text-[.25rem] sm:text-[.5rem]  bg-gray-700 text-gray-400 rounded-sm  dark:bg-gray-600 dark:text-gray-400'>
+                <div className='flex justify-center truncate items-center w-full h-full text-[.25rem] sm:text-[.5rem]  bg-gray-700 text-gray-400 rounded-sm  dark:bg-gray-600 dark:text-gray-400'>
                     {host}
                 </div>
             </div>
