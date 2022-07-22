@@ -60,7 +60,7 @@ export function DashboardLayout({
                     <div className='relative flex flex-auto w-full overflow-visible md:space-x-8 '>
                         <div className='flex flex-col w-full'>
                             <Faded
-                                className='flex flex-col w-full h-full space-y-8 overflow-visible pt-[40px]'
+                                className='flex flex-col w-full h-full space-y-8 overflow-visible pt-[20px] lg:pt-[40px]'
                                 cascade
                             >
                                 {children}
