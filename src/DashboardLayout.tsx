@@ -15,7 +15,7 @@ export default DashboardLayout
 
 export type DashboardLayoutProps = {
     header?: ReactNode
-    Tabs: React.ComponentType<any>
+    Tabs?: React.ComponentType<any>
     footer?: ReactNode
     children?: ReactNode
     style?: any
