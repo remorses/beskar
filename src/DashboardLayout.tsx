@@ -5,10 +5,11 @@ import NextLink from 'next/link'
 import React, { ReactNode, useMemo } from 'react'
 
 import { Footer } from './landing/Footer'
-import { DashboardHeader } from './Header'
+
 import { Link } from './landing/Link'
 import { useSession } from 'next-auth/react'
 import { TabsNav } from './Tabs'
+import { ChakraStuff } from './chakra'
 
 export default DashboardLayout
 export function DashboardLayout({
@@ -20,34 +21,36 @@ export function DashboardLayout({
     ...rest
 }) {
     return (
-        <div className='flex flex-col items-center w-full min-h-screen'>
-            <div className='flex  flex-col items-center w-full overflow-visible border-b border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800/60'>
-                <div className='w-full  px-[var(--pagePadding)] max-w-[var(--pageWidth)]'>
-                    {header}
-                    <TabsNav Tabs={Tabs} />
+        <ChakraStuff>
+            <div className='flex flex-col items-center w-full min-h-screen'>
+                <div className='flex  flex-col items-center w-full overflow-visible border-b border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800/60'>
+                    <div className='w-full  px-[var(--pagePadding)] max-w-[var(--pageWidth)]'>
+                        {header}
+                        <TabsNav Tabs={Tabs} />
+                    </div>
                 </div>
-            </div>
-            <div
-                className={cs(
-                    'flex w-full flex-auto flex-col space-y-8 ',
-                    'max-w-[var(--pageWidth)] px-[var(--pagePadding)]',
-                )}
-                style={{ ...style, contain: 'paint' }} // prevents overflow x scrolling and has faster rendering
-                {...rest}
-            >
-                <div className='relative flex flex-auto w-full overflow-visible md:space-x-8 '>
-                    <div className='flex flex-col w-full'>
-                        <Faded
-                            className='flex flex-col w-full h-full space-y-8 overflow-visible pt-[40px]'
-                            cascade
-                        >
-                            {children}
-                        </Faded>
-                        <div className='flex-1'></div>
-                        {footer}
+                <div
+                    className={cs(
+                        'flex w-full flex-auto flex-col space-y-8 ',
+                        'max-w-[var(--pageWidth)] px-[var(--pagePadding)]',
+                    )}
+                    style={{ ...style, contain: 'paint' }} // prevents overflow x scrolling and has faster rendering
+                    {...rest}
+                >
+                    <div className='relative flex flex-auto w-full overflow-visible md:space-x-8 '>
+                        <div className='flex flex-col w-full'>
+                            <Faded
+                                className='flex flex-col w-full h-full space-y-8 overflow-visible pt-[40px]'
+                                cascade
+                            >
+                                {children}
+                            </Faded>
+                            <div className='flex-1'></div>
+                            {footer}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </ChakraStuff>
     )
 }
