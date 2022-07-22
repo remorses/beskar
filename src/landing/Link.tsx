@@ -1,11 +1,30 @@
 import clsx from 'clsx'
 import NextLink from 'next/link'
-import React, { ComponentPropsWithoutRef, forwardRef, Fragment } from 'react'
+import React, {
+    ComponentPropsWithoutRef,
+    forwardRef,
+    Fragment,
+    ReactNode,
+} from 'react'
 
-export type LinkProps = ComponentPropsWithoutRef<'a'> & { underline?: boolean }
+export type LinkProps = ComponentPropsWithoutRef<'a'> & {
+    underline?: boolean
+    iconBefore?: ReactNode
+}
 
 export const Link = forwardRef<any, LinkProps>(
-    ({ href = '', onClick, underline, children, className, ...props }, ref) => {
+    (
+        {
+            href = '',
+            onClick,
+            underline,
+            children,
+            className,
+            iconBefore,
+            ...props
+        },
+        ref,
+    ) => {
         const isExternal =
             href && !href.startsWith('/') && !href.startsWith('#')
         const Wrapper: any = !isExternal ? NextLink : Fragment
@@ -20,6 +39,7 @@ export const Link = forwardRef<any, LinkProps>(
                     className={clsx(
                         'appearance-none max-w-max relative',
                         'font-medium !border-white/0 truncate cursor-pointer',
+                        iconBefore && 'whitespace-nowrap',
                         underline
                             ? `underline`
                             : 'no-underline border-b-[2px] hover:!border-[color:currentColor] active:!border-[color:currentColor]',
@@ -40,6 +60,11 @@ export const Link = forwardRef<any, LinkProps>(
                     }}
                     {...props}
                 >
+                    {iconBefore && (
+                        <div className='inline [&>*]:inline mr-1'>
+                            {iconBefore}
+                        </div>
+                    )}
                     {children}
                 </a>
             </Wrapper>

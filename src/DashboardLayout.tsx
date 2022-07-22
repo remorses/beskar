@@ -12,16 +12,29 @@ import { TabsNav } from './Tabs'
 import { ChakraStuff } from './chakra'
 
 export default DashboardLayout
+
+export type DashboardLayoutProps = {
+    header?: ReactNode
+    Tabs: React.ComponentType<any>
+    footer?: ReactNode
+    children?: ReactNode
+    style?: any
+    className?: string
+    fullWidth?: boolean
+    pageProps?: any
+}
+
 export function DashboardLayout({
     header,
     Tabs,
     footer,
-    children,
+    children = null,
     style = {},
-    fullWidth=false,
+    fullWidth = false,
     pageProps,
+    className = '',
     ...rest
-}) {
+}: DashboardLayoutProps) {
     return (
         <ChakraStuff>
             <div className='flex flex-col items-center w-full min-h-screen'>
@@ -35,6 +48,7 @@ export function DashboardLayout({
                     className={cs(
                         'flex w-full flex-auto flex-col space-y-8 ',
                         'px-[var(--pagePadding)]',
+                        className,
                     )}
                     style={{
                         ...style,

@@ -91,7 +91,7 @@ export function Modal({
 export function CloseButton({
     className = '',
     ...rest
-}: ComponentPropsWithoutRef<'button'>) {
+}: ComponentPropsWithoutRef<'button'> & { onClick: Function }) {
     return (
         <button
             className={clsx(
