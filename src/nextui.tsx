@@ -1,8 +1,6 @@
-import '@app/styles/index.css'
 
 // @ts-ignore
 import { createTheme, NextUIProvider } from '@nextui-org/react'
-import 'baby-i-am-faded/styles.css'
 
 import colors from 'tailwindcss/colors'
 

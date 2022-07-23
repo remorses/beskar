@@ -5,7 +5,7 @@ import { CheckIcon, SelectorIcon } from '@heroicons/react/solid'
 import classNames from 'classnames'
 import useSWR, { useSWRConfig } from 'swr'
 
-import { useBeskar, useThrowingFn } from './utils'
+import { useBeskar, useDisclosure, useThrowingFn } from './utils'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import { PlusIcon } from '@heroicons/react/outline'
@@ -29,12 +29,7 @@ export function SelectOrg({ className = '' }: SelectOrgProps) {
 
     const router = useRouter()
     const orgId = (router.query.orgId || '') as string
-    // useEffect(() => {
-    //     const org = orgId ? orgs.find((x) => x.id === orgId) : orgs?.[0]
-    //     if (!org) {
-    //         return
-    //     }
-    // }, [orgs])
+
     function onChange(value) {
         const org = orgs?.find((org) => org.id === value)
         if (!org) {
@@ -43,12 +38,8 @@ export function SelectOrg({ className = '' }: SelectOrgProps) {
         }
         const newPath = `/org/${org.id}`
         router.replace(newPath)
-        // console.log(router.asPath)
-        // if (router.asPath !== newPath) {
-        //     router.replace(newPath)
-        // }
     }
-    const [isOpen, setOpen] = useState(false)
+    const { isOpen, onOpen, onClose } = useDisclosure()
 
     const {
         register,
@@ -71,119 +62,41 @@ export function SelectOrg({ className = '' }: SelectOrgProps) {
 
             await createOrg({ name })
             mutate('getUserOrgs')
-            setOpen(false)
+            onClose()
         },
         successMessage: 'Created org',
         errorMessage: 'Could not create org',
     })
 
-    const hoverClasses = 'hover:bg-gray-100 hover:dark:bg-gray-600 rounded mx-2'
-    const current = orgs.find((x) => x.id === orgId)?.name
     return (
         <>
-            <Listbox value={orgId} onChange={onChange}>
-                <div className={classNames('relative mt-1', className)}>
-                    <Listbox.Button
-                        as='button'
-                        className='relative w-full py-[8px] pl-3 pr-10 text-left bg-white rounded-lg shadow-sm border dark:bg-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm'
-                    >
-                        <span
-                            aria-label='current org'
-                            className='flex space-x-2 truncate font-medium'
-                        >
-                            <OrgIcon name={current} />
-                            <span className=''>{current || 'Loading'}</span>
-                        </span>
-                        <span className='absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none'>
-                            <SelectorIcon
-                                className='w-5 h-5 text-gray-400'
-                                aria-hidden='true'
-                            />
-                        </span>
-                    </Listbox.Button>
-                    <style jsx>{`
-                        @keyframes menuAppear {
-                            from {
-                                opacity: 0;
-                                transform: translate3d(0px, -2em, 0px) scale(0);
-                            }
-                            to {
-                                opacity: 1;
-                            }
-                        }
-                    `}</style>
-                    <Faded animationName='menuAppear' duration={120} cascade>
-                        <Listbox.Options
-                            className={classNames(
-                                'absolute flex flex-col w-full py-2 mt-1 overflow-auto text-base bg-white rounded-md shadow-xl dark:bg-gray-700 max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm',
-                            )}
-                        >
-                            {orgs?.map((org, idx) => (
-                                <Listbox.Option
-                                    key={org.id}
-                                    className={({ active }) =>
-                                        `cursor-pointer select-none relative py-[6px] pr-10` +
-                                        hoverClasses
-                                    }
-                                    value={org.id}
-                                >
-                                    {({ selected, active }) => (
-                                        <>
-                                            <span
-                                                className={classNames(
-                                                    `flex space-x-2 pl-2 truncate font-medium`,
-                                                )}
-                                            >
-                                                <OrgIcon name={org.name} />
-                                                <span className='text-sm'>
-                                                    {org.name}
-                                                </span>
-                                            </span>
-                                            {selected ? (
-                                                <span
-                                                    className={classNames(
-                                                        `absolute inset-y-0 right-1 flex items-center pl-3`,
-                                                        active
-                                                            ? 'text-amber-600'
-                                                            : 'text-amber-600',
-                                                    )}
-                                                >
-                                                    <CheckIcon
-                                                        className='w-5 h-5'
-                                                        aria-hidden='true'
-                                                    />
-                                                </span>
-                                            ) : null}
-                                        </>
-                                    )}
-                                </Listbox.Option>
-                            ))}
-                            <button
-                                onClick={() => setOpen(true)}
-                                className={classNames(
-                                    'flex space-x-2 py-[7px] pl-2 text-left items-center font-medium text-xs',
-                                    hoverClasses,
-                                )}
-                            >
-                                <PlusIcon className='w-4 h-4 mx-px' />
-                                <div>New Org</div>
-                            </button>
-                        </Listbox.Options>
-                    </Faded>
-                </div>
-            </Listbox>
+            <Select
+                useAutoGradientIcons
+                value={orgId}
+                onChange={onChange}
+                className='min-w-[14ch]'
+                endButton={
+                    <Select.SelectButton children='New Org' onClick={onOpen} />
+                }
+                options={orgs.map((o) => {
+                    return {
+                        value: o.id,
+                        name: o.name,
+                    }
+                })}
+            />
             <Modal
                 className='flex flex-col w-full space-y-8 !max-w-xl'
                 isOpen={isOpen}
                 useDefaultContentStyle
-                onClose={() => setOpen(false)}
+                onClose={onClose}
                 content={
                     <form
                         className='space-y-8'
                         id='new-org-form'
                         onSubmit={handleSubmit(onSubmit)}
                     >
-                        <Modal.CloseButton onClick={() => setOpen(false)} />
+                        <Modal.CloseButton onClick={onClose} />
                         <div className='font-semibold text-xl text-center'>
                             New Org
                         </div>
@@ -219,6 +132,7 @@ import harmoniesPlugin from 'colord/plugins/harmonies'
 import { Faded } from 'baby-i-am-faded'
 
 import { Input } from './landing/Input'
+import { Select } from './Select'
 
 extend([mixPlugin, harmoniesPlugin])
 
