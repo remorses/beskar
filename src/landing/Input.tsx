@@ -6,16 +6,28 @@ export const Input = forwardRef<
     ComponentPropsWithoutRef<'input'> & {
         label?: ReactNode
         errorMessage?: ReactNode
+        description?: ReactNode
     }
 >(function Input(
-    { className = '', label = '', errorMessage = '', ...rest },
+    {
+        className = '',
+        label = '',
+        description = '',
+        errorMessage = '',
+        ...rest
+    },
     ref,
 ) {
     return (
         <div className='space-y-3'>
             {label && (
-                <label className='font-medium text-sm opacity-60'>
+                <label className='block font-medium opacity-60'>
                     {label}
+                </label>
+            )}
+            {description && (
+                <label className='block font-medium text-sm opacity-50'>
+                    {description}
                 </label>
             )}
             <input
