@@ -141,7 +141,7 @@ export const Button: FC<ButtonProps> = forwardRef<ButtonProps, any>(
 
                         .biggerOnHover:hover::after,
                         .biggerOnHover:active::after {
-                            transform: scaleX(1.03) scaleY(1.08);
+                            transform: scaleX(1.03) scaleY(1.14);
                         }
                     `}
                 </style>

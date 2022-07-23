@@ -30,17 +30,17 @@ export function Hero({
     //     console.log('Hero render')
     // })
     return (
-        <PageContainer {...rest}>
+        <PageContainer dontContain {...rest}>
             <div
                 className={clsx(
-                    'flex items-center max-w-full min-w-0 flex-col',
+                    'flex items-center max-w-full flex-col',
                     'md:flex-row leading-normal',
                     image ? 'justify-start md:space-x-8' : 'justify-center',
                 )}
             >
                 <div
                     className={clsx(
-                        'space-y-8 flex max-w-full flex-col text-center min-w-[33%]',
+                        'space-y-8 shrink-0 flex max-w-full flex-col text-center',
                         image ? 'md:max-w-[60%]' : 'w-full',
                         image ? 'items-start' : 'items-center',
                         image ? 'md:text-left' : 'text-center',
