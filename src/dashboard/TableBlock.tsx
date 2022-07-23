@@ -60,7 +60,7 @@ export const TableBlock = ({
                                 })}
                             </tr>
                         ) : (
-                            <Fragment key={i}>{row}</Fragment>
+                            <tr key={i}>{row}</tr>
                         )
                     })}
                 </tbody>

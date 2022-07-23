@@ -94,7 +94,7 @@ export function Select<T>({
                     <Faded animationName='menuAppear' duration={120} cascade>
                         <Listbox.Options
                             className={classNames(
-                                'absolute flex flex-col w-full py-2 mt-1 overflow-auto text-base bg-white rounded-md shadow-xl dark:bg-gray-700 max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm',
+                                'absolute gap-2 flex flex-col w-full py-2 mt-1 overflow-auto text-base bg-white rounded-md shadow-xl dark:bg-gray-700 max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm',
                             )}
                         >
                             {options?.map((opt, idx) => (
@@ -103,6 +103,8 @@ export function Select<T>({
                                     className={({ active }) =>
                                         classNames(
                                             `cursor-pointer select-none relative py-[6px] pr-10 `,
+                                            opt.value === value &&
+                                                'bg-gray-100 dark:bg-gray-600',
                                             hoverClasses,
                                         )
                                     }
@@ -206,7 +208,7 @@ function GradientIcon({ name }) {
     return (
         <div
             style={{ background, width, height: width }}
-            className='rounded-md  '
+            className='rounded-md shrink-0 '
         ></div>
     )
 }

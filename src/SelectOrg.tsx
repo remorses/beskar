@@ -22,9 +22,6 @@ export type SelectOrgProps = {
     createOrg: (x: { name: string }) => Promise<any>
 }
 
-/**
- * Needs to have orgId param in query
- */
 export function SelectOrg({
     className = '',
     getUserOrgs,

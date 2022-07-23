@@ -21,8 +21,18 @@ export const Input = forwardRef<
             <input
                 ref={ref}
                 type='text'
+                style={
+                    {
+                        // transition: 'box-shadow 0.2s ease-in-out',
+                    }
+                }
                 className={clsx(
-                    'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500',
+                    'w-full text-gray-900 rounded-lg p-2 px-3 transition-shadow font-medium tracking-wide',
+                    'border-gray-300 block bg-gray-50 focus:ring-2 ring-gray-300 dark:ring-gray-600 focus:ring-gray-400',
+                    'focus:!outline-none',
+                    'dark:text-white dark:placeholder-gray-400',
+                    'dark:focus:ring-gray-500 ring-1 ',
+                    'dark:border-gray-600 dark:bg-gray-700',
                     className,
                 )}
                 {...rest}
