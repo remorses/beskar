@@ -17,7 +17,8 @@ export function Spinner({ className = '' }) {
                     display: block;
                     width: 1em;
                     height: 1em;
-                    border: 2px solid currentColor;
+                    border: 0.1em solid currentColor;
+                    opacity: 0.7;
                     border-radius: 9999px;
                     border-right-color: transparent;
                     border-top-color: transparent;
