@@ -25,6 +25,7 @@ export type SelectProps = {
     options: { value: string; name?: string }[]
     endButton?: ReactNode
     useAutoGradientIcons?: boolean
+    isLoading?: boolean
 }
 
 /**
@@ -37,6 +38,7 @@ export function Select<T>({
     placeholder = 'Loading',
     options,
     className = '',
+    isLoading = false,
     useAutoGradientIcons = false,
 }: SelectProps) {
     const router = useRouter()
@@ -52,19 +54,25 @@ export function Select<T>({
                         as='button'
                         className='relative w-full py-[8px] pl-3 pr-10 text-left bg-white rounded-lg shadow-sm border dark:bg-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm'
                     >
-                        <span
+                        <div
                             aria-label='current org'
-                            className='flex space-x-2 truncate font-medium'
+                            className='flex items-center space-x-2 truncate font-medium'
                         >
                             {useAutoGradientIcons && (
                                 <GradientIcon
-                                    name={current?.name || current?.value}
+                                    name={
+                                        isLoading
+                                            ? ''
+                                            : current?.name || current?.value
+                                    }
                                 />
                             )}
                             <span className=''>
-                                {current?.name || placeholder}
+                                {isLoading
+                                    ? 'Loading'
+                                    : current?.name || placeholder}
                             </span>
-                        </span>
+                        </div>
                         <span className='absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none'>
                             <SelectorIcon
                                 className='w-5 h-5 text-gray-400'
@@ -100,20 +108,23 @@ export function Select<T>({
                                 >
                                     {({ selected, active }) => (
                                         <>
-                                            <span
+                                            <div
                                                 className={classNames(
-                                                    `flex space-x-2 pl-2 truncate font-medium`,
+                                                    `flex items-center space-x-2 pl-2 truncate font-medium`,
                                                 )}
                                             >
                                                 {useAutoGradientIcons && (
                                                     <GradientIcon
-                                                        name={opt.value}
+                                                        name={
+                                                            opt?.name ||
+                                                            opt?.value
+                                                        }
                                                     />
                                                 )}
                                                 <span className='text-sm'>
                                                     {opt.name || opt.value}
                                                 </span>
-                                            </span>
+                                            </div>
                                             {selected ? (
                                                 <span
                                                     className={classNames(

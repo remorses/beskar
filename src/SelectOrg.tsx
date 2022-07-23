@@ -9,6 +9,8 @@ import { useBeskar, useDisclosure, useThrowingFn } from './utils'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import { PlusIcon } from '@heroicons/react/outline'
+import { Select } from './Select'
+import { Input } from './landing/Input'
 
 export type SelectOrgProps = {
     className?: string
@@ -19,7 +21,7 @@ export type SelectOrgProps = {
  */
 export function SelectOrg({ className = '' }: SelectOrgProps) {
     const { getUserOrgs, createOrg } = useBeskar()
-    const { data, error } = useSWR('getUserOrgs', getUserOrgs)
+    const { data, error, isValidating } = useSWR('getUserOrgs', getUserOrgs)
     // console.log({ data })
     const orgs = data?.orgs || []
 
@@ -30,15 +32,18 @@ export function SelectOrg({ className = '' }: SelectOrgProps) {
     const router = useRouter()
     const orgId = (router.query.orgId || '') as string
 
-    function onChange(value) {
-        const org = orgs?.find((org) => org.id === value)
-        if (!org) {
-            console.warn('no org found', value)
-            return
-        }
-        const newPath = `/org/${org.id}`
-        router.replace(newPath)
-    }
+    const { fn: onChange, isLoading: isOrgLoading } = useThrowingFn({
+        fn: async function onChange(value) {
+            const org = orgs?.find((org) => org.id === value)
+            if (!org) {
+                console.warn('no org found', value)
+                return
+            }
+            const newPath = `/org/${org.id}`
+            await router.replace(newPath)
+        },
+    })
+
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     const {
@@ -72,6 +77,7 @@ export function SelectOrg({ className = '' }: SelectOrgProps) {
         <>
             <Select
                 useAutoGradientIcons
+                isLoading={isValidating || isLoading || isOrgLoading}
                 value={orgId}
                 onChange={onChange}
                 className='min-w-[14ch]'
@@ -123,32 +129,4 @@ export function SelectOrg({ className = '' }: SelectOrgProps) {
             />
         </>
     )
-}
-
-import ColorHash from 'color-hash'
-import { colord, extend } from 'colord'
-import mixPlugin from 'colord/plugins/mix'
-import harmoniesPlugin from 'colord/plugins/harmonies'
-import { Faded } from 'baby-i-am-faded'
-
-import { Input } from './landing/Input'
-import { Select } from './Select'
-
-extend([mixPlugin, harmoniesPlugin])
-
-const colorHash = new ColorHash({ lightness: 0.6 })
-
-function OrgIcon({ name }) {
-    const background = (() => {
-        if (!name) {
-            return '#aaa'
-        }
-        const color = colorHash.hex(name)
-
-        const [first, second] = colord(color).harmonies('analogous')
-        return `linear-gradient(to right, ${first.toHex()}, ${second
-            .desaturate(0.3)
-            .toHex()})`
-    })()
-    return <div style={{ background }} className='rounded-md h-5 w-5 '></div>
 }
