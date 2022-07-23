@@ -14,13 +14,22 @@ import { Input } from './landing/Input'
 
 export type SelectOrgProps = {
     className?: string
+    // dashboardPath: string // /app for example
+    getUserOrgs: () => Promise<{
+        defaultOrgId: string
+        orgs: { id: string; name: string }[]
+    }>
+    createOrg: (x: { name: string }) => Promise<any>
 }
 
 /**
  * Needs to have orgId param in query
  */
-export function SelectOrg({ className = '' }: SelectOrgProps) {
-    const { getUserOrgs, createOrg } = useBeskar()
+export function SelectOrg({
+    className = '',
+    getUserOrgs,
+    createOrg,
+}: SelectOrgProps) {
     const { data, error, isValidating } = useSWR('getUserOrgs', getUserOrgs)
     // console.log({ data })
     const orgs = data?.orgs || []
@@ -80,7 +89,7 @@ export function SelectOrg({ className = '' }: SelectOrgProps) {
                 isLoading={isValidating || isLoading || isOrgLoading}
                 value={orgId}
                 onChange={onChange}
-                className='min-w-[14ch]'
+                className={classNames('min-w-[16ch]', className)}
                 endButton={
                     <Select.SelectButton children='New Org' onClick={onOpen} />
                 }

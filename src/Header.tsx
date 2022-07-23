@@ -4,28 +4,22 @@ import { useSession } from 'next-auth/react'
 
 import { SelectOrg } from './SelectOrg'
 
-export function DashboardHeader({
-    className = '',
-    hasOrg = false,
-    logo,
-    links = [],
-    ...rest
-}) {
+export function DashboardHeader({ className = '', logo, links = [], ...rest }) {
     const { data: session } = useSession()
     return (
         <div
             className={clsx(
                 'z-10 relative w-full py-6 flex mx-auto space-x-8',
-                hasOrg ? 'items-end' : 'items-center',
+                true ? 'items-end' : 'items-center',
                 className,
             )}
+            {...rest}
         >
             <div className='flex items-center gap-4'>
                 <div className='flex flex-col justify-center space-y-4'>
                     {logo}
-                    {hasOrg && <SelectOrg className='min-w-[200px]' />}
+                    {/* {hasOrg && <SelectOrg className='min-w-[200px]' />} */}
                 </div>
-               
             </div>
 
             <div className='flex-auto' />

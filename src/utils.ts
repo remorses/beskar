@@ -110,14 +110,7 @@ export function useColorModeValue(a, b) {
     return isDark ? b : a
 }
 
-export type BeskarContext = {
-    // dashboardPath: string // /app for example
-    getUserOrgs: () => Promise<{
-        defaultOrgId: string
-        orgs: { id: string; name: string }[]
-    }>
-    createOrg: (x: { name: string }) => Promise<any>
-}
+export type BeskarContext = {}
 
 export function useBeskar() {
     const data = useContext(beskarContext)
