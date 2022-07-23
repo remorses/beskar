@@ -17,7 +17,7 @@ export function BlockWithStep({
             <div
                 className={classNames(
                     'border flex flex-col items-center justify-center',
-                    'font-medium left-0 top-14 bg-white absolute',
+                    'font-medium left-0 top-14 bg-white dark:bg-gray-700 absolute',
                     isLast ? 'h-1' : 'h-full',
                 )}
             ></div>
@@ -25,7 +25,7 @@ export function BlockWithStep({
                 className={classNames(
                     'border rounded-full p-4 w-4 h-4 flex flex-col items-center',
                     'justify-center font-medium shadow-lg -left-4',
-                    'top-10 bg-white absolute border',
+                    'top-10 bg-white dark:bg-gray-700 absolute border',
                 )}
             >
                 {step}
