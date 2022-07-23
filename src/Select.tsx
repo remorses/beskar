@@ -101,8 +101,10 @@ export function Select<T>({
                                 <Listbox.Option
                                     key={opt.value}
                                     className={({ active }) =>
-                                        `cursor-pointer select-none relative py-[6px] pr-10` +
-                                        hoverClasses
+                                        classNames(
+                                            `cursor-pointer select-none relative py-[6px] pr-10 `,
+                                            hoverClasses,
+                                        )
                                     }
                                     value={opt.value}
                                 >
@@ -164,7 +166,7 @@ function SelectButton({
     return (
         <button
             className={classNames(
-                'flex space-x-2 py-[7px] pl-2 text-left items-center font-medium text-xs',
+                'flex space-x-2 py-[5px] pl-2 text-left items-center font-medium text-sm',
                 hoverClasses,
                 className,
             )}
