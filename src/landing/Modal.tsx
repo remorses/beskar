@@ -68,16 +68,17 @@ export function Modal({
                 cascade
                 animationName='zoomIn'
                 className={clsx(
-                    'relative max-w-3xl mx-auto overflow-hidden bg-transparent',
-                    'rounded-lg shadow top-8 isolate lg:top-14',
+                    'top-8 shadow rounded-lg relative overflow-hidden',
+                    'mx-auto min-w-max isolate bg-transparent lg:top-14',
                     className,
                 )}
             >
                 {useDefaultContentStyle ? (
                     <div
                         className={clsx(
-                            'flex bg-white text-gray-700 dark:bg-gray-800 dark:text-gray-100 w-full flex-col items-stretch justify-center',
-                            'px-8 py-4 space-y-8',
+                            'w-auto text-gray-700 space-y-8 py-4 px-8 min-w-0',
+                            'justify-center items-stretch flex-col flex bg-white',
+                            'dark:text-gray-100 dark:bg-gray-800',
                         )}
                     >
                         {content}
@@ -97,7 +98,8 @@ export function CloseButton({
     return (
         <button
             className={clsx(
-                'appearance-none rounded opacity-50 absolute top-4 right-4',
+                'top-4 rounded right-4 opacity-50 appearance-none',
+                'absolute',
                 className,
             )}
             type='button'
