@@ -1,4 +1,3 @@
-
 // @ts-ignore
 import { createTheme, NextUIProvider } from '@nextui-org/react'
 
@@ -8,6 +7,7 @@ colors.gray = colors.neutral as any
 
 const formattedColors = Object.fromEntries(
     Object.keys(colors)
+        .filter((k) => colors.hasOwnProperty('value'))
         .flatMap((colorName) => {
             const colorObj = colors[colorName]
             if (typeof colorObj === 'string') {
