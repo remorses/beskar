@@ -15,6 +15,7 @@ export function Modal({
     className = '',
     content,
     useDefaultContentStyle = false,
+    initialFocus = null as any,
     ...rest
 }) {
     return (
@@ -23,6 +24,7 @@ export function Modal({
             open={isOpen}
             as={As as any}
             onClose={onClose}
+            initialFocus={initialFocus}
             {...rest}
         >
             <Dialog.Overlay

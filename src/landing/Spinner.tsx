@@ -17,8 +17,10 @@ export function Spinner({ className = '' }) {
                     display: block;
                     width: 1em;
                     height: 1em;
-                    border: 2px solid currentColor;
-                    border-radius: 9999px;
+                    border: solid currentColor;
+                    border-width: max(0.1em, 3px);
+                    opacity: 0.7;
+                    border-radius: 100%;
                     border-right-color: transparent;
                     border-top-color: transparent;
                     animation: spinAround 500ms infinite linear;

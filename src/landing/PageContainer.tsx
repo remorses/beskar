@@ -7,9 +7,13 @@ export function PageContainer({
     children,
     floatingElement = null as ReactNode,
     style = {},
+    dontContain = false,
     className = '',
     ...rest
-}: ComponentPropsWithoutRef<'div'> & { floatingElement?: ReactNode }) {
+}: ComponentPropsWithoutRef<'div'> & {
+    floatingElement?: ReactNode
+    dontContain?: boolean
+}) {
     return (
         <div
             className={classNames('w-full relative flex flex-col items-center')}
@@ -34,7 +38,8 @@ export function PageContainer({
                     // margin: '0 auto',
                     position: floatingElement ? 'relative' : 'static',
                     maxWidth: 'var(--max-width, 1100px)',
-                    contain: floatingElement ? 'initial' : 'paint',
+                    contain:
+                        floatingElement || dontContain ? 'initial' : 'paint',
                     ...style,
                 }}
                 {...rest}
