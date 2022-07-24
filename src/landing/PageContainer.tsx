@@ -16,7 +16,10 @@ export function PageContainer({
 }) {
     return (
         <div
-            className={classNames('w-full relative flex flex-col items-center')}
+            style={{ contain: 'paint' }}
+            className={classNames(
+                'w-full max-w-full relative flex flex-col items-center ',
+            )}
         >
             {floatingElement && (
                 <div
