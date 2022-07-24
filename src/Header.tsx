@@ -4,7 +4,12 @@ import { useSession } from 'next-auth/react'
 
 import { SelectOrg } from './SelectOrg'
 
-export function DashboardHeader({ className = '', logo, links = [], ...rest }) {
+export function DashboardHeader({
+    className = '',
+    logo,
+    links = [] as ReactNode,
+    ...rest
+}) {
     const { data: session } = useSession()
     return (
         <div
@@ -25,9 +30,9 @@ export function DashboardHeader({ className = '', logo, links = [], ...rest }) {
             <div className='flex-auto' />
             <div className='flex items-center space-x-8'>
                 <div className='hidden space-x-8 items-center md:flex'>
-                    {links.map((x, i) => (
-                        <span key={i}>{x}</span>
-                    ))}
+                    {Array.isArray(links)
+                        ? links.map((x, i) => <span key={i}>{x}</span>)
+                        : links}
                 </div>
             </div>
         </div>
@@ -40,6 +45,7 @@ import harmoniesPlugin from 'colord/plugins/harmonies'
 import mixPlugin from 'colord/plugins/mix'
 import { Button, Link } from './landing'
 import { ArrowLeftIcon, ChevronLeftIcon } from '@heroicons/react/solid'
+import { ReactNode } from 'react'
 
 extend([mixPlugin, harmoniesPlugin])
 

@@ -4,7 +4,7 @@ import { FormState } from 'react-hook-form'
 import { Button, ButtonProps } from '../landing'
 
 export interface SaveButtonProps extends ButtonProps {
-    formState?: FormState<any>
+    formState?: { isDirty: boolean; isSubmitting: boolean }
 }
 
 export const SaveButton = forwardRef<any, SaveButtonProps>(
