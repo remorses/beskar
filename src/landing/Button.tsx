@@ -79,7 +79,7 @@ export const Button: FC<ButtonProps> = forwardRef<ButtonProps, any>(
             <As
                 ref={ref}
                 className={clsx(
-                    'px-[0.8em] !border-0 py-[0.4em] flex appearance-none gap-2 items-center',
+                    'px-[0.8em] !border-0 py-[0.5em] flex appearance-none gap-2 items-center',
                     'justify-center font-medium tracking-wide rounded-md',
                     'cursor-pointer colorAndBg active:opacity-50 transition-colors',
                     biggerOnHover && !disabled && 'biggerOnHover',
