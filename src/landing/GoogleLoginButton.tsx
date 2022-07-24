@@ -10,12 +10,13 @@ export function GoogleLoginButton({
     text = 'Continue with Google',
     showEmailSignIn = false,
     disabled = false,
+    textColor = 'white',
     ...rest
 }) {
     const { data: session } = useSession()
     const [isLoading, setIsLoading] = useState(false)
     return (
-        <div className={clsx('flex flex-col', className)}>
+        <div className={clsx('flex flex-col')}>
             <div className=''>
                 <Button
                     bg='blue.500'
@@ -23,8 +24,8 @@ export function GoogleLoginButton({
                     biggerOnHover
                     className={clsx(
                         '!px-5 text-white w-full',
-
                         !disabled && 'hover:bg-blue-300',
+                        className,
                     )}
                     style={{ minWidth: text.length + 2 + 'ch' }}
                     disabled={disabled}
@@ -53,18 +54,17 @@ export function GoogleLoginButton({
                 >
                     <div
                         className={clsx(
-                            'tracking-wide text-white space-x-2 justify-center items-center font-bold',
+                            'tracking-wide space-x-2 justify-center items-center font-bold',
                             'flex-row flex',
                         )}
+                        style={{ color: textColor }}
                     >
                         {disabled ? (
                             <div className=''>Logged in</div>
                         ) : (
                             <>
                                 <GoogleIcon className='block w-5 h-5 fill-current' />
-                                <div className='text-white truncate'>
-                                    {text}
-                                </div>
+                                <div className='truncate'>{text}</div>
                             </>
                         )}
                     </div>

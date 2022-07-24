@@ -23,7 +23,6 @@ export type ButtonProps = ComponentPropsWithoutRef<'button'> & {
     isLoading?: boolean
     ghost?: boolean
     biggerOnHover?: boolean
-    
 }
 
 function getColors(color: ColorGetter, opacity = 1) {
@@ -37,7 +36,10 @@ function getColors(color: ColorGetter, opacity = 1) {
     }
     const bg = getColor(color as any) || color
     const bgd = colord(bg).alpha(opacity)
-    const text = opacity < 1 ? 'currentColor' : bgd.isDark() ? 'white' : 'black'
+    const text =
+        // TODO why i use currentColor if opacity is not 1?
+        opacity < 0.8 ? 'currentColor' : bgd.isDark() ? 'white' : 'black'
+    // const text = 'currentColor'
     const highlight = bgd.alpha(0.2).toRgbString()
     // console.log({ text, highlight, bg })
     return { text, highlight, bg: bgd.toRgbString() }
