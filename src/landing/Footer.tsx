@@ -12,7 +12,7 @@ export function Footer({
     className = '',
     columns = {},
     justifyAround = false,
-    businessName = 'Notaku',
+    businessName = '',
     ...rest
 }: FooterProps) {
     return (
