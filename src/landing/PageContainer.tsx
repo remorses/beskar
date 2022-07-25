@@ -16,7 +16,7 @@ export function PageContainer({
 }) {
     return (
         <div
-            style={{ contain: 'paint' }}
+            style={{ contain: dontContain ? 'initial' : 'paint' }}
             className={classNames(
                 'w-full max-w-full relative flex flex-col items-center ',
             )}
@@ -41,8 +41,6 @@ export function PageContainer({
                     // margin: '0 auto',
                     position: floatingElement ? 'relative' : 'static',
                     maxWidth: 'var(--max-width, 1100px)',
-                    contain:
-                        floatingElement || dontContain ? 'initial' : 'paint',
                     ...style,
                 }}
                 {...rest}

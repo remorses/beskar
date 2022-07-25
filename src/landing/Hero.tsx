@@ -30,7 +30,7 @@ export function Hero({
     //     console.log('Hero render')
     // })
     return (
-        <PageContainer dontContain {...rest}>
+        <PageContainer {...rest}>
             <div
                 className={clsx(
                     'flex items-center max-w-full flex-col',

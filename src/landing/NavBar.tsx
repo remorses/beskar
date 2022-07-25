@@ -24,7 +24,11 @@ export const NavBar = ({
         height: 32,
     }
     return (
-        <PageContainer style={{ contain: 'initial', ...style }} {...rest}>
+        <PageContainer
+            dontContain
+            // style={{ contain: 'initial', ...style }}
+            {...rest}
+        >
             <div className={clsx('flex w-full py-4', className)}>
                 <div className='self-start'>{logo}</div>
                 <div className='flex-1' />
