@@ -38,7 +38,7 @@ export const Link = forwardRef<any, LinkProps>(
                     href={href || ''}
                     className={clsx(
                         'appearance-none max-w-max relative',
-                        'font-medium !border-white/0 truncate cursor-pointer',
+                        'font-medium !border-white/0 cursor-pointer',
                         iconBefore && 'whitespace-nowrap',
                         underline
                             ? `underline`

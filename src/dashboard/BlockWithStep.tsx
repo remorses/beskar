@@ -9,7 +9,7 @@ export function BlockWithStep({
     return (
         <div
             className={classNames(
-                'relative flex flex-col max-w-xl p-10 w-full items-stretch space-y-4',
+                'relative flex flex-col max-w-xl py-8 px-10 w-full items-stretch space-y-4',
                 // isActive ? '' : 'opacity-50',
                 className,
             )}
@@ -25,7 +25,7 @@ export function BlockWithStep({
                 className={classNames(
                     'border rounded-full p-4 w-4 h-4 flex flex-col items-center',
                     'justify-center font-medium shadow-lg -left-4',
-                    'top-10 bg-white dark:bg-gray-700 absolute border',
+                    'top-8 bg-white dark:bg-gray-700 absolute border',
                 )}
             >
                 {step}
