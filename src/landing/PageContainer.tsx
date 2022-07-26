@@ -34,13 +34,14 @@ export function PageContainer({
             )}
             <div
                 className={classNames(
-                    'flex px-3 md:px-6 flex-col w-full min-w-0 h-auto items-stretch',
+                    // TODO i am using px to add margin to all landing blocks and disable in lg because in lg it's impossible for blocks to touch page margins, is it ok?
+                    'flex px-3 md:px-6 lg:px-0 flex-col w-full min-w-0 h-auto items-stretch',
                     className,
                 )}
                 style={{
                     // margin: '0 auto',
                     position: floatingElement ? 'relative' : 'static',
-                    maxWidth: 'var(--max-width, 1100px)',
+                    maxWidth: 'var(--page-max-width, 1200px)',
                     ...style,
                 }}
                 {...rest}

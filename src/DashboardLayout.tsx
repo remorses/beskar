@@ -39,7 +39,7 @@ export function DashboardLayout({
         <ChakraStuff>
             <div className='flex flex-col items-center w-full min-h-screen'>
                 <div className='flex  flex-col items-center w-full overflow-visible border-b border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800/60'>
-                    <div className='w-full  px-[var(--pagePadding)] max-w-[var(--pageWidth)]'>
+                    <div className='w-full  px-[var(--pagePadding)] max-w-[var(--page-max-width)]'>
                         {header}
                         <TabsNav pageProps={pageProps} Tabs={Tabs} />
                     </div>
@@ -52,7 +52,7 @@ export function DashboardLayout({
                     )}
                     style={{
                         ...style,
-                        maxWidth: fullWidth ? '100%' : 'var(--pageWidth)',
+                        maxWidth: fullWidth ? '100%' : 'var(--page-max-width)',
                         contain: 'paint',
                     }} // prevents overflow x scrolling and has faster rendering
                     {...rest}
