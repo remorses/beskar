@@ -217,7 +217,7 @@ export function PricingSlider({
         ? subscription?.productId === currentRange?.productId
             ? 'Current plan'
             : 'Change Plan'
-        : 'Start free trial'
+        : 'Upgrade'
     const disabled =
         subscription?.productId === currentRange?.productId ||
         isLoading ||
@@ -316,7 +316,10 @@ export function PricingSlider({
                     </Button>
                 </div>
                 {subscription && manageSubscriptionHref && (
-                    <Link className='mx-auto !mb-0' href={manageSubscriptionHref}>
+                    <Link
+                        className='mx-auto !mb-0'
+                        href={manageSubscriptionHref}
+                    >
                         Manage subscription
                     </Link>
                 )}

@@ -49,7 +49,7 @@ export function Select<T>({
     return (
         <>
             <Listbox value={orgId} onChange={onChange}>
-                <div className={classNames('relative mt-1', className)}>
+                <div className={classNames('relative', className)}>
                     <Listbox.Button
                         as='button'
                         className='relative w-full py-[8px] pl-3 pr-10 text-left bg-white rounded-lg shadow-sm border dark:bg-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-gray-300 focus-visible:ring-offset-2  sm:text-sm'
