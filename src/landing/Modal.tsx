@@ -84,7 +84,7 @@ export function Modal({
                         className={clsx(
                             'w-auto text-gray-700 space-y-8 py-4 px-8 min-w-0',
                             'justify-center items-stretch flex-col flex bg-white',
-                            'dark:text-gray-100 dark:bg-gray-700',
+                            'dark:text-gray-100 dark:bg-gray-800',
                         )}
                     >
                         {content}
