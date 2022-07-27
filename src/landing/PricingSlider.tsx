@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 import NProgress from 'nprogress'
 import React, {
     ComponentPropsWithoutRef,
+    ReactNode,
     useEffect,
     useMemo,
     useState,
@@ -26,6 +27,7 @@ export type Product = {
     billing_type: string // 'month' | 'year'
     productId: string
     prices: Price[]
+    limits: Record<string, ReactNode>
 }
 
 export type Price = {
@@ -120,6 +122,7 @@ export function PricingSlider({
 
             return {
                 price: price.unitAmount,
+                limits: product.limits,
             }
         })
         .filter(Boolean)
@@ -155,14 +158,24 @@ export function PricingSlider({
                     triggerOnce: true,
                 })}
                 className={classNames(
-                    'border bg-white shadow-xl dark:bg-gray-700 p-12 rounded gap-6 flex flex-col w-full',
+                    'border bg-white shadow-xl dark:bg-gray-800 p-12 rounded gap-6 flex flex-col w-full',
                 )}
             >
                 {isLoading && <Spinner />}
                 <div className='flex gap-4 font-medium'>
-                    <div className='space-y-1'>
-                        <div className='opacity-80'>MONTHLY PAGEVIEWS</div>
-                        <div className='font-semibold text-3xl'>10M</div>
+                    <div className='flex items-start gap-8'>
+                        {Object.keys(currentRange?.limits || {}).map((k, i) => {
+                            return (
+                                <div key={k + i} className='space-y-1'>
+                                    <div className='opacity-80 uppercase'>
+                                        {k}
+                                    </div>
+                                    <div className='font-semibold text-3xl'>
+                                        {currentRange?.limits[k]}
+                                    </div>
+                                </div>
+                            )
+                        })}
                     </div>
                     <div className='grow'></div>
                     <div className='space-y-1'>
@@ -263,7 +276,7 @@ function BillingIntervalSelect({ billingInterval, setBillingInterval }) {
     )
 }
 
-export function RangeSlider({ min, max, bg = '#1e1e1e', step, ...rest }) {
+export function RangeSlider({ min, max, bg = '#388bd2', step, ...rest }) {
     return (
         <div>
             {/* <label
@@ -277,7 +290,7 @@ export function RangeSlider({ min, max, bg = '#1e1e1e', step, ...rest }) {
                 min={min}
                 max={max}
                 step={step}
-                className='range '
+                className='range px-3'
                 {...rest}
             />
             <style jsx>
@@ -285,7 +298,8 @@ export function RangeSlider({ min, max, bg = '#1e1e1e', step, ...rest }) {
                     input[type='range'] {
                         -moz-appearance: none;
                         -webkit-appearance: none;
-                        background: #eef1f6;
+                        background: #eef1f64d;
+
                         border-radius: 3px;
                         height: 6px;
                         width: 100%;
@@ -297,7 +311,7 @@ export function RangeSlider({ min, max, bg = '#1e1e1e', step, ...rest }) {
                     input[type='range']::-webkit-slider-thumb {
                         appearance: none;
                         // TODO
-                        border: 1px solid theme('colors.gray.100');
+                        box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
                         -webkit-appearance: none;
                         background-color: ${bg};
                         background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2212%22%20height%3D%228%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M8%20.5v7L12%204zM0%204l4%203.5v-7z%22%20fill%3D%22%23FFFFFF%22%20fill-rule%3D%22nonzero%22%2F%3E%3C%2Fsvg%3E');
