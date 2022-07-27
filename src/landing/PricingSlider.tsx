@@ -2,7 +2,7 @@ import { Spinner } from './Spinner'
 import { CheckCircleIcon, CheckIcon } from '@heroicons/react/solid'
 import { Faded } from 'baby-i-am-faded'
 import classNames from 'classnames'
-import { useSession } from 'next-auth/react'
+import { signIn, useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import NProgress from 'nprogress'
 import React, {
@@ -17,6 +17,7 @@ import toast from 'react-hot-toast'
 import { Link } from './Link'
 import { useThrowingFn } from '../utils'
 import { PageContainer } from './PageContainer'
+import { Button } from './Button'
 
 export type Subscription = {
     paddleSubscriptionId: string
@@ -45,6 +46,7 @@ export type PricingSliderProps = {
     animate?: boolean
     pricesCurrency?: string
     manageSubscriptionHref: string
+    buttonText?: ReactNode
     allowYearlyBilling?: boolean
     onCheckout?: (x: { isChangePlan; userId?: string }) => any
 } & ComponentPropsWithoutRef<'div'>
@@ -57,13 +59,16 @@ export function PricingSlider({
     className = '',
     isLoading = false,
     onCheckout,
-    promptLogin = () => {},
+    promptLogin = () => {
+        signIn()
+    },
     updatePlan,
     getSubscription,
     features,
     manageSubscriptionHref,
     pricesCurrency = 'USD',
     allowYearlyBilling = true,
+    buttonText = 'Start free trial',
     ...rest
 }: PricingSliderProps) {
     const [subscription, setSubscription] = useState<Subscription>()
@@ -77,6 +82,12 @@ export function PricingSlider({
             }
         })
     }
+
+    const { fn: changePlan, isLoading: isLoadingChangePlan } = useThrowingFn({
+        fn: updatePlan,
+        errorMessage: 'Failed to update plan',
+        successMessage: 'Updated plan!',
+    })
 
     const [billingInterval, setBillingInterval] = useState<string>('month')
 
@@ -123,6 +134,7 @@ export function PricingSlider({
             return {
                 price: price.unitAmount,
                 limits: product.limits,
+                productId: product.productId,
             }
         })
         .filter(Boolean)
@@ -141,6 +153,66 @@ export function PricingSlider({
         const p = currentRange?.price / 100
         return p
     })()
+
+    const handlePricingClick = async () => {
+        const planId = currentRange?.productId
+        if (!planId) {
+            return
+        }
+        if (status !== 'authenticated' && promptLogin) {
+            return promptLogin()
+        }
+
+        if (!session?.user?.id) {
+            throw new Error('User ID is missing')
+        }
+
+        try {
+            if (subscription) {
+                // clear subscription cache
+                // getSubscriptionMemoized.cache.keys.length = 0
+                // getSubscriptionMemoized.cache.values.length = 0
+                if (
+                    !confirm(
+                        'Changing plan will remove any existing coupons, continue?',
+                    )
+                ) {
+                    return
+                }
+
+                await changePlan({
+                    subscriptionId: subscription.paddleSubscriptionId,
+                    planId: planId,
+                })
+                await new Promise((resolve) => setTimeout(resolve, 100))
+                await refetchSubscription()
+                return
+            } else {
+                NProgress.start()
+                Paddle.Checkout.open({
+                    product: planId,
+                    email: session.user.email,
+                    passthrough: JSON.stringify({
+                        userId: session?.user?.id,
+                        email: session?.user?.email,
+                    }),
+                    successCallback: () => {
+                        toast.success('Created plan', {
+                            position: 'top-center',
+                        })
+                        refetchSubscription()
+                    },
+                })
+            }
+        } finally {
+            if (onCheckout) {
+                onCheckout({
+                    isChangePlan: Boolean(subscription),
+                    userId: session?.user?.id,
+                })
+            }
+        }
+    }
     // console.log(ranges)
     return (
         <PageContainer
@@ -219,6 +291,19 @@ export function PricingSlider({
                             </div>
                         )
                     })}
+                </div>
+                <div className='flex mt-8 justify-center'>
+                    {/* <div className='grow'></div> */}
+                    <Button
+                        onClick={handlePricingClick}
+                        // bg='blue.500'
+                        // bgDark='blue.200'
+                        isLoading={isLoadingChangePlan}
+                        biggerOnHover
+                        className='font-bold !px-4'
+                    >
+                        {buttonText}
+                    </Button>
                 </div>
                 {subscription && manageSubscriptionHref && (
                     <FadedComponent className='text-center mt-10'>
