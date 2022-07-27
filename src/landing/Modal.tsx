@@ -1,7 +1,7 @@
 import { Dialog } from '@headlessui/react'
 import { Faded } from 'baby-i-am-faded'
 import clsx from 'clsx'
-import { ComponentPropsWithoutRef, SVGProps } from 'react'
+import { ComponentPropsWithoutRef, CSSProperties, SVGProps } from 'react'
 
 Faded.defaultProps = {
     cascadeIncrement: 80,
@@ -16,6 +16,8 @@ export function Modal({
     content,
     useDefaultContentStyle = false,
     initialFocus = null as any,
+    maxWidth = 'calc(100vw - 100px)',
+    style = {} as CSSProperties,
     ...rest
 }) {
     return (
@@ -67,9 +69,13 @@ export function Modal({
                 as={Faded}
                 cascade
                 animationName='zoomIn'
+                style={{
+                    ...style,
+                    maxWidth: `min(${maxWidth}, 100vw - 100px)`,
+                }}
                 className={clsx(
                     'top-8 shadow rounded-lg relative overflow-hidden',
-                    'mx-auto min-w-max isolate bg-transparent lg:top-14',
+                    'mx-auto min-w-0 isolate bg-transparent lg:top-14 ',
                     className,
                 )}
             >
@@ -78,7 +84,7 @@ export function Modal({
                         className={clsx(
                             'w-auto text-gray-700 space-y-8 py-4 px-8 min-w-0',
                             'justify-center items-stretch flex-col flex bg-white',
-                            'dark:text-gray-100 dark:bg-gray-800',
+                            'dark:text-gray-100 dark:bg-gray-700',
                         )}
                     >
                         {content}
@@ -98,8 +104,8 @@ export function CloseButton({
     return (
         <button
             className={clsx(
-                'top-4 rounded right-4 opacity-50 appearance-none',
-                'absolute',
+                'top-4 rounded right-4 appearance-none text-gray-600 dark:text-gray-400',
+                'absolute p-1 dark:bg-gray-700 bg-white',
                 className,
             )}
             type='button'
