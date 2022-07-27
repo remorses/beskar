@@ -74,8 +74,9 @@ export function Modal({
                     maxWidth: `min(${maxWidth}, 100vw - 100px)`,
                 }}
                 className={clsx(
-                    'top-8 shadow rounded-lg relative overflow-hidden',
-                    'mx-auto min-w-0 isolate bg-transparent lg:top-14 space-y-6',
+                    'top-8 space-y-6 shadow-xl shadow rounded-lg ring-gray-100',
+                    'ring-1 relative overflow-hidden mx-auto min-w-0',
+                    'isolate bg-transparent lg:top-14 dark:ring-gray-700',
                     className,
                 )}
             >
@@ -104,8 +105,9 @@ export function CloseButton({
     return (
         <button
             className={clsx(
-                'top-4 rounded right-4 appearance-none text-gray-600 dark:text-gray-400',
-                'absolute p-1 dark:bg-gray-700/50 bg-white/50 backdrop-blur',
+                'top-4 text-gray-600 rounded right-4 p-1 bg-white/50',
+                'backdrop-blur appearance-none absolute dark:text-gray-400',
+                'dark:bg-gray-700/50',
                 className,
             )}
             type='button'
