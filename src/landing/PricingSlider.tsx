@@ -68,7 +68,7 @@ export function PricingSlider({
     manageSubscriptionHref,
     pricesCurrency = 'USD',
     allowYearlyBilling = true,
-    buttonText = 'Start free trial',
+
     ...rest
 }: PricingSliderProps) {
     const [subscription, setSubscription] = useState<Subscription>()
@@ -213,7 +213,16 @@ export function PricingSlider({
             }
         }
     }
-    // console.log(ranges)
+    const buttonText = subscription
+        ? subscription?.productId === currentRange?.productId
+            ? 'Current plan'
+            : 'Change Plan'
+        : 'Start free trial'
+    const disabled =
+        subscription?.productId === currentRange?.productId ||
+        isLoading ||
+        isLoadingChangePlan
+    console.log({ currentRange })
     return (
         <PageContainer
             id='pricing'
@@ -230,11 +239,11 @@ export function PricingSlider({
                     triggerOnce: true,
                 })}
                 className={classNames(
-                    'border bg-white shadow-xl dark:bg-gray-800 p-12 rounded gap-6 flex flex-col w-full',
+                    ' bg-white shadow-xl dark:bg-gray-800 p-12 rounded gap-6 flex flex-col w-full',
                 )}
             >
-                {isLoading && <Spinner />}
                 <div className='flex gap-4 font-medium'>
+                    {isLoading && <Spinner />}
                     <div className='flex items-start gap-8'>
                         {Object.keys(currentRange?.limits || {}).map((k, i) => {
                             return (
@@ -292,10 +301,11 @@ export function PricingSlider({
                         )
                     })}
                 </div>
-                <div className='flex mt-8 justify-center'>
+                <div className='flex mt-4 justify-center'>
                     {/* <div className='grow'></div> */}
                     <Button
                         onClick={handlePricingClick}
+                        disabled={disabled}
                         // bg='blue.500'
                         // bgDark='blue.200'
                         isLoading={isLoadingChangePlan}
@@ -306,11 +316,9 @@ export function PricingSlider({
                     </Button>
                 </div>
                 {subscription && manageSubscriptionHref && (
-                    <FadedComponent className='text-center mt-10'>
-                        <Link href={manageSubscriptionHref}>
-                            Manage subscription
-                        </Link>
-                    </FadedComponent>
+                    <Link className='mx-auto !mb-0' href={manageSubscriptionHref}>
+                        Manage subscription
+                    </Link>
                 )}
             </FadedComponent>
         </PageContainer>
@@ -383,7 +391,7 @@ export function RangeSlider({ min, max, bg = '#388bd2', step, ...rest }) {
                     input[type='range'] {
                         -moz-appearance: none;
                         -webkit-appearance: none;
-                        background: #eef1f64d;
+                        background: rgba(0, 0, 0, 0.1);
 
                         border-radius: 3px;
                         height: 6px;
@@ -393,10 +401,14 @@ export function RangeSlider({ min, max, bg = '#388bd2', step, ...rest }) {
                         outline: 0;
                     }
 
+                    :global(.dark) input[type='range'] {
+                        background: rgba(255, 255, 255, 0.1);
+                    }
+
                     input[type='range']::-webkit-slider-thumb {
                         appearance: none;
                         // TODO
-                        box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+                        box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
                         -webkit-appearance: none;
                         background-color: ${bg};
                         background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2212%22%20height%3D%228%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M8%20.5v7L12%204zM0%204l4%203.5v-7z%22%20fill%3D%22%23FFFFFF%22%20fill-rule%3D%22nonzero%22%2F%3E%3C%2Fsvg%3E');
