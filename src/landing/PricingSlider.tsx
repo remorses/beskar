@@ -230,7 +230,6 @@ export function PricingSlider({
         return 'Upgrade'
     })()
     const disabled =
-        !session ||
         subscription?.productId === currentRange?.productId ||
         isLoading ||
         isLoadingChangePlan
