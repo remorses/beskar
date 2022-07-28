@@ -57,11 +57,15 @@ export const Faq = ({
     items: FaqItem[]
     className?: string
 }) => (
-    <Accordion className={className}>
-        {items.map((item, i) => {
-            return <AccordionItem {...item} key={`item-${i}`}></AccordionItem>
-        })}
-    </Accordion>
+    <PageContainer>
+        <Accordion className={className}>
+            {items.map((item, i) => {
+                return (
+                    <AccordionItem {...item} key={`item-${i}`}></AccordionItem>
+                )
+            })}
+        </Accordion>
+    </PageContainer>
 )
 
 function MaterialSymbolsKeyboardArrowDownRounded(
