@@ -227,7 +227,7 @@ export function PricingSlider({
         subscription?.productId === currentRange?.productId ||
         isLoading ||
         isLoadingChangePlan
-    console.log({ currentRange })
+    // console.log({ currentRange })
     return (
         <PageContainer
             id='pricing'
