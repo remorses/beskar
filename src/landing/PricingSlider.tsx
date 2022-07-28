@@ -275,7 +275,10 @@ export function PricingSlider({
                         <div className='opacity-80 text-right'>PRICE</div>
                         <div className='font-semibold text-3xl truncate'>
                             {'$'}
-                            {price} <span className='opacity-70 font-medium'>{' / mo'}</span>
+                            {price}{' '}
+                            <span className='opacity-70 font-medium'>
+                                {' / mo'}
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -306,9 +309,14 @@ export function PricingSlider({
                 <div className='grid grid-cols-3 gap-y-8 gap-x-8'>
                     {features.map((feature, i) => {
                         return (
-                            <div key={i} className='flex gap-2 items-center'>
+                            <div
+                                key={i}
+                                className='flex gap-2 justify-center  items-center'
+                            >
+                                {i % 3 === 2 && <div className='grow' />}
                                 <CheckCircleIcon className='h-5 dark:fill-green-300 fill-green-500' />
                                 <div className=''>{feature}</div>
+                                {i % 3 === 0 && <div className='grow' />}
                             </div>
                         )
                     })}
