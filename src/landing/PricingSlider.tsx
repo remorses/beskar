@@ -217,11 +217,18 @@ export function PricingSlider({
             }
         }
     }
-    const buttonText = subscription
-        ? subscription?.productId === currentRange?.productId
-            ? 'Current plan'
-            : 'Change Plan'
-        : 'Upgrade'
+    const buttonText = (() => {
+        if (subscription?.productId === currentRange?.productId) {
+            return 'Current plan'
+        }
+        if (subscription) {
+            return 'Change plan'
+        }
+        if (!subscription) {
+            return 'Start free trial'
+        }
+        return 'Upgrade'
+    })()
     const disabled =
         !session ||
         subscription?.productId === currentRange?.productId ||
