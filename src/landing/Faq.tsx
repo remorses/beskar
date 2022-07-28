@@ -39,7 +39,7 @@ function AccordionItem({ heading, content }) {
                 </button>
             </div>
             <div className={classNames('block', isOpen ? '' : 'hidden')}>
-                <p className={classNames('block')}>{content}</p>
+                <p className={classNames('block leading-relaxed')}>{content}</p>
             </div>
         </li>
     )

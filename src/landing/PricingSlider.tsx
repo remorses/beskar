@@ -48,6 +48,7 @@ export type PricingSliderProps = {
     manageSubscriptionHref: string
     buttonText?: ReactNode
     allowYearlyBilling?: boolean
+    trialDays?: number
     onCheckout?: (x: { isChangePlan; userId?: string }) => any
 } & ComponentPropsWithoutRef<'div'>
 
@@ -59,6 +60,7 @@ export function PricingSlider({
     className = '',
     isLoading = false,
     onCheckout,
+    trialDays,
     promptLogin = () => {
         signIn()
     },
@@ -242,17 +244,27 @@ export function PricingSlider({
                     ' bg-white shadow-xl dark:bg-gray-800 p-12 rounded gap-6 flex flex-col w-full',
                 )}
             >
-                <div className='flex gap-4 font-medium'>
+                <div className='flex flex-wrap gap-4 font-medium'>
                     {isLoading && <Spinner />}
                     <div className='flex items-start gap-8'>
                         {Object.keys(currentRange?.limits || {}).map((k, i) => {
+                            let limit = currentRange?.limits[k]
+                            if (typeof limit === 'number') {
+                                limit = formatBigNumber(limit)
+                            }
+                            if (limit === false) {
+                                return null
+                            }
+                            if (limit === true) {
+                                limit = ''
+                            }
                             return (
                                 <div key={k + i} className='space-y-1'>
-                                    <div className='opacity-80 uppercase'>
+                                    <div className='opacity-80 truncate uppercase'>
                                         {k}
                                     </div>
                                     <div className='font-semibold text-3xl'>
-                                        {currentRange?.limits[k]}
+                                        {limit}
                                     </div>
                                 </div>
                             )
@@ -261,9 +273,9 @@ export function PricingSlider({
                     <div className='grow'></div>
                     <div className='space-y-1'>
                         <div className='opacity-80 text-right'>PRICE</div>
-                        <div className='font-semibold text-3xl'>
+                        <div className='font-semibold text-3xl truncate'>
                             {'$'}
-                            {price} {' / mo'}
+                            {price} <span className='opacity-70 font-medium'>{' / mo'}</span>
                         </div>
                     </div>
                 </div>
@@ -303,17 +315,24 @@ export function PricingSlider({
                 </div>
                 <div className='flex mt-4 justify-center'>
                     {/* <div className='grow'></div> */}
-                    <Button
-                        onClick={handlePricingClick}
-                        disabled={disabled}
-                        // bg='blue.500'
-                        // bgDark='blue.200'
-                        isLoading={isLoadingChangePlan}
-                        biggerOnHover
-                        className='font-bold !px-4'
-                    >
-                        {buttonText}
-                    </Button>
+                    <div className='space-y-2'>
+                        <Button
+                            onClick={handlePricingClick}
+                            disabled={disabled}
+                            // bg='blue.500'
+                            // bgDark='blue.200'
+                            isLoading={isLoadingChangePlan}
+                            biggerOnHover
+                            className='font-bold !px-6'
+                        >
+                            {buttonText}
+                        </Button>
+                        {trialDays && !subscription && (
+                            <div className='opacity-70 text-center font-medium text-xs'>
+                                {trialDays} days free trial
+                            </div>
+                        )}
+                    </div>
                 </div>
                 {subscription && manageSubscriptionHref && (
                     <Link
@@ -455,4 +474,14 @@ export function RangeSlider({ min, max, bg = '#388bd2', step, ...rest }) {
             </style>
         </div>
     )
+}
+
+import '@formatjs/intl-numberformat/polyfill'
+import '@formatjs/intl-numberformat/locale-data/en'
+function formatBigNumber(n: number) {
+    const formatter = new Intl.NumberFormat('en-US', {
+        compactDisplay: 'short',
+        notation: 'compact',
+    })
+    return formatter.format(n)
 }
