@@ -49,6 +49,7 @@ export type PricingSliderProps = {
     buttonText?: ReactNode
     allowYearlyBilling?: boolean
     trialDays?: number
+    passthrough?: any
     onCheckout?: (x: { isChangePlan; userId?: string }) => any
 } & ComponentPropsWithoutRef<'div'>
 
@@ -70,7 +71,7 @@ export function PricingSlider({
     manageSubscriptionHref,
     pricesCurrency = 'USD',
     allowYearlyBilling = true,
-
+    passthrough = {},
     ...rest
 }: PricingSliderProps) {
     const [subscription, setSubscription] = useState<Subscription>()
@@ -197,6 +198,7 @@ export function PricingSlider({
                     passthrough: JSON.stringify({
                         userId: session?.user?.id,
                         email: session?.user?.email,
+                        ...passthrough,
                     }),
                     successCallback: () => {
                         toast.success('Created plan', {
@@ -335,7 +337,7 @@ export function PricingSlider({
                         >
                             {buttonText}
                         </Button>
-                        {trialDays && !subscription && (
+                        {Boolean(trialDays) && !subscription && (
                             <div className='opacity-70 text-center font-medium text-xs'>
                                 {trialDays} days free trial
                             </div>
