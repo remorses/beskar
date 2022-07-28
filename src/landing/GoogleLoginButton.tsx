@@ -42,7 +42,6 @@ export function GoogleLoginButton({
                                         callbackUrl,
                                         window.location.href,
                                     ).toString(),
-                                    redirect: true,
                                 },
                                 { prompt: 'select_account' },
                             )

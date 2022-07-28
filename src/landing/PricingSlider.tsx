@@ -223,6 +223,7 @@ export function PricingSlider({
             : 'Change Plan'
         : 'Upgrade'
     const disabled =
+        !session ||
         subscription?.productId === currentRange?.productId ||
         isLoading ||
         isLoadingChangePlan
@@ -327,6 +328,7 @@ export function PricingSlider({
                     {/* <div className='grow'></div> */}
                     <div className='space-y-2'>
                         <Button
+                            aria-label='buy'
                             onClick={handlePricingClick}
                             disabled={disabled}
                             // bg='blue.500'
