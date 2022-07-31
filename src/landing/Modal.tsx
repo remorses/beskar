@@ -50,7 +50,7 @@ export function Modal({
                 @keyframes zoomIn {
                     from {
                         opacity: 0;
-                        transform: scale3d(0.3, 0.3, 0.3);
+                        transform: scale(0.98);
                     }
                     to {
                         opacity: 1;
