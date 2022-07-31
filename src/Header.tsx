@@ -55,7 +55,7 @@ extend([mixPlugin, harmoniesPlugin])
 
 const colorHash = new ColorHash({ lightness: 0.6 })
 
-export function AvatarButton({ className, name }) {
+export function AvatarButton({ className, as: As = 'button' as any, name }) {
     const background = (() => {
         if (!name) {
             return '#aaa'
@@ -68,14 +68,14 @@ export function AvatarButton({ className, name }) {
             .toHex()}, ${second.desaturate(0.4).toHex()})`
     })()
     return (
-        <button
+        <As
             role={'button'}
             aria-label='avatar button'
             style={{ background }}
             className={'rounded-full w-12 h-12 active:opacity-40' + className}
         >
             <ProfileSvg className='opacity-80' />
-        </button>
+        </As>
     )
 }
 
