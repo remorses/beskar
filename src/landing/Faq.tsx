@@ -12,7 +12,7 @@ export function Accordion({ children, className, ...rest }) {
             )}
             {...rest}
         >
-            <div className='container'>
+            <div className=''>
                 <div className='has-mw-4xl mx-auto'>
                     <ul className='space-y-6'>{children}</ul>
                 </div>
