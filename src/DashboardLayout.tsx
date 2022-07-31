@@ -10,6 +10,7 @@ import { Link } from './landing/Link'
 import { useSession } from 'next-auth/react'
 import { TabsNav } from './Tabs'
 import { ChakraStuff } from './chakra'
+import { maxWidthWithPx } from './utils'
 
 export default DashboardLayout
 
@@ -38,21 +39,25 @@ export function DashboardLayout({
     return (
         <ChakraStuff>
             <div className='flex flex-col items-center w-full min-h-screen'>
-                <div className='flex  flex-col items-center w-full overflow-visible border-b border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800/60'>
-                    <div className='w-full  px-[var(--pagePadding)] max-w-[var(--page-max-width)]'>
+                <div className='flex flex-col items-center w-full overflow-visible border-b border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800/60'>
+                    <div
+                        style={{
+                            maxWidth: maxWidthWithPx(),
+                        }}
+                        className='w-full '
+                    >
                         {header}
                         <TabsNav pageProps={pageProps} Tabs={Tabs} />
                     </div>
                 </div>
                 <div
                     className={cs(
-                        'flex w-full flex-auto flex-col space-y-8 ',
-                        'px-[var(--pagePadding)]',
+                        'flex w-full flex-auto flex-col space-y-8',
                         className,
                     )}
                     style={{
                         ...style,
-                        maxWidth: fullWidth ? '100%' : 'var(--page-max-width)',
+                        maxWidth: fullWidth ? '100%' : maxWidthWithPx(),
                         contain: 'paint',
                     }} // prevents overflow x scrolling and has faster rendering
                     {...rest}

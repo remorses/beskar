@@ -9,7 +9,7 @@ export function BlockWithStep({
     return (
         <div
             className={classNames(
-                'relative flex flex-col max-w-xl py-8 px-10 w-full items-stretch space-y-4',
+                'relative flex flex-col max-w-xl py-8 px-8 w-full items-stretch space-y-4',
                 // isActive ? '' : 'opacity-50',
                 className,
             )}

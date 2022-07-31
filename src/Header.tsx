@@ -8,6 +8,7 @@ export function DashboardHeader({
     className = '',
     logo,
     links = [] as ReactNode,
+    menu,
     ...rest
 }) {
     const { data: session } = useSession()
@@ -28,11 +29,14 @@ export function DashboardHeader({
             </div>
 
             <div className='flex-auto' />
-            <div className='flex items-center space-x-8'>
-                <div className='hidden space-x-8 items-center md:flex'>
-                    {Array.isArray(links)
-                        ? links.map((x, i) => <span key={i}>{x}</span>)
-                        : links}
+            <div className='flex items-center '>
+                <div className='flex items-center md:space-x-8'>
+                    <div className='hidden space-x-8 items-center md:flex'>
+                        {Array.isArray(links)
+                            ? links.map((x, i) => <span key={i}>{x}</span>)
+                            : links}
+                    </div>
+                    {menu}
                 </div>
             </div>
         </div>
