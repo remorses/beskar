@@ -105,7 +105,7 @@ export function Pricing({
             )}
             {...rest}
         >
-            {/* TODO add your current subscription name if already subscribed */}
+            
             {/* <Box
                     position='absolute'
                     backgroundImage='/landing-page/illustration-section-07.svg'

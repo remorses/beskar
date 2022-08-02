@@ -37,7 +37,7 @@ function getColors(color: ColorGetter, opacity = 1) {
     const bg = getColor(color as any) || color
     const bgd = colord(bg).alpha(opacity)
     const text =
-        // TODO why i use currentColor if opacity is not 1?
+        
         opacity < 0.8 ? 'currentColor' : bgd.isDark() ? 'white' : 'black'
     // const text = 'currentColor'
     const highlight = bgd.alpha(0.2).toRgbString()

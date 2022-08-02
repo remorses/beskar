@@ -447,7 +447,6 @@ export function RangeSlider({ min, max, bg = '#388bd2', step, ...rest }) {
 
                     input[type='range']::-webkit-slider-thumb {
                         appearance: none;
-                        // TODO
                         box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
                         -webkit-appearance: none;
                         background-color: ${bg};
