@@ -105,7 +105,6 @@ export function Pricing({
             )}
             {...rest}
         >
-            
             {/* <Box
                     position='absolute'
                     backgroundImage='/landing-page/illustration-section-07.svg'
@@ -345,6 +344,9 @@ function SubscriptionPlan({
         }
         if (alreadyUsingThisPlan) {
             return 'Current plan'
+        }
+        if (!!product.trial_days) {
+            return 'Start free trial'
         }
         if (subscription) {
             if (price.unitAmount > Number(subscription.unit_price) * 100) {
