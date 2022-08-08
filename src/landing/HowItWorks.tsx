@@ -22,10 +22,11 @@ export function HowItWorks({
     subheading,
     steps,
     animate = undefined,
+    className = '',
     ...rest
 }: HowItWorksProps) {
     return (
-        <PageContainer {...rest}>
+        <PageContainer className={className} {...rest}>
             <div
                 className={clsx(
                     'space-y-8 w-full flex-auto text-center items-center',
@@ -43,7 +44,11 @@ export function HowItWorks({
                 </div>
             </div>
             {/* <Box mt='60px' /> */}
-            <div className='flex flex-col space-y-8 items-stretch flex-auto'>
+            <div
+                className={clsx(
+                    'flex flex-col space-y-8 items-stretch flex-auto',
+                )}
+            >
                 {steps.map((step, i) => (
                     <Step
                         key={i}
@@ -77,7 +82,7 @@ const Step = ({
             )}
             {...rest}
         >
-            <div className='min-w-[300px] max-w-[50%] flex-auto space-y-12 '>
+            <div className='min-w-[300px] max-w-[50%] flex-auto space-y-8 '>
                 <div className='flex items-end opacity-40'>
                     <div className='opacity-70 text-7xl'>{number}</div>
                     <div className='truncate max-w-[300px] font-semibold '>
@@ -85,9 +90,11 @@ const Step = ({
                         {decorativeHeading ?? heading}
                     </div>
                 </div>
-                <div className='opacity-90 font-medium text-2xl'>{heading}</div>
+                <div className='opacity-90 font-medium leading-relaxed text-2xl'>
+                    {heading}
+                </div>
 
-                <div className='max-w-[400px] font-medium leading-relaxed opacity-50 '>
+                <div className='max-w-[90%] font-medium leading-relaxed opacity-50 '>
                     {subheading}
                 </div>
             </div>
