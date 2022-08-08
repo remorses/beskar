@@ -77,21 +77,21 @@ const Step = ({
             )}
             {...rest}
         >
-            <div className='min-w-[300px] max-w-[500px] flex-auto space-y-12 '>
+            <div className='min-w-[300px] max-w-[50%] flex-auto space-y-12 '>
                 <div className='flex items-end opacity-40'>
                     <div className='opacity-70 text-7xl'>{number}</div>
                     <div className='truncate max-w-[300px] font-semibold '>
                         <span className='mx-2' children={' . '} />
-                        {decorativeHeading || heading}
+                        {decorativeHeading ?? heading}
                     </div>
                 </div>
-                <div className='opacity-80 font-medium text-2xl'>{heading}</div>
+                <div className='opacity-90 font-medium text-2xl'>{heading}</div>
 
                 <div className='max-w-[400px] font-medium leading-relaxed opacity-50 '>
                     {subheading}
                 </div>
             </div>
-            <div className='min-w-[300px] max-w-[500px] flex-auto '>
+            <div className='min-w-[300px] shrink-0 max-w-[600px] flex-auto '>
                 {image}
             </div>
         </div>
