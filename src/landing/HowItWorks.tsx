@@ -14,6 +14,7 @@ export type StepProps = {
     decorativeHeading?: ReactNode
     subheading?: ReactNode
     image?: ReactNode
+    cta?: ReactNode
     animate?: any
 }
 
@@ -68,6 +69,7 @@ const Step = ({
     subheading,
     number,
     image,
+    cta,
     decorativeHeading,
     flip = false,
     animate = undefined,
@@ -97,6 +99,11 @@ const Step = ({
                 <div className='max-w-[90%] font-medium leading-relaxed opacity-50 '>
                     {subheading}
                 </div>
+                {cta && (
+                    <div className=''>
+                        {cta}
+                    </div>
+                )}
             </div>
             <div className='min-w-[300px] shrink-0 max-w-[600px] flex-auto '>
                 {image}
