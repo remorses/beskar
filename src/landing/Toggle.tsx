@@ -4,11 +4,13 @@ import { useDisclosure } from '../utils'
 type Props = {
     heading: ReactNode
     content: ReactNode
+    pl?: string
 } & ComponentPropsWithoutRef<'div'>
 
 export function ToggleButton({
     heading,
     content,
+    pl = '24px',
     className = '',
     ...rest
 }: Props) {
@@ -31,8 +33,8 @@ export function ToggleButton({
                 <div className=''>{heading}</div>
             </button>
             <div
-                style={{ display: isOpen ? 'block' : 'none' }}
-                className='whitespace-pre-wrap opacity-70 pl-6 leading-relaxed'
+                style={{ display: isOpen ? 'block' : 'none', paddingLeft: pl }}
+                className='whitespace-pre-wrap opacity-70 leading-relaxed'
             >
                 {content}
             </div>
