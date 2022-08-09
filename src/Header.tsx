@@ -15,7 +15,7 @@ export function DashboardHeader({
     return (
         <div
             className={clsx(
-                'z-10 relative w-full py-6 flex mx-auto space-x-8',
+                'z-10 relative w-full py-4 flex mx-auto space-x-4',
                 true ? 'items-end' : 'items-center',
                 className,
             )}
