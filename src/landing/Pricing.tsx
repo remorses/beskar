@@ -192,13 +192,15 @@ export function Pricing({
                             )
                         })}
             </FadedComponent>
-            {subscription && manageSubscriptionHref && (
-                <FadedComponent className='text-center mt-10'>
-                    <Link href={manageSubscriptionHref}>
-                        Manage subscription
-                    </Link>
-                </FadedComponent>
-            )}
+            <div className='h-[2em] mt-10'>
+                {subscription && manageSubscriptionHref && (
+                    <FadedComponent className='text-center '>
+                        <Link href={manageSubscriptionHref}>
+                            Manage subscription
+                        </Link>
+                    </FadedComponent>
+                )}
+            </div>
         </PageContainer>
     )
 }

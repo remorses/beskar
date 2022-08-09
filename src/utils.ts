@@ -65,9 +65,13 @@ export function useThrowingFn({
         try {
             setIsLoading(true)
             const result = await fnToWrap(...args)
+            if (result?.skipToast) {
+                return result
+            }
             if (successMessage) {
                 toast.success(successMessage)
             }
+
             return result
         } catch (err) {
             // how to handle unreadable errors? simply don't return them from APIs, just return something went wrong
