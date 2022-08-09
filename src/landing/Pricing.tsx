@@ -403,6 +403,7 @@ function SubscriptionPlan({
                                 ? promptLogin()
                                 : handlePricingClick(product.paddleId)
                         }}
+                        aria-label={`buy ${product.name}`}
                         disabled={alreadyUsingThisPlan}
                     >
                         {isLoading ? 'Loading...' : buyMessage}
