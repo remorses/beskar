@@ -31,9 +31,11 @@ export function Modal({
         >
             <Dialog.Overlay
                 as={Faded}
+                delay={800}
+                duration={300}
                 style={{
-                    transition:
-                        'background 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important',
+                    // transition:
+                    //     'background 1s cubic-bezier(0.4, 0, 0.2, 1) !important',
                     backdropFilter: 'saturate(180%) blur(12px)',
                     // @ts-ignore
                     '-webkit-backdrop-filter': 'saturate(180%) blur(12px)',
@@ -50,7 +52,7 @@ export function Modal({
                 @keyframes zoomIn {
                     from {
                         opacity: 0;
-                        transform: scale(0.98);
+                        transform: scale(0.96);
                     }
                     to {
                         opacity: 1;
@@ -65,7 +67,11 @@ export function Modal({
                     }
                 }
             `}</style>
-            <Faded animationName='zoomIn'>
+            <Faded
+                duration={220}
+                timingFunction='ease-in-out-quad'
+                animationName='zoomIn'
+            >
                 <Dialog.Panel
                     style={{
                         ...style,
