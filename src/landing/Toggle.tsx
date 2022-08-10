@@ -4,6 +4,7 @@ import { useDisclosure } from '../utils'
 type Props = {
     heading: ReactNode
     content: ReactNode
+    initialIsOpen?: boolean
     pl?: string
 } & ComponentPropsWithoutRef<'div'>
 
@@ -12,9 +13,10 @@ export function ToggleButton({
     content,
     pl = '24px',
     className = '',
+    initialIsOpen = false,
     ...rest
 }: Props) {
-    const { isOpen, toggle } = useDisclosure()
+    const { isOpen, toggle } = useDisclosure(initialIsOpen)
 
     return (
         <div className={className} {...rest}>
@@ -36,7 +38,7 @@ export function ToggleButton({
             </button>
             <div
                 style={{ display: isOpen ? 'block' : 'none', paddingLeft: pl }}
-                className='whitespace-pre-wrap opacity-70 leading-relaxed'
+                className='whitespace-pre-wrap leading-relaxed'
             >
                 {content}
             </div>
