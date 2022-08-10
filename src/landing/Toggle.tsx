@@ -20,7 +20,7 @@ export function ToggleButton({
         <div className={className} {...rest}>
             <button
                 type='button'
-                className='flex items-center appearance-none font-medium space-x-2 py-1'
+                className='appearance-none font-medium space-x-2 text-left py-1'
                 onClick={toggle}
             >
                 <Icon
@@ -28,9 +28,11 @@ export function ToggleButton({
                         transform: isOpen ? 'rotate(90deg)' : '',
                         width: '14px',
                         height: '14px',
+                        marginBottom: '2px',
+                        display: 'inline',
                     }}
                 />
-                <div className=''>{heading}</div>
+                <span className='[&>*]:inline'>{heading}</span>
             </button>
             <div
                 style={{ display: isOpen ? 'block' : 'none', paddingLeft: pl }}
