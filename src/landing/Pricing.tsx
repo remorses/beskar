@@ -47,6 +47,7 @@ export type PricingProps = {
         contactLink?: string
     }[]
     animate?: boolean
+    needMoreEmail?: string
     pricesCurrency?: string
     manageSubscriptionHref: string
     allowYearlyBilling?: boolean
@@ -65,6 +66,7 @@ export function Pricing({
     updatePlan,
     getSubscription,
     productDetails,
+    needMoreEmail,
     manageSubscriptionHref,
     pricesCurrency = 'USD',
     allowYearlyBilling = true,
@@ -191,13 +193,26 @@ export function Pricing({
                             )
                         })}
             </FadedComponent>
-            <div className='h-[2em] mt-10'>
-                {subscription && manageSubscriptionHref && (
+            <div className='h-[2em] mt-10 mb-12'>
+                {subscription && manageSubscriptionHref ? (
                     <FadedComponent className='text-center '>
                         <Link href={manageSubscriptionHref}>
                             Manage subscription
                         </Link>
                     </FadedComponent>
+                ) : (
+                    !!needMoreEmail && (
+                        <FadedComponent className='text-center opacity-80 text-sm '>
+                            Need more?{` `}
+                            <Link
+                                href={`mailto:${needMoreEmail}?subject=${encodeURIComponent(
+                                    'Need a custom plan',
+                                )}`}
+                            >
+                                Contact me
+                            </Link>
+                        </FadedComponent>
+                    )
                 )}
             </div>
         </PageContainer>
