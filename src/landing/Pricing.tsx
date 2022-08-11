@@ -382,7 +382,7 @@ function SubscriptionPlan({
             style={style}
             className={classNames(
                 'border border-gray-200 rounded-lg shadow-sm',
-                'divide-y divide-gray-200 bg-white max-w-sm w-[320px]',
+                'divide-y divide-gray-200 bg-white max-w-sm w-[280px] xl:w-[310px]',
             )}
         >
             <div className='p-6 flex flex-col h-[300px]'>
