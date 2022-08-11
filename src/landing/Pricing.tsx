@@ -40,10 +40,12 @@ export type PricingProps = {
     getSubscription: () => Promise<Subscription>
     updatePlan: (x: { subscriptionId: string; planId: string }) => Promise<any>
     isLoading?: boolean
-    productDetails: Record<
-        string,
-        { features: string[]; description: string; contactLink?: string }
-    >
+    productDetails: {
+        features?: string[]
+        description?: string
+        paddleId?: string
+        contactLink?: string
+    }[]
     animate?: boolean
     pricesCurrency?: string
     manageSubscriptionHref: string
@@ -168,22 +170,19 @@ export function Pricing({
                             if (product.billing_type !== billingInterval) {
                                 return null
                             }
+                            const details = productDetails.find(
+                                (x) => x.paddleId === product.paddleId,
+                            )
 
                             return (
                                 <SubscriptionPlan
                                     key={product.name}
-                                    productDetails={productDetails}
+                                    description={details?.description}
                                     updatePlan={updatePlan}
                                     refetchSubscription={refetchSubscription}
                                     promptLogin={promptLogin}
-                                    features={
-                                        productDetails[product.name]
-                                            ?.features || []
-                                    }
-                                    contactUs={
-                                        productDetails[product.name]
-                                            ?.contactLink
-                                    }
+                                    features={details?.features || []}
+                                    contactUs={details?.contactLink}
                                     onCheckout={onCheckout}
                                     product={product}
                                     price={price}
@@ -253,7 +252,7 @@ function SubscriptionPlan({
     product,
     price,
     subscription,
-    productDetails,
+    description,
     refetchSubscription,
     onCheckout,
     contactUs = '',
@@ -267,7 +266,7 @@ function SubscriptionPlan({
     refetchSubscription: Function
     onCheckout: PricingProps['onCheckout']
     subscription?: Subscription
-    productDetails: PricingProps['productDetails']
+    description?: string
     updatePlan: PricingProps['updatePlan']
     contactUs?: string
     features: string[]
@@ -361,7 +360,6 @@ function SubscriptionPlan({
 
     return (
         <div
-            key={product.name}
             style={style}
             className={classNames(
                 'border border-gray-200 rounded-lg shadow-sm',
@@ -370,10 +368,10 @@ function SubscriptionPlan({
         >
             <div className='p-6 flex flex-col h-[300px]'>
                 <h2 className='text-lg font-medium leading-6 text-gray-900'>
-                    {product.name}
+                    {product.name?.split('-')[0]}
                 </h2>
                 <p className='h-12 mt-4 text-sm font-medium tracking-wide text-gray-500'>
-                    {productDetails[product.name]?.description || '.'}
+                    {description || '.'}
                 </p>
                 {contactUs ? (
                     <p className='mt-9 text-center text-lg text-gray-500'></p>
