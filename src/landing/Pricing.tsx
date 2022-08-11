@@ -103,8 +103,12 @@ export function Pricing({
     return (
         <PageContainer
             id='pricing'
+            style={{
+                // @ts-ignore
+                '--page-max-width': '100vw',
+            }}
             className={classNames(
-                'relative self-center px-4 mx-auto',
+                'relative self-center mx-auto',
                 className,
             )}
             {...rest}
@@ -138,7 +142,7 @@ export function Pricing({
                 className={classNames(
                     'relative flex flex-col items-center justify-center',
                     'mt-12 space-y-8 lg:mx-auto lg:items-stretch',
-                    'lg:flex-row lg:space-x-6 lg:space-y-0 lg:max-w-5xl',
+                    'lg:flex-row lg:space-x-6 lg:space-y-0',
                 )}
             >
                 {isLoading && <Spinner />}
