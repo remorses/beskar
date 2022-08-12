@@ -46,7 +46,7 @@ export type PricingSliderProps = {
     isLoading?: boolean
     animate?: boolean
     pricesCurrency?: string
-    manageSubscriptionHref: string
+    manageSubscriptionHandler: Function
     buttonText?: ReactNode
     allowYearlyBilling?: boolean
     trialDays?: number
@@ -74,7 +74,7 @@ export function PricingSlider({
     updatePlan,
     getSubscription,
     features,
-    manageSubscriptionHref,
+    manageSubscriptionHandler,
     pricesCurrency = 'usd',
     allowYearlyBilling = true,
 
@@ -329,10 +329,14 @@ export function PricingSlider({
                         )}
                     </div>
                 </div>
-                {subscription && manageSubscriptionHref && (
+                {subscription && manageSubscriptionHandler && (
                     <Link
                         className='mx-auto !mb-0'
-                        href={manageSubscriptionHref}
+                        onClick={(e) => {
+                            e.preventDefault()
+                            manageSubscriptionHandler()
+                        }}
+                        href={''}
                     >
                         Manage subscription
                     </Link>
