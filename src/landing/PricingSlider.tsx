@@ -22,7 +22,7 @@ import { Button } from './Button'
 export type Subscription = {
     paddleSubscriptionId: string
     productId: string
-    unit_price: string // float number
+    // unit_price: string | number // float number
 }
 export type Product = {
     billing_type: string // 'month' | 'year'
