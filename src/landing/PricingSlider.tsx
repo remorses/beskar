@@ -49,8 +49,13 @@ export type PricingSliderProps = {
     buttonText?: ReactNode
     allowYearlyBilling?: boolean
     trialDays?: number
-    passthrough?: any
-    onCheckout?: (x: { isChangePlan; userId?: string }) => any
+    onCheckout?: (x: {
+        isChangePlan?: boolean
+        userId?: string
+        productId: string
+        // priceId: string
+        email?: string
+    }) => any
 } & ComponentPropsWithoutRef<'div'>
 
 // const getSubscriptionMemoized = memoize(getSubscription, { isPromise: true })
@@ -69,9 +74,9 @@ export function PricingSlider({
     getSubscription,
     features,
     manageSubscriptionHref,
-    pricesCurrency = 'USD',
+    pricesCurrency = 'usd',
     allowYearlyBilling = true,
-    passthrough = {},
+    onBuyButtonClick,
     ...rest
 }: PricingSliderProps) {
     const [subscription, setSubscription] = useState<Subscription>()
@@ -157,66 +162,56 @@ export function PricingSlider({
         return p
     })()
 
-    const handlePricingClick = async () => {
-        const planId = currentRange?.productId
-        if (!planId) {
-            return
-        }
-        if (status !== 'authenticated' && promptLogin) {
-            return promptLogin()
-        }
-
-        if (!session?.user?.id) {
-            throw new Error('User ID is missing')
-        }
-
-        try {
-            if (subscription) {
-                // clear subscription cache
-                // getSubscriptionMemoized.cache.keys.length = 0
-                // getSubscriptionMemoized.cache.values.length = 0
-                if (
-                    !confirm(
-                        'Changing plan will remove any existing coupons, continue?',
-                    )
-                ) {
+    const { fn: handlePricingClick, isLoading: clickIsLoading } = useThrowingFn(
+        {
+            fn: async () => {
+                const productId = currentRange?.productId
+                if (!productId) {
                     return
                 }
+                if (status !== 'authenticated' && promptLogin) {
+                    return promptLogin()
+                }
 
-                await changePlan({
-                    subscriptionId: subscription.paddleSubscriptionId,
-                    planId: planId,
-                })
-                await new Promise((resolve) => setTimeout(resolve, 100))
-                await refetchSubscription()
-                return
-            } else {
-                NProgress.start()
-                Paddle.Checkout.open({
-                    product: planId,
-                    email: session.user.email,
-                    passthrough: JSON.stringify({
-                        userId: session?.user?.id,
-                        email: session?.user?.email,
-                        ...passthrough,
-                    }),
-                    successCallback: () => {
-                        toast.success('Created plan', {
-                            position: 'top-center',
+                if (!session?.user?.id) {
+                    throw new Error('User ID is missing')
+                }
+
+                try {
+                    if (subscription) {
+                        // clear subscription cache
+                        // getSubscriptionMemoized.cache.keys.length = 0
+                        // getSubscriptionMemoized.cache.values.length = 0
+                        if (
+                            !confirm(
+                                'Changing plan will remove any existing coupons, continue?',
+                            )
+                        ) {
+                            return
+                        }
+
+                        await changePlan({
+                            subscriptionId: subscription.paddleSubscriptionId,
+                            planId: productId,
                         })
-                        refetchSubscription()
-                    },
-                })
-            }
-        } finally {
-            if (onCheckout) {
-                onCheckout({
-                    isChangePlan: Boolean(subscription),
-                    userId: session?.user?.id,
-                })
-            }
-        }
-    }
+                        await new Promise((resolve) => setTimeout(resolve, 100))
+                        await refetchSubscription()
+                        return
+                    }
+                    return { skipToast: true }
+                } finally {
+                    if (onCheckout) {
+                        await onCheckout({
+                            productId: productId,
+                            isChangePlan: Boolean(subscription),
+                            email: session?.user?.email || '',
+                            userId: session?.user?.id,
+                        })
+                    }
+                }
+            },
+        },
+    )
     const buttonText = (() => {
         if (subscription?.productId === currentRange?.productId) {
             return 'Current plan'
@@ -224,7 +219,7 @@ export function PricingSlider({
         if (subscription) {
             return 'Change plan'
         }
-        if (!subscription) {
+        if (!session) {
             return 'Start free trial'
         }
         return 'Upgrade'
@@ -339,7 +334,7 @@ export function PricingSlider({
                             disabled={disabled}
                             // bg='blue.500'
                             // bgDark='blue.200'
-                            isLoading={isLoadingChangePlan}
+                            isLoading={clickIsLoading}
                             biggerOnHover
                             className='font-bold !px-6'
                         >
