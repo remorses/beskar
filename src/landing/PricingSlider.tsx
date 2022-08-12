@@ -76,7 +76,7 @@ export function PricingSlider({
     manageSubscriptionHref,
     pricesCurrency = 'usd',
     allowYearlyBilling = true,
-    onBuyButtonClick,
+
     ...rest
 }: PricingSliderProps) {
     const [subscription, setSubscription] = useState<Subscription>()
