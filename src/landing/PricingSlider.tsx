@@ -20,8 +20,9 @@ import { PageContainer } from './PageContainer'
 import { Button } from './Button'
 
 export type Subscription = {
-    paddleSubscriptionId: string
+    // paddleSubscriptionId: string
     productId: string
+    id: string
     // unit_price: string | number // float number
 }
 export type Product = {
@@ -90,12 +91,6 @@ export function PricingSlider({
             }
         })
     }
-
-    const { fn: changePlan, isLoading: isLoadingChangePlan } = useThrowingFn({
-        fn: updatePlan,
-        errorMessage: 'Failed to update plan',
-        successMessage: 'Updated plan!',
-    })
 
     const [billingInterval, setBillingInterval] = useState<string>('month')
 
@@ -179,19 +174,8 @@ export function PricingSlider({
 
                 try {
                     if (subscription) {
-                        // clear subscription cache
-                        // getSubscriptionMemoized.cache.keys.length = 0
-                        // getSubscriptionMemoized.cache.values.length = 0
-                        if (
-                            !confirm(
-                                'Changing plan will remove any existing coupons, continue?',
-                            )
-                        ) {
-                            return
-                        }
-
-                        await changePlan({
-                            subscriptionId: subscription.paddleSubscriptionId,
+                        await updatePlan({
+                            subscriptionId: subscription.id,
                             planId: productId,
                         })
                         await new Promise((resolve) => setTimeout(resolve, 100))
@@ -225,9 +209,7 @@ export function PricingSlider({
         return 'Upgrade'
     })()
     const disabled =
-        subscription?.productId === currentRange?.productId ||
-        isLoading ||
-        isLoadingChangePlan
+        subscription?.productId === currentRange?.productId || isLoading
     // console.log({ currentRange })
     return (
         <PageContainer
