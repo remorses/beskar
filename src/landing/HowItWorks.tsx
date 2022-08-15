@@ -84,7 +84,7 @@ const Step = ({
             )}
             {...rest}
         >
-            <div className='min-w-[300px] max-w-[50%] flex-auto space-y-8 '>
+            <div className='min-w-[300px] max-w-[50%] flex-auto space-y-6 '>
                 <div className='flex items-end opacity-40'>
                     <div className='opacity-70 text-7xl'>{number}</div>
                     <div className='truncate max-w-[300px] font-semibold '>
@@ -96,14 +96,10 @@ const Step = ({
                     {heading}
                 </div>
 
-                <div className='max-w-[90%] font-medium leading-relaxed opacity-50 '>
+                <div className='max-w-[90%] font-medium leading-relaxed opacity-[0.66] '>
                     {subheading}
                 </div>
-                {cta && (
-                    <div className=''>
-                        {cta}
-                    </div>
-                )}
+                {cta && <div className=''>{cta}</div>}
             </div>
             <div className='min-w-[300px] shrink-0 max-w-[600px] flex-auto '>
                 {image}
