@@ -53,12 +53,10 @@ export function Feature({
             >
                 <div className='space-y-6 flex flex-col px-3 min-w-[300px] max-w-full flex-1'>
                     {bullet && <Bullet>{bullet}</Bullet>}
-                    <div className={clsx('text-4xl font-medium ')}>
+                    <div className={clsx('text-4xl font-semibold ')}>
                         {heading}
                     </div>
-                    <div className='text-xl font-medium opacity-80'>
-                        {subheading}
-                    </div>
+                    <div className=' font-medium opacity-80'>{subheading}</div>
                     {cta && <div>{cta}</div>}
                 </div>
 
