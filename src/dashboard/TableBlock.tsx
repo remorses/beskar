@@ -42,7 +42,7 @@ export const TableBlock = ({
             // heading={heading}
             {...rest}
         >
-            {title && <div className='p-6 pb-2'>{title}</div>}
+            {title && <div className='p-5 pb-2'>{title}</div>}
             <table className={'text-left w-full min-w-0'}>
                 <thead className=''>
                     <tr className=''>
@@ -65,7 +65,7 @@ export const TableBlock = ({
                     })}
                 </tbody>
             </table>
-            {footer && <div className='w-full px-6 py-2'>{footer}</div>}
+            {footer && <div className='w-full px-5 py-2'>{footer}</div>}
         </Block>
     )
 }
@@ -74,7 +74,7 @@ const TData = ({ className = '', ...props }) => {
     return (
         <td
             className={clsx(
-                'p-6 break-words whitespace-normal',
+                'p-5 break-words whitespace-pre-wrap leading-relaxed',
                 'border-t',
                 className,
             )}
@@ -86,7 +86,7 @@ const THead = ({ className = '', ...props }) => {
     return (
         <th
             className={clsx(
-                'px-6 py-2 text-sm font-semibold tracking-wide',
+                'px-5 pb-4 text-sm font-semibold tracking-wide',
                 'opacity-60',
                 className,
             )}
