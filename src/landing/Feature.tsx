@@ -59,7 +59,7 @@ export function Feature({
                     >
                         {heading}
                     </div>
-                    <div className=' font-medium opacity-80'>{subheading}</div>
+                    <div className=' font-medium opacity-80 max-w-xl'>{subheading}</div>
                     {cta && <div>{cta}</div>}
                 </div>
 
