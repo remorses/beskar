@@ -1,4 +1,5 @@
 import { ArrowRightIcon } from '@heroicons/react/outline'
+import classNames from 'classnames'
 import clsx from 'clsx'
 import React, { ComponentPropsWithoutRef, ReactNode } from 'react'
 import { Bullet } from './Bullet'
@@ -43,7 +44,7 @@ export function Feature({
     })()
 
     return (
-        <PageContainer {...rest}>
+        <PageContainer dontContain {...rest}>
             <div
                 className={clsx(
                     'relative justify-between items-center max-w-full w-full',
@@ -53,7 +54,9 @@ export function Feature({
             >
                 <div className='space-y-6 flex flex-col px-3 min-w-[300px] max-w-full flex-1'>
                     {bullet && <Bullet>{bullet}</Bullet>}
-                    <div className={clsx('text-4xl font-semibold ')}>
+                    <div
+                        className={clsx('text-4xl font-bold leading-relaxed ')}
+                    >
                         {heading}
                     </div>
                     <div className=' font-medium opacity-80'>{subheading}</div>
@@ -74,9 +77,22 @@ export function Feature({
     )
 }
 
-export function FeatureLink({ children, hideArrow = false, href = '' }) {
+export function FeatureLink({
+    children,
+    hideArrow = false,
+    className = '',
+    href = '',
+    ...rest
+}) {
     return (
-        <Link href={href} className='flex items-center font-semibold space-x-2'>
+        <Link
+            href={href}
+            className={classNames(
+                'flex items-center font-semibold space-x-2',
+                className,
+            )}
+            {...rest}
+        >
             <span>{children}</span>
             {!hideArrow && (
                 <ArrowRightIcon className='mx-[10px] inline w-4 h-4 ' />
