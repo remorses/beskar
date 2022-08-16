@@ -3,4 +3,4 @@ export * from './Block'
 export * from './BlockWithStep'
 export * from './SaveButton'
 export * from './TableBlock'
-export * from './FeaturesBlocks'
+
