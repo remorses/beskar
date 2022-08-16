@@ -23,7 +23,7 @@ export function FeaturesBlocks({
 }: FeaturesBlocksProps) {
     return (
         <PageContainer className={className} style={style}>
-            <div>
+            <div className='py-12'>
                 <Faded
                     delay={500}
                     cascade

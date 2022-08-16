@@ -84,16 +84,12 @@ export function Hero({
                 {image && (
                     <div
                         className={clsx(
-                            'flex max-w-full  flex-col md:flex-row flex-auto',
+                            'flex max-w-full flex-col md:flex-row flex-auto items-center ',
                         )}
                     >
                         <div className='ml-[40px] mt-[40px] flex-auto' />
-                        <div
-                            className='flex flex-col items-center '
-                            // h='100%'
-                        >
-                            {image}
-                        </div>
+
+                        {image}
                     </div>
                 )}
             </div>
