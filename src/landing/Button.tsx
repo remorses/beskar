@@ -66,8 +66,8 @@ export const Button: FC<ButtonProps> = forwardRef<ButtonProps, any>(
     ) => {
         // isLoading = true
         if (!bg_) {
-            bg_ = 'gray.500'
-            bgDark_ = bgDark_ || 'gray.300'
+            bg_ = 'neutral.500'
+            bgDark_ = bgDark_ || 'neutral.300'
         }
         if (!bgDark_ && bg_) {
             bgDark_ = bg_
