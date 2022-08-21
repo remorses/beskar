@@ -101,7 +101,7 @@ const Step = ({
                 </div>
                 {cta && <div className=''>{cta}</div>}
             </div>
-            <div className='min-w-[300px] shrink-0 max-w-[560px] flex-auto'>
+            <div className='min-w-[300px] shrink-0 max-w-[540px] flex-auto'>
                 {image}
             </div>
         </div>
