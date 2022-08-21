@@ -78,7 +78,7 @@ const Step = ({
     return (
         <div
             className={clsx(
-                'flex items-center justify-between space-y-6 md:space-y-0 md:space-x-8',
+                'flex items-center justify-between gap-8',
                 'flex-col',
                 flip ? 'md:flex-row-reverse' : 'md:flex-row',
             )}
@@ -101,7 +101,7 @@ const Step = ({
                 </div>
                 {cta && <div className=''>{cta}</div>}
             </div>
-            <div className='min-w-[300px] shrink-0 max-w-[600px] flex-auto '>
+            <div className='min-w-[300px] shrink-0 max-w-[560px] flex-auto'>
                 {image}
             </div>
         </div>
