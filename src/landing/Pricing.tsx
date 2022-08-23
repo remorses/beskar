@@ -333,10 +333,12 @@ function SubscriptionPlan({
                 return
             } else {
                 NProgress.start()
+                const pass = passthrough()
                 Paddle.Checkout.open({
                     product: paddleId,
                     email: session.user.email,
-                    passthrough: JSON.stringify(passthrough()),
+                    passthrough:
+                        typeof pass === 'string' ? pass : JSON.stringify(pass),
                     successCallback: () => {
                         toast.success('Created plan', {
                             position: 'top-center',
