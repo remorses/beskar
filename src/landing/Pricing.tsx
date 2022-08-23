@@ -51,6 +51,7 @@ export type PricingProps = {
     pricesCurrency?: string
     manageSubscriptionHref: string
     allowYearlyBilling?: boolean
+    passthrough: () => any
     onCheckout?: (x: { isChangePlan; userId?: string }) => any
 } & ComponentPropsWithoutRef<'div'>
 
@@ -70,6 +71,7 @@ export function Pricing({
     manageSubscriptionHref,
     pricesCurrency = 'USD',
     allowYearlyBilling = true,
+    passthrough,
     ...rest
 }: PricingProps) {
     const [subscription, setSubscription] = useState<Subscription>()
@@ -107,10 +109,7 @@ export function Pricing({
                 // @ts-ignore
                 '--page-max-width': '100vw',
             }}
-            className={classNames(
-                'relative self-center mx-auto',
-                className,
-            )}
+            className={classNames('relative self-center mx-auto', className)}
             {...rest}
         >
             {/* <Box
@@ -182,6 +181,7 @@ export function Pricing({
 
                             return (
                                 <SubscriptionPlan
+                                    passthrough={passthrough}
                                     key={product.name}
                                     description={details?.description}
                                     updatePlan={updatePlan}
@@ -279,6 +279,7 @@ function SubscriptionPlan({
     promptLogin,
     updatePlan,
     style,
+    passthrough,
 }: {
     product: Product
     price: Price
@@ -289,6 +290,7 @@ function SubscriptionPlan({
     updatePlan: PricingProps['updatePlan']
     contactUs?: string
     features: string[]
+    passthrough
     promptLogin: () => void
 } & ComponentPropsWithoutRef<'div'>) {
     const router = useRouter()
@@ -334,10 +336,7 @@ function SubscriptionPlan({
                 Paddle.Checkout.open({
                     product: paddleId,
                     email: session.user.email,
-                    passthrough: JSON.stringify({
-                        userId: session?.user?.id,
-                        email: session?.user?.email,
-                    }),
+                    passthrough: JSON.stringify(passthrough()),
                     successCallback: () => {
                         toast.success('Created plan', {
                             position: 'top-center',

@@ -288,7 +288,7 @@ export function PricingSlider({
                 )}
                 <div className='flex items-center gap-4'>
                     <div className='uppercase font-semibold text-sm opacity-80'>
-                        what's included
+                        {`what's included`}
                     </div>
                     <div className='grow border-t-2'></div>
                 </div>
