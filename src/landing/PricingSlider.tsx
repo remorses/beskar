@@ -322,7 +322,7 @@ export function PricingSlider({
                         >
                             {buttonText}
                         </Button>
-                        {Boolean(trialDays) && !subscription && (
+                        {Boolean(trialDays) && !subscription && !session && (
                             <div className='opacity-70 text-center font-medium text-xs'>
                                 {trialDays} days free trial
                             </div>
