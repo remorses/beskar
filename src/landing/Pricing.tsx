@@ -366,15 +366,16 @@ function SubscriptionPlan({
         if (alreadyUsingThisPlan) {
             return 'Current plan'
         }
+        if (subscription) {
+            if (price.unitAmount > Number(subscription.unit_price) * 100) {
+                return `Upgrade`
+            }
+            return `Downgrade`
+        }
         if (!!product.trial_days) {
             return 'Start free trial'
         }
-        if (subscription) {
-            if (price.unitAmount > Number(subscription.unit_price) * 100) {
-                return `Upgrade to ${product.name}`
-            }
-            return `Downgrade to ${product.name}`
-        }
+
         return `Buy ${product.name}`
     }, [subscription, price])
 

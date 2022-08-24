@@ -78,18 +78,20 @@ export function Modal({
                         maxWidth: `min(${maxWidth}, 100vw - 100px)`,
                     }}
                     className={clsx(
-                        'top-8 space-y-6 shadow-xl rounded-lg ring-gray-100',
-                        'ring-1 relative overflow-hidden mx-auto min-w-0',
-                        'isolate bg-transparent lg:top-14 dark:ring-gray-700',
+                        'top-8 space-y-6 shadow-xl rounded-lg ',
+                        'relative mx-auto min-w-0',
+                        'isolate bg-transparent lg:top-14 ',
+
                         className,
                     )}
                 >
                     {useDefaultContentStyle ? (
                         <div
                             className={clsx(
-                                'w-auto text-gray-700 space-y-8 py-4 px-8 min-w-0',
+                                'w-auto  text-gray-700 space-y-8 py-4 px-8 min-w-0',
                                 'justify-center items-stretch flex-col flex bg-white',
                                 'dark:text-gray-100 dark:bg-gray-800',
+                                'ring-gray-100 rounded-lg ring-1 dark:ring-gray-700',
                             )}
                         >
                             {content}
@@ -110,7 +112,7 @@ export function CloseButton({
     return (
         <button
             className={clsx(
-                'top-4 text-gray-600 rounded right-4 p-1 bg-white/50',
+                'top-4 shrink-0 text-gray-600 rounded right-4 p-1 bg-white/50',
                 'backdrop-blur appearance-none absolute dark:text-gray-400',
                 'dark:bg-gray-700/50',
                 className,

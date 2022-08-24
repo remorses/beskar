@@ -64,7 +64,7 @@ export const NavBar = ({
                         )}
                     >
                         <Modal.CloseButton
-                            style={{ right: 20, top: 20, ...menuButtonStyle }}
+                            // style={{ right: 20, top: 20, ...menuButtonStyle }}
                             onClick={onClose}
                         />
                         {Array.isArray(navs) ? (
