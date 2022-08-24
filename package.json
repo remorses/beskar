@@ -42,6 +42,7 @@
         "color-hash": "^2.0.1",
         "colord": "^2.9.2",
         "nprogress": "*",
+        "postcss": "^8.4.16",
         "react-hook-form": "^7.33.1",
         "react-hot-toast": "^2.2.0",
         "styled-jsx": "^5.0.2",
