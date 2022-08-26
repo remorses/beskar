@@ -5,7 +5,7 @@ esm
 *.tsbuildinfo
 .ultra.cache.json
 coverage
-.env*
+
 !*.env.example
 !*.env*.json
 storageState.json
