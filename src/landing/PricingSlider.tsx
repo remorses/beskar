@@ -208,6 +208,7 @@ export function PricingSlider({
         }
         return 'Upgrade'
     })()
+
     const disabled =
         subscription?.productId === currentRange?.productId || isLoading
     // console.log({ currentRange })

@@ -165,31 +165,37 @@ function dotsGet(accessor, obj) {
 export const useSafeLayoutEffect =
     typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect
 
-export function limitMaxPerHour<T>({
-    maxPerHour = 100,
+export function rateLimit<Fn extends (...any: any) => any>({
+    max = 100,
+    interval,
     fn,
 }: {
-    maxPerHour?: number
-    fn: () => T
-}): () => T {
-    let bucket = getHourBucket()
+    max?: number
+    interval: 'day' | 'hour'
+    fn: Fn
+}): Fn {
+    let bucket = getTimeBucket(interval)
     let count = 0
-    return () => {
-        let currentBucket = getHourBucket()
+    const func: Fn = ((...args) => {
+        let currentBucket = getTimeBucket(interval)
         if (currentBucket !== bucket) {
             count = 0
             bucket = currentBucket
         }
         count++
-        if (count > maxPerHour) {
-            throw new Error(`Too many function calls in 1 hour: ${maxPerHour}`)
+        if (count > max) {
+            throw new Error(`Too many function calls in 1 hour: ${max}`)
         }
-        return fn()
-    }
+        return fn(...args)
+    }) as Fn
+    return func
 }
 
-function getHourBucket() {
+function getTimeBucket(kind: 'day' | 'hour') {
     const now = new Date()
+    if (kind === 'day') {
+        now.setHours(0)
+    }
     now.setMinutes(0)
     now.setSeconds(0)
     now.setMilliseconds(0)
