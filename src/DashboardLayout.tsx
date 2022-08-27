@@ -58,7 +58,7 @@ export function DashboardLayout({
                     style={{
                         ...style,
                         maxWidth: fullWidth ? '100%' : maxWidthWithPx(),
-                        contain: 'paint',
+                        // contain: 'paint',
                     }} // prevents overflow x scrolling and has faster rendering
                     {...rest}
                 >
