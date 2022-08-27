@@ -39,7 +39,7 @@ export function DashboardLayout({
     return (
         <ChakraStuff>
             <div className='flex flex-col items-center w-full min-h-screen'>
-                <div className='flex flex-col items-center w-full overflow-visible border-b border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800/60'>
+                <div className='flex flex-col items-center w-full overflow-visible shadow-sm bg-gray-50 dark:bg-gray-800/60'>
                     <div
                         style={{
                             maxWidth: maxWidthWithPx(),
