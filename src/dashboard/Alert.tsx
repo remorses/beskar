@@ -133,7 +133,7 @@ export const Alert = forwardRef<any, AlertProps>(
                     )}
                 >
                     {title && <div className='font-semibold'>{title}</div>}
-                    <div className='opacity-80 '>{description}</div>
+                    <div className='opacity-80'>{description}</div>
                 </div>
             </div>
         )

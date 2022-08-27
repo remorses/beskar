@@ -15,6 +15,9 @@ export function PageContainer({
     floatingElement?: ReactNode
     dontContain?: boolean
 }) {
+    if (floatingElement) {
+        dontContain = true
+    }
     return (
         <div
             style={{ contain: dontContain ? 'initial' : 'paint' }}

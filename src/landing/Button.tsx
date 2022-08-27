@@ -1,6 +1,5 @@
 import clsx from 'clsx'
 import { colord } from 'colord'
-import colors from 'tailwindcss/colors'
 import React, {
     ComponentPropsWithoutRef,
     ElementType,
@@ -66,8 +65,8 @@ export const Button: FC<ButtonProps> = forwardRef<ButtonProps, any>(
     ) => {
         // isLoading = true
         if (!bg_) {
-            bg_ = 'neutral.500'
-            bgDark_ = bgDark_ || 'neutral.300'
+            bg_ = 'gray.500'
+            bgDark_ = bgDark_ || 'gray.300'
         }
         if (!bgDark_ && bg_) {
             bgDark_ = bg_

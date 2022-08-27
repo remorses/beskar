@@ -1,9 +1,9 @@
 // @ts-ignore
 import { createTheme, NextUIProvider } from '@nextui-org/react'
 
-import colors from 'tailwindcss/colors'
+import colors from '../colors'
 
-colors.gray = colors.neutral as any
+colors.gray = colors.gray as any
 
 const formattedColors = Object.fromEntries(
     Object.keys(colors)
@@ -41,7 +41,7 @@ const darkTheme = createTheme({
     theme: {
         colors: {
             ...formattedColors,
-            backgroundContrast: colors.neutral['800'],
+            backgroundContrast: colors.gray['800'],
         },
     },
 })

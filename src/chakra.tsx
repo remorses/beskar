@@ -3,7 +3,7 @@ import {
     ColorModeProvider,
     theme as _theme,
 } from '@chakra-ui/react'
-import tailwindColors from 'tailwindcss/colors'
+import colors from '../colors'
 import { useColorMode } from './utils'
 
 const theme: typeof _theme = {
@@ -13,10 +13,7 @@ const theme: typeof _theme = {
     },
     colors: {
         ..._theme.colors,
-        gray: {
-            ...tailwindColors.neutral,
-            700: tailwindColors.neutral['800'],
-        } as any,
+        gray: { ...colors.gray },
     },
     styles: {},
     config: {

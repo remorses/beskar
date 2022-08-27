@@ -1,7 +1,7 @@
 import { useTheme } from 'next-themes'
 import React, { useState, useEffect, createContext, useContext } from 'react'
 import toast from 'react-hot-toast'
-import colors from 'tailwindcss/colors'
+import colors from '../colors'
 
 import { Faded } from 'baby-i-am-faded'
 
