@@ -125,8 +125,6 @@ export function CloseButton({
     )
 }
 
-Modal.CloseButton = CloseButton
-
 function RiCloseFill(props: SVGProps<SVGSVGElement>) {
     return (
         <svg width='1em' height='1em' viewBox='0 0 24 24' {...props}>
@@ -137,3 +135,5 @@ function RiCloseFill(props: SVGProps<SVGSVGElement>) {
         </svg>
     )
 }
+
+Modal.CloseButton = CloseButton
