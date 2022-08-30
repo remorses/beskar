@@ -182,7 +182,7 @@ export function Pricing({
                             return (
                                 <SubscriptionPlan
                                     passthrough={passthrough}
-                                    key={product.name}
+                                    key={product.paddleId}
                                     description={details?.description}
                                     updatePlan={updatePlan}
                                     refetchSubscription={refetchSubscription}
