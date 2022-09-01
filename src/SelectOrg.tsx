@@ -86,7 +86,7 @@ export function SelectOrg({
                 isLoading={isValidating || isLoading || isOrgLoading}
                 value={orgId}
                 onChange={onChange}
-                className={classNames('min-w-[16ch]', className)}
+                className={classNames('min-w-[16ch] !border-0', className)}
                 endButton={
                     <Select.SelectButton children='New Org' onClick={onOpen} />
                 }

@@ -2,7 +2,7 @@ import clsx from 'clsx'
 
 import { useSession } from 'next-auth/react'
 
-import { SelectOrg } from './SelectOrg'
+
 
 export function DashboardHeader({
     className = '',

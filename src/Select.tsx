@@ -49,10 +49,13 @@ export function Select<T>({
     return (
         <>
             <Listbox value={orgId} onChange={onChange}>
-                <div className={classNames('relative', className)}>
+                <div className={classNames('relative')}>
                     <Listbox.Button
                         as='button'
-                        className='relative w-full py-[8px] pl-3 pr-10 text-left bg-white rounded-lg shadow-sm border dark:bg-gray-700 focus:outline-none focus-visible:ring-1 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-gray-300 focus-visible:ring-offset-1  sm:text-sm'
+                        className={classNames(
+                            'relative w-full py-[8px] pl-3 pr-10 text-left bg-white rounded-lg shadow-sm border dark:bg-gray-700 focus:outline-none focus-visible:ring-1 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-gray-300 focus-visible:ring-offset-1 sm:text-sm',
+                            className,
+                        )}
                     >
                         <div
                             aria-label='current org'
