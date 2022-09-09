@@ -57,6 +57,7 @@ export type PricingSliderProps = {
         // priceId: string
         email?: string
     }) => any
+    needMoreEmail: string
 } & ComponentPropsWithoutRef<'div'>
 
 // const getSubscriptionMemoized = memoize(getSubscription, { isPromise: true })
@@ -77,7 +78,7 @@ export function PricingSlider({
     manageSubscriptionHandler,
     pricesCurrency = 'usd',
     allowYearlyBilling = true,
-
+    needMoreEmail,
     ...rest
 }: PricingSliderProps) {
     const [subscription, setSubscription] = useState<Subscription>()
@@ -330,7 +331,7 @@ export function PricingSlider({
                         )}
                     </div>
                 </div>
-                {subscription && manageSubscriptionHandler && (
+                {subscription && manageSubscriptionHandler ? (
                     <Link
                         className='mx-auto !mb-0'
                         onClick={(e) => {
@@ -341,6 +342,17 @@ export function PricingSlider({
                     >
                         Manage subscription
                     </Link>
+                ) : (
+                    <FadedComponent className='text-center opacity-80 text-sm'>
+                        Need more?{` `}
+                        <Link
+                            href={`mailto:${needMoreEmail}?subject=${encodeURIComponent(
+                                'Need a custom plan',
+                            )}`}
+                        >
+                            Contact me
+                        </Link>
+                    </FadedComponent>
                 )}
             </FadedComponent>
         </PageContainer>
