@@ -343,7 +343,7 @@ export function PricingSlider({
                         Manage subscription
                     </Link>
                 ) : (
-                    <FadedComponent className='text-center opacity-80 text-sm'>
+                    <FadedComponent className='text-center mx-auto !mb-0 opacity-80 text-sm'>
                         Need more?{` `}
                         <Link
                             href={`mailto:${needMoreEmail}?subject=${encodeURIComponent(
