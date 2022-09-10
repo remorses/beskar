@@ -7,7 +7,7 @@ colors.gray = colors.gray as any
 
 const formattedColors = Object.fromEntries(
     Object.keys(colors)
-        .filter((k) => colors.hasOwnProperty('value'))
+        .filter((k) => colors.hasOwnProperty(k))
         .flatMap((colorName) => {
             const colorObj = colors[colorName]
             if (typeof colorObj === 'string') {
