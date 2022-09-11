@@ -9,6 +9,7 @@ export function GoogleLoginButton({
     className = '',
     text = 'Continue with Google',
     showEmailSignIn = false,
+    fingerprint = '',
     disabled = false,
     textColor = 'white',
     ...rest
@@ -79,6 +80,11 @@ export function GoogleLoginButton({
                     >
                         Continue with email instead
                     </button>
+                )}
+                {fingerprint && (
+                    <div className='opacity-60 text-sm  mt-3 w-full text-left'>
+                        {fingerprint}
+                    </div>
                 )}
             </div>
         </div>
