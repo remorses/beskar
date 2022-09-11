@@ -62,7 +62,7 @@ export function Hero({
                     </div>
                     <ComponentIfString
                         component={'h2'}
-                        className='max-w-xl font-medium text-2xl opacity-70 leading-normal'
+                        className='max-w-2xl text-2xl opacity-70 leading-relaxed'
                     >
                         {subheading}
                     </ComponentIfString>
