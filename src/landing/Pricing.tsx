@@ -398,7 +398,7 @@ function SubscriptionPlan({
                     <p className='mt-9 text-center text-lg text-gray-500'></p>
                 ) : (
                     <p className='mt-8'>
-                        <span className='text-4xl font-extrabold text-gray-900'>
+                        <span className='text-4xl font-extrabold tracking-wide text-gray-900'>
                             $
                             {Number(
                                 // if billing_type is year, divide the price by 12
