@@ -1,6 +1,7 @@
 import { Button, Divider, Modal, Spinner } from './landing'
 import {
     ComponentPropsWithoutRef,
+    forwardRef,
     Fragment,
     ReactNode,
     useContext,
@@ -22,7 +23,7 @@ export type SelectProps = {
     value?: string
     placeholder?: string
     onChange: (x: string) => void
-    options: { value: string; name?: string }[]
+    options: { value: string; name?: ReactNode }[]
     endButton?: ReactNode
     useAutoGradientIcons?: boolean
     isLoading?: boolean
@@ -31,16 +32,23 @@ export type SelectProps = {
 /**
  * Needs to have orgId param in query
  */
-export function Select<T>({
-    onChange,
-    value,
-    endButton = null,
-    placeholder = 'Loading',
-    options,
-    className = '',
-    isLoading = false,
-    useAutoGradientIcons = false,
-}: SelectProps) {
+export const Select: React.FC<
+    SelectProps & { children?: ReactNode; ref: any }
+> & {
+    SelectButton: typeof SelectButton
+} = forwardRef<any, any>(function (
+    {
+        onChange,
+        value,
+        endButton = null,
+        placeholder = 'Loading',
+        options,
+        className = '',
+        isLoading = false,
+        useAutoGradientIcons = false,
+    },
+    ref,
+) {
     const router = useRouter()
     const orgId = (router.query.orgId || '') as string
 
@@ -51,6 +59,7 @@ export function Select<T>({
             <Listbox value={orgId} onChange={onChange}>
                 <div className={classNames('relative')}>
                     <Listbox.Button
+                        ref={ref as any}
                         as='button'
                         className={classNames(
                             'relative w-full py-[8px] pl-3 pr-10 text-left bg-white rounded-lg shadow-sm border dark:bg-gray-700 focus:outline-none focus-visible:ring-1 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-gray-300 focus-visible:ring-offset-1 sm:text-sm',
@@ -97,7 +106,7 @@ export function Select<T>({
                     <Faded animationName='menuAppear' duration={120} cascade>
                         <Listbox.Options
                             className={classNames(
-                                'absolute gap-2 flex flex-col w-full py-2 mt-1 overflow-auto text-base bg-white rounded-md shadow-xl dark:bg-gray-700 max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm',
+                                'absolute z-50 gap-2 flex flex-col w-full py-2 mt-1 overflow-auto text-base bg-white rounded-md shadow-xl dark:bg-gray-700 max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm',
                             )}
                         >
                             {options?.map((opt, idx) => (
@@ -158,7 +167,7 @@ export function Select<T>({
             </Listbox>
         </>
     )
-}
+}) as any
 
 Select.SelectButton = SelectButton
 
