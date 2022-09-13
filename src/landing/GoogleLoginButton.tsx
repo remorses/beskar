@@ -70,7 +70,7 @@ export function GoogleLoginButton({
                     </div>
                 </Button>
 
-                {!session && showEmailSignIn && (
+                {showEmailSignIn && (
                     <button
                         onClick={() => {
                             signIn(undefined, { callbackUrl })
