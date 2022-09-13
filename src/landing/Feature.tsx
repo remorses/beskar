@@ -55,7 +55,7 @@ export function Feature({
                 <div className='space-y-6 flex flex-col px-3 min-w-[300px] max-w-full flex-1'>
                     {bullet && <Bullet>{bullet}</Bullet>}
                     <div
-                        className={clsx('text-4xl font-bold leading-relaxed ')}
+                        className={clsx('text-4xl even:!mt-2 font-bold leading-relaxed ')}
                     >
                         {heading}
                     </div>

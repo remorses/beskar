@@ -55,7 +55,7 @@ export function Hero({
                         {bullet && <Bullet>{bullet}</Bullet>}
                         <ComponentIfString
                             component={'h1'}
-                            className='block max-w-2xl text-5xl font-semibold leading-normal'
+                            className='block max-w-2xl even:!mt-2 text-5xl font-semibold leading-normal'
                         >
                             {heading}
                         </ComponentIfString>
