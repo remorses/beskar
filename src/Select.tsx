@@ -33,7 +33,7 @@ export type SelectProps = {
  * Needs to have orgId param in query
  */
 export const Select: React.FC<
-    SelectProps & { children?: ReactNode; ref: any }
+    SelectProps & { children?: ReactNode; ref?: any }
 > & {
     SelectButton: typeof SelectButton
 } = forwardRef<any, any>(function (
