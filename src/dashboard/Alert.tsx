@@ -116,7 +116,7 @@ export const Alert = forwardRef<any, AlertProps>(
                 )}
 
                 <Icon
-                    style={{ width: '38', height: '38' }}
+                    style={{ width: '38px', height: '38px' }}
                     className={clsx(
                         'stroke-white flex-shrink-0 block ',
                         fill,
