@@ -33,7 +33,7 @@
         "react-dom": "^18.2.0"
     },
     "dependencies": {
-        "@headlessui/react": "^1.6.1",
+        "@headlessui/react": "1.7.3",
         "@heroicons/react": "^1.0.6",
         "@types/tailwindcss": "^3.0.10",
         "baby-i-am-faded": "^4.0.12",

@@ -36,9 +36,9 @@ export function Modal({
                 style={{
                     // transition:
                     //     'background 1s cubic-bezier(0.4, 0, 0.2, 1) !important',
-                    backdropFilter: 'saturate(180%) blur(12px)',
+                    backdropFilter: 'blur(12px)',
                     // @ts-ignore
-                    '-webkit-backdrop-filter': 'saturate(180%) blur(12px)',
+                    '-webkit-backdrop-filter': 'blur(12px)',
                     background: 'rgba(0, 0, 0, 0.1)',
                 }}
                 onClick={(e) => {
