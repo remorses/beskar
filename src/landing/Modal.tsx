@@ -1,4 +1,5 @@
 import { Dialog } from '@headlessui/react'
+import { createPortal } from 'react-dom'
 import { Faded } from 'baby-i-am-faded'
 import clsx from 'clsx'
 import {
@@ -14,7 +15,7 @@ Faded.defaultProps = {
 }
 
 export function Modal({
-    as: As = 'div',
+    as: As = 'div' as any,
     isOpen,
     onClose,
     className = '',
@@ -26,22 +27,33 @@ export function Modal({
     ...rest
 }) {
     useEffect(() => {
-        console.log('Modal mounted', document.documentElement.style.overflow)
-        if (isOpen) return
-        document.documentElement.style.overflow = ''
+        if (isOpen) {
+            document.documentElement.style.overflow = 'hidden'
+        } else {
+            document.documentElement.style.overflow = ''
+        }
     }, [isOpen])
 
-    return (
-        <Dialog
-            className='fixed inset-0 z-10 overflow-y-auto'
-            open={isOpen}
-            as={As as any}
-            onClose={onClose}
-            initialFocus={initialFocus}
-            {...rest}
-        >
-            <Dialog.Overlay
-                as={Faded}
+    useEffect(() => {
+        const handler = (event) => {
+            if (event?.key?.toLowerCase() === 'escape') {
+                event.preventDefault()
+                onClose()
+            }
+        }
+        document.addEventListener('keydown', handler)
+        return () => {
+            document.removeEventListener('keydown', handler)
+        }
+    }, [])
+
+    if (!isOpen) {
+        return null
+    }
+
+    return createPortal(
+        <As className='fixed inset-0 z-10 overflow-y-auto' {...rest}>
+            <Faded
                 delay={800}
                 duration={300}
                 style={{
@@ -83,26 +95,24 @@ export function Modal({
                 timingFunction='ease-in-out-quad'
                 animationName='zoomIn'
             >
-                <Dialog.Panel
+                <div
                     style={{
                         ...style,
                         maxWidth: `min(${maxWidth}, 100vw - 100px)`,
                     }}
                     className={clsx(
-                        'top-8 space-y-6 shadow-xl rounded-lg ',
-                        'relative mx-auto min-w-0',
-                        'isolate bg-transparent lg:top-14 ',
-
+                        'top-8 space-y-6 shadow-xl rounded-lg relative',
+                        'mx-auto min-w-0 isolate bg-transparent lg:top-14',
                         className,
                     )}
                 >
                     {useDefaultContentStyle ? (
                         <div
                             className={clsx(
-                                'w-auto  text-gray-700 space-y-8 py-4 px-8 min-w-0',
-                                'justify-center items-stretch flex-col flex bg-white',
-                                'dark:text-gray-100 dark:bg-gray-800',
-                                'ring-gray-100 rounded-lg ring-1 dark:ring-gray-700',
+                                'w-auto text-gray-700 space-y-8 rounded-lg ring-gray-100',
+                                'ring-1 py-4 px-8 min-w-0 justify-center items-stretch',
+                                'flex-col flex bg-white dark:text-gray-100 dark:ring-gray-700',
+                                'dark:bg-gray-800',
                             )}
                         >
                             {content}
@@ -110,9 +120,10 @@ export function Modal({
                     ) : (
                         content
                     )}
-                </Dialog.Panel>
+                </div>
             </Faded>
-        </Dialog>
+        </As>,
+        document.body,
     )
 }
 
@@ -123,9 +134,9 @@ export function CloseButton({
     return (
         <button
             className={clsx(
-                'top-4 shrink-0 text-gray-600 rounded right-4 p-1 bg-white/50',
-                'backdrop-blur appearance-none absolute dark:text-gray-400',
-                'dark:bg-gray-700/50',
+                'top-4 text-gray-600 shrink-0 rounded right-4',
+                'p-1 bg-white/50 backdrop-blur appearance-none',
+                'absolute dark:text-gray-400 dark:bg-gray-700/50',
                 className,
             )}
             aria-label='Close'
