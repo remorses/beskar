@@ -1,7 +1,12 @@
 import { Dialog } from '@headlessui/react'
 import { Faded } from 'baby-i-am-faded'
 import clsx from 'clsx'
-import { ComponentPropsWithoutRef, CSSProperties, SVGProps } from 'react'
+import {
+    ComponentPropsWithoutRef,
+    CSSProperties,
+    SVGProps,
+    useEffect,
+} from 'react'
 
 Faded.defaultProps = {
     cascadeIncrement: 80,
@@ -20,6 +25,13 @@ export function Modal({
     style = {} as CSSProperties,
     ...rest
 }) {
+    
+    useEffect(() => {
+        console.log('Modal mounted', document.documentElement.style.overflow)
+        if (isOpen) return
+        document.documentElement.style.overflow = ''
+    }, [isOpen])
+
     return (
         <Dialog
             className='fixed inset-0 z-10 overflow-y-auto'
