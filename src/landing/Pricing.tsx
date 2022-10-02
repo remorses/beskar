@@ -228,8 +228,8 @@ function BillingIntervalSelect({ billingInterval, setBillingInterval }) {
     return (
         <div
             className={classNames(
-                'relative self-center mt-6 bg-gray-200 rounded-lg',
-                'p-0.5 flex sm:mt-8',
+                'relative self-center bg-gray-200 rounded-lg',
+                'p-0.5 flex',
             )}
         >
             <button
