@@ -56,7 +56,7 @@ export function Modal({
             @keyframes zoomIn {
                 from {
                     opacity: 0;
-                    transform: scale(1.2);
+                    transform: scale(1.1);
                 }
                 to {
                     opacity: 1;
