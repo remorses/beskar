@@ -25,7 +25,6 @@ export function Modal({
     style = {} as CSSProperties,
     ...rest
 }) {
-    
     useEffect(() => {
         console.log('Modal mounted', document.documentElement.style.overflow)
         if (isOpen) return
@@ -129,6 +128,7 @@ export function CloseButton({
                 'dark:bg-gray-700/50',
                 className,
             )}
+            aria-label='Close'
             type='button'
             {...rest}
         >
