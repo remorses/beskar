@@ -23,10 +23,14 @@ export function Modal({
     useDefaultContentStyle = false,
     initialFocus = null as any,
     maxWidth = '100%',
+    keepScrollBar = false,
     style = {} as CSSProperties,
     ...rest
 }) {
     useEffect(() => {
+        if (keepScrollBar) {
+            return
+        }
         if (isOpen) {
             document.documentElement.style.overflow = 'hidden'
         } else {
