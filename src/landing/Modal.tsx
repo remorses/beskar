@@ -47,12 +47,34 @@ export function Modal({
         }
     }, [])
 
+    const styles = (
+        <style jsx global>{`
+            @keyframes zoomIn {
+                from {
+                    opacity: 0;
+                    transform: scale(1.2);
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+            @keyframes simpleFade {
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+        `}</style>
+    )
     if (!isOpen) {
-        return null
+        return styles
     }
 
     return createPortal(
         <As className='fixed inset-0 z-10 overflow-y-auto' {...rest}>
+            {styles}
             <Faded
                 delay={800}
                 duration={300}
@@ -71,25 +93,7 @@ export function Modal({
                 animationName='simpleFade'
                 className='fixed inset-0 bg-black bg-opacity-20'
             />
-            <style jsx>{`
-                @keyframes zoomIn {
-                    from {
-                        opacity: 0;
-                        transform: scale(0.96);
-                    }
-                    to {
-                        opacity: 1;
-                    }
-                }
-                @keyframes simpleFade {
-                    from {
-                        opacity: 0;
-                    }
-                    to {
-                        opacity: 1;
-                    }
-                }
-            `}</style>
+
             <Faded
                 duration={220}
                 timingFunction='ease-in-out-quad'
