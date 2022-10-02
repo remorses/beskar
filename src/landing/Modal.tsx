@@ -20,6 +20,7 @@ export function Modal({
     onClose,
     className = '',
     content,
+    disableAnimations = false,
     useDefaultContentStyle = false,
     initialFocus = null as any,
     maxWidth = '100%',
@@ -80,6 +81,7 @@ export function Modal({
         <As className='fixed inset-0 z-10 overflow-y-auto' {...rest}>
             {styles}
             <Faded
+                disabled={disableAnimations}
                 delay={800}
                 duration={300}
                 style={{
@@ -101,6 +103,7 @@ export function Modal({
             <Faded
                 duration={220}
                 timingFunction='ease-in-out-quad'
+                disabled={disableAnimations}
                 animationName='zoomIn'
             >
                 <div
