@@ -52,6 +52,7 @@ export type PricingProps = {
     manageSubscriptionHref: string
     allowYearlyBilling?: boolean
     passthrough: () => any
+
     onCheckout?: (x: { isChangePlan; userId?: string }) => any
 } & ComponentPropsWithoutRef<'div'>
 
@@ -71,6 +72,7 @@ export function Pricing({
     manageSubscriptionHref,
     pricesCurrency = 'USD',
     allowYearlyBilling = true,
+
     passthrough,
     ...rest
 }: PricingProps) {
@@ -197,28 +199,27 @@ export function Pricing({
                             )
                         })}
             </FadedComponent>
-            <div className='h-[2em] mt-10 mb-12'>
-                {subscription && manageSubscriptionHref ? (
-                    <FadedComponent className='text-center '>
-                        <Link href={manageSubscriptionHref}>
-                            Manage subscription
+
+            {subscription && manageSubscriptionHref ? (
+                <FadedComponent className='text-center h-[2em] mt-10'>
+                    <Link href={manageSubscriptionHref}>
+                        Manage subscription
+                    </Link>
+                </FadedComponent>
+            ) : (
+                !!needMoreEmail && (
+                    <FadedComponent className='text-center opacity-80 text-sm h-[2em] mt-10'>
+                        Need more?{` `}
+                        <Link
+                            href={`mailto:${needMoreEmail}?subject=${encodeURIComponent(
+                                'Need a custom plan',
+                            )}`}
+                        >
+                            Contact me
                         </Link>
                     </FadedComponent>
-                ) : (
-                    !!needMoreEmail && (
-                        <FadedComponent className='text-center opacity-80 text-sm '>
-                            Need more?{` `}
-                            <Link
-                                href={`mailto:${needMoreEmail}?subject=${encodeURIComponent(
-                                    'Need a custom plan',
-                                )}`}
-                            >
-                                Contact me
-                            </Link>
-                        </FadedComponent>
-                    )
-                )}
-            </div>
+                )
+            )}
         </PageContainer>
     )
 }
