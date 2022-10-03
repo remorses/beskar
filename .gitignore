@@ -6,7 +6,5 @@ esm
 .ultra.cache.json
 coverage
 
-!*.env.example
-!*.env*.json
 storageState.json
 **/e2e/output
