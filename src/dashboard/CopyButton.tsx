@@ -6,18 +6,26 @@ export const CopyButton = ({
     text,
     style = {} as CSSProperties,
     size = 18,
+    children,
     className = '',
     ...props
 }) => {
     const [hasCopied, copy] = useCopyToClipboard(text)
     const As: any = hasCopied ? CheckIcon : CopyIcon
     return (
-        <As
-            className={classNames('shrink-0 cursor-pointer', className)}
-            style={{ ...style, width: size, height: size }}
+        <button
+            className={classNames(
+                'text-sm shrink-0 items-center gap-1 font-medium',
+                'flex cursor-pointer rounded hover:bg-gray-100 dark:hover:bg-gray-700 px-1 appearance-none',
+                className,
+            )}
+            type='button'
             onClick={copy}
             {...props}
-        />
+        >
+            <As style={{ ...style, width: size, height: size }} />
+            {hasCopied ? <div className='opacity-0'>{children}</div> : children}
+        </button>
     )
 }
 
@@ -58,7 +66,7 @@ export const useCopyToClipboard = (text: string) => {
     }, [copied])
     React.useEffect(() => () => setCopied(false), [text])
 
-    return [copied, copy]
+    return [copied, copy] as const
 }
 
 function CopyIcon({ ...rest }) {
