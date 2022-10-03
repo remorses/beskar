@@ -10,7 +10,7 @@ export const CopyButton = ({
     className = '',
     ...props
 }) => {
-    const [hasCopied, copy] = useCopyToClipboard(text)
+    const { hasCopied, copy } = useCopyToClipboard(text)
     const As: any = hasCopied ? CheckIcon : CopyIcon
     return (
         <button
@@ -65,8 +65,7 @@ export const useCopyToClipboard = (text: string) => {
         }
     }, [copied])
     React.useEffect(() => () => setCopied(false), [text])
-
-    return [copied, copy] as const
+    return { hasCopied: copied, copy }
 }
 
 function CopyIcon({ ...rest }) {
