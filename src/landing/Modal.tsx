@@ -78,7 +78,7 @@ export function Modal({
     }
 
     return createPortal(
-        <As className='fixed inset-0 z-10 overflow-y-auto' {...rest}>
+        <As className='fixed inset-0 z-[1000] overflow-y-auto' {...rest}>
             {styles}
             <Faded
                 disabled={disableAnimations}

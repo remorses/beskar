@@ -62,7 +62,7 @@ export const Select: React.FC<
                         ref={ref as any}
                         as='button'
                         className={classNames(
-                            'relative w-full py-[8px] pl-3 pr-10 text-left bg-white rounded-lg shadow-sm border dark:bg-gray-700 focus:outline-none focus-visible:ring-1 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-gray-300 focus-visible:ring-offset-1 sm:text-sm',
+                            'relative w-full py-[8px] pl-3 pr-10 text-left bg-white rounded-lg shadow-sm shadow border dark:bg-gray-700 focus:outline-none focus-visible:ring-1 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-gray-300 focus-visible:ring-offset-1 sm:text-sm',
                             className,
                         )}
                     >

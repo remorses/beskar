@@ -19,6 +19,7 @@ const theme: typeof _theme = {
     config: {
         ..._theme.config,
         initialColorMode: 'dark',
+        disableTransitionOnChange: true,
         useSystemColorMode: false,
     },
 }
@@ -40,6 +41,7 @@ export function ChakraStuff({
                 options={{
                     initialColorMode,
                     useSystemColorMode: false,
+                    disableTransitionOnChange: true,
                 }}
                 value={colorMode as any}
             >

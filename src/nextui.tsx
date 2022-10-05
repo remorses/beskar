@@ -3,8 +3,6 @@ import { createTheme, NextUIProvider } from '@nextui-org/react'
 
 import colors from '../colors'
 
-colors.gray = colors.gray as any
-
 const formattedColors = Object.fromEntries(
     Object.keys(colors)
         .filter((k) => colors.hasOwnProperty(k))
@@ -46,18 +44,18 @@ const darkTheme = createTheme({
     },
 })
 
-// disable dead code elimination
-Object.assign(
-    {},
-    {
-        lightTheme,
-        darkTheme,
-    },
-)
-
 export function NextUiStuff({ children, ...rest }) {
     return (
-        <NextUIProvider disableBaseline {...rest}>
+        <NextUIProvider
+            defaultTheme={'dark'}
+            attribute='class'
+            value={{
+                light: lightTheme.className,
+                dark: darkTheme.className,
+            }}
+            disableBaseline
+            {...rest}
+        >
             {children}
         </NextUIProvider>
     )
