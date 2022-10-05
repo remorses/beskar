@@ -18,12 +18,17 @@ const theme: typeof _theme = {
     styles: {},
     config: {
         ..._theme.config,
-        initialColorMode: 'light',
+        initialColorMode: 'dark',
         useSystemColorMode: false,
     },
 }
 
-export function ChakraStuff({ children, forceColorMode = '', ...rest }) {
+export function ChakraStuff({
+    children,
+    initialColorMode = 'dark' as any,
+    forceColorMode = '',
+    ...rest
+}) {
     let { colorMode } = useColorMode()
     if (forceColorMode) {
         colorMode = forceColorMode
@@ -33,7 +38,7 @@ export function ChakraStuff({ children, forceColorMode = '', ...rest }) {
         <ChakraProvider resetCSS={false} theme={theme}>
             <ColorModeProvider
                 options={{
-                    initialColorMode: 'light',
+                    initialColorMode,
                     useSystemColorMode: false,
                 }}
                 value={colorMode as any}
