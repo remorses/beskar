@@ -214,14 +214,7 @@ export function PricingSlider({
         subscription?.productId === currentRange?.productId || isLoading
     // console.log({ currentRange })
     return (
-        <PageContainer
-            id='pricing'
-            className={classNames(
-                'relative self-center px-4 mx-auto',
-                className,
-            )}
-            {...rest}
-        >
+        <PageContainer id='pricing' {...rest}>
             <FadedComponent
                 {...(animate && {
                     cascade: true,
@@ -229,7 +222,10 @@ export function PricingSlider({
                     triggerOnce: true,
                 })}
                 className={classNames(
-                    ' bg-white shadow-xl dark:bg-gray-800 p-12 rounded gap-6 flex flex-col w-full',
+                    'w-full max-w-[900px] shadow-xl self-center rounded relative',
+                    'px-12 p-8 mx-auto gap-6 flex-col flex bg-white',
+                    'dark:bg-gray-800',
+                    className,
                 )}
             >
                 <div className='flex flex-wrap gap-4 font-medium'>
@@ -371,9 +367,9 @@ function BillingIntervalSelect({ billingInterval, setBillingInterval }) {
                 onClick={() => setBillingInterval('month')}
                 type='button'
                 className={classNames(
-                    'relative w-1/2 py-2 text-sm font-medium text-gray-700',
-                    'whitespace-nowrap rounded-lg sm:px-8 sm:w-auto',
-                    'focus:z-10 focus:ring-2 focus:outline-none',
+                    'whitespace-nowrap w-1/2 text-sm text-gray-700',
+                    'rounded-lg relative py-2 font-medium sm:w-auto',
+                    'sm:px-8 focus:z-10 focus:ring-2 focus:outline-none',
                     {
                         'bg-white border-gray-200 shadow-sm rounded-md text-gray-900':
                             billingInterval === 'month',
@@ -387,9 +383,9 @@ function BillingIntervalSelect({ billingInterval, setBillingInterval }) {
                 onClick={() => setBillingInterval('year')}
                 type='button'
                 className={classNames(
-                    'relative w-1/2 bg-white py-2 text-sm font-medium',
-                    'text-gray-700 whitespace-nowrap rounded-lg',
-                    'sm:px-8 sm:w-auto focus:z-10 focus:ring-2 focus:outline-none',
+                    'whitespace-nowrap w-1/2 text-sm text-gray-700',
+                    'rounded-lg relative py-2 font-medium bg-white',
+                    'sm:w-auto sm:px-8 focus:z-10 focus:ring-2 focus:outline-none',
                     {
                         'bg-white border-gray-200 shadow-sm rounded-md text-gray-900':
                             billingInterval === 'year',
