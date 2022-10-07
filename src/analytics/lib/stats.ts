@@ -1,27 +1,6 @@
 import { NextRequest } from 'next/server'
 import { COUNTRIES } from './constants'
 
-export interface RawStatsProps {
-    geo: NextRequest['geo']
-    ua: any
-    referer: string
-    timestamp: number
-}
-
-export interface StatsProps {
-    key: string
-    interval: IntervalProps
-    totalClicks: number
-    clicksData: { start: number; end: number; count: number }[]
-    locationData: {
-        country: string
-        countryCode: string
-        city: string
-        region: string
-    }[]
-    deviceData: { device: string; browser: string; os: string; bot: string }[]
-}
-
 export type IntervalProps = '1h' | '24h' | '7d' | '30d'
 
 export const intervalData = {
@@ -79,21 +58,6 @@ export const getTimeIntervals = (interval: IntervalProps) => {
         end: startTimestamp + (i + 1) * coefficient,
     }))
     return { startTimestamp, endTimestamp, timeIntervals, coefficient }
-}
-
-export interface LocationStatsProps {
-    display: string
-    code: string
-    count: number
-}
-
-export type LocationTabs = 'country' | 'city' | 'region'
-
-
-
-export interface DeviceStatsProps {
-    display: string
-    count: number
 }
 
 export const handleDeviceEdgeCases = (ua: string): string => {
