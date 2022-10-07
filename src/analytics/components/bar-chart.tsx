@@ -1,4 +1,5 @@
-import { useMemo } from 'react'
+import cs from 'classnames'
+import { ReactNode, useMemo } from 'react'
 import { Colord } from 'colord'
 import { AxisBottom, AxisLeft } from '@visx/axis'
 import { GridRows } from '@visx/grid'
@@ -32,8 +33,17 @@ const rangeFormatter = (maxN: number): number => {
 
 export type BarChartData = { start: number; end: number; count: number }[]
 
+function dummyData(time: IntervalProps) {
+    return getTimeIntervals(time).timeIntervals.map((x) => ({
+        start: x.start,
+        end: x.end,
+        count: Math.floor(Math.random() * 100),
+    }))
+}
+
 const BarChart_ = ({
-    data,
+    data: data,
+    showMessage = '',
     isValidating,
 
     backgroundColor = '#bfb8ff',
@@ -46,9 +56,17 @@ const BarChart_ = ({
     maxHeight?: number
     parentWidth?: number
     backgroundColor?: string
+    showMessage?: ReactNode
 }) => {
     const router = useRouter()
     const interval = (router.query.interval as IntervalProps) || '24h'
+
+    data = useMemo(() => {
+        if (showMessage && !data?.length) {
+            return dummyData(interval)
+        }
+        return data
+    }, [data, showMessage])
 
     const xScale = useMemo(() => {
         return scaleBand({
@@ -93,7 +111,25 @@ const BarChart_ = ({
     const labelColor = isDark ? '#eee' : '#444'
 
     return (
-        <figure className='flex my-10' style={{ width: CHART_WIDTH }}>
+        <figure className='relative flex my-10 ' style={{ width: CHART_WIDTH }}>
+            {showMessage && (
+                <div
+                    className={cs(
+                        'justify-center items-center inset-0 flex ',
+                        ' absolute ',
+                    )}
+                >
+                    <div
+                        className={cs(
+                            'shadow-xl rounded-xl p-16 justify-center',
+                            'items-center flex-col flex bg-gray-100/20 backdrop-blur-md',
+                            'dark:bg-gray-800/20',
+                        )}
+                    >
+                        {showMessage}
+                    </div>
+                </div>
+            )}
             <svg
                 ref={containerRef}
                 height={CHART_HEIGHT}
@@ -178,6 +214,7 @@ const BarChart_ = ({
                             animate={{ transform: 'scaleY(1)' }}
                             style={{
                                 stroke: bgInstance.lighten(0.1).toRgbString(),
+                                opacity: showMessage ? 0.4 : 1,
                             }}
                             x={barX}
                             y={barY}
