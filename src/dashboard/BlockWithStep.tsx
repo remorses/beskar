@@ -4,29 +4,35 @@ export function BlockWithStep({
     children,
     step,
     isLast = false,
+    top = 32,
+
     className = '',
 }) {
     return (
         <div
             className={classNames(
-                'relative flex flex-col max-w-xl py-8 px-8 w-full items-stretch space-y-4',
-                // isActive ? '' : 'opacity-50',
+                'w-full space-y-4 relative py-8 px-8 max-w-xl items-stretch',
+                'flex-col flex',
                 className,
             )}
         >
             <div
                 className={classNames(
-                    'border flex flex-col items-center justify-center',
-                    'font-medium left-0 top-14 bg-white dark:bg-gray-700 absolute',
-                    isLast ? 'h-1' : 'h-full',
+                    'top-14 left-0 justify-center items-center font-medium',
+                    'flex-col flex border bg-white absolute dark:bg-gray-700',
                 )}
+                style={{
+                    height: 'calc(100% - ${top}px)',
+                    display: isLast ? 'none' : 'block',
+                }}
             ></div>
             <div
                 className={classNames(
-                    'border rounded-full p-4 w-4 h-4 flex flex-col items-center',
-                    'justify-center font-medium shadow-lg -left-4',
-                    'top-8 bg-white dark:bg-gray-700 absolute border',
+                    'w-4 shadow-lg rounded-full p-4 justify-center',
+                    'items-center h-4 font-medium flex-col flex border',
+                    'border bg-white absolute -left-4 !mt-0 dark:bg-gray-700',
                 )}
+                style={{ top }}
             >
                 {step}
             </div>
