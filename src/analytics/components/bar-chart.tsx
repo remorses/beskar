@@ -116,12 +116,12 @@ const BarChart_ = ({
                 <div
                     className={cs(
                         'justify-center items-center inset-0 flex ',
-                        ' absolute ',
+                        'absolute ml-12',
                     )}
                 >
                     <div
                         className={cs(
-                            'shadow-xl rounded-xl p-16 justify-center',
+                            'shadow-xl rounded-xl justify-center',
                             'items-center flex-col flex bg-gray-100/20 backdrop-blur-md',
                             'dark:bg-gray-800/20',
                         )}
@@ -214,7 +214,7 @@ const BarChart_ = ({
                             animate={{ transform: 'scaleY(1)' }}
                             style={{
                                 stroke: bgInstance.lighten(0.1).toRgbString(),
-                                opacity: showMessage ? 0.4 : 1,
+                                opacity: showMessage ? 0.26 : 1,
                             }}
                             x={barX}
                             y={barY}
