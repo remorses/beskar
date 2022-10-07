@@ -4,7 +4,7 @@ export function BlockWithStep({
     children,
     step,
     isLast = false,
-    top = 32,
+    top = 44,
 
     className = '',
 }) {
