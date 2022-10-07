@@ -70,10 +70,7 @@ export const intervalData = {
     },
 }
 
-
-export const getTimeIntervals = (
-    interval: IntervalProps,
-) => {
+export const getTimeIntervals = (interval: IntervalProps) => {
     const { milliseconds, intervals, coefficient } = intervalData[interval]
     const endTimestamp = Math.ceil(Date.now() / coefficient) * coefficient
     const startTimestamp = endTimestamp - milliseconds
@@ -84,7 +81,6 @@ export const getTimeIntervals = (
     return { startTimestamp, endTimestamp, timeIntervals, coefficient }
 }
 
-
 export interface LocationStatsProps {
     display: string
     code: string
@@ -93,86 +89,11 @@ export interface LocationStatsProps {
 
 export type LocationTabs = 'country' | 'city' | 'region'
 
-export const processLocationData = (
-    data: StatsProps['locationData'],
-    tab: LocationTabs,
-): LocationStatsProps[] => {
-    const countryCodeMap: { [key: string]: string } = {}
 
-    const results =
-        data && data.length > 0
-            ? data.reduce<Record<string, number>>((acc, d) => {
-                  const count = acc[d[tab]] || 0
-                  acc[d[tab]] = count + 1
-                  countryCodeMap[d[tab]] = d.countryCode
-                  return acc
-              }, {})
-            : {}
-
-    return Object.entries(results)
-        .map(([item, count]) => ({
-            display: item,
-            code: countryCodeMap[item],
-            count,
-        }))
-        .sort((a, b) => b.count - a.count)
-}
-
-export type DeviceTabs = 'device' | 'browser' | 'os' | 'bot'
 
 export interface DeviceStatsProps {
     display: string
     count: number
-}
-
-export const processDeviceData = (
-    data: StatsProps['deviceData'],
-    tab: DeviceTabs,
-    showBots: boolean,
-): DeviceStatsProps[] => {
-    const results =
-        data && data.length > 0
-            ? data.reduce<Record<string, number>>((acc, d) => {
-                  const currentVal = d[tab]
-                  const count = acc[currentVal] || 0
-                  // for the bots tab, we only want to show bots
-                  if (tab === 'bot') {
-                      if (currentVal !== 'Unknown') {
-                          acc[currentVal] = count + 1
-                      }
-                      // for all other tabs, we only show bots if showBots is true
-                  } else {
-                      if (
-                          currentVal !== 'Bot' ||
-                          (currentVal === 'Bot' && showBots)
-                      ) {
-                          acc[currentVal] = count + 1
-                      }
-                  }
-                  return acc
-              }, {})
-            : {}
-
-    return Object.entries(results)
-        .map(([display, count]) => ({
-            display,
-            count,
-        }))
-        .sort((a, b) => b.count - a.count)
-}
-
-export const dummyData: StatsProps = {
-    key: 'test',
-    interval: '24h',
-    totalClicks: 0,
-    clicksData: getTimeIntervals('24h').timeIntervals.map((interval) => ({
-        ...interval,
-        count: Math.random() * 100,
-    })),
-    // @ts-ignore
-    locationData: null,
-    // @ts-ignore
-    deviceData: null,
 }
 
 export const handleDeviceEdgeCases = (ua: string): string => {

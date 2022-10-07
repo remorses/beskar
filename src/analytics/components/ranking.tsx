@@ -1,8 +1,4 @@
-import {
-    StatsProps,
-    processLocationData,
-    LocationTabs,
-} from '../lib/stats'
+
 import { Colord } from 'colord'
 import BadgeSelect from './badge-select'
 import { ReactNode, useMemo } from 'react'

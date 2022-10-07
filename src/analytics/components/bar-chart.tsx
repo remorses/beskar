@@ -6,7 +6,7 @@ import { scaleBand, scaleLinear } from '@visx/scale'
 import { useTooltip, useTooltipInPortal } from '@visx/tooltip'
 import { localPoint } from '@visx/event'
 import { withParentSize, withScreenSize } from '@visx/responsive'
-import { IntervalProps,  intervalData } from '../lib/stats'
+import { IntervalProps, intervalData } from '../lib/stats'
 import { nFormatter, useColorMode } from '../lib/utils'
 import styles from './index.module.css'
 import { motion } from 'framer-motion'
@@ -30,6 +30,8 @@ const rangeFormatter = (maxN: number): number => {
     return Math.ceil(maxN / 5) * 5
 }
 
+export type BarChartData = { start: number; end: number; count: number }[]
+
 const BarChart_ = ({
     data,
     isValidating,
@@ -38,7 +40,7 @@ const BarChart_ = ({
     maxHeight: CHART_HEIGHT = 400,
     parentWidth: CHART_WIDTH = 1000,
 }: {
-    data: { start: number; end: number; count: number }[]
+    data: BarChartData
     isValidating?: boolean
 
     maxHeight?: number
