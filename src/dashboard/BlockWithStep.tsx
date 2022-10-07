@@ -22,8 +22,8 @@ export function BlockWithStep({
                     'flex-col flex border bg-white absolute dark:bg-gray-700',
                 )}
                 style={{
-                    height: 'calc(100% - ${top}px)',
-                    display: isLast ? 'none' : 'block',
+                    height: '100%',
+                    display: isLast ? 'none' : 'flex',
                 }}
             ></div>
             <div
