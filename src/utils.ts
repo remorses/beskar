@@ -1,4 +1,6 @@
 import { useTheme } from 'next-themes'
+import '@formatjs/intl-numberformat/polyfill'
+import '@formatjs/intl-numberformat/locale-data/en'
 import React, { useState, useEffect, createContext, useContext } from 'react'
 import toast from 'react-hot-toast'
 import colors from '../colors'
@@ -224,4 +226,13 @@ export function refreshSsr() {
             unstable_skipClientCache: true,
         },
     )
+}
+
+
+export function formatBigNumber(n: number) {
+    const formatter = new Intl.NumberFormat('en-US', {
+        compactDisplay: 'short',
+        notation: 'compact',
+    })
+    return formatter.format(n)
 }
