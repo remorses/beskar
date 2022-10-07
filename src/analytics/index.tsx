@@ -1,4 +1,5 @@
-export { getTimeIntervals, IntervalProps,  } from './lib/stats'
+export { getTimeIntervals } from './lib/stats'
+export type { IntervalProps } from './lib/stats'
 export { default as ToggleAnalyticsInterval } from './components/toggle'
 export { default as Ranking } from './components/ranking'
 export { default as BarChart } from './components/bar-chart'
