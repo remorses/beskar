@@ -21,6 +21,7 @@ export type AlertProps = ComponentPropsWithoutRef<'div'> & {
     description?: ReactNode
     isVertical?: boolean
     isClosable?: boolean
+    hideIcon?: boolean
 }
 
 export const Alert = forwardRef<any, AlertProps>(
@@ -30,6 +31,7 @@ export const Alert = forwardRef<any, AlertProps>(
             type = 'info',
             title,
             description,
+            hideIcon = false,
             isClosable = false,
             children,
             isVertical = false,
@@ -115,14 +117,16 @@ export const Alert = forwardRef<any, AlertProps>(
                     </button>
                 )}
 
-                <Icon
-                    style={{ width: '38px', height: '38px' }}
-                    className={clsx(
-                        'stroke-white flex-shrink-0 block ',
-                        fill,
-                        isVertical ? 'lg:self-start' : 'self-center',
-                    )}
-                />
+                {!hideIcon && (
+                    <Icon
+                        style={{ width: '38px', height: '38px' }}
+                        className={clsx(
+                            'stroke-white flex-shrink-0 block ',
+                            fill,
+                            isVertical ? 'lg:self-start' : 'self-center',
+                        )}
+                    />
+                )}
 
                 <div
                     className={clsx(
