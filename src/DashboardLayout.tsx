@@ -11,6 +11,7 @@ import { useSession } from 'next-auth/react'
 import { TabsNav } from './Tabs'
 import { ChakraStuff } from './chakra'
 import { maxWidthWithPx } from './utils'
+import { useRouter } from 'next/router'
 
 export default DashboardLayout
 
@@ -36,6 +37,7 @@ export function DashboardLayout({
     className = '',
     ...rest
 }: DashboardLayoutProps) {
+    const router = useRouter()
     return (
         <ChakraStuff>
             <div className='flex flex-col items-center w-full min-h-screen'>
@@ -64,12 +66,12 @@ export function DashboardLayout({
                 >
                     <div className='relative flex flex-auto w-full overflow-visible md:space-x-8 '>
                         <div className='flex flex-col w-full'>
-                            <Faded
+                            <div
+                                key={router.asPath}
                                 className='flex flex-col w-full h-full space-y-8 overflow-visible pt-[20px] lg:pt-[30px]'
-                                cascade
                             >
                                 {children}
-                            </Faded>
+                            </div>
                             <div className='flex-1'></div>
                             {footer}
                         </div>

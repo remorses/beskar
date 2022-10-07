@@ -4,6 +4,7 @@ import toast from 'react-hot-toast'
 import colors from '../colors'
 
 import { Faded } from 'baby-i-am-faded'
+import router from 'next/router'
 
 Faded.defaultProps = {
     cascadeIncrement: 80,
@@ -205,4 +206,22 @@ function getTimeBucket(kind: 'day' | 'hour') {
 
 export function maxWidthWithPx(px = '40px') {
     return `min(var(--page-max-width, 1200px), calc(100vw - ${px}))`
+}
+
+export function refreshSsr() {
+    return router.replace(
+        {
+            pathname: router.pathname,
+            query: {
+                ...router.query,
+                remount: (Number(router.query?.remount || 0) || 0) + 1,
+            },
+        },
+        undefined,
+        {
+            scroll: false,
+            shallow: false,
+            unstable_skipClientCache: true,
+        },
+    )
 }
