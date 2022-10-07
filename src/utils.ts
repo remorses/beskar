@@ -91,13 +91,13 @@ export function useThrowingFn({
     }
 }
 
-export function useColorMode() {
+export function useColorMode(initialColorMode = 'dark') {
     const { resolvedTheme: _resolvedTheme, setTheme } = useTheme()
     function toggleColorMode() {
         setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
     }
     const [resolvedTheme, setResolvedTheme] = useState(() => {
-        return 'light'
+        return initialColorMode
     })
 
     useEffect(() => {
