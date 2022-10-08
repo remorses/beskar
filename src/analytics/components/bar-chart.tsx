@@ -116,7 +116,7 @@ const BarChart_ = ({
                 <div
                     className={cs(
                         'justify-center items-center inset-0 flex ',
-                        'absolute ml-12',
+                        'absolute ml-12 mb-8',
                     )}
                 >
                     <div
