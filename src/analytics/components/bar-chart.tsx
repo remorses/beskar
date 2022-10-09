@@ -121,10 +121,14 @@ const BarChart_ = ({
                 >
                     <div
                         className={cs(
-                            'shadow-xl rounded-xl justify-center',
+                            ' rounded-xl justify-center',
                             'items-center flex-col flex bg-gray-100/20 backdrop-blur-md',
                             'dark:bg-gray-800/20',
                         )}
+                        style={{
+                            boxShadow:
+                                '0 40px 60px rgba(0,0,0,0.1), 0 0 40px rgba(0,0,0,0.3)',
+                        }}
                     >
                         {showMessage}
                     </div>
