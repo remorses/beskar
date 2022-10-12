@@ -1,7 +1,7 @@
-
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 import { ccTLDs } from './constants'
+import { getTimeIntervals } from './stats'
 
 export function useColorMode() {
     const { resolvedTheme: _resolvedTheme, setTheme } = useTheme()
@@ -44,4 +44,27 @@ export function nFormatter(num: number, digits?: number) {
         ? (num / item.value).toFixed(digits || 1).replace(rx, '$1') +
               item.symbol
         : '0'
+}
+
+type IntervalProps = ReturnType<typeof getTimeIntervals>
+
+export function prepareAnalyticsData(
+    timeIntervals: IntervalProps['timeIntervals'],
+    coefficient: IntervalProps['coefficient'],
+    hist: { count: number; bucket: number }[],
+) {
+    for (let x of hist) {
+        x.count = Number(x.count)
+        x.bucket = Number(x.bucket)
+    }
+
+    const total = hist.reduce((a, b) => a + b.count, 0)
+    const data = timeIntervals.map((interval) => ({
+        ...interval,
+        count: hist.find((d) => d.bucket === interval.start)?.count || 0,
+    }))
+    return {
+        total,
+        data,
+    }
 }

@@ -1,5 +1,6 @@
 import clsx from 'clsx'
 import React, { ElementType, Fragment, ReactNode, useMemo } from 'react'
+import { Button, Divider } from '../landing'
 import { Block, BlockProps } from './Block'
 
 export type TableProps = {
@@ -8,6 +9,7 @@ export type TableProps = {
     footer?: ReactNode
     title?: ReactNode
     isLoading?: boolean
+    maxRows?: number
 } & BlockProps
 
 export const TableBlock = ({
@@ -16,6 +18,7 @@ export const TableBlock = ({
     rows: _rows = [],
     footer = null,
     isLoading,
+    maxRows = Infinity,
     ...rest
 }: TableProps) => {
     const rows = (() => {
@@ -37,6 +40,7 @@ export const TableBlock = ({
         }
         return _rows
     })()
+    const [limit, setLimit] = React.useState(maxRows)
     return (
         <Block
             // heading={heading}
@@ -52,7 +56,7 @@ export const TableBlock = ({
                     </tr>
                 </thead>
                 <tbody>
-                    {rows.map((row, i) => {
+                    {rows.slice(0, limit).map((row, i) => {
                         return Array.isArray(row) ? (
                             <tr key={i}>
                                 {row.map((value, i) => {
@@ -65,6 +69,21 @@ export const TableBlock = ({
                     })}
                 </tbody>
             </table>
+            {rows.length > limit && (
+                <div className='flex !-mt-2 flex-col items-center w-full'>
+                    <Divider
+                        heading={
+                            <Button
+                                ghost
+                                onClick={() => setLimit(Infinity)}
+                                className='text-sm'
+                            >
+                                Show More
+                            </Button>
+                        }
+                    />
+                </div>
+            )}
             {footer && <div className='w-full px-5 py-2'>{footer}</div>}
         </Block>
     )

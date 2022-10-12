@@ -19,7 +19,6 @@ export const Divider = ({
                 <div
                     className={classNames(
                         'flex justify-center items-center space-x-4 flex-row',
-                        'opacity-60',
                         className,
                     )}
                 >
