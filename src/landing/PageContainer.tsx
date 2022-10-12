@@ -54,3 +54,24 @@ export function PageContainer({
         </div>
     )
 }
+
+export function RootPageContainer({
+    children,
+    style = {},
+    className = '',
+    ...rest
+}: ComponentPropsWithoutRef<'div'> & {}) {
+    return (
+        <div
+            style={{ contain: 'paint' }}
+            className={classNames(
+                'relative min-h-full max-w-full items-stretch overflow-x-hidden',
+                'flex-col flex space-y-[30px] md:space-y-[60px]',
+                className,
+            )}
+            {...rest}
+        >
+            {children}
+        </div>
+    )
+}
