@@ -1,12 +1,12 @@
 import { CheckIcon } from '@heroicons/react/solid'
 import classNames from 'classnames'
-import React, { CSSProperties } from 'react'
+import React, { CSSProperties, ReactNode } from 'react'
 
 export const CopyButton = ({
     text,
     style = {} as CSSProperties,
     size = 18,
-    children,
+    children = null as ReactNode,
     className = '',
     ...props
 }) => {
