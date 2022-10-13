@@ -11,7 +11,6 @@ declare module 'next-auth' {
         user: {
             /** The user's postal address. */
             id: string
-            // TODO user needs to add id field on next auth
         } & DefaultSession['user']
         expires: ISODateString
     }

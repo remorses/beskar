@@ -30,7 +30,7 @@ export function PageContainer({
                     className={cs(
                         'absolute flex flex-col items-center justify-center',
                         'w-full z-0 inset-0',
-                        // `overflow-x-hidden`, // TODO maybe i need to set overflow x hidden for mobile
+                        // `overflow-x-hidden`,
                     )}
                 >
                     {floatingElement}
