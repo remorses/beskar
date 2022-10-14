@@ -211,7 +211,7 @@ const BarChart_ = ({
                         <motion.polyline
                             // points="50,50 150,50 150,150 50,150"
                             points={points}
-                            key={`bar-${start}`}
+                            key={`bar-${start}-${backgroundColor}`}
                             transition={{ ease: 'easeOut', duration: 0.3 }}
                             className={styles.bar} // to override transformOrigin
                             initial={{ transform: 'scaleY(0)' }}
