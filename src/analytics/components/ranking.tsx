@@ -1,4 +1,3 @@
-
 import { Colord } from 'colord'
 import BadgeSelect from './badge-select'
 import { ReactNode, useMemo } from 'react'
@@ -79,7 +78,9 @@ export default function Ranking({
                                     </span>
                                     <motion.div
                                         style={{
-                                            width: `${(count / total) * 100}%`,
+                                            width: `${
+                                                (count / (total || 1)) * 100
+                                            }%`,
                                             borderWidth: '2px',
                                             borderStyle: 'solid',
                                             borderLeftWidth: 0,
