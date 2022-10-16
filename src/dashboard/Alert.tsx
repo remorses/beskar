@@ -17,7 +17,7 @@ import { useDisclosure, useSafeLayoutEffect } from '../utils'
 
 export type AlertProps = ComponentPropsWithoutRef<'div'> & {
     type?: 'error' | 'info' | 'warn'
-    title?: string
+    title?: ReactNode
     description?: ReactNode
     isVertical?: boolean
     isClosable?: boolean
@@ -132,7 +132,7 @@ export const Alert = forwardRef<any, AlertProps>(
                     className={clsx(
                         'flex',
                         isVertical
-                            ? 'flex-col gap-3 max-w-2xl'
+                            ? 'flex-col gap-3 '
                             : 'flex-row items-center gap-5',
                     )}
                 >
