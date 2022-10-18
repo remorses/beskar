@@ -41,7 +41,7 @@ export function Hero({
                 <div
                     className={clsx(
                         'space-y-8 shrink-0 flex max-w-full flex-col text-center',
-                        image ? 'md:max-w-[60%]' : 'w-full',
+                        image ? 'md:max-w-[70%]' : 'w-full',
                         image ? 'items-start' : 'items-center',
                         image ? 'md:text-left' : 'text-center',
                     )}
@@ -55,14 +55,14 @@ export function Hero({
                         {bullet && <Bullet>{bullet}</Bullet>}
                         <ComponentIfString
                             component={'h1'}
-                            className='block max-w-2xl even:!mt-2 text-5xl font-semibold leading-normal'
+                            className='block even:!mt-2 text-5xl font-semibold leading-normal'
                         >
                             {heading}
                         </ComponentIfString>
                     </div>
                     <ComponentIfString
                         component={'h2'}
-                        className='max-w-2xl text-2xl opacity-[0.78] leading-relaxed'
+                        className='text-2xl opacity-[0.78] leading-relaxed'
                     >
                         {subheading}
                     </ComponentIfString>
