@@ -82,7 +82,7 @@ export function GoogleLoginButton({
                     </button>
                 )}
                 {fingerprint && (
-                    <div className='opacity-60 text-sm  mt-3 w-full text-left'>
+                    <div className='opacity-60 text-sm font-medium mt-3 w-full text-left'>
                         {fingerprint}
                     </div>
                 )}
