@@ -130,7 +130,7 @@ export function TooltipContent({
     return (
         <div className='max-w-xs flex flex-col text-center items-center space-y-3 py-2'>
             <p className='text-sm text-gray-700'>{title}</p>
-            <Link href={ctaLink}>
+            <Link legacyBehavior href={ctaLink}>
                 <a className='py-1.5 px-3 bg-black hover:bg-white rounded-full border border-black text-sm text-white hover:text-black transition-all mt-4'>
                     {cta}
                 </a>

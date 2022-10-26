@@ -60,7 +60,7 @@ export const TabLink = forwardRef<
         }, [href])
 
         return (
-            <NextLinkMaybe href={href || ''} passHref {...props}>
+            <NextLinkMaybe href={href || ''} legacyBehavior passHref {...props}>
                 <a
                     ref={ref}
                     className={clsx(
@@ -114,7 +114,7 @@ function useIsActiveHref(href) {
             return true
         }
         return false
-    }, [pathname, href])
+    }, [pathname, href]);
 }
 
 function stripQueryStringAndHashFromPath(url: string) {

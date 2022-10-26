@@ -32,7 +32,11 @@ export const Link = forwardRef<any, LinkProps>(
             props.target = '_blank'
         }
         return (
-            <Wrapper {...(isExternal ? {} : { passHref: true, href })}>
+            <Wrapper
+                {...(isExternal
+                    ? {}
+                    : { passHref: true, legacyBehavior: true, href })}
+            >
                 <a
                     ref={ref}
                     href={href || ''}

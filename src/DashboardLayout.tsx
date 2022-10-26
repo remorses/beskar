@@ -1,7 +1,5 @@
 import cs from 'classnames'
 import { Faded } from 'baby-i-am-faded'
-
-import NextLink from 'next/link'
 import React, { ReactNode, useMemo } from 'react'
 
 import { Footer } from './landing/Footer'
