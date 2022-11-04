@@ -49,6 +49,7 @@ export type PricingSliderProps = {
     manageSubscriptionHandler: Function
     buttonText?: ReactNode
     allowYearlyBilling?: boolean
+    hideUpgradeButton?: boolean
     trialDays?: number
     onCheckout?: (x: {
         isChangePlan?: boolean
@@ -73,6 +74,7 @@ export function PricingSlider({
         signIn()
     },
     updatePlan,
+    hideUpgradeButton = false,
     getSubscription,
     features,
     manageSubscriptionHandler,
@@ -308,18 +310,20 @@ export function PricingSlider({
                 <div className='flex mt-4 justify-center'>
                     {/* <div className='grow'></div> */}
                     <div className='space-y-2'>
-                        <Button
-                            aria-label='buy'
-                            onClick={handlePricingClick}
-                            disabled={disabled}
-                            // bg='blue.500'
-                            // bgDark='blue.200'
-                            isLoading={clickIsLoading}
-                            biggerOnHover
-                            className='font-bold !px-6'
-                        >
-                            {buttonText}
-                        </Button>
+                        {!hideUpgradeButton && (
+                            <Button
+                                aria-label='buy'
+                                onClick={handlePricingClick}
+                                disabled={disabled}
+                                // bg='blue.500'
+                                // bgDark='blue.200'
+                                isLoading={clickIsLoading}
+                                biggerOnHover
+                                className='font-bold !px-6'
+                            >
+                                {buttonText}
+                            </Button>
+                        )}
                         {Boolean(trialDays) && !subscription && !session && (
                             <div className='opacity-70 text-center font-medium text-xs'>
                                 {trialDays} days free trial
