@@ -14,6 +14,7 @@ const theme: typeof _theme = {
     colors: {
         ..._theme.colors,
         gray: { ...colors.gray },
+        blue: { ...colors.blue },
     },
     styles: {},
     config: {
