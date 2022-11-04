@@ -5,20 +5,47 @@ export function BrowserWindow({
     className = '',
     host = 'example.com',
 }) {
+    const dot = (
+        <span
+            className={classNames(
+                'rounded-full bg-gray-600 dark:bg-gray-600 w-[0.7em]',
+                'h-[0.7em]',
+            )}
+        />
+    )
     return (
         <figure
             className={classNames(
-                'relative z-[1] max-w-full h-auto rounded-b-md shadow-[0_2.75rem_3.5rem_-2rem_rgb(45_55_75_/_20%),_0_0_5rem_-2rem_rgb(45_55_75_/_15%)] dark:shadow-[0_2.75rem_3.5rem_-2rem_rgb(0_0_0_/_20%),_0_0_5rem_-2rem_rgb(0_0_0_/_15%)]',
+                'rounded-b-md relative max-w-full h-auto z-[1]',
+                'shadow-[0_2.75rem_3.5rem_-2rem_rgb(45_55_75_/_20%),_0_0_5rem_-2rem_rgb(45_55_75_/_15%)]',
+                'dark:shadow-[0_2.75rem_3.5rem_-2rem_rgb(0_0_0_/_20%),_0_0_5rem_-2rem_rgb(0_0_0_/_15%)]',
+                'text-xs',
                 className,
             )}
         >
-            <div className='relative flex items-center bg-gray-800 rounded-t-md py-2 px-24 dark:bg-gray-700'>
-                <div className='flex space-x-1 absolute top-2/4 left-4 -translate-y-1'>
-                    <span className='w-2 h-2 bg-gray-600 rounded-full dark:bg-gray-600' />
-                    <span className='w-2 h-2 bg-gray-600 rounded-full dark:bg-gray-600' />
-                    <span className='w-2 h-2 bg-gray-600 rounded-full dark:bg-gray-600' />
+            <div
+                className={classNames(
+                    'rounded-t-md relative py-2 px-24 items-center',
+                    'flex bg-gray-800 dark:bg-gray-700',
+                )}
+            >
+                <div
+                    className={classNames(
+                        'top-0 left-4 items-center h-full flex absolute',
+                        'gap-[0.5em]',
+                    )}
+                >
+                    {dot}
+                    {dot}
+                    {dot}
                 </div>
-                <div className='flex justify-center truncate items-center w-full h-full text-[.25rem] sm:text-[.5rem]  bg-gray-700 text-gray-400 rounded-sm  dark:bg-gray-600 dark:text-gray-400'>
+                <div
+                    className={classNames(
+                        'w-full truncate text-gray-400 justify-center',
+                        'items-center h-full flex bg-gray-700 dark:text-gray-400',
+                        'dark:bg-gray-600',
+                    )}
+                >
                     {host}
                 </div>
             </div>

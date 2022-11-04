@@ -1,7 +1,7 @@
 import { Button } from './Button'
 import clsx from 'clsx'
 import { signIn, useSession } from 'next-auth/react'
-import { useState } from 'react'
+import { ReactNode, useState } from 'react'
 import { Link } from './Link'
 
 export function GoogleLoginButton({
@@ -9,7 +9,7 @@ export function GoogleLoginButton({
     className = '',
     text = 'Continue with Google',
     showEmailSignIn = false,
-    fingerprint = '',
+    fingerprint = '' as ReactNode,
     disabled = false,
     textColor = 'white',
     ...rest
