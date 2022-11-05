@@ -110,7 +110,7 @@ export function Modal({
                 animationName='zoomIn'
                 style={{
                     ...style,
-                    maxWidth: `min(${maxWidth}, 100vw - 200px)`,
+                    maxWidth: `min(${maxWidth}, 100vw - 60px)`,
                 }}
                 className={clsx(
                     'top-8 space-y-6 shadow-xl rounded-lg relative',
@@ -122,7 +122,7 @@ export function Modal({
                     <div
                         className={clsx(
                             'w-auto text-gray-700 space-y-8 rounded-lg ring-gray-100',
-                            'ring-1 py-4 px-8 min-w-0 justify-center items-stretch',
+                            'ring-1 py-4 px-2 md:px-8 min-w-0 justify-center items-stretch',
                             'flex-col flex bg-white dark:text-gray-100 dark:ring-gray-700',
                             'dark:bg-gray-800',
                         )}
