@@ -29,6 +29,7 @@ const {
     zinc,
 } = tailwindColors
 
+/** @type {import('tailwindcss/colors')} */
 const colors = {
     amber,
     black,
