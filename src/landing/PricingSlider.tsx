@@ -301,7 +301,7 @@ export function PricingSlider({
                             >
                                 {i % 3 === 2 && <div className='grow' />}
                                 <CheckCircleIcon className='h-5 dark:fill-green-300 fill-green-500' />
-                                <div className=''>{feature}</div>
+                                <div className='whitespace-pre'>{feature}</div>
                                 {i % 3 === 0 && <div className='grow' />}
                             </div>
                         )

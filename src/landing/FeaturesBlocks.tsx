@@ -62,7 +62,7 @@ export function FeaturesBlocks({
                                     <h3 className='text-lg font-semibold md:text-xl'>
                                         {feature.heading}
                                     </h3>
-                                    <p className='text-sm opacity-60'>
+                                    <p className='text-sm font-medium opacity-60'>
                                         {feature.description}
                                     </p>
                                 </div>
