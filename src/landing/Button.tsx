@@ -36,7 +36,6 @@ function getColors(color: ColorGetter, opacity = 1) {
     const bg = getColor(color as any) || color
     const bgd = colord(bg).alpha(opacity)
     const text =
-        
         opacity < 0.8 ? 'currentColor' : bgd.isDark() ? 'white' : 'black'
     // const text = 'currentColor'
     const highlight = bgd.alpha(0.2).toRgbString()
@@ -71,11 +70,11 @@ export const Button: FC<ButtonProps> = forwardRef<ButtonProps, any>(
         if (!bgDark_ && bg_) {
             bgDark_ = bg_
         }
-        const opacity = ghost ? 0.2 : 1
+        const opacity = ghost && !isLoading ? 0.2 : 1
         const light = getColors(bg_, opacity)
         const dark = getColors(bgDark_ || bg_, opacity)
         const As = href ? Link : _As
-        const pseudo = ghost ? ':hover' : ''
+        const pseudo = ghost && !isLoading ? ':hover' : ''
         return (
             <As
                 ref={ref}
@@ -152,6 +151,7 @@ export const Button: FC<ButtonProps> = forwardRef<ButtonProps, any>(
                         <div
                             className={classNames(
                                 'absolute inset-0 flex item-center justify-center colorAndBg',
+
                                 !isLoading && 'hidden',
                             )}
                         >
