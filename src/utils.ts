@@ -206,7 +206,7 @@ function getTimeBucket(kind: 'day' | 'hour') {
     return now.getTime()
 }
 
-export function maxWidthWithPx(px = '40px') {
+export function maxWidthWithPx(px = '60px') {
     return `min(var(--page-max-width, 1200px), calc(100vw - ${px}))`
 }
 
