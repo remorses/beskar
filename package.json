@@ -50,6 +50,7 @@
         "colord": "^2.9.2",
         "nprogress": "*",
         "postcss": "^8.4.16",
+        "prismjs": "^1.29.0",
         "react-hook-form": "^7.37.0",
         "react-hot-toast": "^2.2.0",
         "styled-jsx": "^5.1.0",
