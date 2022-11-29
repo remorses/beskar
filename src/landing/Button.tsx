@@ -34,7 +34,7 @@ function getColors(color: ColorGetter, opacity = 1) {
         }
     }
     const bg = getColor(color as any) || color
-    const bgd = colord(bg).alpha(opacity)
+    const bgd = colord(bg as any).alpha(opacity)
     const text =
         opacity < 0.8 ? 'currentColor' : bgd.isDark() ? 'white' : 'black'
     // const text = 'currentColor'
