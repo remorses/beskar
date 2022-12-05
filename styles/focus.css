@@ -1,12 +1,12 @@
-*:focus-visible {
+/* *:focus-visible {
     box-shadow: 0 0 0px 2px rgba(120, 120, 120, 0.3);
     outline: none;
 }
 .dark *:focus-visible {
     box-shadow: 0 0 0 2px rgba(120, 120, 120, 0.3);
     outline: none;
-}
+} */
 
-*:focus {
+/* *:focus {
     outline: none;
-}
+} */
