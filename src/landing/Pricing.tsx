@@ -461,7 +461,7 @@ function SubscriptionPlan({
                                 className='flex-shrink-0 w-5 h-5 text-emerald-600'
                                 aria-hidden='true'
                             />
-                            <span className='text-gray-600 '>{feature}</span>
+                            <span className='text-gray-600 whitespace-pre-wrap '>{feature}</span>
                         </li>
                     ))}
                 </ul>
