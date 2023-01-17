@@ -168,8 +168,8 @@ const BarChart_ = ({
                         x2='0%'
                         y2='100%'
                     >
-                        <stop offset='0%' stop-color={gradientStart} />
-                        <stop offset='100%' stop-color={gradientStop} />
+                        <stop offset='0%' stopColor={gradientStart} />
+                        <stop offset='100%' stopColor={gradientStop} />
                     </linearGradient>
                 </defs>
                 <AxisBottom
