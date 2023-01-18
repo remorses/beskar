@@ -27,7 +27,7 @@ function AccordionItem({ heading, content }) {
         ? MaterialSymbolsKeyboardArrowUpRounded
         : MaterialSymbolsKeyboardArrowDownRounded
     return (
-        <li className='flex flex-col space-y-4 bg-gray-200/50 backdrop-blur rounded dark:bg-gray-900/40 border p-6 '>
+        <li className='flex flex-col shadow-sm space-y-4 backdrop-blur rounded dark:bg-gray-900/40 border p-6 '>
             <div onClick={toggle} className='cursor-pointer flex items-center'>
                 <div className='text-xl font-medium'>{heading}</div>
                 <div className='flex-auto'></div>
@@ -41,6 +41,7 @@ function AccordionItem({ heading, content }) {
                         'block whitespace-pre-wrap opacity-90 leading-relaxed',
                     )}
                 >
+                    
                     {content}
                 </div>
             </div>
