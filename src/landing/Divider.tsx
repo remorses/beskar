@@ -23,11 +23,7 @@ export const Divider = ({
                     )}
                 >
                     <Line />
-                    <div
-                        className={
-                            'font-medium tracking-widest flex-shrink-0 items-center'
-                        }
-                    >
+                    <div className={'tracking-wide flex-shrink-0 items-center'}>
                         {heading}
                     </div>
                     <Line />

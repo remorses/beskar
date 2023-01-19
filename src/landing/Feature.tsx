@@ -48,22 +48,26 @@ export function Feature({
             <div
                 className={clsx(
                     'relative justify-between items-center max-w-full w-full',
-                    'flex flex-col ',
+                    'flex flex-col gap-8',
                     dir,
                 )}
             >
                 <div className='space-y-6 flex flex-col px-3 min-w-[300px] max-w-full flex-1'>
                     {bullet && <Bullet>{bullet}</Bullet>}
                     <div
-                        className={clsx('text-4xl even:!mt-2 font-bold leading-relaxed ')}
+                        className={clsx(
+                            'text-4xl even:!mt-2 font-bold leading-tight ',
+                        )}
                     >
                         {heading}
                     </div>
-                    <div className=' font-medium opacity-80 max-w-xl'>{subheading}</div>
+                    <div className='opacity-80 max-w-xl'>
+                        {subheading}
+                    </div>
                     {cta && <div>{cta}</div>}
                 </div>
 
-                <div className='w-12 h-12'></div>
+                
                 <div
                     className={clsx(
                         'flex flex-col flex-shrink-0 px-3 items-center flex-1',
