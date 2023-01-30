@@ -50,6 +50,9 @@ export const Select: React.FC<
         },
         ref,
     ) {
+        if (!options) {
+            options = []
+        }
         const router = useRouter()
         const orgId = (router.query.orgId || '') as string
 
