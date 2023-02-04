@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import { INTERVALS } from '../lib/constants'
 
 import { ExpandingArrow } from './icons'
-import BadgeSelect from './badge-select'
+import { BadgeSelect } from './badge-select'
 import { IntervalProps } from '../lib/stats'
 import { useMemo } from 'react'
 

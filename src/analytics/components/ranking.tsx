@@ -1,5 +1,5 @@
 import { Colord } from 'colord'
-import BadgeSelect from './badge-select'
+import { BadgeSelect } from './badge-select'
 import { ReactNode, useMemo } from 'react'
 import { nFormatter } from '../lib/utils'
 import { useState, UIEvent } from 'react'
