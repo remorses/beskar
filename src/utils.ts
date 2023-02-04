@@ -231,8 +231,37 @@ export function refreshSsr() {
 
 export function formatBigNumber(n: number) {
     const formatter = new Intl.NumberFormat('en-US', {
+        // @ts-ignore
         compactDisplay: 'short',
         notation: 'compact',
     })
     return formatter.format(n)
+}
+
+
+
+export function useDebouncedEffect(callback, deps = [], delay = 120) {
+    const data = React.useRef({
+        firstTime: true,
+        clearFunc: null as Function | null,
+    })
+    React.useEffect(() => {
+        const { firstTime, clearFunc } = data.current
+
+        if (firstTime) {
+            data.current.firstTime = false
+            return
+        }
+
+        const handler = setTimeout(() => {
+            if (clearFunc && typeof clearFunc === 'function') {
+                clearFunc()
+            }
+            data.current.clearFunc = callback()
+        }, delay)
+
+        return () => {
+            clearTimeout(handler)
+        }
+    }, [delay, ...deps])
 }
