@@ -19,7 +19,9 @@ export default function ToggleAnalyticsInterval({}) {
     return (
         <div className='px-3 py-1 rounded-md shadow bg-white dark:bg-gray-900 border-gray-100 dark:border-gray-600'>
             <BadgeSelect
-                options={INTERVALS}
+                options={INTERVALS.map((x) => {
+                    return { value: x, name: x }
+                })}
                 selected={currentInterval}
                 // @ts-ignore
                 selectAction={(interval) => {

@@ -1,11 +1,12 @@
 import classNames from 'classnames'
+import { ReactNode } from 'react'
 
 export function BadgeSelect({
     options,
     selected,
     onChange,
 }: {
-    options: string[]
+    options: { value: string; name: ReactNode }[]
     selected: string
     onChange: (option: string) => void
 }) {
@@ -13,15 +14,15 @@ export function BadgeSelect({
         <div className='relative inline-flex items-center space-x-3'>
             {options.map((option) => (
                 <button
-                    key={option}
+                    key={option.value}
                     className={`${
-                        option === selected
+                        option.value === selected
                             ? 'bg-white dark:bg-gray-700'
                             : ' hover:bg-gray-50 dark:hover:bg-gray-800 '
                     } px-2 sm:px-3 py-1 rounded-md text-sm font-medium capitalize active:scale-95 transition-all duration-75`}
-                    onClick={() => onChange(option)}
+                    onClick={() => onChange(option.value)}
                 >
-                    {option}
+                    {option.name || option.value}
                 </button>
             ))}
         </div>

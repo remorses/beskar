@@ -49,7 +49,9 @@ export default function Ranking({
             <div className='mb-5 flex justify-between'>
                 <h1 className='text-xl font-semibold'>{title}</h1>
                 <BadgeSelect
-                    options={tabs}
+                    options={tabs.map((x) => {
+                        return { value: x, name: x }
+                    })}
                     selected={currentTab}
                     // @ts-ignore
                     selectAction={onTabChange}
