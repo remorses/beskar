@@ -83,9 +83,8 @@ export function GhostButton({
     )
 }
 
-let size = 0.5
 const bgSvg = encodeURIComponent(
-    `<svg width="${size}em" viewBox="0 0 12 8" height="${size}em"  xmlns="http://www.w3.org/2000/svg"><path d="M8 .5v7L12 4zM0 4l4 3.5v-7z" fill="#FFFFFF" fill-rule="nonzero"/></svg>`,
+    `<svg  viewBox="0 0 12 8"  xmlns="http://www.w3.org/2000/svg"><path d="M8 .5v7L12 4zM0 4l4 3.5v-7z" fill="#FFFFFF" fill-rule="nonzero"/></svg>`,
 )
 
 export const RangeSlider = forwardRef<
@@ -134,9 +133,10 @@ export const RangeSlider = forwardRef<
                         appearance: none;
                         background-color: ${bg};
                         background-image: url('data:image/svg+xml;charset=US-ASCII,${bgSvg}');
+                        padding: 10px;
                         background-position: center;
+                        background-size: 50%;
                         background-repeat: no-repeat;
-                        border: 0;
                         border: 0;
                         border-radius: 50%;
                         cursor: pointer;
