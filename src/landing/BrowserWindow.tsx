@@ -8,8 +8,8 @@ export function BrowserWindow({
     const dot = (
         <span
             className={classNames(
-                'rounded-full bg-gray-600 dark:bg-gray-600 w-[0.7em]',
-                'h-[0.7em]',
+                'rounded-full bg-gray-500 dark:bg-gray-600 w-[0.5em]',
+                'h-[0.5em]',
             )}
         />
     )
@@ -25,7 +25,7 @@ export function BrowserWindow({
         >
             <div
                 className={classNames(
-                    'rounded-t-md relative py-2 px-24 items-center',
+                    'rounded-t-md relative py-[0.6em] px-24 items-center',
                     'flex bg-gray-800 dark:bg-gray-700',
                 )}
             >
@@ -39,15 +39,17 @@ export function BrowserWindow({
                     {dot}
                     {dot}
                 </div>
-                <div
-                    className={classNames(
-                        'w-full truncate text-gray-400 justify-center',
-                        'items-center h-full flex bg-gray-700 dark:text-gray-400',
-                        'dark:bg-gray-600',
-                    )}
-                >
-                    {host}
-                </div>
+                {host && (
+                    <div
+                        className={classNames(
+                            'w-full truncate text-gray-400 leading-none justify-center',
+                            'items-center h-full flex bg-gray-700 dark:text-gray-400',
+                            'dark:bg-gray-600',
+                        )}
+                    >
+                        {host}
+                    </div>
+                )}
             </div>
             <div className='rounded-b-md flex flex-col overflow-hidden'>
                 {children}
