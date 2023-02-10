@@ -6,11 +6,13 @@ type Props = {
     content: ReactNode
     initialIsOpen?: boolean
     pl?: string
+    remount?: boolean
 } & ComponentPropsWithoutRef<'div'>
 
 export function ToggleButton({
     heading,
     content,
+    remount = false,
     pl = '24px',
     className = '',
     initialIsOpen = false,
@@ -36,12 +38,17 @@ export function ToggleButton({
                 />
                 <span className='[&>*]:inline'>{heading}</span>
             </button>
-            <div
-                style={{ display: isOpen ? 'block' : 'none', paddingLeft: pl }}
-                className='whitespace-pre-wrap leading-relaxed'
-            >
-                {content}
-            </div>
+            {(!remount || isOpen) && (
+                <div
+                    style={{
+                        display: isOpen ? 'block' : 'none',
+                        paddingLeft: pl,
+                    }}
+                    className='whitespace-pre-wrap leading-relaxed'
+                >
+                    {content}
+                </div>
+            )}
         </div>
     )
 }
