@@ -16,6 +16,7 @@ import toast from 'react-hot-toast'
 import { Link } from './Link'
 import { useThrowingFn } from '../utils'
 import { PageContainer } from './PageContainer'
+import { BadgeSelect } from './badge-select'
 
 export type Subscription = {
     paddleSubscriptionId: string
@@ -126,11 +127,26 @@ export function Pricing({
                     left='-50%'
                     bottom={0}
                 /> */}
-            <div className='relative sm:flex sm:flex-col sm:align-center'>
+            <div className='relative sm:flex sm:flex-col sm:align-center items-center'>
                 {allowYearlyBilling && (
-                    <BillingIntervalSelect
-                        {...{ billingInterval, setBillingInterval }}
-                    />
+                    <BadgeSelect.Container>
+                        <BadgeSelect
+                            options={[
+                                {
+                                    name: 'Monthly billing',
+                                    value: 'month',
+                                },
+                                {
+                                    name: 'Yearly billing',
+                                    value: 'year',
+                                },
+                            ]}
+                            selected={billingInterval}
+                            onChange={(interval) => {
+                                setBillingInterval(interval)
+                            }}
+                        />
+                    </BadgeSelect.Container>
                 )}
             </div>
             <FadedComponent
@@ -221,50 +237,6 @@ export function Pricing({
                 )
             )}
         </PageContainer>
-    )
-}
-
-function BillingIntervalSelect({ billingInterval, setBillingInterval }) {
-    return (
-        <div
-            className={classNames(
-                'relative self-center bg-gray-200 rounded-lg',
-                'p-0.5 flex',
-            )}
-        >
-            <button
-                onClick={() => setBillingInterval('month')}
-                type='button'
-                className={classNames(
-                    'relative w-1/2 py-2 text-sm font-medium text-gray-700',
-                    'whitespace-nowrap rounded-lg sm:px-8 sm:w-auto',
-                    'focus:z-10 focus:ring-2 focus:outline-none',
-                    {
-                        'bg-white border-gray-200 shadow-sm rounded-md text-gray-900':
-                            billingInterval === 'month',
-                        'bg-transparent': billingInterval !== 'month',
-                    },
-                )}
-            >
-                Monthly billing
-            </button>
-            <button
-                onClick={() => setBillingInterval('year')}
-                type='button'
-                className={classNames(
-                    'relative w-1/2 bg-white py-2 text-sm font-medium',
-                    'text-gray-700 whitespace-nowrap rounded-lg',
-                    'sm:px-8 sm:w-auto focus:z-10 focus:ring-2 focus:outline-none',
-                    {
-                        'bg-white border-gray-200 shadow-sm rounded-md text-gray-900':
-                            billingInterval === 'year',
-                        'bg-transparent': billingInterval !== 'year',
-                    },
-                )}
-            >
-                Yearly billing
-            </button>
-        </div>
     )
 }
 
@@ -461,7 +433,9 @@ function SubscriptionPlan({
                                 className='flex-shrink-0 w-5 h-5 text-emerald-600'
                                 aria-hidden='true'
                             />
-                            <span className='text-gray-600 whitespace-pre-wrap '>{feature}</span>
+                            <span className='text-gray-600 whitespace-pre-wrap '>
+                                {feature}
+                            </span>
                         </li>
                     ))}
                 </ul>

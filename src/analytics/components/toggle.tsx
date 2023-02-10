@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import { INTERVALS } from '../lib/constants'
 
 import { ExpandingArrow } from './icons'
-import { BadgeSelect } from './badge-select'
+import { BadgeSelect } from '../../landing/badge-select'
 import { IntervalProps } from '../lib/stats'
 import { useMemo } from 'react'
 
@@ -17,14 +17,13 @@ export default function ToggleAnalyticsInterval({}) {
     const currentInterval = (interval as IntervalProps) || '24h'
 
     return (
-        <div className='px-3 py-1 rounded-md shadow bg-white dark:bg-gray-900 border-gray-100 dark:border-gray-600'>
+        <BadgeSelect.Container>
             <BadgeSelect
                 options={INTERVALS.map((x) => {
                     return { value: x, name: x }
                 })}
                 selected={currentInterval}
-                // @ts-ignore
-                selectAction={(interval) => {
+                onChange={(interval) => {
                     router.push(
                         {
                             query: {
@@ -37,6 +36,6 @@ export default function ToggleAnalyticsInterval({}) {
                     )
                 }}
             />
-        </div>
+        </BadgeSelect.Container>
     )
 }

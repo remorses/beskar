@@ -1,5 +1,5 @@
 import { Colord } from 'colord'
-import { BadgeSelect } from './badge-select'
+import { BadgeSelect } from '../../landing/badge-select'
 import { ReactNode, useMemo } from 'react'
 import { nFormatter } from '../lib/utils'
 import { useState, UIEvent } from 'react'
@@ -53,8 +53,7 @@ export default function Ranking({
                         return { value: x, name: x }
                     })}
                     selected={currentTab}
-                    // @ts-ignore
-                    selectAction={onTabChange}
+                    onChange={onTabChange as any}
                 />
             </div>
             <div
