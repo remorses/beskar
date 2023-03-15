@@ -2,6 +2,7 @@ import classNames from 'classnames'
 import {
     ComponentPropsWithRef,
     forwardRef,
+    useEffect,
     useImperativeHandle,
     useRef,
 } from 'react'
@@ -11,15 +12,27 @@ export const Textarea = forwardRef<
     any,
     ComponentPropsWithRef<'textarea'> & { autoResize?: boolean }
 >(function Textarea({ className, autoResize, onChange, ...rest }, ref) {
+    let innerRef = useRef<HTMLTextAreaElement>(null)
+    useImperativeHandle(ref, () => innerRef.current)
+    useEffect(() => {
+        if (!autoResize) {
+            return
+        }
+        let a = innerRef.current
+        if (!a) return
+        a.style.height = 'auto'
+        a.style.height = a.scrollHeight + 'px'
+    }, [rest.value])
+    
     return (
         <textarea
-            ref={ref}
+            ref={innerRef}
             onChange={(e) => {
                 onChange?.(e)
-                if (!autoResize) return
-                let a = e.target
-                a.style.height = 'auto'
-                a.style.height = a.scrollHeight + 'px'
+                // if (!autoResize) return
+                // let a = e.target
+                // a.style.height = 'auto'
+                // a.style.height = a.scrollHeight + 'px'
             }}
             className={classNames(
                 'w-full tracking-wide text-gray-900 ',
