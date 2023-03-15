@@ -28,7 +28,7 @@ export const Link = forwardRef<any, LinkProps>(
         const isExternal =
             href && !href.startsWith('/') && !href.startsWith('#')
         const Wrapper: any = !isExternal ? NextLink : Fragment
-        if (isExternal && !props.target) {
+        if (isExternal && props.target == null) {
             props.target = '_blank'
         }
         return (
