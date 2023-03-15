@@ -1,26 +1,39 @@
 import classNames from 'classnames'
-import { ComponentPropsWithRef, forwardRef } from 'react'
+import {
+    ComponentPropsWithRef,
+    forwardRef,
+    useImperativeHandle,
+    useRef,
+} from 'react'
 import { Spinner } from './Spinner'
 
-export const Textarea = forwardRef<any, ComponentPropsWithRef<'textarea'>>(
-    function Textarea({ className, ...rest }, ref) {
-        return (
-            <textarea
-                ref={ref}
-                className={classNames(
-                    'w-full tracking-wide text-gray-900 ',
-                    'rounded-lg px-2.5 py-[6px] border-gray-300 focus:ring-2 block',
-                    'bg-gray-50 focus:ring-gray-400/70 ring-1 ring-gray-200 dark:ring-gray-800 focus:border-gray-500',
-                    'dark:text-white dark:placeholder-gray-400',
-                    'dark:focus:ring-gray-500 dark:focus:ring-gray-500 ',
-                    ' dark:bg-gray-700',
-                    className,
-                )}
-                {...rest}
-            />
-        )
-    },
-)
+export const Textarea = forwardRef<
+    any,
+    ComponentPropsWithRef<'textarea'> & { autoResize?: boolean }
+>(function Textarea({ className, autoResize, onChange, ...rest }, ref) {
+    return (
+        <textarea
+            ref={ref}
+            onChange={(e) => {
+                onChange?.(e)
+                if (!autoResize) return
+                let a = e.target
+                a.style.height = 'auto'
+                a.style.height = a.scrollHeight + 'px'
+            }}
+            className={classNames(
+                'w-full tracking-wide text-gray-900 ',
+                'rounded-lg px-2.5 py-[6px] border-gray-300 focus:ring-2 block',
+                'bg-gray-50 focus:ring-gray-400/70 ring-1 ring-gray-200 dark:ring-gray-800 focus:border-gray-500',
+                'dark:text-white dark:placeholder-gray-400',
+                'dark:focus:ring-gray-500 ',
+                ' dark:bg-gray-700',
+                className,
+            )}
+            {...rest}
+        />
+    )
+})
 
 export const Input = forwardRef<any, ComponentPropsWithRef<'input'>>(
     function Textarea({ className, ...rest }, ref) {
