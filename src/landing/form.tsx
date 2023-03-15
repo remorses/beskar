@@ -18,6 +18,9 @@ export const Textarea = forwardRef<
         if (!autoResize) {
             return
         }
+        if (!rest.value) {
+            return
+        }
         let a = innerRef.current
         if (!a) return
         a.style.height = 'auto'
