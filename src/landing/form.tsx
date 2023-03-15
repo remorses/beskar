@@ -11,7 +11,7 @@ import { Spinner } from './Spinner'
 export const Textarea = forwardRef<
     any,
     ComponentPropsWithRef<'textarea'> & { autoResize?: boolean }
->(function Textarea({ className, autoResize, onChange, ...rest }, ref) {
+>(function Textarea({ className, autoResize, ...rest }, ref) {
     let innerRef = useRef<HTMLTextAreaElement>(null)
     useImperativeHandle(ref, () => innerRef.current)
     useEffect(() => {
@@ -23,17 +23,10 @@ export const Textarea = forwardRef<
         a.style.height = 'auto'
         a.style.height = a.scrollHeight + 'px'
     }, [rest.value])
-    
+
     return (
         <textarea
             ref={innerRef}
-            onChange={(e) => {
-                onChange?.(e)
-                // if (!autoResize) return
-                // let a = e.target
-                // a.style.height = 'auto'
-                // a.style.height = a.scrollHeight + 'px'
-            }}
             className={classNames(
                 'w-full tracking-wide text-gray-900 ',
                 'rounded-lg px-2.5 py-[6px] border-gray-300 focus:ring-2 block',
