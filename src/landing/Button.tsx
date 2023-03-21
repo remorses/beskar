@@ -43,7 +43,7 @@ function getColors(color: ColorGetter, opacity = 1) {
     return { text, highlight, bg: bgd.toRgbString() }
 }
 
-export const Button= forwardRef<any, ButtonProps>(
+export const Button = forwardRef<any, ButtonProps>(
     (
         {
             bg: bg_,
@@ -145,7 +145,7 @@ export const Button= forwardRef<any, ButtonProps>(
                         }
                     `}
                 </style>
-                {icon && <div className=''>{icon}</div>}
+                {icon && !isLoading && <div className=''>{icon}</div>}
                 <div className={'relative'}>
                     {
                         <div
