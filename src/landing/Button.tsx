@@ -43,7 +43,7 @@ function getColors(color: ColorGetter, opacity = 1) {
     return { text, highlight, bg: bgd.toRgbString() }
 }
 
-export const Button: FC<ButtonProps> = forwardRef<ButtonProps, any>(
+export const Button= forwardRef<any, ButtonProps>(
     (
         {
             bg: bg_,
