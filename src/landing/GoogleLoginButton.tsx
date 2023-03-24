@@ -1,4 +1,4 @@
-import { Button } from './Button'
+import { Button, ButtonProps } from './Button'
 import clsx from 'clsx'
 import { signIn, useSession } from 'next-auth/react'
 import { ComponentPropsWithoutRef, ReactNode, useState } from 'react'
@@ -14,7 +14,7 @@ export function GoogleLoginButton({
     textColor = 'white',
     onClick,
     ...rest
-}: ComponentPropsWithoutRef<'button'> & {
+}: ButtonProps & {
     callbackPath?: string
     className?: string
     text?: string
