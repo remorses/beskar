@@ -39,7 +39,7 @@ export const Input = forwardRef<
                     }
                 }
                 className={clsx(
-                    'w-full text-gray-900 rounded-lg p-2 px-3 transition-shadow font-medium tracking-wide',
+                    'w-full text-gray-900 rounded-lg p-[0.34em] px-3 transition-shadow font-medium tracking-wide',
                     'border-gray-300 block bg-gray-50 focus:ring-2 ring-gray-300 dark:ring-gray-600 focus:ring-gray-400',
                     'focus:!outline-none',
                     'dark:text-white dark:placeholder-gray-400',
