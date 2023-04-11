@@ -14,6 +14,7 @@ import { Spinner } from './Spinner'
 
 export type ButtonProps = ComponentPropsWithoutRef<'button'> & {
     href?: string
+    download?: string
     target?: string
     as?: ElementType
     icon?: ReactNode
@@ -88,7 +89,7 @@ export const Button = forwardRef<any, ButtonProps>(
                 )}
                 disabled={disabled || isLoading}
                 href={href}
-                type={type}
+                type={href ? undefined : type}
                 {...props}
             >
                 <style jsx>
