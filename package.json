@@ -25,7 +25,7 @@
         "@emotion/styled": "^11.9.3",
         "@types/react": "^18.0.9",
         "framer-motion": "^10.11.2",
-        "next": "13.3.0",
+        "next": "13.2.4",
         "next-auth": "4.22.0",
         "next-themes": "^0.2.1",
         "nodemailer": "^6.7.7",
