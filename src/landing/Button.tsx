@@ -20,7 +20,7 @@ export type ButtonProps = ComponentPropsWithoutRef<'button'> & {
     icon?: ReactNode
     bg?: ColorGetter
     bgDark?: ColorGetter
-    isLoading?: boolean
+    isLoading?: boolean | string
     ghost?: boolean
     biggerOnHover?: boolean
 }
@@ -146,17 +146,22 @@ export const Button = forwardRef<any, ButtonProps>(
                         }
                     `}
                 </style>
-                {icon && !isLoading && <div className=''>{icon}</div>}
-                <div className={'relative'}>
+                {icon && !isLoading && (
+                    <div className='flex items-center '>{icon}</div>
+                )}
+                <div className={'relative max-w-full'}>
                     {
                         <div
                             className={classNames(
-                                'absolute inset-0 flex item-center justify-center colorAndBg',
+                                'absolute inset-0 flex item-center gap-2 justify-center colorAndBg',
 
                                 !isLoading && 'hidden',
                             )}
                         >
-                            <Spinner />
+                            <Spinner className='shrink-0' />
+                            <div className="whitespace-nowrap">
+                            {typeof isLoading === 'string' && isLoading}
+                            </div>
                         </div>
                     }
                     {children}
