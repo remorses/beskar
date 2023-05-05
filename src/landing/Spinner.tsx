@@ -36,7 +36,7 @@ export function Spinner({ className = '' }) {
                 }
             `}</style>
 
-            <div className={clsx('spinner w-5 h-5', className)} />
+            <div className={clsx('spinner shrink-0 w-5 h-5', className)} />
         </>
     )
 }
