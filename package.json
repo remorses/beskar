@@ -23,7 +23,7 @@
         "@chakra-ui/react": "*",
         "@emotion/react": "^11.9.3",
         "@emotion/styled": "^11.9.3",
-        "@types/react": "^18.0.9",
+        "@types/react": "^18.2.6",
         "framer-motion": "^10.12.8",
         "next": "13.4.2",
         "next-auth": "4.22.1",
