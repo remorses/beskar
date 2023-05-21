@@ -1,9 +1,5 @@
 import clsx from 'clsx'
 
-import { useSession } from 'next-auth/react'
-
-
-
 export function DashboardHeader({
     className = '',
     logo,
@@ -11,7 +7,6 @@ export function DashboardHeader({
     menu,
     ...rest
 }) {
-    const { data: session } = useSession()
     return (
         <div
             className={clsx(
@@ -47,8 +42,6 @@ import ColorHash from 'color-hash'
 import { colord, extend } from 'colord'
 import harmoniesPlugin from 'colord/plugins/harmonies'
 import mixPlugin from 'colord/plugins/mix'
-import { Button, Link } from './landing'
-import { ArrowLeftIcon, ChevronLeftIcon } from '@heroicons/react/solid'
 import { ReactNode } from 'react'
 
 extend([mixPlugin, harmoniesPlugin])

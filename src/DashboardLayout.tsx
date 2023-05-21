@@ -1,15 +1,10 @@
 import cs from 'classnames'
-import { Faded } from 'baby-i-am-faded'
-import React, { ReactNode, useMemo } from 'react'
+import React, { ReactNode } from 'react'
 
-import { Footer } from './landing/Footer'
-
-import { Link } from './landing/Link'
-import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/router'
 import { TabsNav } from './Tabs'
 import { ChakraStuff } from './chakra'
 import { maxWidthWithPx } from './utils'
-import { useRouter } from 'next/router'
 
 export default DashboardLayout
 
