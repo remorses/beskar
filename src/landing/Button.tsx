@@ -16,7 +16,7 @@ export type ButtonProps = ComponentPropsWithoutRef<'button'> & {
     href?: string
     download?: string
     target?: string
-    as?: ElementType
+    as?: any
     icon?: ReactNode
     bg?: ColorGetter
     bgDark?: ColorGetter

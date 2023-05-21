@@ -116,7 +116,7 @@ const THead = ({ className = '', ...props }) => {
 TableBlock.TData = TData
 TableBlock.THead = THead
 
-function Skeleton({ as: As = 'div' as ElementType, className = '', ...rest }) {
+function Skeleton({ as: As = 'div' as any, className = '', ...rest }) {
     return (
         <As
             className={clsx(
