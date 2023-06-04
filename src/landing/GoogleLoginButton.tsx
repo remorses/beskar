@@ -1,8 +1,7 @@
-import { Button, ButtonProps } from './Button'
 import clsx from 'clsx'
-import { signIn, useSession } from 'next-auth/react'
-import { ComponentPropsWithoutRef, ReactNode, useState } from 'react'
-import { Link } from './Link'
+import { signIn } from 'next-auth/react'
+import { ReactNode, useState } from 'react'
+import { Button, ButtonProps } from './Button'
 
 export function GoogleLoginButton({
     callbackPath: callbackUrl = '/dashboard',
@@ -22,7 +21,6 @@ export function GoogleLoginButton({
     fingerprint?: ReactNode
     textColor?: string
 }) {
-    // const { data: session } = useSession()
     const [isLoading, setIsLoading] = useState(false)
     return (
         <div className={clsx('flex flex-col')}>
