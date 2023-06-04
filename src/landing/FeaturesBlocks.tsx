@@ -11,7 +11,7 @@ type FeaturesBlocksProps = {
 type Feature = {
     heading?: ReactNode
     description?: ReactNode
-    Icon?: ComponentType<any>
+    Icon?: any
     bullet?: ReactNode
 }
 
