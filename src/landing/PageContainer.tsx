@@ -65,7 +65,7 @@ export function RootPageContainer({
         <div
             style={{ contain: 'paint' }}
             className={classNames(
-                'relative min-h-full max-w-full items-stretch overflow-x-hidden',
+                'relative min-h-full max-w-full items-stretch',
                 'flex-col flex space-y-[30px] md:space-y-[60px]',
                 className,
             )}
