@@ -41,7 +41,7 @@ export type PricingSliderProps = {
     products: Product[]
     features: string[]
     promptLogin?: () => void
-    getSubscription: () => Promise<Subscription>
+    getSubscription: () => Promise<Subscription | null>
     updatePlan: (x: { subscriptionId: string; planId: string }) => Promise<any>
     isLoading?: boolean
     animate?: boolean
