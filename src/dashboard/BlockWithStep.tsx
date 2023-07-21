@@ -1,11 +1,11 @@
 import classNames from 'classnames'
 
-export function BlockWithStep({
+export function BlockWithStep ({
     children,
     step,
     isLast = false,
     top = 44,
-
+    disabled = false,
     className = '',
 }) {
     return (
@@ -13,6 +13,7 @@ export function BlockWithStep({
             className={classNames(
                 'w-full space-y-4 relative py-8 px-8 max-w-xl items-stretch',
                 'flex-col flex',
+                disabled && 'opacity-50 pointer-events-none',
                 className,
             )}
         >
