@@ -228,7 +228,6 @@ export function refreshSsr() {
     )
 }
 
-
 export function formatBigNumber(n: number) {
     const formatter = new Intl.NumberFormat('en-US', {
         // @ts-ignore
@@ -237,8 +236,6 @@ export function formatBigNumber(n: number) {
     })
     return formatter.format(n)
 }
-
-
 
 export function useDebouncedEffect(callback, deps = [], delay = 120) {
     const data = React.useRef({
