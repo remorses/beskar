@@ -13,7 +13,7 @@ export function BlockWithStep ({
             className={classNames(
                 'w-full space-y-4 relative py-8 px-8 max-w-xl items-stretch',
                 'flex-col flex',
-                disabled && 'opacity-50 pointer-events-none',
+                disabled && 'opacity-30 pointer-events-none',
                 className,
             )}
         >
