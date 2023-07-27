@@ -61,9 +61,15 @@ export function useOnClickOutside(ref, handler) {
 export function useThrowingFn({
     fn: fnToWrap,
     successMessage = '',
+    immediate = false,
     errorMessage = 'Error',
 }) {
     const [isLoading, setIsLoading] = React.useState(false)
+    useEffect(() => {
+        if (immediate) {
+            fn()
+        }
+    }, [immediate])
     const fn = async function wrappedThrowingFn(...args) {
         try {
             setIsLoading(true)
@@ -88,6 +94,7 @@ export function useThrowingFn({
             setIsLoading(false)
         }
     }
+    
     return {
         isLoading,
         fn,
