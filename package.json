@@ -50,7 +50,7 @@
         "color-hash": "^2.0.1",
         "colord": "^2.9.2",
         "nprogress": "*",
-        "postcss": "^8.4.23",
+        "postcss": "^8.4.27",
         "prismjs": "^1.29.0",
         "react-hook-form": "^7.44.1",
         "react-hot-toast": "^2.4.1",
