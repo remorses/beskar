@@ -52,7 +52,7 @@
         "nprogress": "*",
         "postcss": "^8.4.27",
         "prismjs": "^1.29.0",
-        "react-hook-form": "^7.44.1",
+        "react-hook-form": "^7.45.4",
         "react-hot-toast": "^2.4.1",
         "styled-jsx": "5.1.2",
         "swr": "^2.2.0",
