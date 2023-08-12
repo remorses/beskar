@@ -4,10 +4,7 @@ import { highlight, languages } from 'prismjs'
 import { default as classNames } from 'classnames'
 import { useCopyToClipboard } from '../dashboard/CopyButton'
 
-export const Code: React.FC<{ code: string; language: string }> = ({
-    code,
-    language = 'javascript',
-}) => {
+export const Code = ({ code, language = 'javascript', className = '' }) => {
     const languageL = language.toLowerCase()
     const prismLanguage = languages[languageL] || languages.javascript
 
@@ -23,6 +20,7 @@ export const Code: React.FC<{ code: string; language: string }> = ({
             className={classNames(
                 'relative text-gray-100 shrink-0 !bg-gray-800 !border-transparent',
                 'rounded-md focus:outline-none',
+                className,
             )}
         >
             <div className='overflow-x-auto px-8 py-8'>

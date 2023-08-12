@@ -1,23 +1,20 @@
-import { Button, Divider, Modal, Spinner } from './landing'
-import { Fragment, useContext, useEffect, useState } from 'react'
-import { Listbox, Transition } from '@headlessui/react'
-import { CheckIcon, SelectorIcon } from '@heroicons/react/solid'
 import classNames from 'classnames'
+import { useEffect } from 'react'
 import useSWR, { useSWRConfig } from 'swr'
+import { Button, Modal } from './landing'
 
-import { useBeskar, useDisclosure, useThrowingFn } from './utils'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
-import { PlusIcon } from '@heroicons/react/outline'
 import { Select } from './Select'
 import { Input } from './landing/Input'
+import { useDisclosure, useThrowingFn } from './utils'
 
 export type SelectOrgProps = {
     className?: string
     // dashboardPath: string // /app for example
     getUserOrgs: () => Promise<{
         defaultOrgId: string
-        orgs: { id: string; name: string }[]
+        orgs: { id: string; name: string; path?: string }[]
     }>
     createOrg: (x: { name: string }) => Promise<any>
 }
@@ -45,7 +42,7 @@ export function SelectOrg({
                 console.warn('no org found', value)
                 return
             }
-            const newPath = `/org/${org.id}`
+            const newPath = org.path || `/org/${org.id}`
             await router.replace(newPath)
         },
     })

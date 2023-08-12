@@ -4,7 +4,7 @@ import { Faded } from 'baby-i-am-faded'
 import classNames from 'classnames'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import NProgress from 'nprogress'
+// import NProgress from 'nprogress'
 import React, {
     ComponentPropsWithoutRef,
     useEffect,
@@ -305,7 +305,7 @@ function SubscriptionPlan({
                 await refetchSubscription()
                 return
             } else {
-                NProgress.start()
+                // NProgress.start()
                 const pass = passthrough()
                 Paddle.Checkout.open({
                     product: paddleId,
