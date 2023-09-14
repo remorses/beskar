@@ -21,7 +21,7 @@
         "react-dom": "*"
     },
     "devDependencies": {
-        "@chakra-ui/react": "^2.6.1",
+        "@chakra-ui/react": "^2.8.1",
         "@emotion/react": "^11.9.3",
         "@emotion/styled": "^11.9.3",
         "@types/react": "^18.2.21",
