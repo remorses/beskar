@@ -1,6 +1,7 @@
 import {
     ChakraProvider,
     ColorModeProvider,
+    DarkMode,
     theme as _theme,
 } from '@chakra-ui/react'
 import colors from '../colors'

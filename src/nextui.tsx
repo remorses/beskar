@@ -21,42 +21,6 @@ const formattedColors = Object.fromEntries(
         .filter(Boolean),
 )
 
-// console.log(formattedColors)
-const lightTheme = createTheme({
-    type: 'light',
-    className: 'light',
-    theme: {
-        colors: {
-            ...formattedColors,
-            backgroundContrast: '#fff',
-        },
-    },
-})
-
-const darkTheme = createTheme({
-    type: 'dark',
-    className: 'dark',
-    theme: {
-        colors: {
-            ...formattedColors,
-            backgroundContrast: colors.gray['800'],
-        },
-    },
-})
-
 export function NextUiStuff({ children, ...rest }) {
-    return (
-        <NextUIProvider
-            defaultTheme={'dark'}
-            attribute='class'
-            value={{
-                light: lightTheme.className,
-                dark: darkTheme.className,
-            }}
-            disableBaseline
-            {...rest}
-        >
-            {children}
-        </NextUIProvider>
-    )
+    return <NextUIProvider {...rest}>{children}</NextUIProvider>
 }
