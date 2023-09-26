@@ -1,13 +1,13 @@
 import { ComponentPropsWithoutRef, ReactNode, SVGProps } from 'react'
 import { useDisclosure } from '../utils'
 
-type Props = {
+type Props = Omit<ComponentPropsWithoutRef<'div'>, 'content'> & {
     heading: ReactNode
     content: ReactNode
     initialIsOpen?: boolean
     pl?: string
     remount?: boolean
-} & ComponentPropsWithoutRef<'div'>
+}
 
 export function ToggleButton({
     heading,
