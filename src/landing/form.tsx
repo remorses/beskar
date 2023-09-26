@@ -128,7 +128,7 @@ export const RangeSlider = forwardRef<
                 min={min}
                 max={max}
                 step={step}
-                className='range px-3'
+                className='range px-3 block'
                 {...rest}
             />
             <style jsx>
@@ -147,7 +147,7 @@ export const RangeSlider = forwardRef<
                     }
 
                     :global(.dark) input[type='range'] {
-                        background: rgba(255, 255, 255, 0.1);
+                        background: rgba(255, 255, 255, 0.2);
                     }
 
                     input[type='range']::-webkit-slider-thumb {
