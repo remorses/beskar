@@ -36,7 +36,7 @@
     "dependencies": {
         "@formatjs/intl-numberformat": "^8.0.1",
         "@headlessui/react": "1.7.17",
-        "@heroicons/react": "^2.0.18",
+        "@heroicons/react": "^1",
         "@radix-ui/react-tooltip": "^1.0.7",
         "@visx/axis": "^2.14.0",
         "@visx/event": "^2.6.0",
