@@ -96,7 +96,7 @@ export function GhostButton({
                 'p-2 py-[6px] ',
                 'max-w-max justify-center font-medium items-center shrink-0 min-h-[34px]',
                 'flex gap-2 ease-in-out appearance-none active:opacity-100',
-                'duration-[300ms] whitespace-nowrap hover:bg-gray-100 dark:hover:bg-gray-800 transition-all rounded',
+                ' whitespace-nowrap hover:bg-gray-100 dark:hover:bg-gray-800 transition-all rounded',
                 className,
             )}
             type='button'
