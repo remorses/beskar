@@ -5,6 +5,7 @@ import clsx from 'clsx'
 import {
     ComponentPropsWithoutRef,
     CSSProperties,
+    ReactNode,
     SVGProps,
     useEffect,
 } from 'react'
@@ -74,7 +75,7 @@ export function Modal({
         `}</style>
     )
     if (!isOpen) {
-        return styles
+        return styles as ReactNode
     }
 
     return createPortal(
@@ -135,7 +136,7 @@ export function Modal({
             </Faded>
         </As>,
         document.body,
-    )
+    ) as ReactNode
 }
 
 export function CloseButton({
