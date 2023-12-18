@@ -14,6 +14,7 @@ export function BadgeSelect({
         <div className='relative inline-flex items-center space-x-1'>
             {options.map((option) => (
                 <button
+                    type='button'
                     key={option.value}
                     className={`${
                         option.value === selected
