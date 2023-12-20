@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import { TabsNav } from './Tabs'
 import { ChakraStuff } from './chakra'
 import { maxWidthWithPx } from './utils'
+import clsx from 'classnames'
 
 export default DashboardLayout
 
@@ -47,7 +48,7 @@ export function DashboardLayout({
                 </div>
                 <div
                     className={cs(
-                        'flex w-full flex-auto flex-col space-y-8',
+                        'flex w-full grow flex-col space-y-8',
                         className,
                     )}
                     style={{
@@ -57,15 +58,16 @@ export function DashboardLayout({
                     }} // prevents overflow x scrolling and has faster rendering
                     {...rest}
                 >
-                    <div className='relative flex flex-auto w-full overflow-visible md:space-x-8 '>
-                        <div className='flex flex-col w-full'>
-                            <div className='flex flex-col w-full h-full space-y-8 overflow-visible pt-[20px] lg:pt-[30px]'>
-                                {children}
-                            </div>
-                            <div className='flex-1'></div>
-                            {footer}
-                        </div>
+                    <div
+                        className={clsx(
+                            'flex flex-col w-full h-full space-y-8 grow overflow-visible ',
+                            !fullWidth && 'pt-[20px] lg:pt-[30px]',
+                        )}
+                    >
+                        {children}
                     </div>
+                    <div className='grow'></div>
+                    {!fullWidth && footer}
                 </div>
             </div>
         </ChakraStuff>
