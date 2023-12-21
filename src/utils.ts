@@ -1,7 +1,13 @@
 import { useTheme } from 'next-themes'
 import '@formatjs/intl-numberformat/polyfill'
 import '@formatjs/intl-numberformat/locale-data/en'
-import React, { useState, useEffect, createContext, useContext } from 'react'
+import React, {
+    useState,
+    useEffect,
+    createContext,
+    useContext,
+    useRef,
+} from 'react'
 import toast from 'react-hot-toast'
 import colors from '../colors'
 
@@ -94,7 +100,7 @@ export function useThrowingFn({
             setIsLoading(false)
         }
     }
-    
+
     return {
         isLoading,
         fn,

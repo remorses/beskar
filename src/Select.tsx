@@ -25,6 +25,7 @@ export type SelectProps = {
     onChange: (x: string) => void
     options: { value: string; name?: ReactNode; whenButton?: ReactNode }[]
     endButton?: ReactNode
+    startButton?: ReactNode
     useAutoGradientIcons?: boolean
     isLoading?: boolean
 }
@@ -42,6 +43,7 @@ export const Select: React.FC<
             onChange,
             value,
             endButton = null,
+            startButton = null,
             placeholder = 'Loading',
             options,
             className = '',
@@ -122,6 +124,7 @@ export const Select: React.FC<
                                     'absolute z-50 gap-2 flex flex-col w-full py-2 mt-1 overflow-auto text-base bg-white rounded-md shadow-xl dark:bg-gray-700 max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm',
                                 )}
                             >
+                                {startButton}
                                 {options?.map((opt, idx) => (
                                     <Listbox.Option
                                         key={opt.value}
