@@ -55,6 +55,12 @@ export const Select: React.FC<
         if (!options) {
             options = []
         }
+        const maxLen = options.reduce((acc, x) => {
+            if (typeof x.name === 'string') {
+                return Math.max(acc, x.name.length)
+            }
+            return acc
+        }, 10)
         const router = useRouter()
         const orgId = (router.query.orgId || '') as string
 
@@ -68,6 +74,9 @@ export const Select: React.FC<
                         <Listbox.Button
                             ref={ref as any}
                             as='button'
+                            style={{
+                                minWidth: `${maxLen}ch`,
+                            }}
                             className={classNames(
                                 'relative w-full py-[8px] pl-3 pr-10 text-left bg-white rounded-lg shadow border dark:bg-gray-700 focus:outline-none focus-visible:ring-1 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-gray-300 focus-visible:ring-offset-1 sm:text-sm',
                                 className,
