@@ -6,6 +6,7 @@ import {
 } from '@chakra-ui/react'
 import colors from '../colors'
 import { useColorMode } from './utils'
+import { useRef } from 'react'
 
 const theme: typeof _theme = {
     ..._theme,
@@ -29,26 +30,31 @@ const theme: typeof _theme = {
 export function ChakraStuff({
     children,
     initialColorMode = 'dark' as any,
-    forceColorMode = '',
+
     ...rest
 }) {
-    let { colorMode } = useColorMode()
-    if (forceColorMode) {
-        colorMode = forceColorMode
-    }
+    let { colorMode } = useColorMode(initialColorMode || undefined)
+    const lastColorMode = useRef(colorMode)
 
+    lastColorMode.current = colorMode
+
+    // console.log('colorMode', colorMode)
+    const manager: any = {
+        get() {
+            return lastColorMode.current as any
+        },
+        type: 'cookie',
+        set() {},
+        ssr: true,
+    }
     return (
-        <ChakraProvider resetCSS={false} theme={theme}>
-            <ColorModeProvider
-                options={{
-                    initialColorMode,
-                    useSystemColorMode: false,
-                    disableTransitionOnChange: true,
-                }}
-                value={colorMode as any}
-            >
-                {children}
-            </ColorModeProvider>
+        <ChakraProvider
+            colorModeManager={manager}
+            disableGlobalStyle
+            resetCSS={false}
+            theme={theme}
+        >
+            {children}
         </ChakraProvider>
     )
 }

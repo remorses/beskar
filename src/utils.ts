@@ -108,7 +108,8 @@ export function useThrowingFn({
 }
 
 export function useColorMode(initialColorMode = 'dark') {
-    const { resolvedTheme: _resolvedTheme, setTheme } = useTheme()
+    const { theme: _resolvedTheme, forcedTheme, setTheme } = useTheme()
+
     function toggleColorMode() {
         setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
     }
@@ -117,8 +118,8 @@ export function useColorMode(initialColorMode = 'dark') {
     })
 
     useEffect(() => {
-        setResolvedTheme(_resolvedTheme!)
-    }, [_resolvedTheme])
+        setResolvedTheme(forcedTheme || _resolvedTheme!)
+    }, [_resolvedTheme, forcedTheme])
     return {
         toggleColorMode,
         colorMode: resolvedTheme,
