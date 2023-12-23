@@ -130,7 +130,7 @@ export const Alert = forwardRef<any, AlertProps>(
 
                 <div
                     className={clsx(
-                        'flex',
+                        'flex max-w-full',
                         isVertical
                             ? 'flex-col gap-3 '
                             : 'flex-row items-center gap-5',
