@@ -43,7 +43,7 @@ export const Link = forwardRef<any, LinkProps>(
                     className={clsx(
                         'appearance-none max-w-max relative',
                         'font-medium !border-white/0 cursor-pointer',
-                        iconBefore && 'whitespace-nowrap',
+                        !!iconBefore && 'whitespace-nowrap',
                         underline
                             ? `underline`
                             : 'no-underline border-b-[2px] hover:!border-[color:currentColor] active:!border-[color:currentColor]',
