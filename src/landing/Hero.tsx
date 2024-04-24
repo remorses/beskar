@@ -70,7 +70,7 @@ export function Hero({
                         <div
                             className={classNames(
                                 'flex flex-col items-center max-w-full  w-full space-y-6',
-                                image && `md:items-start `,
+                                !!image && `md:items-start `,
                             )}
                         >
                             <div className=''>{cta}</div>
