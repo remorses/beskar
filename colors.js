@@ -1,4 +1,4 @@
-const tailwindColors = require('tailwindcss/colors')
+import tailwindColors from 'tailwindcss/colors'
 
 const {
     amber,
@@ -68,4 +68,4 @@ const colors = {
     },
 }
 
-module.exports = colors
+export default colors
