@@ -14,7 +14,7 @@ import classNames from 'classnames'
 import useSWR, { useSWRConfig } from 'swr'
 
 import { useBeskar, useThrowingFn } from './utils'
-import { useRouter } from 'next/router'
+
 import { useForm } from 'react-hook-form'
 import { PlusIcon } from '@heroicons/react/outline'
 
@@ -61,15 +61,13 @@ export const Select: React.FC<
             }
             return acc
         }, 10)
-        const router = useRouter()
-        const orgId = (router.query.orgId || '') as string
 
         const hoverClasses =
             'hover:bg-gray-100 hover:dark:bg-gray-600 rounded mx-2'
         const current = options.find((x) => x.value === value)
         return (
             <>
-                <Listbox value={orgId} onChange={onChange}>
+                <Listbox value={value} onChange={onChange}>
                     <div className={classNames('relative')}>
                         <Listbox.Button
                             ref={ref as any}
