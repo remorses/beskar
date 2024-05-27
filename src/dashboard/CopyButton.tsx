@@ -6,6 +6,7 @@ export const CopyButton = ({
     text,
     style = {} as CSSProperties,
     size = 18,
+    copiedText = 'Copied!',
     children = null as ReactNode,
     className = '',
     ...props
@@ -24,7 +25,13 @@ export const CopyButton = ({
             {...props}
         >
             <As style={{ ...style, width: size, height: size }} />
-            {hasCopied ? <div className='opacity-0'>{children}</div> : children}
+            {hasCopied ? (
+                <div className={classNames(!copiedText && 'opacity-0')}>
+                    {copiedText || children}
+                </div>
+            ) : (
+                children
+            )}
         </button>
     )
 }
