@@ -91,6 +91,10 @@ export function useThrowingFn({
         } catch (err) {
             console.error(err)
             // how to handle unreadable errors? simply don't return them from APIs, just return something went wrong
+            // ignore abort errors
+            if (err instanceof Error && err.name === 'AbortError') {
+                return
+            }
             if (err instanceof Error && !err?.['skipToast']) {
                 toast.error(err.message, {})
                 return err
