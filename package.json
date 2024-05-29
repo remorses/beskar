@@ -24,8 +24,7 @@
         "@chakra-ui/react": "^2.8.2",
         "@emotion/react": "11.11.4",
         "@emotion/styled": "^11.11.0",
-        "@types/react": "18.2.67",
-        "framer-motion": "^11.0.21",
+        "@types/react": "18.2.79",
         "next": "14.2.3",
         "next-auth": "4.24.7",
         "next-themes": "^0.3.0",
@@ -48,7 +47,7 @@
         "classnames": "^2.3.1",
         "clsx": "^1.1.1",
         "color-hash": "^2.0.1",
-        "colord": "^2.9.2",
+        "colord": "^2.9.3",
         "nprogress": "^0.2.0",
         "postcss": "^8.4.38",
         "prismjs": "^1.29.0",
@@ -56,6 +55,6 @@
         "react-hot-toast": "^2.4.1",
         "styled-jsx": "5.1.2",
         "swr": "^2.2.4",
-        "tailwindcss": "^3.4.1"
+        "tailwindcss": "^3.4.3"
     }
 }
