@@ -2,6 +2,7 @@
     "compilerOptions": {
         "target": "ES2015",
         "module": "commonjs",
+        // "rootDir": "src",
         "allowJs": true,
         "moduleResolution": "Node",
         "lib": [
@@ -13,12 +14,17 @@
         "declaration": true,
         "declarationMap": true,
         "strict": true,
-        "noEmit": true,
+        "noEmit": false,
+        "outDir": "dist",
         "downlevelIteration": true,
+
         "esModuleInterop": true,
         "noImplicitAny": false,
         "sourceMap": true,
         "jsx": "react-jsx",
+        "composite": true,
         "skipLibCheck": true
-    }
+    },
+    "include": ["src", "landing.ts", "dashboard.ts", "colors.cjs", "colors.js"],
+    "exclude": ["**/node_modules", "**/.*"]
 }
