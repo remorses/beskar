@@ -15,8 +15,8 @@ const theme: typeof _theme = {
     },
     colors: {
         ..._theme.colors,
-        gray: { ...colors.gray },
-        blue: { ...colors.blue },
+        gray: { ..._theme.colors.gray,...colors.gray },
+        blue: { ..._theme.colors.blue,...colors.blue },
     },
     styles: {},
     config: {
@@ -50,8 +50,8 @@ export function ChakraStuff({
     return (
         <ChakraProvider
             colorModeManager={manager}
-            disableGlobalStyle
-            resetCSS={false}
+            
+            
             theme={theme}
         >
             {children}

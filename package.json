@@ -20,10 +20,11 @@
         "react": "*",
         "react-dom": "*"
     },
+    
     "devDependencies": {
-        "@chakra-ui/react": "^2.8.2",
-        "@emotion/react": "11.11.4",
-        "@emotion/styled": "^11.11.5",
+        "@chakra-ui/react": "^2.5.5",
+        "@emotion/react": "11.14.0",
+        "@emotion/styled": "^11.14.0",
         "@types/react": "^18.3.12",
         "framer-motion": "^11.3.2",
         "next": "15.3.0",
@@ -35,7 +36,7 @@
     },
     "dependencies": {
         "@formatjs/intl-numberformat": "^8.10.1",
-        "@headlessui/react": "1.7.18",
+        "@headlessui/react": "2.2.0",
         "@heroicons/react": "^1.0.6",
         "@radix-ui/react-tooltip": "^1.0.7",
         "@visx/axis": "^2.18.0",
