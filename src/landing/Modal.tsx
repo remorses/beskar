@@ -10,6 +10,7 @@ import {
     useEffect,
 } from 'react'
 
+// @ts-ignore
 Faded.defaultProps = {
     cascadeIncrement: 80,
     duration: 120,

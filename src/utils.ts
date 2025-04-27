@@ -14,6 +14,7 @@ import colors from '../colors'
 import { Faded } from 'baby-i-am-faded'
 import router from 'next/router'
 
+// @ts-ignore
 Faded.defaultProps = {
     cascadeIncrement: 80,
     duration: 120,

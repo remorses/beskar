@@ -19,7 +19,7 @@ const context = createContext<{ isOpen: boolean; setOpen: Function }>({
 
 export function PopOver({ className = '', items, button }) {
     const [isOpen, setIsOpen] = useState(false)
-    const panel = useRef<any>()
+    const panel = useRef<any>(null)
     useOnClickOutside(panel, () => setIsOpen(false))
     return (
         <context.Provider value={{ isOpen, setOpen: setIsOpen }}>
