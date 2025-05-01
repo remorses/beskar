@@ -1,5 +1,5 @@
 // @ts-ignore
-import { createTheme, NextUIProvider } from '@nextui-org/react'
+import { createTheme, HeroUIProvider } from "@heroui/react"
 
 import colors from '../colors'
 
@@ -22,5 +22,5 @@ const formattedColors = Object.fromEntries(
 )
 
 export function NextUiStuff({ children, ...rest }) {
-    return <NextUIProvider {...rest}>{children}</NextUIProvider>
+    return <HeroUIProvider {...rest}>{children}</HeroUIProvider>
 }
