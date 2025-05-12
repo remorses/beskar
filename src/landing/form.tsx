@@ -12,7 +12,7 @@ export const Textarea = forwardRef<
     any,
     ComponentPropsWithRef<'textarea'> & { autoResize?: boolean }
 >(function Textarea({ className, autoResize, ...rest }, ref) {
-    let innerRef = useRef<HTMLTextAreaElement>(null)
+    let innerRef =useRef<HTMLTextAreaElement>(undefined)
     useImperativeHandle(ref, () => innerRef.current)
     useEffect(() => {
         if (!autoResize) {

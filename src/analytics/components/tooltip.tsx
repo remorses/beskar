@@ -10,7 +10,7 @@ export default function Tooltip({
     content: ReactNode | string
 }) {
     const [openTooltip, setOpenTooltip] = useState(false)
-    const mobileTooltipRef = useRef<HTMLDivElement>(null)
+    const mobileTooltipRef =useRef<HTMLDivElement>(undefined)
 
     const controls = useAnimation()
     const transitionProps = { type: 'spring', stiffness: 500, damping: 30 }
