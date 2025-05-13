@@ -96,8 +96,8 @@ export const Alert = forwardRef<any, AlertProps>(
             <div
                 ref={ref}
                 className={clsx(
-                    'relative text-gray-800 flex border-l-[4px] gap-4 flex-col text-center',
-                    'p-6 ',
+                    'relative text-sm text-gray-800 flex border-l-[4px] gap-4 flex-col text-center',
+                    'p-4 ',
                     border,
                     'lg:flex-row items-center lg:text-left',
                     bg,
@@ -119,9 +119,9 @@ export const Alert = forwardRef<any, AlertProps>(
 
                 {!hideIcon && (
                     <Icon
-                        style={{ width: '38px', height: '38px' }}
+
                         className={clsx(
-                            'stroke-white flex-shrink-0 block ',
+                            'stroke-white flex-shrink-0 block size-[32px]',
                             fill,
                             isVertical ? 'lg:self-start' : 'self-center',
                         )}
@@ -137,7 +137,7 @@ export const Alert = forwardRef<any, AlertProps>(
                     )}
                 >
                     {title && <div className='font-semibold'>{title}</div>}
-                    <div className='opacity-80'>{description}</div>
+                    <div className='opacity-80 flex flex-col gap-2'>{description}</div>
                 </div>
             </div>
         )
