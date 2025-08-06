@@ -17,7 +17,7 @@ export function DashboardHeader({
             {...rest}
         >
             <div className='flex items-center gap-4'>
-                <div className='flex flex-col justify-center space-y-4'>
+                <div className='flex flex-col justify-center gap-4'>
                     {logo}
                     {/* {hasOrg && <SelectOrg className='min-w-[200px]' />} */}
                 </div>

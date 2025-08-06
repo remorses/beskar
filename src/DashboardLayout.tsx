@@ -48,7 +48,7 @@ export function DashboardLayout({
                 </div>
                 <div
                     className={cs(
-                        'flex w-full grow flex-col space-y-8',
+                        'flex w-full grow flex-col gap-8',
                         className,
                     )}
                     style={{
@@ -60,7 +60,7 @@ export function DashboardLayout({
                 >
                     <div
                         className={clsx(
-                            'flex flex-col w-full h-full space-y-8 grow overflow-visible ',
+                            'flex flex-col w-full h-full gap-8 grow overflow-visible ',
                             !fullWidth && 'pt-[20px] lg:pt-[30px]',
                         )}
                     >

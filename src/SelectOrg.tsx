@@ -95,13 +95,13 @@ export function SelectOrg({
                 })}
             />
             <Modal
-                className='flex flex-col w-full space-y-8 !max-w-xl'
+                className='flex flex-col w-full gap-8 !max-w-xl'
                 isOpen={isOpen}
                 useDefaultContentStyle
                 onClose={onClose}
                 content={
                     <form
-                        className='space-y-8'
+                        className='gap-8 flex flex-col'
                         id='new-org-form'
                         onSubmit={handleSubmit(onSubmit)}
                     >

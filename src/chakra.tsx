@@ -4,7 +4,8 @@ import {
     DarkMode,
     theme as _theme,
 } from '@chakra-ui/react'
-import colors from '../colors'
+import colors from '../colors.cjs'
+const colorsTyped = colors as any
 import { useColorMode } from './utils'
 import { useRef } from 'react'
 
@@ -15,8 +16,8 @@ const theme: typeof _theme = {
     },
     colors: {
         ..._theme.colors,
-        gray: { ..._theme.colors.gray,...colors.gray },
-        blue: { ..._theme.colors.blue,...colors.blue },
+        gray: { ..._theme.colors.gray,...colorsTyped.gray },
+        // blue: { ..._theme.colors.blue,...colorsTyped.blue },
     },
     styles: {},
     config: {
@@ -50,8 +51,8 @@ export function ChakraStuff({
     return (
         <ChakraProvider
             colorModeManager={manager}
-            
-            
+
+
             theme={theme}
         >
             {children}

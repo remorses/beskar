@@ -59,7 +59,7 @@ export const NavBar = ({
                     <Faded
                         className={cs(
                             'bg-gray-900/80 fixed w-screen h-screen inset-0',
-                            'pt-6 space-y-6 flex flex-col items-center text-white',
+                            'pt-6 gap-6 flex flex-col items-center text-white',
                             'font-medium',
                         )}
                     >

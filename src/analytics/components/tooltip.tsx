@@ -128,7 +128,7 @@ export function TooltipContent({
     ctaLink: string
 }) {
     return (
-        <div className='max-w-xs flex flex-col text-center items-center space-y-3 py-2'>
+        <div className='max-w-xs flex flex-col text-center items-center gap-3 py-2'>
             <p className='text-sm text-gray-700'>{title}</p>
             <Link legacyBehavior href={ctaLink}>
                 <a className='py-1.5 px-3 bg-black hover:bg-white rounded-full border border-black text-sm text-white hover:text-black transition-all mt-4'>
@@ -141,7 +141,7 @@ export function TooltipContent({
 
 export function OGImageProxy() {
     return (
-        <div className='max-w-md flex flex-col text-center items-center space-y-5 p-5'>
+        <div className='max-w-md flex flex-col text-center items-center gap-5 p-5'>
             <BlurImage
                 alt='Demo GIF for OG Image Proxy'
                 src='https://res.cloudinary.com/dubdotsh/image/upload/v1664425639/og-image-proxy-demo.gif'
