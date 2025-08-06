@@ -81,7 +81,7 @@ export function Modal({
 
     return createPortal(
         <As
-            className='fixed inset-0 z-[1000] overflow-y-auto overflow-x-hidden'
+            className='fixed inset-0 z-1000 overflow-y-auto overflow-x-hidden'
             {...rest}
         >
             {styles}

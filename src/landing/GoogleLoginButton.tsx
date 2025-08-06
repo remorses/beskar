@@ -30,7 +30,7 @@ export function GoogleLoginButton({
                     bgDark='blue.500'
                     biggerOnHover
                     className={clsx(
-                        '!px-5 text-white w-full',
+                        'px-5! text-white w-full',
                         !disabled && 'hover:bg-blue-300',
                         className,
                     )}

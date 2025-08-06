@@ -130,7 +130,7 @@ export default function Ranking({
                             y: 50,
                             transition: { duration: 0 },
                         }}
-                        className='absolute w-full h-8 flex justify-center items-center bottom-0 left-0 right-0 bg-gradient-to-b from-white to-gray-100 text-sm text-gray-500'
+                        className='absolute w-full h-8 flex justify-center items-center bottom-0 left-0 right-0 bg-linear-to-b from-white to-gray-100 text-sm text-gray-500'
                     >
                         Show more
                     </motion.div>

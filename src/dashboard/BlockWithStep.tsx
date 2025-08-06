@@ -31,7 +31,7 @@ export function BlockWithStep ({
                 className={classNames(
                     'w-4 shadow-lg rounded-full p-4 justify-center',
                     'items-center h-4 font-medium flex-col flex border',
-                    'border bg-white absolute -left-4 !mt-0 dark:bg-gray-700',
+                    'border bg-white absolute -left-4 mt-0! dark:bg-gray-700',
                 )}
                 style={{ top }}
             >

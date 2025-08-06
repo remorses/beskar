@@ -62,11 +62,11 @@ export const Alert = forwardRef<any, AlertProps>(
         const border = useMemo(() => {
             // return
             if (type === 'error') {
-                return '!border-red-400'
+                return 'border-red-400!'
             } else if (type === 'info') {
-                return '!border-blue-400'
+                return 'border-blue-400!'
             } else if (type === 'warn') {
-                return '!border-amber-400'
+                return 'border-amber-400!'
             }
         }, [type])
         const fill = useMemo(() => {
@@ -96,7 +96,7 @@ export const Alert = forwardRef<any, AlertProps>(
             <div
                 ref={ref}
                 className={clsx(
-                    'relative text-sm text-gray-800 flex border-l-[4px] gap-4 flex-col text-center',
+                    'relative text-sm text-gray-800 flex border-l-4 gap-4 flex-col text-center',
                     'p-4 ',
                     border,
                     'lg:flex-row items-center lg:text-left',
@@ -121,7 +121,7 @@ export const Alert = forwardRef<any, AlertProps>(
                     <Icon
 
                         className={clsx(
-                            'stroke-white flex-shrink-0 block size-[32px]',
+                            'stroke-white shrink-0 block size-[32px]',
                             fill,
                             isVertical ? 'lg:self-start' : 'self-center',
                         )}

@@ -36,7 +36,7 @@ export function ToggleButton({
                         display: 'inline',
                     }}
                 />
-                <span className='[&>*]:inline'>{heading}</span>
+                <span className='*:inline'>{heading}</span>
             </button>
             {(!remount || isOpen) && (
                 <div

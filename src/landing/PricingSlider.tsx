@@ -320,7 +320,7 @@ export function PricingSlider({
                                 // bgDark='blue.200'
                                 isLoading={clickIsLoading}
                                 biggerOnHover
-                                className='font-bold !px-6'
+                                className='font-bold px-6!'
                             >
                                 {buttonText}
                             </Button>
@@ -334,7 +334,7 @@ export function PricingSlider({
                 </div>
                 {subscription && manageSubscriptionHandler ? (
                     <Link
-                        className='mx-auto !mb-0'
+                        className='mx-auto mb-0!'
                         onClick={(e) => {
                             e.preventDefault()
                             manageSubscriptionHandler()
@@ -344,7 +344,7 @@ export function PricingSlider({
                         Manage subscription
                     </Link>
                 ) : (
-                    <FadedComponent className='text-center mx-auto !mb-0 opacity-80 text-sm'>
+                    <FadedComponent className='text-center mx-auto mb-0! opacity-80 text-sm'>
                         Need more?{` `}
                         <Link
                             href={`mailto:${needMoreEmail}?subject=${encodeURIComponent(

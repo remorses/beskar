@@ -42,11 +42,11 @@ export const Link = forwardRef<any, LinkProps>(
                     href={href || ''}
                     className={clsx(
                         'appearance-none max-w-max relative',
-                        'font-medium !border-white/0 cursor-pointer',
+                        'font-medium border-white/0! cursor-pointer',
                         !!iconBefore && 'whitespace-nowrap',
                         underline
                             ? `underline`
-                            : 'no-underline border-b-[2px] hover:!border-[color:currentColor] active:!border-[color:currentColor]',
+                            : 'no-underline border-b-2 hover:border-[currentColor]! active:border-[currentColor]!',
                         className,
                     )}
                     onClick={
@@ -65,7 +65,7 @@ export const Link = forwardRef<any, LinkProps>(
                     {...props}
                 >
                     {iconBefore && (
-                        <div className='inline [&>*]:inline mr-1'>
+                        <div className='inline *:inline mr-1'>
                             {iconBefore}
                         </div>
                     )}

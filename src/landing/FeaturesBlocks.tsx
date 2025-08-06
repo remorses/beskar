@@ -38,7 +38,7 @@ export function FeaturesBlocks({
                                 <div
                                     className={clsx(
                                         'w-14 shadow-lg rounded-lg opacity-90',
-                                        'justify-center items-center h-14 flex-shrink-0',
+                                        'justify-center items-center h-14 shrink-0',
                                         'flex md:rounded-xl',
                                         blocksClassName,
                                     )}

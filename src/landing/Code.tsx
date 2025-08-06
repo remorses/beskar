@@ -18,7 +18,7 @@ export const Code = ({ code, language = 'javascript', className = '' }) => {
         <pre
             style={{ fontSize: '14px' }}
             className={classNames(
-                'relative text-gray-100 shrink-0 !bg-gray-800 !border-transparent',
+                'relative text-gray-100 shrink-0 bg-gray-800! border-transparent!',
                 'rounded-md focus:outline-none',
                 className,
             )}
@@ -35,7 +35,7 @@ export const Code = ({ code, language = 'javascript', className = '' }) => {
                 </div>
                 <code
                     style={{ textShadow: 'none !important' }}
-                    className='font-medium max-w-screen-2xl'
+                    className='font-medium max-w-(--breakpoint-2xl)'
                     dangerouslySetInnerHTML={{
                         __html: html,
                     }}

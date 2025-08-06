@@ -56,7 +56,7 @@ export function Feature({
                     {bullet && <Bullet>{bullet}</Bullet>}
                     <div
                         className={clsx(
-                            'text-4xl even:!mt-2 font-bold leading-tight ',
+                            'text-4xl even:mt-2! font-bold leading-tight ',
                         )}
                     >
                         {heading}
@@ -70,7 +70,7 @@ export function Feature({
                 
                 <div
                     className={clsx(
-                        'flex flex-col flex-shrink-0 px-3 items-center flex-1',
+                        'flex flex-col shrink-0 px-3 items-center flex-1',
                         'max-w-[500px] min-w-[300px]',
                     )}
                 >

@@ -34,11 +34,11 @@ export function PopOver({ className = '', items, button }) {
                         key={isOpen ? 'open' : 'hidden'}
                         className={cs(
                             'absolute p-4 space-y-4 w-max shadow-2xl ring-1',
-                            'ring-black ring-opacity-5 overflow-hidden max-w-screen-sm',
+                            'ring-black ring-opacity-5 overflow-hidden max-w-(--breakpoint-sm)',
                             'flex flex-col mt-3 transform -translate-x-1/2',
                             'left-1/2 bg-white rounded-md dark:bg-gray-700',
                             className,
-                            isOpen ? '!block' : '!hidden',
+                            isOpen ? 'block!' : 'hidden!',
                         )}
                     >
                         {items}
@@ -66,7 +66,7 @@ const Button = forwardRef<any, ComponentPropsWithoutRef<'button'>>(
                 <div className=''>{children}</div>
                 <ChevronDownIcon
                     className={classNames(
-                        'ml-1 pt-1 h-6 w-6 flex-shrink-0 transition ease-in-out',
+                        'ml-1 pt-1 h-6 w-6 shrink-0 transition ease-in-out',
                         'duration-150 group-hover:text-opacity-80',
                     )}
                     aria-hidden='true'
@@ -101,7 +101,7 @@ const Item = forwardRef<
         >
             <div
                 className={cs(
-                    'flex items-center justify-center flex-shrink-0',
+                    'flex items-center justify-center shrink-0',
                     'w-12 h-12',
                 )}
             >

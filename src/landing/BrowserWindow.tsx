@@ -16,9 +16,9 @@ export function BrowserWindow({
     return (
         <figure
             className={classNames(
-                'rounded-b-md relative max-w-full h-auto z-[1]',
-                'shadow-[0_2.75rem_3.5rem_-2rem_rgb(45_55_75_/_20%),_0_0_5rem_-2rem_rgb(45_55_75_/_15%)]',
-                'dark:shadow-[0_2.75rem_3.5rem_-2rem_rgb(0_0_0_/_20%),_0_0_5rem_-2rem_rgb(0_0_0_/_15%)]',
+                'rounded-b-md relative max-w-full h-auto z-1',
+                'shadow-[0_2.75rem_3.5rem_-2rem_rgb(45_55_75/20%),0_0_5rem_-2rem_rgb(45_55_75/15%)]',
+                'dark:shadow-[0_2.75rem_3.5rem_-2rem_rgb(0_0_0/20%),0_0_5rem_-2rem_rgb(0_0_0/15%)]',
                 'text-xs',
                 className,
             )}

@@ -83,7 +83,7 @@ export function SelectOrg({
                 isLoading={isValidating || isLoading || isOrgLoading}
                 value={orgId}
                 onChange={onChange}
-                className={classNames('min-w-[16ch] !border-0', className)}
+                className={classNames('min-w-[16ch] border-0!', className)}
                 endButton={
                     <Select.SelectButton children='New Org' onClick={onOpen} />
                 }
@@ -95,7 +95,7 @@ export function SelectOrg({
                 })}
             />
             <Modal
-                className='flex flex-col w-full gap-8 !max-w-xl'
+                className='flex flex-col w-full gap-8 max-w-xl!'
                 isOpen={isOpen}
                 useDefaultContentStyle
                 onClose={onClose}

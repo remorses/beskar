@@ -70,7 +70,7 @@ export const TableBlock = ({
                 </tbody>
             </table>
             {rows.length > limit && (
-                <div className='flex !-mt-2 flex-col items-center w-full'>
+                <div className='flex -mt-2! flex-col items-center w-full'>
                     <Divider
                         heading={
                             <Button
