@@ -218,14 +218,11 @@ function SelectButton({
 }
 
 import ColorHash from 'color-hash'
-import { colord, extend } from 'colord'
-import mixPlugin from 'colord/plugins/mix'
-import harmoniesPlugin from 'colord/plugins/harmonies'
+import { parse, formatHex, interpolate } from 'culori'
 import { Faded } from 'baby-i-am-faded'
 
 import { Input } from './landing/Input'
 
-extend([mixPlugin, harmoniesPlugin])
 
 const colorHash = new ColorHash({ lightness: 0.6 })
 
@@ -237,10 +234,11 @@ function GradientIcon({ name }) {
         }
         const color = colorHash.hex(name)
 
-        const [first, second] = colord(color).harmonies('analogous')
-        return `linear-gradient(to right, ${first.toHex()}, ${second
-            .desaturate(0.3)
-            .toHex()})`
+        const parsed = parse(color)
+        // Generate analogous colors by rotating hue
+        const first = { ...parsed, h: (parsed.h || 0) - 30 }
+        const second = { ...parsed, h: (parsed.h || 0) + 30, s: (parsed.s || 0) * 0.7 }
+        return `linear-gradient(to right, ${formatHex(first)}, ${formatHex(second)})`
     })()
     return (
         <div

@@ -4,7 +4,7 @@ import {
     DarkMode,
     theme as _theme,
 } from '@chakra-ui/react'
-import colors from '../colors.cjs'
+import colors from '../colors'
 const colorsTyped = colors as any
 import { useColorMode } from './utils'
 import { useRef } from 'react'

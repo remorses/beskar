@@ -1,6 +1,6 @@
 import cs from 'classnames'
 import { ReactNode, useMemo } from 'react'
-import { Colord } from 'colord'
+import { parse, formatRgb } from 'culori'
 import { AxisBottom, AxisLeft } from '@visx/axis'
 import { GridRows } from '@visx/grid'
 import { scaleBand, scaleLinear } from '@visx/scale'
@@ -104,9 +104,9 @@ const BarChart_ = ({
 
     let tooltipTimeout: number | undefined
     const { colorMode, isDark } = useColorMode()
-    const bgInstance = new Colord(backgroundColor)
-    const gradientStart = bgInstance.alpha(0.3).toRgbString()
-    const gradientStop = bgInstance.alpha(0).toRgbString()
+    const bgParsed = parse(backgroundColor)
+    const gradientStart = formatRgb({ ...bgParsed, alpha: 0.3 })
+    const gradientStop = formatRgb({ ...bgParsed, alpha: 0 })
 
     const labelColor = isDark ? '#eee' : '#444'
 

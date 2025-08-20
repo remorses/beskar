@@ -1,9 +1,11 @@
-const tailwindColors = require('tailwindcss/colors')
+import tailwindColors from 'tailwindcss/colors';
+
+console.log({tailwindColors})
 
 const colors = {
     ...tailwindColors,
     gray: {
-        ...tailwindColors.gray,
+        ...tailwindColors.neutral,
         // discord colors
         600: '#42474D',
         700: '#36393F',
@@ -12,4 +14,4 @@ const colors = {
     },
 }
 
-module.exports = colors
+export default colors

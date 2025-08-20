@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { colord } from 'colord'
+import { parse, formatRgb } from 'culori'
 import React, {
     ComponentPropsWithoutRef,
     ElementType,
@@ -35,13 +35,15 @@ function getColors(color: ColorGetter, opacity = 1) {
         }
     }
     const bg = getColor(color as any) || color
-    const bgd = colord(bg as any).alpha(opacity)
+    const parsed = parse(bg as any)
+    const bgd = { ...parsed, alpha: (parsed.alpha || 1) * opacity }
+    const luminance = parsed ? (0.299 * (parsed.r || 0) + 0.587 * (parsed.g || 0) + 0.114 * (parsed.b || 0)) : 0.5
     const text =
-        opacity < 0.8 ? 'currentColor' : bgd.isDark() ? 'white' : 'black'
+        opacity < 0.8 ? 'currentColor' : luminance < 0.5 ? 'white' : 'black'
     // const text = 'currentColor'
-    const highlight = bgd.alpha(0.2).toRgbString()
+    const highlight = formatRgb({ ...bgd, alpha: 0.2 })
     // console.log({ text, highlight, bg })
-    return { text, highlight, bg: bgd.toRgbString() }
+    return { text, highlight, bg: formatRgb(bgd) }
 }
 
 export const Button = forwardRef<any, ButtonProps>(

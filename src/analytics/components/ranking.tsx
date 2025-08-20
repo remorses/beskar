@@ -1,4 +1,4 @@
-import { Colord } from 'colord'
+import { parse, formatRgb, filterBrightness } from 'culori'
 import { BadgeSelect } from '../../landing/badge-select'
 import { ReactNode, useMemo } from 'react'
 import { nFormatter } from '../lib/utils'
@@ -36,7 +36,7 @@ export default function Ranking({
         }
     }
 
-    const bgInstance = new Colord(barBackgroundColor)
+    const bgParsed = parse(barBackgroundColor)
 
     return (
         <div
@@ -85,15 +85,9 @@ export default function Ranking({
                                             borderWidth: '2px',
                                             borderStyle: 'solid',
                                             borderLeftWidth: 0,
-                                            borderColor: bgInstance
-                                                .lighten(0.2)
-                                                .toRgbString(),
+                                            borderColor: formatRgb(filterBrightness(1.2, 'lrgb')(bgParsed)),
                                             // gradient background
-                                            backgroundImage: `linear-gradient(90deg, ${bgInstance
-                                                .alpha(0)
-                                                .toRgbString()} 0%, ${bgInstance
-                                                .alpha(0.2)
-                                                .toRgbString()} 100%)`,
+                                            backgroundImage: `linear-gradient(90deg, ${formatRgb({ ...bgParsed, alpha: 0 })} 0%, ${formatRgb({ ...bgParsed, alpha: 0.2 })} 100%)`,
                                         }}
                                         className='absolute h-8 origin-left'
                                         transition={{

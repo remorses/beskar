@@ -39,12 +39,9 @@ export function DashboardHeader({
 }
 
 import ColorHash from 'color-hash'
-import { colord, extend } from 'colord'
-import harmoniesPlugin from 'colord/plugins/harmonies'
-import mixPlugin from 'colord/plugins/mix'
+import { parse, formatHex } from 'culori'
 import { ReactNode } from 'react'
 
-extend([mixPlugin, harmoniesPlugin])
 
 const colorHash = new ColorHash({ lightness: 0.6 })
 
@@ -55,10 +52,11 @@ export function AvatarButton({ className, as: As = 'button' as any, name }) {
         }
         const color = colorHash.hex(name)
 
-        const [first, second] = colord(color).harmonies('analogous')
-        return `linear-gradient(to right, ${first
-            .desaturate(0.2)
-            .toHex()}, ${second.desaturate(0.4).toHex()})`
+        const parsed = parse(color)
+        // Generate analogous colors by rotating hue
+        const first = { ...parsed, h: (parsed.h || 0) - 30, s: (parsed.s || 0) * 0.8 }
+        const second = { ...parsed, h: (parsed.h || 0) + 30, s: (parsed.s || 0) * 0.6 }
+        return `linear-gradient(to right, ${formatHex(first)}, ${formatHex(second)})`
     })()
     return (
         <As

@@ -1,11 +1,12 @@
-import { Colord } from 'colord'
+import { parse, formatRgb } from 'culori'
 import React, { ComponentPropsWithoutRef, FC } from 'react'
 
 function lighter(c) {
     // const { colorMode } = useColorMode()
     // const isDark = colorMode === 'dark'
-    const newColor = new Colord(c).alpha(0.06)
-    return newColor.toRgbString()
+    const parsed = parse(c)
+    const newColor = { ...parsed, alpha: 0.06 }
+    return formatRgb(newColor)
 }
 
 function getCliPath({ distortion }) {
