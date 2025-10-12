@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import { highlight, languages } from 'prismjs'
-// import 'prismjs/components/prism-jsx'
+import 'prismjs/components/prism-diff'
 import { default as classNames } from 'classnames'
 import { useCopyToClipboard } from '../dashboard/CopyButton'
 
@@ -10,9 +10,8 @@ export const Code = ({ code, language = 'javascript', className = '' }) => {
 
     const html = useMemo(() => {
         const html = highlight(code, prismLanguage, language)
-        // console.log(html)
         return html
-    }, [code, language])
+    }, [code, language, prismLanguage])
 
     return (
         <pre
