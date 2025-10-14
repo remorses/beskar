@@ -90,7 +90,7 @@ export function useThrowingFn({
 
             return result
         } catch (err) {
-            console.error(err)
+            console.error('useThrowingFn', err)
             // how to handle unreadable errors? simply don't return them from APIs, just return something went wrong
             // ignore abort errors
             if (err instanceof Error && err.name === 'AbortError') {
