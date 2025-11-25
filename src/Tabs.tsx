@@ -109,18 +109,29 @@ function FragmentLike({ children }) {
 
 function useIsActiveHref(href) {
     const router = useRouter()
-    const pathname = router?.asPath || ''
+    const currentPath = router?.asPath || ''
     return useMemo(() => {
-        if (
-            href &&
-            stripQueryStringAndHashFromPath(
-                pathname?.replace(/\/$/, '').replace(/\bindex$/, ''),
-            ) === stripQueryStringAndHashFromPath(href.replace(/\/$/, ''))
-        ) {
-            return true
+        if (!href) {
+            return false
         }
-        return false
-    }, [pathname, href])
+        const currentPathname = stripQueryStringAndHashFromPath(
+            currentPath?.replace(/\/$/, '').replace(/\bindex$/, ''),
+        )
+        const hrefPathname = stripQueryStringAndHashFromPath(
+            href.replace(/\/$/, ''),
+        )
+        if (currentPathname !== hrefPathname) {
+            return false
+        }
+        const hrefHasQuery = href.includes('?')
+        const currentHasQuery = currentPath.includes('?')
+        if (hrefHasQuery) {
+            const hrefQuery = href.split('?')[1]?.split('#')[0] || ''
+            const currentQuery = currentPath.split('?')[1]?.split('#')[0] || ''
+            return hrefQuery === currentQuery
+        }
+        return !currentHasQuery
+    }, [currentPath, href])
 }
 
 function stripQueryStringAndHashFromPath(url: string) {
