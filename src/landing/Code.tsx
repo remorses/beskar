@@ -22,7 +22,7 @@ export const Code = ({ code, language = 'javascript', className = '' }) => {
                 className,
             )}
         >
-            <div className='overflow-x-auto px-6 py-6'>
+            <div className='overflow-x-auto px-1 py-6'>
                 <div
                     className={classNames(
                         'absolute flex items-center space-x-2 font-mono text-xs text-white top-2',
