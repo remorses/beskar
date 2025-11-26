@@ -51,7 +51,7 @@
         "nprogress": "^0.2.0",
         "postcss": "^8.4.38",
         "prismjs": "^1.29.0",
-        "react-hook-form": "^7.66.0",
+        "react-hook-form": "^7.66.1",
         "react-hot-toast": "^2.4.1",
         "styled-jsx": "5.1.6",
         "swr": "^2.2.5",
